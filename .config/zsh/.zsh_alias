@@ -1,0 +1,22 @@
+##
+# Collection of my aliases
+##
+
+# setting up dotfile version control
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+
+# setting up listing dirs
+alias ls="exa --icons --long --header --group-directories-first --no-permissions --no-user"
+alias la="exa --icons --long --header --group-directories-first --no-permissions --no-user -a"
+
+# set up hist for wget to take it out of home dir
+alias wget="wget --hsts-file $XDG_CONFIG_HOME/wget/.wget-hsts"
+
+# moving around easier
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# python package installer
+alias pip="python3 -m pip"
+
