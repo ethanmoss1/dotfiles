@@ -1,0 +1,92 @@
+" ################################
+" #			                	 #
+" #	   Ethans .vimrc Config	     #
+" #				                 #  
+" ################################
+
+" Plugins To Install:
+"""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'sainnhe/gruvbox-material'
+Plug 'ryanoasis/vim-devicons'
+
+call plug#end()
+
+
+" Plugin Settings:
+""""""""""""""""""
+
+" Airline:
+" nice symbols in airline
+let g:airline_powerline_fonts=1
+let g:airline_theme = 'gruvbox_material'
+
+" Set Up Colourscheme:
+
+" Important!!
+if has('termguicolors')
+    set termguicolors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+set background=dark
+
+" syntax highlighting
+syntax on
+colorscheme gruvbox-material
+
+
+" Vim UI Settings:
+set viminfo+=n~/.vim/viminfo
+" height of the command bar
+set cmdheight=1
+" case-insensetive when searching
+set ignorecase
+" also be smart about cases
+set smartcase
+" highlight search
+set hlsearch
+" Scroll height ( leave gap at top and bottom )
+set scrolloff=15
+" numbers on side
+set number
+" extra margin on left of numbers
+set foldcolumn=1
+" better search?
+set incsearch
+" no annoying sounds
+set noerrorbells
+set novisualbell
+" turn on wild card (?)
+set wildmenu
+set wildmode=list:longest
+set cursorline
+set mouse=nvi
+if $TERM == 'alacritty'
+    set ttymouse=sgr
+endif
+
+" Files And Backups:
+" no need for backups because of git
+set nobackup
+set nowb
+set noswapfile
+
+" Text Tabs And Indents:
+" spaces instea dof tabs
+set expandtab
+" smart tabs
+set smarttab
+" tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+" auto indent
+set ai
+" smart indent
+set si
+
+" Additional Settings:
+set clipboard=unnamedplus
