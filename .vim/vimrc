@@ -8,9 +8,9 @@
 """""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 Plug 'sainnhe/gruvbox-material'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -20,8 +20,8 @@ call plug#end()
 
 " Airline:
 " nice symbols in airline
-let g:airline_powerline_fonts=1
-let g:airline_theme = 'gruvbox_material'
+"let g:airline_powerline_fonts=1
+"let g:airline_theme = 'gruvbox_material'
 
 " Set Up Colourscheme:
 
