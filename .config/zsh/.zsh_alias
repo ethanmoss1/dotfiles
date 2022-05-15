@@ -20,3 +20,7 @@ alias ....="cd ../../.."
 # python package installer
 alias pip="python3 -m pip"
 
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
+alias reload="source $ZDORDIR/.zshrc"
+
+alias vim=nvim

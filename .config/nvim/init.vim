@@ -8,7 +8,7 @@
 "           888   Y8888    Y888P      888   888   "   888
 "           888    Y888     Y8P     8888888 888       888
 "
-"           Author        EthanM <cywinskimoss@gmail.com>
+"               Author        EthanM
 "
 
 " PLUGINS: ---------------------------------------------------------------- {{{
@@ -26,6 +26,8 @@ call plug#begin()
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 if install_plugins == 1
@@ -40,12 +42,13 @@ endif
 
 " AIRLINE:
 set noshowmode                  " get rid of shown current mode
-let g:airline_powerline_fonts=1
+
+let g:airline_powerline_fonts=1  
 let g:airline_theme = 'gruvbox_material'
 let g:airline_right_sep=''
 let g:airline_left_sep=''
+let g:airline#extensions#whitespace#enabled = 0
 
-let g:airline#extensions#default#section_truncate_width = {}
 
 
 " NETRW:
@@ -82,6 +85,7 @@ set nowrap                      " No line wrapping.
 set cc=80                       " set colour column (max line length)
 set hlsearch                    " hightlight search
 set scrolloff=10                " set scrolloff limits
+set sidescrolloff=5             " horizontal scroll off
 set number                      " Absolute line number
 set relativenumber              " Realtive numbers elsewhere
 set foldcolumn=1                " set addiditonal margin left
