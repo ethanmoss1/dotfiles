@@ -10,7 +10,7 @@
 "
 "               Author        EthanM
 "
-
+"
 " PLUGINS: ---------------------------------------------------------------- {{{
 " Install vim-plug if not already installed
 set nocompatible
