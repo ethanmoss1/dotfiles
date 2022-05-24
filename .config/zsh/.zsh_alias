@@ -4,6 +4,7 @@
 
 # setting up dotfile version control
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias lazydots="lazygit --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # setting up listing dirs
 alias ls="exa --icons --long --header --group-directories-first --no-permissions --no-user"
