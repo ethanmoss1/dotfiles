@@ -13,7 +13,6 @@
 
 " PLUGINS: ---------------------------------------------------------------- {{{
 " Install vim-plug if not already installed
-set nocompatible
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 let install_plugins = 0
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -22,12 +21,20 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
     let install_plugins = 1
 endif
 
+
 call plug#begin()
+
+" Appearance
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-fugitive'
+
 Plug 'lukas-reineke/indent-blankline.nvim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 call plug#end()
 
 if install_plugins == 1
@@ -68,6 +75,7 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " VIM SETTINGS: ----------------------------------------------------------- {{{
 
+set nocompatible
 if has('termguicolors')
     set termguicolors
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
