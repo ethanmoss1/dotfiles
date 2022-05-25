@@ -298,14 +298,14 @@
     background = "#282828"
     foreground = "#665c54"
     timeout = 10
-    # Icon for notifications with low urgency, uncomment to enable
+    script = ~/.config/dunst/script/urgency_low
     #default_icon = /path/to/icon
 
 [urgency_normal]
     background = "#282828"
     foreground = "#dfbf8e"
     timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
+    script = ~/.config/dunst/scripts/urgency_normal
     #default_icon = ~/.config/dunst/bell_icon.jpg
 
 [urgency_critical]
@@ -313,7 +313,7 @@
     foreground = "#402120"
     frame_color = "#ea6962"
     timeout = 0
-    # Icon for notifications with critical urgency, uncomment to enable
+    script = ~/.config/dunst/scripts/urgency_critical
     #default_icon = /path/to/icon
 
 # Every section that isn't one of the above is interpreted as a rules to

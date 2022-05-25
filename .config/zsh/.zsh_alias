@@ -24,4 +24,7 @@ alias pip="python3 -m pip"
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 alias reload="source $ZDORDIR/.zshrc"
 
+#lazygit
+alias lg=lazygit
+
 alias vim=nvim
