@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 userresources=$XDG_CONFIG_HOME/X11/xinit/.Xresources
 usermodmap=$XDG_CONFIG_HOME/X11/xinit/.Xmodmap
