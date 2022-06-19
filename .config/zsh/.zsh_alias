@@ -26,5 +26,5 @@ alias reload="source $ZDORDIR/.zshrc"
 
 #lazygit
 alias lg=lazygit
-
 alias vim=nvim
+alias emacs="emacsclient --create-frame --alternate-editor=$ALTERNATIVE_EDITOR"

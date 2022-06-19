@@ -17,4 +17,7 @@ prompt typewritten
 TYPEWRITTEN_CURSOR="block"
 
 # Set default Editor
-export EDITOR="nvim"
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
+export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
+

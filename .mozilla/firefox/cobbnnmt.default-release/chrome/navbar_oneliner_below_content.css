@@ -1,0 +1,109 @@
+/* Combination of ;
+https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/navbar_tabs_oneliner.css
+
+Moves the main toolbar to the bottom of window under content on one line. 
+
+*/
+/* Bottom bar */
+:root[uidensity="compact"]{
+    --tab-block-margin: 2px !important;
+}
+
+:root:not([inFullscreen]){
+  --uc-bottom-toolbar-height: calc(39px + var(--toolbarbutton-outer-padding) )
+}
+
+:root[uidensity="compact"]:not([inFullscreen]){
+  --uc-bottom-toolbar-height: calc(32px + var(--toolbarbutton-outer-padding) )
+}
+
+#browser,
+#customization-container{ margin-bottom: var(--uc-bottom-toolbar-height,0px) }
+
+
+#nav-bar-customization-target{ -webkit-box-flex: 1; }
+
+/* Fix panels sizing */
+.panel-viewstack{ max-height: unset !important; }
+
+#urlbar[breakout][breakout-extend]{
+  display: flex !important;
+  flex-direction: column-reverse;
+  bottom: 0px !important; /* Change to 3-5 px if using compact_urlbar_megabar.css depending on toolbar density */
+  top: auto !important;
+}
+
+.urlbarView-body-inner{ border-top-style: none !important; }
+
+/* oneliner */
+#navigator-toolbox{
+  --uc-navigationbar-width: 40vw;
+  --uc-toolbar-height: 40px;
+  --uc-urlbar-min-width: 90vw; /* minimum width for opened urlbar */
+}
+
+#scrollbutton-up,
+#scrollbutton-down{ border-block-width: 2px !important; }
+
+
+/* prevent urlbar overflow on narrow windows */
+/* Dependent on how many items are in navigation toolbar ADJUST AS NEEDED */
+@media screen and (max-width: 1500px){
+  #urlbar-container{ min-width:unset !important }
+}
+
+#TabsToolbar{
+  margin-left: var(--uc-navigationbar-width);
+  --tabs-navbar-shadow-size: 0px;
+}
+#tabbrowser-tabs{
+  --tab-min-height: calc(var(--uc-toolbar-height) - 2 * var(--tab-block-margin,0px)) !important;
+}
+
+/* This isn't useful when tabs start in the middle of the window */
+
+.titlebar-spacer[type="pre-tabs"]{ display: none }
+
+#navigator-toolbox > #nav-bar{
+  margin-top: calc(1px - var(--uc-toolbar-height));
+}
+
+/* Window drag space  */
+:root[tabsintitlebar="true"] #nav-bar{ padding-left: 24px !important }
+
+/* Rules specific to window controls on right layout */
+@supports -moz-bool-pref("layout.css.osx-font-smoothing.enabled"){
+  .titlebar-buttonbox-container{ position: fixed; display: block; left: 0px; z-index: 3; }
+  :root[tabsintitlebar="true"] #nav-bar{ padding-left: 96px !important; padding-right: 0px !important; }
+}
+
+/* 1px margin on touch density causes tabs to be too high */
+.tab-close-button{ margin-top: 0 !important }
+
+/* Make opened urlbar overlay the toolbar */
+#urlbar[open]{ min-width: var(--uc-urlbar-min-width,none) !important; }
+
+/* Hide dropdown placeholder */
+#urlbar-container:not(:hover) .urlbar-history-dropmarker{ margin-inline-start: -28px; }
+
+/* Fix customization view */
+#customization-panelWrapper > .panel-arrowbox > .panel-arrow{ margin-inline-end: initial !important; }
+
+/* fixes */
+#titlebar{
+  position: fixed !important;
+  bottom: 0px;
+  /* For some reason -webkit-box behaves internally like -moz-box, but can be used with fixed position. display: flex would work too but it breaks extension menus. */
+  display: -webkit-box;
+  width: 100vw;
+  z-index: 1;
+}
+
+#nav-bar{
+  position: fixed !important;
+  bottom: 0px;
+  /* For some reason -webkit-box behaves internally like -moz-box, but can be used with fixed position. display: flex would work too but it breaks extension menus. */
+  display: -webkit-box;
+  width: calc(var(--uc-navigationbar-width));
+  z-index: 1;
+}
