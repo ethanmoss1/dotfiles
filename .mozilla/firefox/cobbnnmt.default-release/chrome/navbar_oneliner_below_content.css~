@@ -93,6 +93,7 @@ Moves the main toolbar to the bottom of window under content on one line.
 #titlebar{
   position: fixed !important;
   bottom: 0px;
+  /* For some reason -webkit-box behaves internally like -moz-box, but can be used with fixed position. display: flex would work too but it breaks extension menus. */
   display: -webkit-box;
   width: 100vw;
   z-index: 1;
@@ -101,6 +102,7 @@ Moves the main toolbar to the bottom of window under content on one line.
 #nav-bar{
   position: fixed !important;
   bottom: 0px;
+  /* For some reason -webkit-box behaves internally like -moz-box, but can be used with fixed position. display: flex would work too but it breaks extension menus. */
   display: -webkit-box;
   width: calc(var(--uc-navigationbar-width));
   z-index: 1;
