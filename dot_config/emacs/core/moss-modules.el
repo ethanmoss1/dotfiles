@@ -48,6 +48,7 @@
 (require 'moss-shell-pop)
 
 ;; Version Control
+(require 'moss-chezmoi)
 (require 'moss-magit)
 
 ;; Project
