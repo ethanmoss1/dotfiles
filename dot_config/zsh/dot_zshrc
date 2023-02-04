@@ -1,0 +1,11 @@
+### ZSHRC ###
+PS1='[%n@%m %F{red}%~%f]$ '
+
+# Set up history files:
+alias wget='wget --hsts-file $XDG_CACHE_HOME/wget-hsts'
+
+### ALIAS' ###
+alias reload='source $ZDOTDIR/.zshrc'
+alias ls='ls -lh --color=auto'
+alias la='ls -lah --color=auto'
+alias ..='cd ..'

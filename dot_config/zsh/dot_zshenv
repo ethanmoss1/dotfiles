@@ -1,0 +1,16 @@
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
+# less
+export LESSHISTFILE=$XDG_CACHE_home/.lesshist
+
+# ZSH
+# export ZSH
+
+# Rendering issues, invisible cursor fix
+export WLR_NO_HARDWARE_CURSORS=1
+
+# editor
+export EDITOR="emacs"

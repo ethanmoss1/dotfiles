@@ -1,0 +1,14 @@
+* Bluetooth manager
+https://wiki.archlinux.org/title/Blueman
+
+* Installation
+Install from your package manager
+#+begin_src bash
+  sudo pacman -Syu blueman
+#+end_src
+
+* Configuration
+blueman needs to have a running service, once installed run these commands;
+#+begin_src bash
+  sudo systemctl enable bluetooth --now
+#+end_src
