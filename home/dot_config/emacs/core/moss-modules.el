@@ -48,8 +48,8 @@
 (require 'moss-shell-pop)
 
 ;; Version Control
-(require 'moss-chezmoi)
 (require 'moss-magit)
+(require 'moss-chezmoi)
 
 ;; Project
 (require 'moss-projectile)
