@@ -41,7 +41,7 @@
 
 ;; Editing
 ;; (require 'moss-godmode)
-(require 'moss-evil)
+;; (require 'moss-evil)
 (require 'moss-svg-tag-mode)
 (require 'moss-rainbow)
 (require 'moss-buffer-move)
