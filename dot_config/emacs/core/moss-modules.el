@@ -5,6 +5,13 @@
   "Main modules directory where package configurations are.")
 (add-to-list 'load-path moss-modules-dir)
 
+;; Compulsory packages ---------------------------------------------------------
+
+(require 'moss-vertico)
+(require 'moss-orderless)
+(require 'moss-marginalia)
+(require 'moss-evil)
+
 ;; Built in modules ------------------------------------------------------------
 (require 'moss-dired)
 (require 'moss-recentf)
@@ -29,10 +36,7 @@
 (require 'moss-org)
 (require 'moss-orgroam)
 
-;; Completion interfaces
-(require 'moss-vertico)
-(require 'moss-orderless)
-(require 'moss-marginalia)
+;; Auto completion
 (require 'moss-consult)
 ;; (require 'moss-mini-frame)
 
@@ -41,11 +45,10 @@
 
 ;; Editing
 ;; (require 'moss-godmode)
-;; (require 'moss-evil)
 (require 'moss-svg-tag-mode)
 (require 'moss-rainbow)
 (require 'moss-buffer-move)
-(require 'moss-shell-pop)
+;; (require 'moss-shell-pop)
 
 ;; Version Control
 (require 'moss-magit)

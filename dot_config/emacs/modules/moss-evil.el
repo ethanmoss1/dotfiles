@@ -8,7 +8,8 @@
 
 (use-package evil
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  )
 
 (provide 'moss-evil)
 ;;; moss-evil.el ends here -----------------------------------------------------
