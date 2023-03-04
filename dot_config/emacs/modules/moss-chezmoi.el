@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, chezmoi  ... ")
 
 (use-package chezmoi
-  :after company
   :config
   (add-hook 'chezmoi-mode-hook #'(lambda ()
             (if chezmoi-mode

@@ -47,7 +47,7 @@
 ;; (require 'moss-godmode)
 (require 'moss-svg-tag-mode)
 (require 'moss-rainbow)
-(require 'moss-buffer-move)
+;; (require 'moss-buffer-move)
 ;; (require 'moss-shell-pop)
 
 ;; Version Control

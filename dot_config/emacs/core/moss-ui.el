@@ -1,8 +1,11 @@
 (message "[ Moss ] Loading Core Ui Configurations  ... ")
 
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
+
 (menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 (tooltip-mode -1)
 
 (setq frame-title-format
@@ -64,6 +67,10 @@
 (setq window-divider-default-right-width 24)
 (setq window-divider-default-places 'right-only)
 (window-divider-mode 1)
+
+;; Move around windows with out having to spam ’C-x o’
+;; (windmove-mode)
+(windmove-default-keybindings 'meta)
 
 ;; No fringe
 ;; (fringe-mode 8)
