@@ -68,8 +68,9 @@
 ;; Languages
 
 ;; Email client
-;; (require 'moss-mu4e)
+(require 'moss-mu4e)
 ;; (require 'moss-mu4e-dashboard)
+;; (require 'moss-gnus)
 
 ;; Modeline
 (require 'moss-doom-modeline)

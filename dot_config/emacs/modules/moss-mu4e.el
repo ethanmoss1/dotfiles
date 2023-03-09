@@ -10,7 +10,14 @@
 (message "[ Moss ] Loading module, mu4e  ... ")
 
 (use-package mu4e
-  :straight (:type built-in))
+  :straight (:host github
+		     :files ("build/mu4e/*.elc")
+             :branch "release/1.8"
+		     :repo "djcb/mu"
+		     :pre-build (("meson" "build")
+                         ("ninja" "-C" "build"))))
+
+
 
 (provide 'moss-mu4e)
 

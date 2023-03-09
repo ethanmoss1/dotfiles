@@ -6,7 +6,7 @@ alias wget='wget --hsts-file $XDG_CACHE_HOME/wget-hsts'
 
 ### ALIAS' ###
 alias reload='source $ZDOTDIR/.zshrc'
-alias ls='ls -lh --color=auto'
-alias la='ls -lah --color=auto'
+alias ls='ls -lh --group-directories-first --color=auto'
+alias la='ls -lha --group-directories-first --color=auto'
 alias cat='bat '
 alias ..='cd ..'
