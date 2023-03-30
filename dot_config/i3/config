@@ -1,7 +1,7 @@
 exec --no-startup-id feh --recursive --bg-fill --randomize ~/.config/wallpapers/gruvboxWallpaper.svg
 
 # Fixes for applications:
-for_window [instance="origin.exe"] floating enable
+for_window [instance="origin.exe"] floating enable  # Will crash or wont open
 
 font pango:Roboto Regular 10
 

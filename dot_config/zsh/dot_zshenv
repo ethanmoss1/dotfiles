@@ -14,3 +14,6 @@ export WLR_NO_HARDWARE_CURSORS=1
 
 # editor
 export EDITOR="emacs"
+
+# Bitwarden config location
+export BITWARDENCLI_APPDATA_DIR="/home/ethan/.config/BitwardenCLI"

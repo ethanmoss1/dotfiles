@@ -6,7 +6,8 @@
 
 (use-package gruvbox-theme
   :straight
-  (gruvbox-theme :type git :host github :repo "greduan/emacs-theme-gruvbox")
+  ;; (gruvbox-theme :type git :host github :repo "greduan/emacs-theme-gruvbox")
+  (gruvbox-theme :type git :host github :repo "ethanmoss1/emacs-theme-gruvbox")
   :config
   (load-theme 'gruvbox t))
 

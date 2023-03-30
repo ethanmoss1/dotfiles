@@ -7,8 +7,8 @@
 (message "[ Moss ] Loading module, vterm  ... ")
 
 (use-package vterm
-  :config
-  (evil-set-initial-state 'vterm-mode 'insert)
+  ;; :config
+  ;; (evil-set-initial-state 'vterm-mode 'insert)
   )
 
 (provide 'moss-vterm)

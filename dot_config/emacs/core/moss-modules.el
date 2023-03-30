@@ -10,7 +10,7 @@
 (require 'moss-vertico)
 (require 'moss-orderless)
 (require 'moss-marginalia)
-(require 'moss-evil)
+;; (require 'moss-evil)
 
 ;; Built in modules ------------------------------------------------------------
 (require 'moss-dired)
