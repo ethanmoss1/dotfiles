@@ -33,8 +33,11 @@
 ;; Documentation
 ;; (require 'moss-hydra)
 (require 'moss-helpful)
+
+;; Org and or packages
 (require 'moss-org)
-(require 'moss-orgroam)
+;; (require 'moss-orgroam)
+(require 'moss-org-noter)
 
 ;; Auto completion
 (require 'moss-consult)
