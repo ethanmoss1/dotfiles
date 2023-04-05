@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       176a53af-a3f6-454f-8a5a-5a729aaf319e
+:END:
+#+title: Electromagnetic Radiation
+Electrimagnetic radiation is [[id:d819f447-323e-4967-b484-4f981ae789c3][Sine Wave]]s that move through space, such as air, walls or even a vacumn.

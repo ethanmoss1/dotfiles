@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       834404c9-d5be-4f65-917b-d072090361b8
+:END:
+#+title: Fibre Optic
+Fibre Optics are most commonly used in [[id:81d717e0-7bbe-4d42-a481-d801667e3a85][Network]]s to connect hardware together to facilitate communication.
+They carry light through the strand located at the centre of the ’wire’, the light is usually laserlight.
+The data is flashes of light that represent [[id:69c50131-9f37-4a62-b146-f75b13117f3b][Binary Number]]s.

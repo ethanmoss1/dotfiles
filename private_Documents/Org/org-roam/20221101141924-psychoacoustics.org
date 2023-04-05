@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       f80e6ec8-88e3-4aac-b595-438b3e09a637
+:END:
+#+title: Psychoacoustics
+Psycoacoustics is the study of how humans percieve and respond to sound

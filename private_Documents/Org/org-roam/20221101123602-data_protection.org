@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       4efb1e23-c486-4db2-9494-da1824ff5cc0
+:END:
+#+title: Data Protection
+
+Data protection is the act of making your personal data confidential and relevent.

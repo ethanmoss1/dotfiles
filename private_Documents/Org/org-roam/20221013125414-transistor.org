@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       5fbbea7b-9161-47b2-ba21-1329d6077d0f
+:END:
+#+title: Transistor
+#+filetags: :draft:
+A Transistor is an electronic component that allows flow of electricity one way, if power is supplied another way. It is a form of [[id:827ff0c4-5f0a-49f3-bb6b-3cf0ce905573][Electronic Switches]].
+
+https://en.wikipedia.org/wiki/Transistor

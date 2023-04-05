@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       b2a43d8e-f33b-43dc-95ec-879c3e62f401
+:END:
+#+title: iCMA
+#+filetags: :draft:
+iCMA's are a interactive Computer marked assignment

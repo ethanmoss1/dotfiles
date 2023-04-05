@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       5c484685-a8b7-49ef-bb78-d30128bb50e6
+:END:
+* <2022-09-28 Wed>: Learning Roam
+Today was the first day with [[id:781bd245-f05a-49cd-bab0-08c9d1a42d0a][Org-Roam]]. finding it somwhat easy to get along with, its nice that its got [[id:944dff29-e238-4daa-8131-4bb1458b46fc][Org Mode]] built right in. i wanted to create a start of a web of nodes so ive just outlined a few that hopefully well start to really expand out. thought that i would also write this journal to express how i am each day. something to look back upon i guess... will be fun to
+
+Mum came round, Made cakes with Isla, Messy as always. finished up my config, for now lol, which included [[id:781bd245-f05a-49cd-bab0-08c9d1a42d0a][Org-Roam]]. I wonder what is next for this configuration getting it ready for [[id:25953a74-fe2a-45b3-b8a7-a2582a272abc][Open University]]...
+* <2022-09-28 Wed>: more?
+
+god im still figuring this shit out
+** <2022-09-28 Wed>:
+* <2022-09-28 Wed>: Test?
+Testing....
+* 20:09: Hour min titles
+This seems better for a journal entry

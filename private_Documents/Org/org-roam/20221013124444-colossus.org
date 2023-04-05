@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       f6e07465-a1c5-403d-8986-bb605f16e271
+:END:
+#+title: Colossus
+#+filetags: :draft:
+The Colossus was the name given to a series of computers build in bletchly park during
+[[id:12577f88-acbd-4f5e-9241-1da469884992][WW2]] it was used to break [[id:596e2d00-36c0-410d-89dd-19df9014f140][Enigma]] code.
+
+It was fed Paper tape with hole to represent [[id:106a115f-53d0-4322-a30a-3a8ccd104431][Data]]. This data is then processed using [[id:827ff0c4-5f0a-49f3-bb6b-3cf0ce905573][Electronic Switches]] called [[id:5cbc3c62-57b7-43b6-9036-12c2fc97a394][Electronic Valves]] (Vacuum Tubes) that were early [[id:5fbbea7b-9161-47b2-ba21-1329d6077d0f][Transistors]]. The paper was fed in at speeds up to 30MPH. Once the the [[id:106a115f-53d0-4322-a30a-3a8ccd104431][Data]] has been processed by the [[id:07b93f99-7423-474c-90ca-11e1190f8cf2][Program]] it was then output to an electrionic [[id:f2413c20-47c8-4014-b9fe-34e6c85e8eb9][Typewriter]] which printed the processed [[id:106a115f-53d0-4322-a30a-3a8ccd104431][Data]].
+
+http://en.wikipedia.org/wiki/Colossus_computer

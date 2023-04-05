@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       2fa8aed7-7eca-4804-9152-61f72d314eb0
+:END:
+#+title: TMA
+#+filetags: :draft:
+TMA's are Tutor Marked assignments, these are the main assignments throught the course.

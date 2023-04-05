@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       d01e0d8d-59a0-4f3c-93f4-e1a28138c1ca
+:END:
+#+title: Computing and IT
+#+filetags: :draft:
+Computing and IT is a course i am taking at the [[id:25953a74-fe2a-45b3-b8a7-a2582a272abc][Open University]].

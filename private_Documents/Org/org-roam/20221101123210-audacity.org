@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       96e57080-b7d9-4a81-a6cc-c03ed94d44b1
+:END:
+#+title: Audacity
+
+Audacity is a Sound manupulation program

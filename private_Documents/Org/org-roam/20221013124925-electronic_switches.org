@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       827ff0c4-5f0a-49f3-bb6b-3cf0ce905573
+:END:
+#+title: Electronic Switches
+#+filetags: :draft:
+Electrionic switches are a switch that can represent 2 states; On or Off, this is then used in a sequence and can be used to represent numbers using [[id:69c50131-9f37-4a62-b146-f75b13117f3b][Binary Number]]. Some Electronic Switches include; [[id:5cbc3c62-57b7-43b6-9036-12c2fc97a394][Electronic Valves]] (Vacuum Tubes) or [[id:5fbbea7b-9161-47b2-ba21-1329d6077d0f][Transistors]]
+
+https://en.wikipedia.org/wiki/Electronic_switch

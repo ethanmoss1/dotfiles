@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       07b93f99-7423-474c-90ca-11e1190f8cf2
+:END:
+#+title: Program
+#+filetags: :draft:
+A Program in its simplest form is an electronic circuit in which switches are turned on and off, leading data into a program manipulates it in a predictable way to give an output.

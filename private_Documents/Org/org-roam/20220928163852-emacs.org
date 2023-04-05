@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       cff7a0f5-cf36-419c-83ab-318c37cfef4c
+:END:
+#+title: Emacs
+Emacs is a Extendable and Hackable Text Editor. Emacs also is first formost an editor but it is so much more. Emacs allows you to unlock your creative text based abilitys whether that be programming or writing text for research, a book or more.
+Emacs is written on top of a small [[id:b571dd7a-0522-48e1-a300-3efce0d0ddca][C]] core and is then built majorly on [[id:00576f20-d4a5-4eeb-b66c-86fed0101bc1][Emacs Lisp]]
