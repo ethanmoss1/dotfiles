@@ -15,7 +15,8 @@
   (setq svg-tag-tags
       '(("\\(:[A-Z]+:\\)" . ((lambda (tag)
                                (svg-tag-make tag :beg 1 :end -1))))))
-  (global-svg-tag-mode 1))
+  ;; (global-svg-tag-mode 1)
+  )
 
 (defun org-agenda-show-svg ()
   (let* ((case-fold-search nil)

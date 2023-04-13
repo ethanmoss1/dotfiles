@@ -7,11 +7,12 @@
 (message "[ Moss ] Loading module, hydra  ... ")
 
 (use-package hydra)
-(use-package pretty-hydra)
+;; (use-package pretty-hydra)
 
-(use-package major-mode-hydra
-  :general
-  ("M-SPC" 'major-mode-hydra))
+;; (use-package major-mode-hydra
+  ;; :general
+  ;; ("M-SPC" 'major-mode-hydra))
+
 
 ;; (use-package hydra-posframe
   ;; :straight (:package "hydra-posframe" :host github :type git

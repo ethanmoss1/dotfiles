@@ -54,7 +54,7 @@
 
 ;; Editing
 ;; (require 'moss-godmode)
-(require 'moss-svg-tag-mode)
+(require 'moss-svg-tag-mode) ;; :TEST:
 (require 'moss-rainbow)
 ;; (require 'moss-buffer-move)
 ;; (require 'moss-shell-pop)
@@ -64,7 +64,7 @@
 (require 'moss-chezmoi)
 
 ;; Project
-(require 'moss-projectile)
+;; (require 'moss-projectile)
 
 ;; LSP
 (require 'moss-eglot)

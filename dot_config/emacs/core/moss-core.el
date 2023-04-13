@@ -97,6 +97,9 @@
 
 ;;; ----------------------
 
+(message "[ Moss ] Starting Emacs Server...")
+(server-start)
+
 (message "[ Moss ] Moss Configuration loaded successfully!")
 
 (provide 'moss-core)
