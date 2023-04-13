@@ -18,6 +18,11 @@
 (require 'moss-savehist)
 (require 'moss-display-fill-column)
 
+;; Window manager --------------------------------------------------------------
+;; To use emacs as your window manager please make sure you have a .desktop file
+;; set up to allow you to boot into EXWM
+;; (require 'moss-exwm)
+
 ;; External Packages -----------------------------------------------------------
 
 ;; Main Theme
