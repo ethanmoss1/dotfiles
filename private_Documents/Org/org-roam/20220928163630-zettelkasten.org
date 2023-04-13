@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       630ed857-d4e5-4f31-90f0-b2f401ffe55f
-:END:
-#+title: Zettelkasten
-
-Brief Description of Zettelkasten method

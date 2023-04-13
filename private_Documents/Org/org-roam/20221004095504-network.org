@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       81d717e0-7bbe-4d42-a481-d801667e3a85
-:END:
-#+title: Network
-#+filetags: :draft:
-A Network is a number of interconnected devices.

@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       00576f20-d4a5-4eeb-b66c-86fed0101bc1
-:END:
-#+title: Emacs Lisp
-* Emacs Lisp - Programming language
-Emacs lisp is a version of [[id:8d986668-32c8-49d3-b9ad-903860554092][Common Lisp]], This [[id:a1e7b20b-a7bc-439a-9056-4d8f5804b3c1][Programming Language]] is the main language used in [[id:cff7a0f5-cf36-419c-83ab-318c37cfef4c][Emacs]]. Lisp distungushs itself by its use of parentheses.

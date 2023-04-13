@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       944dff29-e238-4daa-8131-4bb1458b46fc
-:END:
-#+title: Org Mode
-* Org mode
-Org mode is a style of markdown but extends very much past its similarity of looks.

@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       596e2d00-36c0-410d-89dd-19df9014f140
-:END:
-#+title: Enigma
-#+filetags: :draft:
-Enigma was a cipher machine used mainly by the German military to protect information. It was cracked with the use of a specialised electronic [[id:31558a7a-be7b-4672-899c-2c7abfe704fd][Computer]] called [[id:f6e07465-a1c5-403d-8986-bb605f16e271][Colossus]].

@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       a25315f0-0b76-4d56-91b4-ab6acf1372a0
-:END:
-#+title: RSS
-#+filetags: :draft:
-RSS (Really Simple Syndication) is a form of XML. You can subscribe to RSS feeds thorugh an RSS reader allowing you to keep on top of lates news, blogs, articles that you are interested in.

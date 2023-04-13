@@ -7,9 +7,9 @@
 ;;; Code : ---------------------------------------------------------------------
 (message "[ Moss ] Loading module, personal-themeing  ... ")
 
-(use-package hl-line
-  :custom-face
-  (hl-line ((t (:inherit fringe)))))
+;; (use-package hl-line
+;;   :custom-face
+;;   (hl-line ((t (:inherit fringe)))))
 
 (use-package emacs
   :custom-face
@@ -19,18 +19,19 @@
   (window-divider-last-pixel ((t (:inherit (default) :inverse-video t))))
 
   ;; customize button
-  (custom-button ((t
-                   (:box (:line-width (2 . 2) :color nil :style released-button)
-                         :inverse-video t
-                         :inherit (default)))))
-  (custom-button-mouse ((t
-                   (:box (:line-width (2 . 2) :color nil :style released-button)
-                         :inverse-video t
-                         :inherit (default)))))
-  (custom-button-pressed ((t
-                   (:box (:line-width (2 . 2) :color nil :style released-button)
-                         :inverse-video t
-                         :inherit (default))))))
+  ;; (custom-button ((t
+  ;;                  (:box (:line-width (2 . 2) :color nil :style released-button)
+  ;;                        :inverse-video t
+  ;;                        :inherit (default)))))
+  ;; (custom-button-mouse ((t
+  ;;                  (:box (:line-width (2 . 2) :color nil :style released-button)
+  ;;                        :inverse-video t
+  ;;                        :inherit (default)))))
+  ;; (custom-button-pressed ((t
+  ;;                  (:box (:line-width (2 . 2) :color nil :style released-button)
+  ;;                        :inverse-video t
+  ;;                        :inherit (default)))))
+  )
 
 (provide 'moss-personal-themeing)
 ;;; moss-personal-themeing.el ends here ----------------------------------------

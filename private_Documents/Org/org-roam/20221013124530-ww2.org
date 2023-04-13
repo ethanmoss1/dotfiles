@@ -1,5 +1,0 @@
-:PROPERTIES:
-:ID:       12577f88-acbd-4f5e-9241-1da469884992
-:END:
-#+title: WW2
-#+filetags: :draft:

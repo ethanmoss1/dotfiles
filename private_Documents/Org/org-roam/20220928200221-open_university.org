@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       25953a74-fe2a-45b3-b8a7-a2582a272abc
-:END:
-#+title: Open University
-OU is university that I will be Studying at.
-I will be Studying [[id:d01e0d8d-59a0-4f3c-93f4-e1a28138c1ca][Computing and IT]]

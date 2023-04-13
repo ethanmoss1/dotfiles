@@ -1,8 +1,0 @@
-:PROPERTIES:
-:ID:       106a115f-53d0-4322-a30a-3a8ccd104431
-:END:
-#+title: Data
-#+filetags: :draft:
-Data can assume any form, numbers characters pictures sounds. Most importantly is that data has no context. its is only in context that data can be useful.
-
-A number such as, 2564, could mean anything. Meters walked in one day? the height of something? Seconds elapsed? without context this data is useless.

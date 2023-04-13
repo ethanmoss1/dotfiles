@@ -1,5 +1,0 @@
-:PROPERTIES:
-:ID:       f2413c20-47c8-4014-b9fe-34e6c85e8eb9
-:END:
-#+title: Typewriter
-#+filetags: :draft:

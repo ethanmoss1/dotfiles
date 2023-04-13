@@ -21,8 +21,9 @@
 ;; External Packages -----------------------------------------------------------
 
 ;; Main Theme
-(require 'moss-base16)
-;; (require 'moss-gruvbox)
+;; (require 'moss-base16)
+(require 'moss-gruvbox)
+;; (require 'moss-modus-themes)
 
 ;; Additional Theming
 ;; (require 'moss-nano)                    ; makes emacs more elegant

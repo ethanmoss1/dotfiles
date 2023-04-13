@@ -1,5 +1,0 @@
-:PROPERTIES:
-:ID:       afe53507-045f-4c23-83ca-cb0372e1f01f
-:END:
-#+title: Python
-Python is a type of [[id:a1e7b20b-a7bc-439a-9056-4d8f5804b3c1][Programming Language]], The first one I learnt.

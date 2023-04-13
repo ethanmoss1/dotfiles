@@ -1,8 +1,0 @@
-:PROPERTIES:
-:ID:       6109cb69-2be7-4758-8ddf-8dc7416c6a71
-:END:
-#+title: Telephone
-#+filetags: :draft:
-The Telephone is an electronic device used to comunicate over large distances, it uses a [[id:81d717e0-7bbe-4d42-a481-d801667e3a85][Network]] of wires to allow communication.
-
-In the 1950s they were the cutting edge technology. Expensive to operate made their use infrequente and only for short durations. later, advances in technology (such as the introduction of [[id:ebf51a93-0ec3-48c6-b41f-88e8e09b94c7][Subscriber Trunk Dialing]]) allowed for more frequent use of the telephone and later on its ubiqutious use every day life.

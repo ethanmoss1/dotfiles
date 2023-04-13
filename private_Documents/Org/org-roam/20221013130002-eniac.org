@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       3515df43-c3ba-4e6f-a47e-cf884ab33a3d
-:END:
-#+title: ENIAC
-#+filetags: :draft:
-ENIAC - Electronic Numerical Intergrator And Computer was one of the very first electronic [[id:31558a7a-be7b-4672-899c-2c7abfe704fd][Computers]]. Unlike [[id:f6e07465-a1c5-403d-8986-bb605f16e271][Colossus]], ENIAC was a general purpose [[id:31558a7a-be7b-4672-899c-2c7abfe704fd][Computer]].

@@ -1,8 +1,0 @@
-:PROPERTIES:
-:ID:       781bd245-f05a-49cd-bab0-08c9d1a42d0a
-:END:
-#+title: Org-Roam
-* Org Roam
-Org roam is a note taking tool that allows you to create small yet informative notes, these notes connect together to create a bigger network of thoughts.
-
-Org roam works on the premise of the [[id:630ed857-d4e5-4f31-90f0-b2f401ffe55f][Zettelkasten Method]] and is built for longevity. As [[id:cff7a0f5-cf36-419c-83ab-318c37cfef4c][Emacs]] is a tried and tested editor, and with the fantastic package that is [[id:944dff29-e238-4daa-8131-4bb1458b46fc][Org Mode]], makes it the perfect place to create a package like Org roam

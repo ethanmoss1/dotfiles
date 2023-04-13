@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       69c50131-9f37-4a62-b146-f75b13117f3b
-:END:
-#+title: Binary Number
-#+filetags: :draft:
-Binary numbers are a series of 0's and 1's. they can be deciphered into [[id:e6a2385c-58f2-4647-b65e-325692762fa3][Decimal Numbers]].

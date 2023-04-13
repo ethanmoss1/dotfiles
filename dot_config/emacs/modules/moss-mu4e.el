@@ -10,22 +10,36 @@
 (message "[ Moss ] Loading module, mu4e  ... ")
 
 (use-package mu4e
+  ;; :straight (:type git :host github :repo "djcb/mu" :branch "release/1.8"
+  ;;   	     :files (:defaults "mu4e/*.el")
+  ;;   	     :pre-build (("meson" "build")
+  ;;                        ("ninja" "-C" "build"))
+  ;;            :build (("./autogen.sh") ("make"))
+  ;;            )
   :straight (:host github
-		     :files ("build/mu4e/*.elc")
-             :branch "release/1.8"
+		     :files ("build/mu4e/*.el")
+             :branch "master"
+             ;; :branch "release/1.8"
 		     :repo "djcb/mu"
-		     :pre-build (("meson" "build")
-                         ("ninja" "-C" "build")))
+		     :pre-build (("./autogen.sh")
+                         ("make")))
+
+  :commands (mu4e)
   :config
-  (setq mail-user-agent 'mu4e-user-agent
+  (setq ;; Set correct binary
+        mu4e-mu-binary "~/.config/emacs/cache/straight/repos/mu/build/mu/mu"
+        mail-user-agent 'mu4e-user-agent
         mu4e-change-filenames-when-moving t  ;; Avoid mail sync issues w/ mbsync
+        mu4e-modeline-mode nil
+        mu4e-modeline-support nil
+
 
         ;; Refresh mail using isync every 10 minutes
         mu4e-update-interval (* 10 60)
         message-kill-buffer-on-exit t
         mu4e-use-fancy-chars t
         mu4e-get-mail-command "mbsync -a"
-        mu4e-maildir "~/Mail"
+        mu4e-maildir "/home/ethan/Mail"
 
         ;; mu4e-maildir-shortcuts '(("/Inbox"                   . ?i)
                                  ;; ("/cywin/[Gmail]/Sent Mail" . ?s)
@@ -63,6 +77,15 @@
         )
         ;; Create context for merged views
         (add-to-list 'mu4e-bookmarks '("m:/cywin/INBOX or m:/wowethm/INBOX" "All Inboxes" ?i))
+
+        )
+
+;; Show how many unread messages
+(use-package mu4e-alert
+  :config
+  (mu4e-alert-enable-mode-line-display)
+  (mu4e-alert-enable-notifications)
+  ;; (mu4e-modeline-mode -1)
   )
 
 (provide 'moss-mu4e)

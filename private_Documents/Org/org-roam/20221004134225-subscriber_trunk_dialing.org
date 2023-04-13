@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       ebf51a93-0ec3-48c6-b41f-88e8e09b94c7
-:END:
-#+title: Subscriber Trunk Dialing
-#+filetags: :draft:
-Subscriber Trunk dialing is a prefix to a number allowing the bypassing of manual operators.

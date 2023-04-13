@@ -38,7 +38,8 @@
 ;; Set up font
 (if window-system
     ;; Set default font based on priority list
-    (let* ((families '("JetBrains Mono"
+    (let* ((families '("JetBrains Nerd Font Mono"
+                       "JetBrains Mono"
                        "Roboto Nerd Font Mono"
                        "Roboto Mono"
                        "Roboto"))

@@ -1,5 +1,0 @@
-:PROPERTIES:
-:ID:       96f46bfe-f80e-4987-a3f4-a319d650f5fb
-:END:
-#+title: Wavelength
-Wavelength is a parameter of a [[id:d819f447-323e-4967-b484-4f981ae789c3][Sine Wave]]
