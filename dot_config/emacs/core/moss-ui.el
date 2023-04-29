@@ -42,13 +42,15 @@
                        "JetBrains Mono"
                        "Roboto Nerd Font Mono"
                        "Roboto Mono"
+                       "Droid Sans Mono"
                        "Roboto"))
            (family (catch 'found
                      (dolist (f families)
                        (if (member f (font-family-list))
                            (throw 'found f))))))
       (set-face-attribute 'default nil
-                          :family family :height 100)))
+                          :family family :height 100)
+      (message (concat "[ Moss ] Font loaded: " family))))
 
 ;; Nice padding to keep focus within emacs
 (setq default-frame-alist
