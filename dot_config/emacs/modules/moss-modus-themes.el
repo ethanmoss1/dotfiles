@@ -7,6 +7,7 @@
 (message "[ Moss ] Loading module, modus-themes  ... ")
 
 (use-package modus-themes
+  :ensure t
   :init
   (setq
    ;; modus-themes-italic-constructs t
@@ -37,8 +38,8 @@
   ;; (load-theme 'modus-operandi-tinted t)
 
   ;; Dark
-  ;; (load-theme 'modus-vivendi t)
-  (load-theme 'modus-vivendi-tinted t)
+  (load-theme 'modus-vivendi t)
+  ;; (load-theme 'modus-vivendi-tinted t)
   )
 
 (provide 'moss-modus-themes)
