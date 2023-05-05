@@ -8,9 +8,9 @@
 
 ;; Check --> :TODO:
 (use-package svg-tag-mode
-  :straight (:type git
-             :host github
-             :repo "ethanmoss1/svg-tag-mode")
+  ;; :straight (:type git
+             ;; :host github
+             ;; :repo "ethanmoss1/svg-tag-mode")
   :config
   (setq svg-tag-tags
       '(("\\(:[A-Z]+:\\)" . ((lambda (tag)

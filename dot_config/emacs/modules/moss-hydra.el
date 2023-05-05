@@ -10,8 +10,8 @@
 ;; (use-package pretty-hydra)
 
 ;; (use-package major-mode-hydra
-  ;; :general
-  ;; ("M-SPC" 'major-mode-hydra))
+  ;; :bind
+  ;; ("M-SPC" . 'major-mode-hydra))
 
 
 ;; (use-package hydra-posframe

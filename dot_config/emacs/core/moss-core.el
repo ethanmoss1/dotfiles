@@ -76,7 +76,7 @@
 ;; Setup load-path
 (add-to-list 'load-path moss-core-dir)
 
-(require 'moss-package-manager)
+(require 'moss-package-manager-elpaca)
 (require 'moss-keybindings)
 (require 'moss-performance)
 (require 'moss-ui)

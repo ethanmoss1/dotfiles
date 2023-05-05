@@ -8,7 +8,8 @@
 
 (use-package savehist
   :demand t
-  :straight (:type built-in)
+  ;; :straight (:type built-in)
+  :elpaca nil
   :custom
   (savehist-autosave-interval 60)
   (savehist-file (moss-cache-dir "savehist"))

@@ -7,8 +7,8 @@
 (message "[ Moss ] Loading module, shell-pop  ... ")
 
 (use-package shell-pop
-  :general
-  ("M-RET" 'shell-pop)
+  :bind
+  ("M-RET" . 'shell-pop)
   :custom
   (shell-pop-shell-type '("eshell" "eshell" (lambda () (eshell))))
   ;; (shell-pop-full-span t)

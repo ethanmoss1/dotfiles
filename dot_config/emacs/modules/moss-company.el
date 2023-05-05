@@ -7,14 +7,14 @@
 (message "[ Moss ] Loading module, company  ... ")
 
 (use-package company
-  :general
+  :bind
   ;; Enable indent and complete at point functionality by pressing tab.
-  ("TAB" 'company-indent-or-complete-common)
+  ("TAB" . 'company-indent-or-complete-common)
   ;; Scroll through company suggestions with C-n and C-p.
-  (:keymaps 'company-active-map
-            "C-n" 'company-select-next
-            "C-p" 'company-select-previous
-            "TAB" 'company-complete-selection)
+  (:map company-active-map
+        ("C-n" . 'company-select-next)
+        ("C-p" . 'company-select-previous)
+        ("TAB" . 'company-complete-selection))
 
   :config
   (setq company-begin-commands '(self-insert-command)

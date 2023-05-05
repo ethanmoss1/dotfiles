@@ -21,7 +21,6 @@
 ;;    (message "[ Init File ] gc-cons-threshold and file-name-handler-alist restored")))
 
 (use-package gcmh
-  :demand
   :hook
   (focus-out-hook . gcmh-idle-garbage-collect)
 

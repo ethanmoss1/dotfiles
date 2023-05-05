@@ -13,11 +13,11 @@
 (message "[ Moss ] Loading module, buffer-move  ... ")
 
 (use-package buffer-move
-  :general
-  ("M-S-<up>" 'buf-move-up)
-  ("M-S-<down>" 'buf-move-down)
-  ("M-S-<left>" 'buf-move-left)
-  ("M-S-<right>" 'buf-move-right)
+  :bind
+  ("M-S-<up>" . 'buf-move-up)
+  ("M-S-<down>" . 'buf-move-down)
+  ("M-S-<left>" . 'buf-move-left)
+  ("M-S-<right>" . 'buf-move-right)
   )
 
 (provide 'moss-buffer-move)

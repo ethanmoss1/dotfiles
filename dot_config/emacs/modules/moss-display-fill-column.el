@@ -7,7 +7,8 @@
 (message "[ Moss ] Loading module, display-fill-column  ... ")
 
 (use-package display-fill-column-indicator
-  :straight (:type built-in)
+  ;; :straight (:type built-in)
+  :elpaca nil
   :hook
   (prog-mode . display-fill-column-indicator-mode))
 

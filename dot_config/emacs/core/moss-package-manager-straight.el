@@ -26,8 +26,5 @@
 ;; set up use-package to wrap packages nicely.
 (straight-use-package 'use-package)
 
-;; Set up keybinding helper
-(use-package general)
-
 (provide 'moss-package-manager)
 ;; Straight Package management with use-package:1 ends here

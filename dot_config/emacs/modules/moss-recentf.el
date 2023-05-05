@@ -7,7 +7,8 @@
 (message "[ Moss ] Loading module, recentf  ... ")
 
 (use-package recentf
-  :straight (:type built-in)
+  ;; :straight (:type built-in)
+  :elpaca nil
   :demand t
 
   :custom
