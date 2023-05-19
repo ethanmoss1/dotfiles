@@ -10,24 +10,26 @@
 (message "[ Moss ] Loading module, mu4e  ... ")
 
 (use-package mu4e
-  ;; :straight (:type git :host github :repo "djcb/mu" :branch "release/1.8"
-  ;;   	     :files (:defaults "mu4e/*.el")
-  ;;   	     :pre-build (("meson" "build")
-  ;;                        ("ninja" "-C" "build"))
-  ;;            :build (("./autogen.sh") ("make"))
-  ;;            )
-  :straight (:host github
+  :elpaca (:host github
 		     :files ("build/mu4e/*.el")
-             :branch "master"
-             ;; :branch "release/1.8"
+             ;; :branch "master"
+             :branch "release/1.10"
 		     :repo "djcb/mu"
 		     :pre-build (("./autogen.sh")
                          ("make")))
-
-  :commands (mu4e)
+  ;; :elpaca (mu4e :host github
+  ;;               :repo "djcb/mu"
+  ;;               :branch "release/1.10"
+  ;;               :files ("mu4e/*.el" "build/mu4e/mu4e-meta.el" "build/mu4e/mu4e-config.el" "build/mu4e/mu4e.info")
+  ;;               :main "mu4e/mu4e.el"
+  ;;               :pre-build (("./autogen.sh") ("ninja" "-C" "build")
+  ;;                           (make-symbolic-link (expand-file-name "./build/mu/mu")
+  ;;                                               (expand-file-name "~/bin/mu") 'ok-if-exists))
+  ;;               :build (:not elpaca--compile-info))
+  :commands (mu4e mu4e-update-index)
   :config
   (setq ;; Set correct binary
-        mu4e-mu-binary "~/.config/emacs/cache/straight/repos/mu/build/mu/mu"
+        ;; mu4e-mu-binary "~/.config/emacs/cache/straight/repos/mu/build/mu/mu"
         mail-user-agent 'mu4e-user-agent
         mu4e-change-filenames-when-moving t  ;; Avoid mail sync issues w/ mbsync
         mu4e-modeline-mode nil
@@ -80,13 +82,13 @@
 
         )
 
-;; Show how many unread messages
-(use-package mu4e-alert
-  :config
-  (mu4e-alert-enable-mode-line-display)
-  (mu4e-alert-enable-notifications)
-  ;; (mu4e-modeline-mode -1)
-  )
+;; ;; Show how many unread messages
+;; (use-package mu4e-alert
+;;   :config
+;;   (mu4e-alert-enable-mode-line-display)
+;;   (mu4e-alert-enable-notifications)
+;;   ;; (mu4e-modeline-mode -1)
+;;   )
 
 (provide 'moss-mu4e)
 

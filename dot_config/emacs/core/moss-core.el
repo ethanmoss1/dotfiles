@@ -22,7 +22,7 @@
 ;; Set up core group
 (defgroup moss nil
   "Emacs. My way."
-  :group 'Emacs)
+  :group 'emacs)
 
 ;; Set up load directorys
 (defvar moss-core-dir (file-name-directory load-file-name)
