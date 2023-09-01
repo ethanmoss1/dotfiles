@@ -53,23 +53,23 @@
       (message (concat "[ Moss ] Font loaded: " family))))
 
 ;; Nice padding to keep focus within emacs
-(setq default-frame-alist
-      (append (list
-	           '(min-height . 1)
-               '(height     . 45)
-	           '(min-width  . 1)
-               '(width      . 81)
-               '(left-fringe . 9)
-               '(right-fringe . 9)
-               '(vertical-scroll-bars . nil)
-               '(internal-border-width . 24)
-               '(tool-bar-lines . 0)
-               '(menu-bar-lines . 0))))
+;; (setq default-frame-alist
+;;       (append (list
+;; 	           '(min-height . 1)
+;;                '(height     . 45)
+;; 	           '(min-width  . 1)
+;;                '(width      . 81)
+;;                '(left-fringe . 9)
+;;                '(right-fringe . 9)
+;;                '(vertical-scroll-bars . nil)
+;;                '(internal-border-width . 24)
+;;                '(tool-bar-lines . 0)
+;;                '(Menu-bar-lines . 0))))
 
 ;; Vertical window divider
-(setq window-divider-default-right-width 24)
-(setq window-divider-default-places 'right-only)
-(window-divider-mode 1)
+;; (setq window-divider-default-right-width 24)
+;; (setq window-divider-default-places 'right-only)
+;; (window-divider-mode 1)
 
 ;; Move around windows with out having to spam ’C-x o’
 ;; (windmove-mode)
