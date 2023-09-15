@@ -6,8 +6,10 @@
 (message "[ Moss ] Loading module, Eglot ... ")
 
 (use-package eglot
-  ;; :hook
-  ;; ((emacs-lisp-mode . eglot-ensure))
+  :hook
+  ((emacs-lisp-mode . eglot-ensure)
+   (java-mode . eglot-ensure))
+
   :bind
   (:map eglot-mode-map
         ("C-c r" . eglot-rename)

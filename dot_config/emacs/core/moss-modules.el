@@ -43,7 +43,7 @@
 ;; Org and or packages
 (require 'moss-org)
 ;; (require 'moss-orgroam)
-(require 'moss-org-noter)
+;; (require 'moss-org-noter)
 
 ;; Auto completion
 (require 'moss-consult)
@@ -54,7 +54,7 @@
 
 ;; Editing
 ;; (require 'moss-godmode)
-(require 'moss-svg-tag-mode) ;; :TEST:
+;; (require 'moss-svg-tag-mode) ;; :TEST:
 (require 'moss-rainbow)
 ;; (require 'moss-buffer-move)
 ;; (require 'moss-shell-pop)
@@ -82,7 +82,8 @@
 ;; (require 'moss-gnus)
 
 ;; Modeline
-(require 'moss-doom-modeline)
+;; (require 'moss-doom-modeline)
+(require 'moss-moodline)
 (require 'moss-minions)
 
 (provide 'moss-modules)
