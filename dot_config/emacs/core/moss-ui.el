@@ -52,6 +52,12 @@
                           :family family :height 100)
       (message (concat "[ Moss ] Font loaded: " family))))
 
+;; Set up Android specific variables
+(if (eq system-type 'android)
+    (setq touch-screen-display-keyboard t
+          touch-screen-precision-scroll t
+          touch-screen-word-select t))
+
 ;; Nice padding to keep focus within emacs
 ;; (setq default-frame-alist
 ;;       (append (list
@@ -73,7 +79,7 @@
 
 ;; Move around windows with out having to spam ’C-x o’
 ;; (windmove-mode)
-(windmove-default-keybindings 'meta)
+;; (windmove-default-keybindings 'meta)
 
 ;; No fringe
 ;; (fringe-mode 8)

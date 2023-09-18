@@ -89,14 +89,6 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;;; TEMP----------------
-
-(defun connect-media-server ()
-  (interactive)
-  (dired "/ssh:ethan@192.168.1.168:/"))
-
-;;; ----------------------
-
 (message "[ Moss ] Starting Emacs Server...")
 (server-start)
 

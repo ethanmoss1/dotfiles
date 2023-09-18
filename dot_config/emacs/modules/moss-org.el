@@ -17,7 +17,7 @@
   (org-babel-do-load-languages
    'org-babel-load-languages '((python . t)))
   :custom
-  (org-directory "~/Documents/Org")
+  (org-directory "~/Nextcloud/Org/")
   (org-agenda-files '("Tasks.org" "Finances.org"))
   (org-log-done 'time)
   (org-agenda-start-with-log-mode t)
@@ -26,40 +26,65 @@
         `(("t" "Tasks / Projects")
           ("tt" "Task" entry
            (file+olp ,(concat org-directory "/Tasks.org") "Inbox")
-            "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
+           "* TODO %?\n  %U\n  %a\n  %i"
+           :empty-lines 1)
           ("ts" "Clocked Entry Subtask" entry
            (clock)
-            "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
+           "* TODO %?\n  %U\n  %a\n  %i"
+           :empty-lines 1)
+
+          ;; -------------------------------------------------------------------
+
+          ;; ("c" "Calendar" entry
+          ;;  (file ,(concat org-directory "/calendar.org"))
+          ;;  "* %^{Event Title}\n:PROPERTIES:\n:ID:"
+          ;;  :empty-lines 1)
+
+          ("a" "Appointment" entry
+            (file, (concat org-directory "/Calendar.org"))
+            "* %?\n:PROPERTIES:\n:SCHEDULED:%^T\n:END:\n"
+            :empty-lines 1)
+
+          ;; -------------------------------------------------------------------
 
           ("j" "Journal Entries")
            ("jj" "Journal" entry
             (file+olp+datetree ,(concat org-directory "/Journal.org"))
             "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
             ;; ,(dw/read-file-as-string "~/Notes/Templates/Daily.org")
-            :clock-in :clock-resume
+            :clock-in
+            :clock-resume
             :empty-lines 1)
            ("jm" "Meeting" entry
             (file+olp+datetree ,(concat org-directory "/Journal.org"))
             "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n"
-            :clock-in :clock-resume
+            :clock-in
+            :clock-resume
             :empty-lines 1)
+
+          ;; -------------------------------------------------------------------
 
           ("m" "Metrics Capture")
           ("mw" "Weight" table-line
            (file+headline ,(concat org-directory "/Metrics.org") "Weight")
-           "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)
+           "| %U | %^{Weight} | %^{Notes} |"
+           :kill-buffer t)
           ("me" "Exercise Bike" table-line
            (file+headline ,(concat org-directory "/Metrics.org") "Exercise Bike")
-           "| %U | %^{Distance} | %^{Calories} | %^{Timer} | %^{Notes} |" :kill-buffer t)
+           "| %U | %^{Distance} | %^{Calories} | %^{Timer} | %^{Notes} |"
+           :kill-buffer t)
           ("mp" "Push-ups" table-line
            (file+headline ,(concat org-directory "/Metrics.org") "Push-ups")
-           "| %U | %^{Push-ups} | %^{Sets} | %^{Notes} |" :kill-buffer t)
+           "| %U | %^{Push-ups} | %^{Sets} | %^{Notes} |"
+           :kill-buffer t)
           ("ms" "Sit-ups" table-line
            (file+headline ,(concat org-directory "/Metrics.org") "Sit-ups")
-           "| %U | %^{Situps} | %^{Sets} | %^{Notes} |" :kill-buffer t)
+           "| %U | %^{Situps} | %^{Sets} | %^{Notes} |"
+           :kill-buffer t)
           ("ml" "Plank" table-line
            (file+headline ,(concat org-directory "/Metrics.org") "Plank")
-           "| %U | %^{Time} | %^{Notes} |" :kill-buffer t))))
+           "| %U | %^{Time} | %^{Notes} |"
+           :kill-buffer t))))
 
 (provide 'moss-org)
 ;;; moss-org.el ends here ------------------------------------------------------

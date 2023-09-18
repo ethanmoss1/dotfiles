@@ -42,6 +42,7 @@
 
 ;; Org and or packages
 (require 'moss-org)
+(require 'moss-org-caldav)
 ;; (require 'moss-orgroam)
 ;; (require 'moss-org-noter)
 
@@ -69,7 +70,7 @@
 ;; LSP
 (require 'moss-eglot)
 (require 'moss-company)
-(require 'moss-tree-sitter)
+;; (require 'moss-tree-sitter)
 
 ;; Filetype specific
 ;; (require 'moss-pdf-tools)
