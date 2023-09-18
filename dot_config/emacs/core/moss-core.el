@@ -89,8 +89,8 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(message "[ Moss ] Starting Emacs Server...")
-(server-start)
+;; (message "[ Moss ] Starting Emacs Server...")
+;; (server-start)
 
 (message "[ Moss ] Moss Configuration loaded successfully!")
 
