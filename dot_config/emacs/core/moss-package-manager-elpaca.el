@@ -26,8 +26,8 @@
 
 (message "[ Moss ] Loading Package manager, Elpaca ... ")
 
-;; Set up Elpaca variables
-(defvar elpaca-installer-version 0.4)
+;; ELPACA BOOTSTRAP CODE - START
+(defvar elpaca-installer-version 0.5)
 (defvar elpaca-directory (expand-file-name "cache/elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
@@ -35,8 +35,6 @@
                               :ref nil
                               :files (:defaults (:exclude "extensions"))
                               :build (:not elpaca--activate-package)))
-
-;; Bootstrap Elpaca
 (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
        (build (expand-file-name "elpaca/" elpaca-builds-directory))
        (order (cdr elpaca-order))
@@ -56,17 +54,16 @@
                                        "--eval" "(byte-recompile-directory \".\" 0 'force)")))
                  ((require 'elpaca))
                  ((elpaca-generate-autoloads "elpaca" repo)))
-            (kill-buffer buffer)
+            (progn (message "%s" (buffer-string)) (kill-buffer buffer))
           (error "%s" (with-current-buffer buffer (buffer-string))))
       ((error) (warn "%s" err) (delete-directory repo 'recursive))))
   (unless (require 'elpaca-autoloads nil t)
     (require 'elpaca)
     (elpaca-generate-autoloads "elpaca" repo)
     (load "./elpaca-autoloads")))
-
-;; Add hooks
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
+;; ELPACA BOOTSTRAP CODE - END
 
 ;; Install use-package support
 (elpaca elpaca-use-package
