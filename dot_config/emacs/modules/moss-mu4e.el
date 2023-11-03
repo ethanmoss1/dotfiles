@@ -28,6 +28,20 @@
   ;;               :build (:not elpaca--compile-info))
   :commands (mu4e mu4e-update-index)
   :config
+
+
+
+
+  ;; use pass to store passwords
+  ;; file auth looks for is ~/.password-store/<smtp.host.tld>:<port>/<name>
+  (auth-source-pass-enable)
+  (setq auth-sources '(password-store))
+  (setq auth-source-debug t)
+  (setq auth-source-do-cache nil)
+
+
+
+
   (setq ;; Set correct binary
         ;; mu4e-mu-binary "~/.config/emacs/cache/straight/repos/mu/build/mu/mu"
         mail-user-agent 'mu4e-user-agent

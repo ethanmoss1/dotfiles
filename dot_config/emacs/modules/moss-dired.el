@@ -7,13 +7,19 @@
 (message "[ Moss ] Loading module, dired  ... ")
 
 (use-package dired
-  ;; :straight (:type built-in)
   :elpaca nil
   :defer t
+  :bind
+  (:map dired-mode-map
+        ("<left>" . dired-up-directory)
+        ("<right>" . dired-find-file))
+
   :config
   (setq dired-listing-switches "-laGvh --group-directories-first")
+
   :hook
   (dired-mode . moss-dired-mode-setup)
+
   :init
   (defun moss-dired-mode-setup ()
     (hl-line-mode +1)))

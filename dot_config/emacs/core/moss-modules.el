@@ -17,6 +17,7 @@
 (require 'moss-recentf)
 (require 'moss-savehist)
 (require 'moss-display-fill-column)
+(require 'moss-ispell)
 
 ;; Window manager --------------------------------------------------------------
 ;; To use emacs as your window manager please make sure you have a .desktop file
@@ -42,8 +43,8 @@
 
 ;; Org and or packages
 (require 'moss-org)
-(require 'moss-org-caldav)
 ;; (require 'moss-orgroam)
+;; (require 'moss-org-caldav)
 ;; (require 'moss-org-noter)
 
 ;; Auto completion
@@ -68,14 +69,16 @@
 ;; (require 'moss-projectile)
 
 ;; LSP
-(require 'moss-eglot)
-(require 'moss-company)
+;; (require 'moss-eglot)
+;; (require 'moss-company)
 ;; (require 'moss-tree-sitter)
 
 ;; Filetype specific
 ;; (require 'moss-pdf-tools)
 
 ;; Languages
+(require 'moss-maxima)
+(require 'moss-gnuplot)
 
 ;; Email client
 (require 'moss-mu4e)

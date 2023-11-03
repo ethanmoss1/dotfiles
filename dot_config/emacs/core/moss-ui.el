@@ -79,7 +79,7 @@
 
 ;; Move around windows with out having to spam ’C-x o’
 ;; (windmove-mode)
-;; (windmove-default-keybindings 'meta)
+(windmove-default-keybindings 'meta)
 
 ;; No fringe
 ;; (fringe-mode 8)
