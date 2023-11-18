@@ -1,21 +1,17 @@
-;;; moss-TEMP.el --- Summary
+;;; moss-gnus.el --- Summary
 
 ;;; Commentary : ---------------------------------------------------------------
 
 ;;; Code : ---------------------------------------------------------------------
 
-(message "[ Moss ] Loading module, TEMP  ... ")
+(message "[ Moss ] Loading module, gnus  ... ")
 
-(use-package TEMP
+(use-package gnus
   ;; :disabled
-  ;; :bind
-  ;; (
-  ;; ("C-c a" . org-agenda) ;; example
-  ;; )
-  ;; :config
-  ;; :init
-  ;; :?
+  :custom
+  (user-mail-address "wow.ethm@gmail.com")
+  (user-full-name    "Ethan Moss")
   )
 
-(provide 'moss-TEMP)
+(provide 'moss-gnus)
 ;;; moss-TEMP.el ends here -----------------------------------------------------

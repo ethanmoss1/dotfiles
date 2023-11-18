@@ -1,12 +1,12 @@
-;;; moss-TEMP.el --- Summary
+;;; moss-maxima.el --- Summary
 
 ;;; Commentary : ---------------------------------------------------------------
 
 ;;; Code : ---------------------------------------------------------------------
 
-(message "[ Moss ] Loading module, TEMP  ... ")
+(message "[ Moss ] Loading module, maxima  ... ")
 
-(use-package TEMP
+(use-package maxima
   ;; :disabled
   ;; :bind
   ;; (
@@ -17,5 +17,5 @@
   ;; :?
   )
 
-(provide 'moss-TEMP)
-;;; moss-TEMP.el ends here -----------------------------------------------------
+(provide 'moss-maxima)
+;;; moss-maxima.el ends here -----------------------------------------------------
