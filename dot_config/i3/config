@@ -6,7 +6,7 @@ for_window [instance="origin.exe"] floating enable  # Will crash or wont open
 font pango:Roboto Regular 10
 
 default_border pixel 1
-gaps inner 20
+gaps inner 5
 smart_gaps on
 hide_edge_borders smart_no_gaps
 
