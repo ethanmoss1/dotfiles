@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, TEMP  ... ")
 
 (use-package TEMP
-  ;; :disabled
   ;; :bind
   ;; (
   ;; ("C-c a" . org-agenda) ;; example

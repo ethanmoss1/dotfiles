@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, company  ... ")
 
 (use-package company
-  :disabled
   :bind
   ;; Enable indent and complete at point functionality by pressing tab.
   ("TAB" . 'company-indent-or-complete-common)

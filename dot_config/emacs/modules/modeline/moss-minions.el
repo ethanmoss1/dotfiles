@@ -4,7 +4,6 @@
 (message "[ Moss ] Loading module, Minions  ... ")
 
 (use-package minions
-  :disabled
   :init
   (setq minions-mode-line-lighter "≡ ")
   :config

@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, modus-themes  ... ")
 
 (use-package modus-themes
-  :disabled
   :ensure t
   :init
   (setq

@@ -5,7 +5,6 @@
 (message "[ Moss ] Loading Module, Orderless  ... ")
 
 (use-package orderless
-  :disabled
   ;; :config
   ;; (with-eval-after-load 'company-mode
   ;;   (defun just-one-face (fn &rest args)

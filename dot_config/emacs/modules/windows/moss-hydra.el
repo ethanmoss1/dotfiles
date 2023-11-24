@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, hydra  ... ")
 
 (use-package hydra
-  :disabled
   )
 ;; (use-package pretty-hydra)
 

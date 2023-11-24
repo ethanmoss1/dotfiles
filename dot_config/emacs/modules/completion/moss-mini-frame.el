@@ -7,18 +7,18 @@
 (message "[ Moss ] Loading module, mini-frame  ... ")
 
 (use-package mini-frame
-  :disabled
   :config
   (setq mini-frame-show-parameters
         `((left . 0.5)
           (top . 1.0)
           (width . 1.0)
           (height . 9)
-          (child-frame-border-width . 12)
-          (foreground-color . "#EBDBB2")
-          (background-color . "#32302F")
+          (child-frame-border-width . 4)
+          ;; (foreground-color . "#EBDBB2")
+          ;; (background-color . "#32302F")
           ))
   (setq mini-frame-resize 'not-set)
+
   (add-hook 'minibuffer-setup-hook
             (lambda () (overlay-put (make-overlay (point-min) (+ (point-min) 1))
                                     'before-string

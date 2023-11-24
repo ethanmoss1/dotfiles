@@ -1,12 +1,12 @@
-;;; moss-maxima.el --- Summary
+;;; moss-docker.el --- Summary
 
 ;;; Commentary : ---------------------------------------------------------------
 
 ;;; Code : ---------------------------------------------------------------------
 
-(message "[ Moss ] Loading module, maxima  ... ")
+(message "[ Moss ] Loading module, docker  ... ")
 
-(use-package maxima
+(use-package docker
   ;; :bind
   ;; (
   ;; ("C-c a" . org-agenda) ;; example
@@ -16,5 +16,5 @@
   ;; :?
   )
 
-(provide 'moss-maxima)
-;;; moss-maxima.el ends here -----------------------------------------------------
+(provide 'moss-docker)
+;;; moss-docker.el ends here -----------------------------------------------------

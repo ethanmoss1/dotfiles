@@ -5,7 +5,6 @@
 (message "[ Moss ] Loading Module, Theme-Gruvbox ... ")
 
 (use-package gruvbox-theme
-  ;; :disabled
   ;; :straight
   ;; (gruvbox-theme :type git :host github :repo "greduan/emacs-theme-gruvbox")
   ;; (gruvbox-theme :type git :host github :repo "ethanmoss1/emacs-theme-gruvbox")

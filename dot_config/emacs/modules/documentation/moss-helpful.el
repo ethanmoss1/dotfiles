@@ -4,7 +4,6 @@
 (message "[ Moss ] Loading module, Helpful  ... ")
 
 (use-package helpful
-  ;; :disabled
   :bind
   ;; ("C-h" . 'helpful-hydra/body)
   ("C-h h" . 'helpful-at-point)

@@ -12,7 +12,6 @@
 ;;   (hl-line ((t (:inherit fringe)))))
 
 (use-package emacs
-  ;; :disabled
   :elpaca nil
   :custom-face
   ;; window divider mode

@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, exwm  ... ")
 
 (use-package exwm
-  :disabled
   :config
   (require 'exwm-config)
   (setq exwm-workspace-number 1)

@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, Projectile ... ")
 
 (use-package projectile
-  :disabled
   :custom
   (projectile-cache-file (moss-cache-dir "projectile")))
 

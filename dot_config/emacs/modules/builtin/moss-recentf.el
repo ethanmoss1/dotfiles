@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, recentf  ... ")
 
 (use-package recentf
-  ;; :disabled
   :elpaca nil
   :demand t
 

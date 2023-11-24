@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, doom-modeline  ... ")
 
 (use-package doom-modeline
-  :disabled
   :init
   (setq-default mode-line-format "")
   :config (doom-modeline-mode 1)

@@ -8,7 +8,6 @@
 (message "[ Moss ] Loading module, org-noter  ... ")
 
 (use-package org-noter
-  :disabled
   :init
   (require 'moss-pdf-tools)
   )

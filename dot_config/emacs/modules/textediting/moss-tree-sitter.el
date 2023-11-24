@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, tree-sitter  ... ")
 
 (use-package tree-sitter
-  :disabled
   :config
   (global-tree-sitter-mode)
 

@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, mu4e-dashboard  ... ")
 
 (use-package mu4e-dashboard
-  ;; :disabled
   ;; :straight
   ;; (mu4e-dashboard :type git :host github :repo "rougier/mu4e-dashboard")
   :init

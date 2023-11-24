@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, ispell  ... ")
 
 (use-package ispell
-  ;; :disabled
   :elpaca nil
   :init
   (setq ispell-dictionary "british"))

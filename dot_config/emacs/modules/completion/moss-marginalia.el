@@ -5,7 +5,6 @@
 (message "[ Moss ] Loading module, Marginalia  ... ")
 
 (use-package marginalia
-  ;; :disabled
   :init (marginalia-mode +1)
   :bind
   (:map minibuffer-local-map

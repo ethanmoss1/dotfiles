@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, moodline  ... ")
 
 (use-package mood-line
-  ;; :disabled
   ;; :bind
   ;; (
   ;; ("C-c a" . org-agenda) ;; example

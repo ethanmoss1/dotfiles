@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, solaire  ... ")
 
 (use-package solaire-mode
-  :disabled
   :config
   ;; By default, solaire-mode remaps the mode-line faces.
   ;; This interferes with certain mode-line packages like

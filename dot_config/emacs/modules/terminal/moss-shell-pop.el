@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, shell-pop  ... ")
 
 (use-package shell-pop
-  :disabled
   :bind
   ("M-RET" . 'shell-pop)
   :custom

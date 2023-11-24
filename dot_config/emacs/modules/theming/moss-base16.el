@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, base-16  ... ")
 
 (use-package base16-theme
-  :disabled t
   :config
   (setq base16-theme-distinct-fringe-background nil)
   (defvar base16-gruvbox-material-dark-medium-theme-colors

@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, nano  ... ")
 
 (use-package nano
-  :disabled
   :defer t  ; otherwise we load all the lisp files.
   :straight
   (nano :type git :host github :repo "rougier/nano-emacs"

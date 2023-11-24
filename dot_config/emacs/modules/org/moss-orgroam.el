@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, orgroam  ... ")
 
 (use-package org-roam
-  :disabled
   :custom
   (org-roam-directory (file-truename "~/Nextcloud/roam"))
   :bind (("C-c n l" . org-roam-buffer-toggle)

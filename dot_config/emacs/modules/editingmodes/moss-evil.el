@@ -9,7 +9,6 @@
 (defconst moss/leader "SPC")
 
 (use-package evil
-  :disabled
   :config
   (evil-mode 1)
   (general-define-key

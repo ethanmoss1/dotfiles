@@ -8,7 +8,6 @@
 
 ;; Check --> :TODO:
 (use-package svg-tag-mode
-  :disabled
   ;; :straight (:type git
              ;; :host github
              ;; :repo "ethanmoss1/svg-tag-mode")

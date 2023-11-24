@@ -13,7 +13,6 @@
 (message "[ Moss ] Loading module, buffer-move  ... ")
 
 (use-package buffer-move
-  :disabled
   :bind
   ("M-S-<up>" . 'buf-move-up)
   ("M-S-<down>" . 'buf-move-down)

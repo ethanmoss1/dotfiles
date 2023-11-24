@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, godmode  ... ")
 
 (use-package god-mode
-  :disabled
   :bind
   ("C-x C-0" . 'delete-window)
   ("C-x C-1" . 'delete-other-windows)

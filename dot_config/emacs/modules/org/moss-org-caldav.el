@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, org-caldav  ... ")
 
 (use-package org-caldav
-  :disabled
   :after (org)
   :custom
   (org-caldav-url "https://192.168.1.168/remote.php/dav/calendars/ethan")

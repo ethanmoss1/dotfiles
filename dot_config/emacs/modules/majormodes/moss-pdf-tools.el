@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, pdf-tools  ... ")
 
 (use-package pdf-tools
-  ;; :disabled
   :config
   (pdf-tools-install)
   (setq pdf-view-display-size 'fit-page))

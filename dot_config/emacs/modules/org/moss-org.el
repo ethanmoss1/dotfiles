@@ -12,7 +12,7 @@
   (setq org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$")))
 
 (use-package org
-  :disabled
+  :elpaca (:ref "8ef6205a560cd3a92f8c5f8fe34953b80121c2cb")
   :bind
   (;; Keybindings for org
    ;; ("" . )
@@ -24,13 +24,18 @@
    'org-babel-load-languages '(
                                (python . t)
                                (gnuplot . t)
+                               (maxima . t)
                                ))
 
   ;; Org source block templates - for org doc, adding additionall
   (add-to-list 'org-structure-template-alist '("m" . "src maxima"))
 
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
+
 
   :custom
+  ;; LaTeX options:
+
   (org-directory "~/Nextcloud/Org/")
   ;; (org-agenda-files '("Inbox.org"
                       ;; "Tasks.org"

@@ -7,7 +7,6 @@
 (message "[ Moss ] Loading module, gnus  ... ")
 
 (use-package gnus
-  ;; :disabled
   :custom
   (user-mail-address "wow.ethm@gmail.com")
   (user-full-name    "Ethan Moss")
