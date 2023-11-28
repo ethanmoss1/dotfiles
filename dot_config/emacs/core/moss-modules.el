@@ -36,5 +36,6 @@
 (require 'moss-eat)
 (require 'moss-docker)
 (require 'moss-org-fragtog)
+(require 'moss-conf-mode)
 
 (provide 'moss-modules)
