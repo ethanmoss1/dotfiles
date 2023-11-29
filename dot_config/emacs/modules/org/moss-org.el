@@ -11,8 +11,16 @@
   (interactive)
   (setq org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$")))
 
+(defun moss/load-minor-modes-for-org ()
+  "Loads all the minor modes for use with Org mode"
+  (flyspell-mode 1)
+  (toggle-truncate-lines 1)
+  (toggle-word-wrap 1))
+
 (use-package org
+  ;; Pins the release to a commit
   :elpaca (:ref "8ef6205a560cd3a92f8c5f8fe34953b80121c2cb")
+  :hook (org-mode . moss/load-minor-modes-for-org)
   :bind
   (;; Keybindings for org
    ;; ("" . )
@@ -30,25 +38,15 @@
   ;; Org source block templates - for org doc, adding additionall
   (add-to-list 'org-structure-template-alist '("m" . "src maxima"))
 
+  ;; LaTeX options:
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
 
-
   :custom
-  ;; LaTeX options:
-
   (org-directory "~/Nextcloud/Org/")
-  ;; (org-agenda-files '("Inbox.org"
-                      ;; "Tasks.org"
-                      ;; "Backburner.org"
-                      ;; "Projects.org"
-                      ;; ))
   (org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$"))
   (org-refile-targets
       '((nil :maxlevel . 3)
         (org-agenda-files :maxlevel . 3)))
-
-  ;; (org-log-done 'time)
-  ;; (org-agenda-start-with-log-mode t)
 
   ;; Org capture - For agenda
   (org-capture-templates
@@ -81,26 +79,6 @@
 :END:
 Url: %x
 ")
-
-     ;; -------------------------------------------------------------------
-
-     ;; ("p" "Projects")
-     ;; ("pp" "New Project" entry
-     ;;  (file+olp ,(concat org-directory "/calendar.org"))
-     ;;  "* %^{Event Title}\n:PROPERTIES:\n:ID:"
-     ;;  :empty-lines 1)
-
-     ;; -------------------------------------------------------------------
-
-     ;; ("a" "Appointment" entry
-     ;;   (file, (concat org-directory "/Calendar.org"))
-     ;;   "* %?\n:PROPERTIES:\n:SCHEDULED:%^T\n:END:\n"
-     ;;   :empty-lines 1)
-
-     ;; ("c" "Calendar" entry
-     ;;  (file ,(concat org-directory "/calendar.org"))
-     ;;  "* %^{Event Title}\n:PROPERTIES:\n:ID:"
-     ;;  :empty-lines 1)
 
      ;; -------------------------------------------------------------------
 
