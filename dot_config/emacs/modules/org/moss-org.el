@@ -14,7 +14,7 @@
 (defun moss/load-minor-modes-for-org ()
   "Loads all the minor modes for use with Org mode"
   (flyspell-mode 1)
-  (toggle-truncate-lines 1)
+  (toggle-truncate-lines 0)
   (toggle-word-wrap 1))
 
 (use-package org
