@@ -6,6 +6,11 @@
 
 (message "[ Moss ] Loading module, org  ... ")
 
+(defun org-latex-preview-buffer ()
+  "Generate the previews of all latex fragments in the buffer"
+  (interactive)
+  (org-latex-preview '(16)))
+
 (defun moss/reload-org-agenda-files ()
   "Reloads the agenda file list"
   (interactive)
@@ -40,6 +45,13 @@
 
   ;; LaTeX options:
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
+
+  :custom-face
+  (org-level-1 ((t (:inherit outline-1 :height 1.75))))
+  (org-level-2 ((t (:inherit outline-2 :height 1.5))))
+  (org-level-3 ((t (:inherit outline-3 :height 1.25))))
+  (org-level-4 ((t (:inherit outline-4 :height 1.1))))
+  (org-document-title ((t (:height 2.0))))
 
   :custom
   (org-directory "~/Nextcloud/Org/")

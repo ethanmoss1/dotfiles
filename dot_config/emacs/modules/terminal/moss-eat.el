@@ -7,21 +7,14 @@
 (message "[ Moss ] Loading module, eat  ... ")
 
 (use-package eat
-  ;; :bind
-  ;; (
-  ;; ("C-c a" . org-agenda) ;; example
-  ;; )
+  :custom
+  (eat-kill-buffer-on-exit t)
   :config
-  ;; For `eat-eshell-mode'.
+  ;; For `eat-eshell-mode'
   (add-hook 'eshell-load-hook #'eat-eshell-mode)
 
-  ;; For `eat-eshell-visual-command-mode'.
-  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
-
-
-  ;; :init
-  ;; :?
-  )
+  ;; For `eat-eshell-visual-command-mode'
+  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode))
 
 (provide 'moss-eat)
 ;;; moss-eat.el ends here -----------------------------------------------------

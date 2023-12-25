@@ -37,5 +37,7 @@
 (require 'moss-docker)
 (require 'moss-org-fragtog)
 (require 'moss-conf-mode)
+(require 'moss-company)
+;; (require 'moss-company-math)
 
 (provide 'moss-modules)
