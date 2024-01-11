@@ -1,7 +1,7 @@
 exec --no-startup-id feh --recursive --bg-fill --randomize ~/.config/wallpapers/gruvboxWallpaper.svg
 
 # Fixes for applications:
-for_window [instance="origin.exe"] floating enable  # Will crash or wont open
+# for_window [instance="origin.exe"] floating enable  # Will crash or wont open
 
 font pango:Roboto Regular 10
 
@@ -41,7 +41,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 set $mod Mod4
 floating_modifier $mod
 tiling_drag modifier titlebar
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec emacsclient -c -e "(eshell)"
 bindsym $mod+Tab exec xfce4-popup-whiskermenu
 # bindsym $mod+Tab exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
 
