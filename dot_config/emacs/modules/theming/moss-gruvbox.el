@@ -11,7 +11,7 @@
   :custom-face
   (internal-border ((t (:background nil))))
   :config
-  (load-theme 'gruvbox-dark-soft t))
+  (load-theme 'gruvbox-dark-hard t))
 
 (provide 'moss-gruvbox)
 ;;; moss-gruvbox.el ends here

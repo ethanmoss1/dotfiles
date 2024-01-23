@@ -19,6 +19,7 @@
 
 ;; External Packages -----------------------------------------------------------
 
+;; :TODO: This was a failure, need to organise again
 (require 'moss-gruvbox)
 (require 'moss-alltheicons)
 (require 'moss-personal-themeing)
@@ -39,5 +40,6 @@
 (require 'moss-conf-mode)
 (require 'moss-company)
 ;; (require 'moss-company-math)
+(require 'moss-study)
 
 (provide 'moss-modules)

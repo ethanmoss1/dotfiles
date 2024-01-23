@@ -38,6 +38,7 @@
                                (python . t)
                                (gnuplot . t)
                                (maxima . t)
+                               (shell . t)
                                ))
 
   ;; Org source block templates - for org doc, adding additionall
