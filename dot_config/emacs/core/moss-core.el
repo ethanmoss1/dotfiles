@@ -78,7 +78,7 @@
 
 (require 'moss-package-manager-elpaca)
 (require 'moss-keybindings)
-(require 'moss-performance)
+;; (require 'moss-performance)
 (require 'moss-ui)
 (require 'moss-editor)
 
