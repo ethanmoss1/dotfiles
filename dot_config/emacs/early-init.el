@@ -15,7 +15,7 @@
       comp-async-query-on-exit t)
 
 ;; Defer garbage collection further back in the startup process
-(setq gc-cons-threshold most-positive-fixnum)
+;; (setq gc-cons-threshold most-positive-fixnum)
 
 (let ((deny-list '("\\(?:[/\\\\]\\.dir-locals\\.el$\\)")))
   (if (boundp 'native-comp-deferred-compilation-deny-list)
@@ -49,7 +49,6 @@
       (setenv "HOME" "/data/data/com.termux/files/home/")
       (setq user-emacs-directory "~/.config/emacs/"))
       (message "Not android, continuing"))
-
 
 (setq package-enable-at-startup nil)
 
