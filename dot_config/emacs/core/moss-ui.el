@@ -38,44 +38,51 @@
 ;; Set up font
 (if window-system
     ;; Set default font based on priority list
-    (let* ((families '("JetBrains Nerd Font Mono"
+    (let* ((families '(
+                       "JetBrains Nerd Font Mono"
                        "JetBrains Mono"
                        "Roboto Nerd Font Mono"
                        "Roboto Mono"
                        "Droid Sans Mono"
-                       "Roboto"))
+                       "Roboto"
+                       ))
            (family (catch 'found
                      (dolist (f families)
                        (if (member f (font-family-list))
                            (throw 'found f))))))
-      (set-face-attribute 'default nil
-                          :family family :height 100)
+      (if (eq system-type 'android)
+          (set-face-attribute 'default nil
+                              :family family :height 160)
+        (set-face-attribute 'default nil
+                            :family family :height 100))
       (message (concat "[ Moss ] Font loaded: " family))))
 
 ;; Set up Android specific variables
 (if (eq system-type 'android)
-    (setq touch-screen-display-keyboard t
-          touch-screen-precision-scroll t
-          touch-screen-word-select t))
+    (progn
+      ;; Touchscreen specific settings
+      (setq touch-screen-display-keyboard t
+            touch-screen-precision-scroll t
+            touch-screen-word-select t)
 
-;; Nice padding to keep focus within emacs
-;; (setq default-frame-alist
-;;       (append (list
-;; 	           '(min-height . 1)
-;;                '(height     . 45)
-;; 	           '(min-width  . 1)
-;;                '(width      . 81)
-;;                '(left-fringe . 9)
-;;                '(right-fringe . 9)
-;;                '(vertical-scroll-bars . nil)
-;;                '(internal-border-width . 24)
-;;                '(tool-bar-lines . 0)
-;;                '(Menu-bar-lines . 0))))
+      ;; Nice padding to keep focus within emacs
+      (setq default-frame-alist
+            (append (list
+    	             '(min-height . 1)
+                     '(height     . 45)
+    	             '(min-width  . 1)
+                     '(width      . 81)
+                     '(left-fringe . 9)
+                     '(right-fringe . 9)
+                     '(vertical-scroll-bars . nil)
+                     '(internal-border-width . 24)
+                     '(tool-bar-lines . 0)
+                     '(Menu-bar-lines . 0))))
 
-;; Vertical window divider
-;; (setq window-divider-default-right-width 24)
-;; (setq window-divider-default-places 'right-only)
-;; (window-divider-mode 1)
+      ;; Vertical window divider
+      (setq window-divider-default-right-width 24
+            window-divider-default-places 'right-only)
+      (window-divider-mode 1)))
 
 ;; Move around windows with out having to spam ’C-x o’
 ;; (windmove-mode)
