@@ -39,6 +39,7 @@
 
 (if (eq system-type 'android)
     (progn
+      (message "Android system, updating paths and libs for termux")
       (setenv "PATH" (format "%s:%s" "/data/data/com.termux/files/usr/bin"
 			     (getenv "PATH")))
       (setenv "LD_LIBRARY_PATH" (format "%s:%s"
@@ -46,7 +47,8 @@
 					(getenv "LD_LIBRARY_PATH")))
       (push "/data/data/com.termux/files/usr/bin" exec-path)
       (setenv "HOME" "/data/data/com.termux/files/home/")
-      (setq user-emacs-directory "~/.config/emacs/")))
+      (setq user-emacs-directory "~/.config/emacs/"))
+      (message "Not android, continuing"))
 
 
 (setq package-enable-at-startup nil)
