@@ -38,7 +38,8 @@
 (require 'moss-docker)
 (require 'moss-org-fragtog)
 (require 'moss-conf-mode)
-(require 'moss-company)
+;; (require 'moss-company)
+(require 'moss-corfu)
 ;; (require 'moss-company-math)
 (require 'moss-study)
 
