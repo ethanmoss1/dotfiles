@@ -75,12 +75,12 @@
                      '(left-fringe . 9)
                      '(right-fringe . 9)
                      '(vertical-scroll-bars . nil)
-                     '(internal-border-width . 24)
+                     '(internal-border-width . 12)
                      '(tool-bar-lines . 0)
                      '(Menu-bar-lines . 0))))
 
       ;; Vertical window divider
-      (setq window-divider-default-right-width 24
+      (setq window-divider-default-right-width 12
             window-divider-default-places 'right-only)
       (window-divider-mode 1)))
 
