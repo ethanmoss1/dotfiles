@@ -9,6 +9,9 @@
 (require 'moss-vertico)
 (require 'moss-orderless)
 (require 'moss-marginalia)
+(require 'moss-chezmoi)
+
+(require 'moss-exwm)
 
 ;; Built in modules ------------------------------------------------------------
 (require 'moss-dired)
@@ -28,7 +31,6 @@
 (require 'moss-consult)
 (require 'moss-rainbow)
 (require 'moss-magit)
-(require 'moss-chezmoi)
 (require 'moss-pdf-tools)
 (require 'moss-maxima)
 (require 'moss-gnuplot)
@@ -40,7 +42,9 @@
 (require 'moss-conf-mode)
 ;; (require 'moss-company)
 (require 'moss-corfu)
+(require 'moss-bluetooth)
 ;; (require 'moss-company-math)
 (require 'moss-study)
+(require 'moss-hl-todo)
 
 (provide 'moss-modules)

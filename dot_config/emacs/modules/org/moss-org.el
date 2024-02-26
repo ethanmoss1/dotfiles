@@ -22,15 +22,30 @@
   (toggle-truncate-lines 0)
   (toggle-word-wrap 1))
 
+(defun moss/add-latex-block ()
+  "Adds a latex block ready for input"
+  (interactive)
+  (end-of-line)
+  (newline-and-indent)
+  (insert "\\[")
+  (newline-and-indent 2)
+  (insert "\\]")
+  (previous-line))
+
 (use-package org
-  ;; Pins the release to a commit
+  ;; Pins the release to a commit, this commit is for fragtog as is broken in
+  ;; newer releses
   :elpaca (:ref "8ef6205a560cd3a92f8c5f8fe34953b80121c2cb")
   :hook (org-mode . moss/load-minor-modes-for-org)
   :bind
-  (;; Keybindings for org
+  (;; Global Keybindings for org
    ;; ("" . )
    ("C-c c" . org-capture)
-   ("C-c a" . org-agenda))
+   ("C-c a" . org-agenda)
+
+   ;; Org mode keybindings
+   :map org-mode-map
+   ("C-c l" . moss/add-latex-block))
 
   :config
   (org-babel-do-load-languages

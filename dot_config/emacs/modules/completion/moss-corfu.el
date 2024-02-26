@@ -7,11 +7,18 @@
 (message "[ Moss ] Loading module, corfu  ... ")
 
 (use-package corfu
+  :config
+  (require 'corfu-popupinfo)
+  (corfu-popupinfo-mode)
+  (corfu-popupinfo-delay nil)
+  (setq corfu-popupinfo-delay '(1.0 . 1.0))
+
   ;; Optional customizations
-  ;; :custom
+  :custom
+  (require org-TBLFM-regexp)
   ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  ;; (corfu-auto t)                 ;; Enable auto completion
-  ;; (corfu-separator ?\s)          ;; Orderless field separator
+  (corfu-auto t)                 ;; Enable auto completion
+  (corfu-separator ?\s)          ;; Orderless field separator
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
@@ -21,27 +28,29 @@
 
   ;; Enable Corfu only for certain modes.
   ;; :hook ((prog-mode . corfu-mode)
-  ;;         (shell-mode . corfu-mode)
-  ;;         (eshell-mode . corfu-mode))
+  ;;        (shell-mode . corfu-mode)
+  ;;        (eshell-mode . corfu-mode))
 
   ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
   ;; be used globally (M-/).  See also the customization variable
   ;; `global-corfu-modes' to exclude certain modes.
   :init
-  (global-corfu-mode)
+  (global-corfu-mode))
 
-  :custom
+;; A few more useful configurations...
+(use-package emacs
+  :init
   ;; TAB cycle if there are only few candidates
-  (completion-cycle-threshold 3)
+  (setq completion-cycle-threshold 3)
 
   ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
   ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
-  ;; (read-extended-command-predicate
+  ;; (setq read-extended-command-predicate
   ;;       #'command-completion-default-include-p)
 
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
-  (tab-always-indent 'complete))
+  (setq tab-always-indent 'complete))
 
 (provide 'moss-corfu)
 ;;; moss-corfu.el ends here -----------------------------------------------------

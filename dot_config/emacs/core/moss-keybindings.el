@@ -6,13 +6,23 @@
 
 (defun split-window-below-and-focus ()
   (interactive)
-  (split-window-below)
-  (other-window 1))
+  (if (string-equal major-mode "exwm-mode")
+      (progn
+        (split-window-below)
+        (sit-for 0.1)
+        (other-window 1))
+    (split-window-below)
+    (other-window 1)))
 
 (defun split-window-right-and-focus ()
   (interactive)
-  (split-window-right)
-  (other-window 1))
+  (if (string-equal major-mode "exwm-mode")
+      (progn
+        (split-window-right)
+        (sit-for 0.1)
+        (other-window 1))
+    (split-window-right)
+    (other-window 1)))
 
 (use-package emacs
   :elpaca nil

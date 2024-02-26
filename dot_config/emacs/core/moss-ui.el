@@ -54,7 +54,7 @@
           (set-face-attribute 'default nil
                               :family family :height 160)
         (set-face-attribute 'default nil
-                            :family family :height 100))
+                            :family family :height 120))
       (message (concat "[ Moss ] Font loaded: " family))))
 
 ;; Set up Android specific variables
@@ -85,8 +85,9 @@
       (window-divider-mode 1)))
 
 ;; Move around windows with out having to spam ’C-x o’
-;; (windmove-mode)
-(windmove-default-keybindings 'meta)
+(windmove-mode 1)
+(windmove-default-keybindings 'super)
+(setq windmove-wrap-around t)
 
 ;; No fringe
 ;; (fringe-mode 8)
