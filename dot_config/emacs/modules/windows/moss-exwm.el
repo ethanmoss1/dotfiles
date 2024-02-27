@@ -16,6 +16,17 @@
   :elpaca
   (:host github :repo "emacs-exwm/exwm")
 
+  :config
+  ;; system tray
+  (require 'exwm-systemtray)
+  (exwm-systemtray-enable)
+
+  ;; allow resizing of x applications
+  (setq window-divider-default-right-width 12
+        window-divider-default-places 'right-only)
+  (window-divider-mode)
+
+
   :hook
   (exwm-update-class . (lambda ()
                          (exwm-workspace-rename-buffer exwm-class-name)))
@@ -42,23 +53,35 @@
                      (exwm-workspace-switch-create ,i))))
                (number-sequence 0 9))))
 
-
-;;  :config
-;;  (defvar exwm--application-location "/usr/share/applications/")
-;;  (defun exwm-launch-application ()
-;;    "Launch an application using completion"
-;;    (interactive)
-;;    (message (directory-files exwm--application-location))
-;;    )
-
-
-
-  )
+  ;; Mimic behaviour of emacs bindings im x sessions
+  (exwm-input-simulation-keys
+        '(
+          ;; movement
+          ([?\C-b] . [left])
+          ([?\M-b] . [C-left])
+          ([?\C-f] . [right])
+          ([?\M-f] . [C-right])
+          ([?\C-p] . [up])
+          ([?\C-n] . [down])
+          ([?\C-a] . [home])
+          ([?\C-e] . [end])
+          ([?\M-v] . [prior])
+          ([?\C-v] . [next])
+          ([?\C-d] . [delete])
+          ([?\C-k] . [S-end delete])
+          ;; cut/paste.
+          ([?\C-w] . [?\C-x])
+          ([?\M-w] . [?\C-c])
+          ([?\C-y] . [?\C-v])
+          ;; search
+          ([?\C-s] . [?\C-f])
+          ;; save
+          ([C-x C-s] . [?\C-s])
+          ;; exit
+          ([?\C-g] . [escape])
+          )))
 ;; If we are using EWXM, enable the interesting stuff
-;; (if moss/exwm-enabled
-    ;; (progn
-      ;; (use-package exwm-modeline)
-      ;; (require 'exwm-systemtray)))
+(use-package exwm-modeline)
 
 (provide 'moss-exwm)
 ;;; moss-exwm.el ends here -----------------------------------------------------
