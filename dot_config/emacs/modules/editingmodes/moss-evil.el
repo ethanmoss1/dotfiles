@@ -8,6 +8,8 @@
 
 (defconst moss/leader "SPC")
 
+(use-package general)
+
 (use-package evil
   :config
   (evil-mode 1)
@@ -25,18 +27,14 @@
    "h m" 'describe-mode
    "h n" 'describe-minor-mode
 
-   "f f" 'find-file                                      ;
-
-
-
+   "f f" 'find-file
    ;; Windows
    ;; "w "
 
    ;; Buffers
    "b b" 'consult-buffer
    "b k" 'kill-this-buffer
-   "b s" 'save-buffer
-   ))
+   "b s" 'save-buffer ))
 
 (provide 'moss-evil)
 

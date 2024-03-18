@@ -9,6 +9,7 @@
   ("C-t" . 'consult-imenu)
   ("C-x b" . 'consult-buffer)
   ("C-c b" . 'consult-project-buffer)
+  ("C-x C-b" . 'consult-bookmark)
   ("C-s" . 'consult-line)
   ("M-g M-g" . 'consult-goto-line))
 

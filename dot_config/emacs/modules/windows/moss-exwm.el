@@ -32,7 +32,7 @@
                          (exwm-workspace-rename-buffer exwm-class-name)))
 
   :custom
-  (exwm-workspace-number 10)
+  (exwm-workspace-number 3)
   (exwm-input-global-keys
    `(([s-left] . windmove-left)
      ([s-right] . windmove-right)
@@ -81,7 +81,8 @@
           ([?\C-g] . [escape])
           )))
 ;; If we are using EWXM, enable the interesting stuff
-(use-package exwm-modeline)
+(use-package exwm-modeline
+  :config (exwm-modeline-mode))
 
 (provide 'moss-exwm)
 ;;; moss-exwm.el ends here -----------------------------------------------------
