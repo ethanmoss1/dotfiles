@@ -10,7 +10,6 @@
   :config
   (require 'corfu-popupinfo)
   (corfu-popupinfo-mode)
-  (corfu-popupinfo-delay nil)
   (setq corfu-popupinfo-delay '(1.0 . 1.0))
 
   ;; Optional customizations
