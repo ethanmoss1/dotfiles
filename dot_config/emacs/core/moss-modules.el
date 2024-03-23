@@ -22,7 +22,12 @@
 
 ;; External Packages -----------------------------------------------------------
 
-;; :TODO: This was a failure, need to organise again
+;; TODO: This was a failure, need to organise again
+
+;; Android specific settings
+(if (eq system-type 'android)
+    (require 'moss-android))
+
 (require 'moss-gruvbox)
 (require 'moss-alltheicons)
 (require 'moss-personal-themeing)
