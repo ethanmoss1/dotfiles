@@ -20,6 +20,7 @@
   :elpaca nil
   :bind
   (:map global-map
+        ("RET" . 'newline-and-indent)
         ("C-x k" . 'kill-current-buffer)   ; Kill buffer without asking which one
         ("C-x 2" . 'split-window-below-and-focus)
         ("C-x 3" . 'split-window-right-and-focus)))

@@ -8,11 +8,13 @@
 
 (defconst moss/leader "SPC")
 
+
 (use-package general)
+
+(use-package which-key)
 
 (use-package evil
   :config
-  (evil-mode 1)
   (general-define-key
    :prefix "SPC"
    :states 'normal
@@ -27,16 +29,23 @@
    "h m" 'describe-mode
    "h n" 'describe-minor-mode
 
+   ;; find
    "f f" 'find-file
+   "f t" 'dired
+   "f D" 'chezmoi-find
+
    ;; Windows
-   ;; "w "
+   "w <left>"  'windmove-left
+   "w <right>" 'windmove-right
+   "w <up>"    'windmove-up
+   "w <down>"  'windmove-down
 
    ;; Buffers
    "b b" 'consult-buffer
-   "b k" 'kill-this-buffer
-   "b s" 'save-buffer ))
+   "b B" 'ibuffer
+   "b k" 'kill-current-buffer
+   "b s" 'save-buffer))
 
 (provide 'moss-evil)
-
 
 ;;; moss-evil.el ends here -----------------------------------------------------
