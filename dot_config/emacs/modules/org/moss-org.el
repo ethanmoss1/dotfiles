@@ -14,7 +14,9 @@
 (defun moss/reload-org-agenda-files ()
   "Reloads the agenda file list"
   (interactive)
-  (setq org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$")))
+  (if (eq system-type 'android)
+        (setq org-agenda-files (directory-files-recursively "~/nextcloud/Org" "\\.org$"))
+    (setq org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$")))
 
 (defun moss/load-minor-modes-for-org ()
   "Loads all the minor modes for use with Org mode"
@@ -62,6 +64,14 @@
   ;; LaTeX options:
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
 
+  ;; Different nextcloud folders
+  (if (eq system-type 'android)
+      (progn
+        (org-directory "~/nextcloud/Org/")
+        (org-agenda-files (directory-files-recursively "~/nextcloud/Org" "\\.org$")))
+    (org-directory "~/Nextcloud/Org/")
+    (org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$")))
+
   :custom-face
   (org-level-1 ((t (:inherit outline-1 :height 1.75))))
   (org-level-2 ((t (:inherit outline-2 :height 1.5))))
@@ -70,8 +80,6 @@
   (org-document-title ((t (:height 2.0))))
 
   :custom
-  (org-directory "~/Nextcloud/Org/")
-  (org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$"))
   (org-refile-targets
       '((nil :maxlevel . 3)
         (org-agenda-files :maxlevel . 3)))
