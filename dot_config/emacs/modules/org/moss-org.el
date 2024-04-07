@@ -16,7 +16,7 @@
   (interactive)
   (if (eq system-type 'android)
         (setq org-agenda-files (directory-files-recursively "~/nextcloud/Org" "\\.org$"))
-    (setq org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$")))
+    (setq org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$"))))
 
 (defun moss/load-minor-modes-for-org ()
   "Loads all the minor modes for use with Org mode"
