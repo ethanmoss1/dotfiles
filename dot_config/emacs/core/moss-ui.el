@@ -52,7 +52,7 @@
                            (throw 'found f))))))
       (if (eq system-type 'android)
           (set-face-attribute 'default nil
-                              :family family :height 160)
+                              :family family :height 200)
         (set-face-attribute 'default nil
                             :family family :height 120))
       (message (concat "[ Moss ] Font loaded: " family))))
