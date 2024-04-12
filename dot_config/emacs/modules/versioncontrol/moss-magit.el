@@ -5,9 +5,7 @@
 ;;; Code:
 
 (message "[ Moss ] Loading module, magit  ... ")
-
-(use-package magit
-  )
+(use-package magit)
 
 (provide 'moss-magit)
 ;;; moss-magit.el ends here

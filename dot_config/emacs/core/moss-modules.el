@@ -24,11 +24,8 @@
 
 ;; TODO: This was a failure, need to organise again
 
-;; Android specific settings
-(if (eq system-type 'android)
-    (require 'moss-android))
-
-(require 'moss-gruvbox)
+;; (require 'moss-gruvbox)
+(require 'moss-zenburn)
 (require 'moss-alltheicons)
 (require 'moss-personal-themeing)
 (require 'moss-helpful)
@@ -51,5 +48,8 @@
 ;; (require 'moss-company-math)
 (require 'moss-study)
 (require 'moss-hl-todo)
+
+;; Modify packages for use on android
+(require 'moss-android)
 
 (provide 'moss-modules)

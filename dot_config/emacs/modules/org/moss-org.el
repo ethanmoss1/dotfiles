@@ -62,15 +62,23 @@
   (add-to-list 'org-structure-template-alist '("m" . "src maxima"))
 
   ;; LaTeX options:
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
 
-  ;; Different nextcloud folders
+
+  ;; Android specific settings
   (if (eq system-type 'android)
       (progn
-        (org-directory "~/nextcloud/Org/")
-        (org-agenda-files (directory-files-recursively "~/nextcloud/Org" "\\.org$")))
-    (org-directory "~/Nextcloud/Org/")
-    (org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$")))
+        (setq org-directory "~/nextcloud/Org/")
+        (setq org-agenda-files (directory-files-recursively "~/nextcloud/Org" "\\.org$"))
+        (setq org-format-latex-options (plist-put org-format-latex-options :scale 1))
+        (defun org--get-display-dpi ()
+          "MODIFIED FOR TABLET - MOSS
+Get the DPI of the display.
+The function assumes that the display has the same pixel width in
+the horizontal and vertical directions."
+          266))
+    (setq org-directory "~/Nextcloud/Org/")
+    (setq org-agenda-files (directory-files-recursively "~/Nextcloud/Org" "\\.org$"))
+    (setq org-format-latex-options (plist-put org-format-latex-options :scale 3)))
 
   :custom-face
   (org-level-1 ((t (:inherit outline-1 :height 1.75))))

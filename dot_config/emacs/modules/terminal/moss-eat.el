@@ -10,6 +10,9 @@
   :custom
   (eat-kill-buffer-on-exit t)
   :config
+  ;; Set shell for android
+  (if (eq system-type 'android)
+      (setq eat-shell "/data/data/com.termux/files/usr/bin/bash"))
   ;; For `eat-eshell-mode'
   (add-hook 'eshell-load-hook #'eat-eshell-mode)
 
