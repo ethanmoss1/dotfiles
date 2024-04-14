@@ -25,7 +25,8 @@
 ;; TODO: This was a failure, need to organise again
 
 ;; (require 'moss-gruvbox)
-(require 'moss-zenburn)
+;; (require 'moss-zenburn)
+(require 'moss-modus-themes)
 (require 'moss-alltheicons)
 (require 'moss-personal-themeing)
 (require 'moss-helpful)
