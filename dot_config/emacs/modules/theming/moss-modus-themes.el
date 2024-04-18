@@ -9,8 +9,8 @@
 (use-package modus-themes
   :init
   (setq
-  ;;  modus-themes-italic-constructs t
-   modus-themes-bold-constructs nil
+   modus-themes-italic-constructs t
+   modus-themes-bold-constructs t
   ;;  modus-themes-mixed-fonts t
   ;;  modus-themes-variable-pitch-ui nil
   ;;  modus-themes-custom-auto-reload t
@@ -22,7 +22,7 @@
   ;;  '((matches . (extrabold))
   ;;    (selection . (semibold italic text-also)))
 
-  ;;  modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
+   modus-themes-org-blocks 'tinted-background ; {nil,'gray-background,'tinted-background}
 
   ;;  modus-themes-headings
   ;;  '((1 . (variable-pitch 1.5))

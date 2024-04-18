@@ -99,4 +99,3 @@
 (setq org-hide-emphasis-markers t)
 
 (provide 'moss-ui)
-;; Emacs UI configurations:1 ends here
