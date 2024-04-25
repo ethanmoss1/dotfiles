@@ -7,13 +7,13 @@
 (message "[ Moss ] Loading module, exwm  ... ")
 
 (use-package xelb
-  :elpaca
+  :ensure
   (:host github :repo "emacs-exwm/xelb"))
 
 (use-package exwm
   ;; currently exwm is changing repo, recipes havent been updated correctly
   :after xelb
-  :elpaca
+  :ensure
   (:host github :repo "emacs-exwm/exwm")
 
   :config

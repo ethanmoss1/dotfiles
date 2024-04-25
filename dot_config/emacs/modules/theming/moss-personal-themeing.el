@@ -12,7 +12,7 @@
 ;;   (hl-line ((t (:inherit fringe)))))
 
 (use-package emacs
-  :elpaca nil
+  :ensure nil
   :custom-face
   ;; window divider mode
   (window-divider ((t (:inherit (default) :inverse-video t))))

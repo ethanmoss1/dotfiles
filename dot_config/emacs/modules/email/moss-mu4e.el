@@ -10,7 +10,7 @@
 (message "[ Moss ] Loading module, mu4e  ... ")
 
 (use-package mu4e
-  :elpaca (:host github
+  :ensure (:host github
 		     :files ("build/mu4e/*.el")
              ;; :branch "master"
              :branch "release/1.10"

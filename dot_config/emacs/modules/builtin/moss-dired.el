@@ -7,7 +7,7 @@
 (message "[ Moss ] Loading module, dired  ... ")
 
 (use-package dired
-  :elpaca nil
+  :ensure nil
   :defer t
   :bind
   (:map dired-mode-map

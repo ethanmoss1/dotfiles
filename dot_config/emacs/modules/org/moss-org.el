@@ -37,7 +37,7 @@
 (use-package org
   ;; Pins the release to a commit, this commit is for fragtog as is broken in
   ;; newer releses
-  :elpaca (:ref "8ef6205a560cd3a92f8c5f8fe34953b80121c2cb")
+  :ensure (:ref "8ef6205a560cd3a92f8c5f8fe34953b80121c2cb")
   :hook (org-mode . moss/load-minor-modes-for-org)
   :bind
   (;; Global Keybindings for org

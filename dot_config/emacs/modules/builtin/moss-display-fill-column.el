@@ -8,7 +8,7 @@
 
 (use-package display-fill-column-indicator
   ;; :straight (:type built-in)
-  :elpaca nil
+  :ensure nil
   :hook
   (prog-mode . display-fill-column-indicator-mode))
 

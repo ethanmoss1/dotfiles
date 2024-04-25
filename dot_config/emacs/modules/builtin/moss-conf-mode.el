@@ -7,7 +7,7 @@
 (message "[ Moss ] Loading module, conf-mode  ... ")
 
 (use-package conf-mode
-  :elpaca nil
+  :ensure nil
   :config
   (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . conf-mode)))
 

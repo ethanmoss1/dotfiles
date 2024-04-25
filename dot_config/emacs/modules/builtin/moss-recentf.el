@@ -7,7 +7,7 @@
 (message "[ Moss ] Loading module, recentf  ... ")
 
 (use-package recentf
-  :elpaca nil
+  :ensure nil
   :demand t
 
   :custom

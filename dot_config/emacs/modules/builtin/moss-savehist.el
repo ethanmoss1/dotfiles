@@ -8,7 +8,7 @@
 
 (use-package savehist
   :demand t
-  :elpaca nil
+  :ensure nil
   :init (savehist-mode +1)
   :custom
   (savehist-autosave-interval 60)

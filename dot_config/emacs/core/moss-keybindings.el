@@ -17,7 +17,7 @@
   (windmove-right))
 
 (use-package emacs
-  :elpaca nil
+  :ensure nil
   :bind
   (:map global-map
         ("RET" . 'newline-and-indent)
