@@ -8,8 +8,9 @@
 
 (use-package doom-modeline
   :init
-  (setq-default mode-line-format "")
-  :config (doom-modeline-mode 1)
+  ;; (setq-default mode-line-format "")
+  :config
+  (doom-modeline-mode 1)
   :custom
   (doom-modeline-mu4e t)
   (doom-modeline-major-mode-icon nil)

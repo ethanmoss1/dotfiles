@@ -38,7 +38,7 @@
 (require 'moss-maxima)
 (require 'moss-gnuplot)
 (require 'moss-mu4e)
-(require 'moss-moodline)
+(require 'moss-doom-modeline)
 (require 'moss-eat)
 (require 'moss-docker)
 (require 'moss-org-fragtog)
