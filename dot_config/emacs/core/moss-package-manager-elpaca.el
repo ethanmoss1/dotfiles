@@ -71,6 +71,7 @@
 (elpaca elpaca-use-package
   ;; Enable use-package :ensure support for Elpaca.
   (elpaca-use-package-mode))
+(setq use-package-always-ensure t)
 
 ;; Block until current queue processed.
 (elpaca-wait)

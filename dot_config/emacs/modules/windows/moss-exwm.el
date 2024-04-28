@@ -7,15 +7,12 @@
 (message "[ Moss ] Loading module, exwm  ... ")
 
 (use-package xelb
-  :ensure
-  (:host github :repo "emacs-exwm/xelb"))
+  :ensure (:host github :repo "emacs-exwm/xelb"))
 
 (use-package exwm
   ;; currently exwm is changing repo, recipes havent been updated correctly
   :after xelb
-  :ensure
-  (:host github :repo "emacs-exwm/exwm")
-
+  :ensure (:host github :repo "emacs-exwm/exwm")
   :config
   ;; system tray
   (require 'exwm-systemtray)
