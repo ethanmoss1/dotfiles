@@ -36,6 +36,10 @@
   :init
   (global-corfu-mode))
 
+;; Additional package to make it work on terminal.
+(use-package corfu-terminal
+  :init (corfu-terminal-mode))
+
 ;; A few more useful configurations...
 (use-package emacs
   :ensure nil
@@ -53,4 +57,4 @@
   (setq tab-always-indent 'complete))
 
 (provide 'moss-corfu)
-;;; moss-corfu.el ends here -----------------------------------------------------
+;;; moss-corfu.el ends here ----------------------------------------------------

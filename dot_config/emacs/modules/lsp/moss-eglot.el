@@ -8,7 +8,8 @@
 (use-package eglot
   :hook
   ((emacs-lisp-mode . eglot-ensure)
-   (java-mode . eglot-ensure))
+   (java-mode . eglot-ensure)
+   (python-mode . eglot-ensure))
 
   :bind
   (:map eglot-mode-map
