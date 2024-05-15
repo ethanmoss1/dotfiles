@@ -7,7 +7,7 @@
 (message "[ Moss ] Loading module, modus-themes  ... ")
 
 (use-package modus-themes
-  :init
+  :config
   (setq
    modus-themes-italic-constructs t
    modus-themes-bold-constructs t
@@ -31,13 +31,7 @@
   ;;    (agenda-structure . (variable-pitch light 1.8))
   ;;    (t . (1.1)))
   )
-  :config
-  ;; Light
-  ;; (load-theme 'modus-operandi t)
-  ;; (load-theme 'modus-operandi-tinted t)
-
-  ;; Dark
-  (load-theme 'modus-vivendi t))
+  (load-theme 'modus-vivendi-tinted t))
 
 (provide 'moss-modus-themes)
 ;;; moss-modus-themes.el ends here -----------------------------------------------------
