@@ -13,36 +13,38 @@
   ;; currently exwm is changing repo, recipes havent been updated correctly
   :after xelb
   :ensure (:host github :repo "emacs-exwm/exwm")
+  :hook
+  (exwm-update-class . (lambda ()
+                         (exwm-workspace-rename-buffer exwm-class-name)))
   :config
   ;; system tray
   (require 'exwm-systemtray)
   (exwm-systemtray-enable)
+
+  ;; Hide the minibuffer
+  ;; (setq exwm-workspace-minibuffer-position 'bottom)
 
   ;; allow resizing of x applications
   (setq window-divider-default-right-width 12
         window-divider-default-places 'right-only)
   (window-divider-mode)
 
-
-  :hook
-  (exwm-update-class . (lambda ()
-                         (exwm-workspace-rename-buffer exwm-class-name)))
-
-  :custom
-  (exwm-workspace-number 3)
-  (exwm-input-global-keys
+  ;; Set up workspaces and hotkeys
+  (setq exwm-workspace-number 3)
+  (setq exwm-input-global-keys
    `(([s-left] . windmove-left)
      ([s-right] . windmove-right)
      ([s-up] . windmove-up)
      ([s-down] . windmove-down)
 
      ;; 's-r': Reset (to line-mode).
-     ;; ([s-r] . exwm-reset)
+     ([s-r] . exwm-reset)
 
-     ;; ([?\s-w] . exwm-workspace-switch)
-     ([s-tab] . (lambda (command)
-                    (interactive (list (read-shell-command "$ ")))
-                    (start-process-shell-command command nil command)))
+     ([?\s-w] . exwm-workspace-switch)
+     ;; ([s-tab] . (lambda (command)
+     ;;                (interactive (list (read-shell-command "$ ")))
+     ;;                (start-process-shell-command command nil command)))
+     ([s-tab] . app-launcher-run-app)
      ,@(mapcar (lambda (i)
                  `(,(kbd (format "s-%d" i)) .
                    (lambda ()
@@ -51,7 +53,7 @@
                (number-sequence 0 9))))
 
   ;; Mimic behaviour of emacs bindings im x sessions
-  (exwm-input-simulation-keys
+  (setq exwm-input-simulation-keys
         '(
           ;; movement
           ([?\C-b] . [left])
@@ -75,11 +77,16 @@
           ;; save
           ([C-x C-s] . [?\C-s])
           ;; exit
-          ([?\C-g] . [escape])
-          )))
-;; If we are using EWXM, enable the interesting stuff
-(use-package exwm-modeline
-  :config (exwm-modeline-mode))
+          ([?\C-g] . [escape]))))
+
+;; Set up tabbar as a status bar
+(use-package tab-bar
+  :ensure nil
+  :config
+  (tab-bar-mode))
+
+(use-package app-launcher
+  :ensure (:host github :repo "SebastienWae/app-launcher"))
 
 (provide 'moss-exwm)
 ;;; moss-exwm.el ends here -----------------------------------------------------
