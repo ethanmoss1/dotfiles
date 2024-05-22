@@ -8,8 +8,9 @@
 
 (use-package ispell
   :ensure nil
-  :init
-  (setq ispell-dictionary "british"))
+  :custom
+  (ispell-dictionary "british")
+  (ispell-program-name (executable-find "hunspell")))
 
 (provide 'moss-ispell)
 ;;; moss-ispell.el ends here -----------------------------------------------------

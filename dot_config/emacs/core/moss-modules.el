@@ -19,6 +19,7 @@
 (require 'moss-savehist)
 (require 'moss-display-fill-column)
 (require 'moss-ispell)
+(require 'moss-programming)
 
 ;; External Packages -----------------------------------------------------------
 
@@ -49,6 +50,7 @@
 ;; (require 'moss-company-math)
 (require 'moss-study)
 (require 'moss-hl-todo)
+
 
 ;; Modify packages for use on android
 (require 'moss-android)

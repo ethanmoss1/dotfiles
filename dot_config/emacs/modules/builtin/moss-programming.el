@@ -8,16 +8,14 @@
 
 (use-package emacs
   :ensure nil
-  :hook (prog-mode . moss/programming-minor-modes)
-  :custom
-  (ispell-program-name (executable-find "hunspell")))
+  :hook (prog-mode . moss/programming-minor-modes))
 
 (defun moss/programming-minor-modes ()
-  "Enabe minor modes for programming buffer"
+  "Enable minor modes for programming buffer"
   (display-line-numbers-mode)
   (hl-line-mode)
   (column-number-mode)
-  ;; (flyspell-prog-mode)
+  ;;(flyspell-prog-mode)
   (rainbow-mode))
 
 (provide 'moss-programming)
