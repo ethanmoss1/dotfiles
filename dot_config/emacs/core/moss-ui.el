@@ -89,6 +89,13 @@
 (windmove-default-keybindings 'super)
 (setq windmove-wrap-around t)
 
+;; Vertical border in terminal
+(defun moss/change-window-divider ()
+  (let ((display-table (or buffer-display-table standard-display-table)))
+    (set-display-table-slot display-table 5 ?║)
+    (set-window-display-table (selected-window) display-table)))
+(add-hook 'window-configuration-change-hook 'moss/change-window-divider)
+
 ;; No fringe
 ;; (fringe-mode 8)
 
