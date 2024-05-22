@@ -30,7 +30,7 @@
 (setq mouse-wheel-follow-mouse 't) ; scroll window under mouse
 
 ;; Scrolling via Keyboard
-(setq scroll-margin 0)  ; Scroll when x lines away from window top and bottom.
+(setq scroll-margin 2)  ; Scroll when x lines away from window top and bottom.
 (setq scroll-step 0)  ; scroll amount
 (setq scroll-conservatively most-positive-fixnum)  ; dont want to jumps around
 ;; (setq maximum-scroll-margin 0.3)
@@ -95,9 +95,6 @@
     (set-display-table-slot display-table 5 ?║)
     (set-window-display-table (selected-window) display-table)))
 (add-hook 'window-configuration-change-hook 'moss/change-window-divider)
-
-;; No fringe
-;; (fringe-mode 8)
 
 ;; No ugly button for checkboxes
 (setq widget-image-enable nil)

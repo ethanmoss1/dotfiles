@@ -23,7 +23,8 @@
         ("RET" . 'newline-and-indent)
         ("C-x k" . 'kill-current-buffer)   ; Kill buffer without asking which one
         ("C-x 2" . 'split-window-below-and-focus)
-        ("C-x 3" . 'split-window-right-and-focus)))
+        ("C-x 3" . 'split-window-right-and-focus)
+        ("<home>" . 'back-to-indentation)))
 
 (provide 'moss-keybindings)
 ;;; moss-keybindings.el ends here
