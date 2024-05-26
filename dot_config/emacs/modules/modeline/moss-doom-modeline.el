@@ -12,7 +12,7 @@
   :config
   (doom-modeline-mode 1)
   :custom
-  (doom-modeline-mu4e t)
+  ;; (doom-modeline-mu4e t)
   (doom-modeline-major-mode-icon nil)
   (doom-modeline-buffer-file-name-style 'auto)
   (doom-modeline-buffer-encoding nil)

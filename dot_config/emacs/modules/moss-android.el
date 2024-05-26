@@ -7,6 +7,7 @@
 (message "[ Moss ] Loading module, android  ... ")
 
 (server-start)
+(setq termux-dir "/data/data/com.termux/")
 (push (concat "TEXMFLOCAL=" termux-dir "files/usr/share/texlive/texmf-local") process-environment)
 (push (concat "TEXMFROOT=" termux-dir "files/usr/share/texlive/2024") process-environment)
 
