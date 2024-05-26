@@ -19,6 +19,7 @@
 (require 'moss-savehist)
 (require 'moss-display-fill-column)
 (require 'moss-ispell)
+(require 'moss-tab-bar)
 (require 'moss-programming)
 
 ;; External Packages -----------------------------------------------------------
