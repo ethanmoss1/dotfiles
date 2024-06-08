@@ -45,13 +45,10 @@
 (require 'moss-docker)
 (require 'moss-org-fragtog)
 (require 'moss-conf-mode)
-;; (require 'moss-company)
 (require 'moss-corfu)
 (require 'moss-bluetooth)
-;; (require 'moss-company-math)
 (require 'moss-study)
 (require 'moss-hl-todo)
-
 
 ;; Modify packages for use on android
 (require 'moss-android)
