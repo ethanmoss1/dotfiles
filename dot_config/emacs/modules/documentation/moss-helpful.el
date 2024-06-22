@@ -10,7 +10,7 @@
   ("C-h v" . 'helpful-variable)
   ("C-h f" . 'helpful-callable)
   ("C-h k" . 'helpful-key)
-  )
+  ("C-h o" . 'helpful-symbol))
 
 
 

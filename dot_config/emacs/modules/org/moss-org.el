@@ -56,7 +56,13 @@
    'org-babel-load-languages '((python . t)
                                (gnuplot . t)
                                (maxima . t)
+<<<<<<< HEAD
                                (shell . t)))
+=======
+                               (shell . t)
+                               (C . t)
+                               ))
+>>>>>>> b8242dc (FIX: EAT, ORG, Helpful and magit)
 
   ;; :custom-face
   ;; (org-level-1 ((t (:inherit outline-1 :height 1.75))))
