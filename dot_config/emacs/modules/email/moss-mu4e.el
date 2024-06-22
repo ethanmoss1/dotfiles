@@ -11,16 +11,17 @@
 
 (use-package mu4e
   :ensure (:host github
-		     :files ("build/mu4e/*.el")
-             ;; :branch "master"
-             :branch "release/1.10"
-		     :repo "djcb/mu"
-		     :pre-build (("./autogen.sh")
-                         ("make")))
+           :repo "djcb/mu"
+           :branch "release/1.10"
+           :pre-build (("./autogen.sh") ("make"))
+           :files ("build/mu4e/*.el"))
 
   :commands (mu4e)
 
   :config
+  ;; (setq mu4e-maildir "/home/ethan/Mail")
+  (setq mu4e-maildir "/ssh:server:/home/ethan/Mail/")
+
   ;; use pass to store passwords
   ;; file auth looks for is ~/.password-store/<smtp.host.tld>:<port>/<name>
   (auth-source-pass-enable)
@@ -39,7 +40,7 @@
   (setq message-kill-buffer-on-exit t)
   (setq mu4e-use-fancy-chars t)
   (setq mu4e-get-mail-command "mbsync -a")
-  (setq mu4e-maildir "/home/ethan/Mail")
+
 
   (setq mu4e-contexts (list
                   ;; Cywinskimoss Gmail Account
@@ -68,12 +69,6 @@
                            (mu4e-refile-folder  . "/wowethm/[Gmail]/All Mail")
                            (mu4e-trash-folder   . "/wowethm/[Gmail]/Trash"))))))
 
-;; Show how many unread messages
-;; (use-package mu4e-alert
-;;   :config
-;;   (mu4e-alert-enable-mode-line-display)
-;;   (mu4e-alert-enable-notifications)
-;;   ;; (mu4e-modeline-mode -1))
 (message "mu4e loaded")
 (provide 'moss-mu4e)
 
