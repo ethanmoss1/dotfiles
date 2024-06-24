@@ -25,9 +25,7 @@
                                  (:name "important" :query "tag:important" :key "p")
                                  (:name "all mail" :query "*" :key "a")))
   ;;;; Notmuch - Mail view
-  (setq mm-text-html-renderer 'shr)
-
-  )
+  (setq mm-text-html-renderer 'shr))
 
 ;;;; ----------------------------------------------------
 ;;;; Additional config for future use
