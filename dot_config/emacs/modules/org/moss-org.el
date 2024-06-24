@@ -56,9 +56,8 @@
    'org-babel-load-languages '((python . t)
                                (gnuplot . t)
                                (maxima . t)
-                               (shell . t)))
-                               (C . t)
-                               ))
+                               (shell . t)
+                               (C . t)))
 
   ;; :custom-face
   ;; (org-level-1 ((t (:inherit outline-1 :height 1.75))))
