@@ -1,0 +1,18 @@
+# Host options
+Host laptop
+     Hostname   192.168.0.11
+
+Host server
+     Hostname   192.168.0.10
+
+# Specifically for notmuch email when accessesing on a remote server
+Host notmuch
+     Hostname   192.168.0.10
+     ControlMaster auto
+     ControlPath ~/.ssh/master-%h@%p:%r
+     ControlPersist 15m
+
+# Catchall if not defined above
+Host *
+     User       ethan
+     Port       22
