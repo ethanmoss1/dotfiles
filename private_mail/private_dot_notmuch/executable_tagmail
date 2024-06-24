@@ -1,0 +1,73 @@
+#!/bin/bash
+# tag all new main
+/usr/bin/notmuch new
+
+# Tag mailing lists and remove them from general inbox
+notmuch tag -inbox +exwm to:exwm@noreply.github.com
+notmuch tag -inbox +xelb to:xelb@noreply.github.com
+
+
+# Me
+notmuch tag -inbox +me from:cywinskimoss@gmail.com or from:wow.ethm@gmail.com
+
+# Family related emails.
+## Familiy safety for the kids
+notmuch tag -inbox -unread +familysafe from:families-noreply@google.com or from:familysafety@microsoft.com
+notmuch tag -inbox +familysafe from:account-security-noreply@accountprotection.microsoft.com
+
+
+# Shopping and delivery information
+## Amazon
+notmuch tag -inbox -unread +shopping +amazon from:*@amazon.co.uk or from:*@amazon.com
+
+## Ebay
+notmuch tag -inbox -unread +shopping +ebay from:*ebay.co.uk or from:*ebay.com
+
+## Autotrader listings
+notmuch tag -inbox +autotrader from:*@service.autotrader.co.uk
+
+
+# Finances
+## O2 billing
+notmuch tag -inbox -unread +finance +bill +sims +o2 from:"O2 Billing"
+
+## O2 general
+notmuch tag -inbox -unread +o2 +sims from:noreply@s-email-o2.co.uk or from:o2payments@s-email-o2.co.uk or from:o2shop@s-email-o2.co.uk
+
+## Virgin media
+notmuch tag -inbox -unread +virgin +internet from:*@virginmedia.co.uk
+
+## EON next
+notmuch tag -inbox -unread +eon +energy from:hi@eonnext.com
+notmuch tag +bill tag:eon and subject:"FYI: Your energy statement"
+
+## paypal
+notmuch tag -inbox -unread +receipt +paypal from:service@paypal.co.uk
+
+## Uber eats
+notmuch tag -inbox -unread +receipt +uber from:"Uber Receipts"
+
+## clearscore
+notmuch tag -inbox +clearscore from:"Clearscore"
+notmuch tag -unread tag:clearscore and from:marketing@clearscore.com
+
+
+# Uni related emails
+## Open uni
+notmuch tag -inbox +uni from:*@open.ac.uk
+notmuch tag -inbox -unread +uni from:*@info.open.ac.uk or from:info@mail.openuniversity.co.uk
+notmuch tag +important from:ETMA-Admin@open.ac.uk
+
+## Cisco
+notmuch tag -inbox -unread from:netacademail@external.cisco.co.uk or from:netacademail@external.cisco.com
+
+# health related
+notmuch tag -inbox +dentist from:Braintree@mail.together.dental
+notmuch tag -inbox +fitbit from:"Fitbit"
+
+# Other
+notmuch tag -inbox -unread +tfl from:*@email.tfl.gov.uk
+notmuch tag +gov from:*.gov.uk
+notmuch tag -inbox +youtube from:*@youtube.co.uk or from:*@youtube.com
+notmuch tag -inbox +halfords from:*halfords.com or from:*halfords.co.uk
+notmuch tag -inbox +family from:lyndamiller1987@gmail.com
