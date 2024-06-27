@@ -1,27 +1,51 @@
-;;;; init.el --- Personalised Emacs Configuration
-;;
-;;;; Commentary : --------------------------------------------------------------
-;; Core initalisation for Moss-Emacs. Influenced by Jimeh's .Emacs.d (Emacs
-;; Siren) which was inspired by Emacs Prelude. UI and overall design by Nano
-;; emacs with some tweaks.  Some other ideas from Jerrypnz and his Hydra focused
-;; emacs.
-;;
-;;;; References : --------------------------------------------------------------
+;;; init.el --- My Personalised Emacs Configuration  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2024  Ethan Moss
+
+;; Author: Ethan Moss <cywinskimoss@gmail.com>
+;; Keywords: init
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;;; Commentary:
+;; My Personalised Emacs Configuration
+
+;; Core initalisation for my modularised Emacs. Influenced by Jimeh's .Emacs.d
+;; (EmacsSiren) which was inspired by Emacs Prelude. UI and overall design by
+;; Nanoemacs with some tweaks.  Some other ideas from Jerrypnz and his Hydra
+;; focused emacs.
+
+;; Taking these inital starting points I developed a modulariased approach that
+;; takes each package and puts them into modules, these modules arent just
+;; external packages but configuration of built in packages as well as custom
+;; modules that contain my own code for a specific function.
+
+;;;; References:
 ;; Emacs Siren .............................. https://github.com/jimeh/.emacs.d
 ;; Emacs Prelude ........................... https://github.com/bbatsov/prelude
 ;; Emacs Nano ........................... https://github.com/rougier/nano-emacs
 ;; Jerrypnz hydra ........................ https://github.com/jerrypnz/.emacs.d
-;;
-;;;; Code: ---------------------------------------------------------------------
+
+;;;; Code:
 
 ;; Get the device we are on, for specific settings
-
 (defvar my-devices
   '("laptop"
     "server"
     "tablet")
-  "List of devices that I run Emacs on. This effect whether
-packages, settings,variables, ect. are set")
+  "List of devices that I run Emacs on. This effects
+ whether packages, settings,variables, ect. are set")
 
 (let ((hostname-file (concat user-emacs-directory "hostname")))
   (if (not (file-exists-p hostname-file))
@@ -31,7 +55,8 @@ packages, settings,variables, ect. are set")
                       (insert-file-contents hostname-file)
                       (buffer-string))))
 
-;; Set up module loading
+
+;; Set up module loading and creation
 (defvar module-dir
   (concat user-emacs-directory "modules/")
   "Directory where the modules are located")
@@ -58,64 +83,55 @@ If called interactively, select MODULE to load from the list of available module
     (if (not (eq module nil))
         (module--to-load module))))
 
-;; Load modules
-(mapcar 'module-load
-        '(;;;;;; ---- List of modules to load ----
-          ;; -- Package manager --
-          "elpaca"
-          ;; "straight"
+(defun module-new ()
+  "Create a new module file in the modules directory that allows
+loading of the module, C-u allows loading of the module straight
+after creating the file (not implemented yet)"
+  (interactive)
+  (let ((pkg-name (read-string "Package Name: "))
+		(year (format-time-string "%Y"))
+		(keywords (read-string "Keywords describing package: "))
+		(short-desc (read-string "Short description of package: "))
+		(long-desc (read-string "Long description of package: ")))
+	(with-temp-file (concat module-dir pkg-name ".el")
+      (insert (concat ;; -- START - New module contents --
+			   ";;; " pkg-name ".el --- " short-desc "  -*- lexical-binding: t; -*-\n"
+			   "\n"
+			   ";; Copyright (C) " year "  Ethan Moss\n"
+			   "\n"
+			   ";; Author: Ethan Moss <cywinskimoss@gmail.com>\n"
+			   ";; Keywords: " keywords "\n"
+			   "\n"
+			   ";; This program is free software; you can redistribute it and/or modify\n"
+			   ";; it under the terms of the GNU General Public License as published by\n"
+			   ";; the Free Software Foundation, either version 3 of the License, or\n"
+			   ";; (at your option) any later version.\n"
+			   "\n"
+			   ";; This program is distributed in the hope that it will be useful,\n"
+			   ";; but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+			   ";; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+			   ";; GNU General Public License for more details.\n"
+			   "\n"
+			   ";; You should have received a copy of the GNU General Public License\n"
+			   ";; along with this program.  If not, see <https://www.gnu.org/licenses/>.\n"
+			   "\n"
+			   ";;; Commentary:\n"
+			   ";; " short-desc "\n"
+			   "\n"
+			   ";; " long-desc "\n"
+			   "\n"
+			   ";;; Code:\n"
+			   "\n"
+			   "(use-package "pkg-name")\n"
+			   "\n"
+			   "(provide '"pkg-name")\n"
+			   ";;; "pkg-name".el ends here\n"))))) ;; -- END - New module contents --
 
-          ;; Combine to just ’Emacs’
-          "keybindings"
-          "ui"
-          "editor"
-
-          ;;(if (string-equal my-hostname "laptop")
-          ;;    "exwm")
-
-          ;; -- Compolsory Modules --
-          "vertico"
-          "orderless"
-          "marginalia"
-          "chezmoi"
-
-          ;; -- Built-in --
-          "modus-themes"
-          ;; "dired"
-          ;; "recentf"
-          ;; "savehist"
-          ;; "display-fill-column"
-          ;; "ispell"
-          ;; "tab-bar"
-          ;; "programming"
-          ;; "alltheicons"
-          ;; "personal-themeing"
-          ;; "helpful"
-          ;; "org"
-          ;; "consult"
-          ;; "rainbow"
-          ;; "magit"
-          ;; "pdf-tools"
-          ;; "maxima"
-          ;; "gnuplot"
-          ;; "notmuch"
-          ;; "doom-modeline"
-          ;; "eat"
-          ;; "docker"
-          ;; "org-fragtog"
-          ;; "conf-mode"
-          ;; "corfu"
-          ;; "bluetooth"
-          ;; "study"
-          ;; "hl-todo"
-          ;; "android"
-          )) ;; -- End of Modules --
+(load-file (concat user-emacs-directory "modules-list.el"))
 
 ;; Customise file - for semi-temporary customisations
 (setq custom-file (concat user-emacs-directory "custom-file.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; elpaca wait?
-
-;; Init file ends here
+;; init.el ends here

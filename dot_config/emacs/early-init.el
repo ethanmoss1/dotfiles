@@ -1,11 +1,3 @@
-;;; early-init.el --- Early initalisation file
-
-;;; Commentary:
-;; Set a couple of flags to make sure Emacs loads smoothly
-;; Massive thanks to Jimeh, alot of the code here is from his siren Emacs.
-;; Credit: https://github.com/jimeh/.emacs.d
-
-;;; Code:
 ;; Native-Comp
 (setq native-comp-speed 2
       comp-speed 2)
@@ -13,9 +5,6 @@
       comp-async-report-warnings-errors nil)
 (setq native-comp-async-query-on-exit t
       comp-async-query-on-exit t)
-
-;; Defer garbage collection further back in the startup process
-;; (setq gc-cons-threshold most-positive-fixnum)
 
 (let ((deny-list '("\\(?:[/\\\\]\\.dir-locals\\.el$\\)")))
   (if (boundp 'native-comp-deferred-compilation-deny-list)
@@ -36,31 +25,6 @@
       (call-process find-exec nil nil nil eln-cache-dir
                     "-name" "*.eln" "-size" "0" "-delete" "-or"
                     "-name" "*.eln.tmp" "-size" "0" "-delete"))))
-
-(if (eq system-type 'android)
-    (progn
-      (message "Android system, updating paths and libs for termux")
-      (setq termux-dir "/data/data/com.termux/")
-      (setq shell-file-name (concat termux-dir "files/usr/bin/bash"))
-      (setq user-emacs-directory "~/.config/emacs/")
-      (setenv "HOME" (concat termux-dir "files/home/"))
-      (setenv "PATH"
-              (format "%s:%s"
-                      (concat
-                       termux-dir
-                       "files/usr/bin"
-                       ":"
-                       termux-dir
-                       "files/usr/bin/texlive")
-			     (getenv "PATH")))
-      (setenv "LD_LIBRARY_PATH" (format "%s:%s"
-                                        (concat
-                                         termux-dir
-				                         "files/usr/lib")
-					(getenv "LD_LIBRARY_PATH")))
-      (push (concat termux-dir "files/usr/bin") exec-path)
-      (push (concat termux-dir "files/usr/bin/texlive") exec-path))
-  (message "Not android, continuing"))
 
 (setq package-enable-at-startup nil)
 
