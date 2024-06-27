@@ -1,60 +1,52 @@
-;;; moss-editor --- Main configurations to the base Emacs
+;;; editor.el --- Emacs customisation for editing  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2024 Ethan Moss
+
+;; Author: Ethan Moss <cywinskimoss@gmail.com>
+;; Keywords: startup editing
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; The main conrigurations of the Base Emacs.
+;; Emacs customisation for editing
+
+;; Specific customisations of the Emacs editor that are more sane (maybe?)
 
 ;;; Code:
-(message "[ Moss ] Loading Core Editor Configurations  ... ")
-
-;; MAJOR: CUA MODE
-;; (cua-mode t)
-
-;; Newline at end of file
-(setq require-final-newline t)
-(setq-default indent-tabs-mode nil)  ; always replace tabs with spaces
-(setq-default tab-width 4)  ; Visual tab amount
-(setq tab-stop-list (number-sequence 4 120 4))  ; generates tabs distances at 4 spaces increments
-
-;; Electric pairing - close brackets, quotes ect.
+(indent-tabs-mode nil)          ; always replace tabs with spaces
 (electric-quote-mode t)
 (electric-pair-mode t)
-
-;; Dont truncate lines unless I want to
-(setq-default truncate-lines t)
-
-;; Setup Cache for different modules
-(setq save-place-file (moss-cache-dir "saveplace"))
+(global-font-lock-mode t)
 (save-place-mode 1)
+(global-auto-revert-mode 1)    ; updates buffer if file is updated
+(fset 'yes-or-no-p 'y-or-n-p)  ; set all Yes/No to the easier Y/N
 
-(let ((auto-save-dir (moss-cache-dir "autosave/")))
-  (unless (file-exists-p auto-save-dir)
-    (make-directory auto-save-dir))
-  (setq auto-save-interval 20
-        auto-save-file-name-transforms
-        `((".*" ,auto-save-dir t))))
+(setq-default tab-width 4  ; Visual tab amount
+              truncate-lines t
+              fill-column 80)
 
-(setq backup-by-copying t
+(setq tab-stop-list (number-sequence 4 120 4)  ; generates tabs distances at 4 spaces increments
+      require-final-newline t
+      make-backup-files nil
+      backup-by-copying t
       delete-old-versions t
       kept-new-versions 10
       kept-old-versions 0
       vc-make-backup-files t
       version-control t
-      backup-directory-alist `((".*" . ,(moss-cache-dir "backup"))))
+      large-file-warning-threshold nil)
 
-(setq eshell-directory-name (moss-cache-dir "eshell"))
-(setq transient-history-file (moss-cache-dir "transient/history.el"))
-(setq transient-levels-file (moss-cache-dir "transient/levels.el"))
-(setq transient-values-file (moss-cache-dir "transient/values.el"))
-
-(setq make-backup-files nil)
-(setq large-file-warning-threshold nil)
-
-;; Font-Core
-(global-font-lock-mode t)
-;; autorevert
-(global-auto-revert-mode 1)  ; updates buffer if file is updated
-;; Aliasing
-(fset 'yes-or-no-p 'y-or-n-p)  ; set all Yes/No to the easier Y/N
 ;; Hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'prog-mode-hook 'subword-mode)
@@ -74,40 +66,6 @@
 (delete-selection-mode 1)
 (line-number-mode -1)
 
-(setq-default fill-column 80)
-
-;; Moderate font lock
-(setq font-lock-maximum-decoration t) ; T for max, nil for minimum.
-(setq font-lock-maximum-size 256000)
-
-;; Size of temporary buffers
-(temp-buffer-resize-mode)
-(setq temp-buffer-max-height 8)
-
-;; Minimum window height
-(setq window-min-height 1)
-
-;; Buffer encoding
-(prefer-coding-system       'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-language-environment   'utf-8)
-
-;; Unique buffer names
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'reverse
-      uniquify-separator " • "
-      uniquify-after-kill-buffer-p t
-      uniquify-ignore-buffers-re "^\\*")
-
-;; Default shell in term
-;; (unless
-;;     (or (eq system-type 'windows-nt)
-;;         (not (file-exists-p "/bin/zsh")))
-;;   (setq-default shell-file-name "/bin/zsh")
-;;   (setq explicit-shell-file-name "/bin/zsh"))
-
 ;; Kill term buffer when exiting
 (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
   "Advice to kill buffer when you exit terminal."
@@ -118,5 +76,5 @@
     ad-do-it))
 (ad-activate 'term-sentinel)
 
-(provide 'moss-editor)
-;;; moss-editor.el ends here
+(provide 'editor)
+;;; editor.el ends here
