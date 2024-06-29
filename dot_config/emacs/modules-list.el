@@ -13,7 +13,12 @@
           ;; -- Built in modules --
           ;; List of modules that are part of the emacs distribution and their
           ;; customisation
+          "c-code"
           "startup"
+          "frame"
+          "mouse"
+          "widget"
+                    "uniquify"
           "dired"
 
 		  ;; vvv not done yet vvv
