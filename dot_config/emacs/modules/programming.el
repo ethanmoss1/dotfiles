@@ -1,22 +1,20 @@
-;;; moss-programming.el --- Summary
+;;; programming.el ---
 
 ;;; Commentary : ---------------------------------------------------------------
 
 ;;; Code : ---------------------------------------------------------------------
-
-(message "[ Moss ] Loading module, programming  ... ")
-
 (use-package emacs
   :ensure nil
-  :hook (prog-mode . moss/programming-minor-modes))
+  :hook (prog-mode . programming-minor-modes))
 
-(defun moss/programming-minor-modes ()
+(defun programming-minor-modes ()
   "Enable minor modes for programming buffer"
-  (display-line-numbers-mode)
-  (hl-line-mode)
-  (column-number-mode)
-  ;;(flyspell-prog-mode)
-  (rainbow-mode))
+  (display-line-numbers-mode 1)
+  (hl-line-mode 1)
+  (column-number-mode 1)
+  (flyspell-prog-mode)
+  (if (fboundp 'rainbow-mode)
+	  (rainbow-mode 1)))
 
-(provide 'moss-programming)
-;;; moss-programming.el ends here -----------------------------------------------------
+(provide 'programming)
+;;; programming.el ends here -----------------------------------------------------

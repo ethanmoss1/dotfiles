@@ -3,31 +3,17 @@
 ;;; Commentary:
 
 ;;; Code:
-
-(message "[ Moss ] Loading module, recentf  ... ")
-
 (use-package recentf
   :ensure nil
   :demand t
-
   :custom
-  (recentf-save-file (moss-cache-dir "recentf"))
+  (recentf-save-file (concat user-emacs-directory "recentf"))
   (recentf-max-saved-items 10000)
   (recentf-max-menu-items 1000)
   (recentf-auto-cleanup 'never)
   (recentf-exclude '("\\.git.*"))
-
-  ;; :preface
-  ;; (defun siren-recentf-exclude-p (file)
-  ;;   "A predicate to decide whether to exclude FILE from recentf."
-  ;;   (let ((file-dir (file-truename (file-name-directory file))))
-  ;;     (-any-p (lambda (dir)
-  ;;               (string-prefix-p dir file-dir))
-  ;;             (mapcar 'file-truename (list siren-cache-dir package-user-dir)))))
-
   :config
-  ;; (add-to-list 'recentf-exclude 'siren-recentf-exclude-p)
-  (recentf-mode +1))
+  (recentf-mode t))
 
 (provide 'moss-recentf)
 ;;; moss-recentf.el ends here

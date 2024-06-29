@@ -38,14 +38,17 @@
 ;; Jerrypnz hydra ........................ https://github.com/jerrypnz/.emacs.d
 
 ;;;; Code:
+(defgroup config nil
+  "test group"
+  :group 'emacs)
 
 ;; Get the device we are on, for specific settings
 (defvar my-devices
   '("laptop"
     "server"
     "tablet")
-  "List of devices that I run Emacs on. This effects
- whether packages, settings,variables, ect. are set")
+  "List of devices that I run Emacs on. This effects whether certain packages,
+settings, variables, ect. are set or loaded")
 
 (let ((hostname-file (concat user-emacs-directory "hostname")))
   (if (not (file-exists-p hostname-file))
@@ -54,7 +57,6 @@
   (setq my-hostname (with-temp-buffer
                       (insert-file-contents hostname-file)
                       (buffer-string))))
-
 
 ;; Set up module loading and creation
 (defvar module-dir
@@ -78,10 +80,14 @@
  purpose and its configuration
 If called interactively, select MODULE to load from the list of available modules."
   (interactive)
-  (if (called-interactively-p)
-      (module--to-load (module--get-option))
-    (if (not (eq module nil))
-        (module--to-load module))))
+  (condition-case err
+      (module--to-load module)
+	(error (display-warning 'config
+							(format-message "Loading %s: %s"
+											(or (concat "module " module)
+												"interactive module")
+											(error-message-string err))
+							:warning))))
 
 (defun module-new ()
   "Create a new module file in the modules directory that allows
@@ -93,39 +99,30 @@ after creating the file (not implemented yet)"
 		(keywords (read-string "Keywords describing package: "))
 		(short-desc (read-string "Short description of package: "))
 		(long-desc (read-string "Long description of package: ")))
-	(with-temp-file (concat module-dir pkg-name ".el")
+    (with-temp-file (concat module-dir pkg-name ".el")
       (insert (concat ;; -- START - New module contents --
-			   ";;; " pkg-name ".el --- " short-desc "  -*- lexical-binding: t; -*-\n"
-			   "\n"
-			   ";; Copyright (C) " year "  Ethan Moss\n"
-			   "\n"
-			   ";; Author: Ethan Moss <cywinskimoss@gmail.com>\n"
-			   ";; Keywords: " keywords "\n"
-			   "\n"
+			   ";;; " pkg-name ".el --- " short-desc "  -*- lexical-binding: t;"
+               "-*-\n\n;; Copyright (C) " year "  Ethan Moss\n\n"
+               ";; Author: Ethan Moss <cywinskimoss@gmail.com>\n"
+			   ";; Keywords: " keywords "\n\n"
 			   ";; This program is free software; you can redistribute it and/or modify\n"
 			   ";; it under the terms of the GNU General Public License as published by\n"
 			   ";; the Free Software Foundation, either version 3 of the License, or\n"
-			   ";; (at your option) any later version.\n"
-			   "\n"
+			   ";; (at your option) any later version.\n\n"
 			   ";; This program is distributed in the hope that it will be useful,\n"
 			   ";; but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 			   ";; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-			   ";; GNU General Public License for more details.\n"
-			   "\n"
+			   ";; GNU General Public License for more details.\n\n"
 			   ";; You should have received a copy of the GNU General Public License\n"
-			   ";; along with this program.  If not, see <https://www.gnu.org/licenses/>.\n"
-			   "\n"
-			   ";;; Commentary:\n"
-			   ";; " short-desc "\n"
-			   "\n"
-			   ";; " long-desc "\n"
-			   "\n"
-			   ";;; Code:\n"
-			   "\n"
-			   "(use-package "pkg-name")\n"
-			   "\n"
-			   "(provide '"pkg-name")\n"
-			   ";;; "pkg-name".el ends here\n"))))) ;; -- END - New module contents --
+			   ";; along with this program.  If not, see <https://www.gnu.org/licenses/>.\n\n"
+			   ";;; Commentary:\n;; " short-desc "\n\n"
+			   ";; " long-desc "\n\n"
+			   ";;; Code:\n\n"
+			   "(use-package " pkg-name ")\n\n"
+			   "(provide '" pkg-name ")\n"
+			   ";;; " pkg-name ".el ends here\n")))
+    ;; -- END - New module contents --
+    (find-file (concat module-dir pkg-name ".el"))))
 
 (load-file (concat user-emacs-directory "modules-list.el"))
 

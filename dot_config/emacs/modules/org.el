@@ -33,11 +33,6 @@
   (insert "\\]")
   (previous-line))
 
-(defun concatnl (&strings)
-  "Concat each argument with a new line after each string."
-  (mapcar (lambda (str) (concat str "\n")) &strings))
-
-
 
 ;; (defun org--get-display-dpi ()
 ;;   "MODIFIED FOR TABLET - MOSS
@@ -70,7 +65,7 @@
   (org-directory "~/documents/org/")
   (org-agenda-files (directory-files-recursively "~/documents/org" "\\.org$"))
   (org-format-latex-options (plist-put org-format-latex-options :scale 1))
-
+  (org-hide-emphasis-markers t)
   ;; (org-refile-targets
   ;;     '((nil :maxlevel . 3)
   ;;       (org-agenda-files :maxlevel . 3)))

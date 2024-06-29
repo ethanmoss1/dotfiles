@@ -31,19 +31,16 @@
 (use-package dired
   :ensure nil
   :defer t
-  :bind
-  (:map dired-mode-map
-        ("<left>" . dired-up-directory)
-        ("<right>" . dired-find-file))
-
-  :config
-  (setq dired-listing-switches "-laGvh --group-directories-first"
-		dired-auto-revert-buffer 'dired-directory-changed-p
-		dired-clean-confirm-killing-deleted-buffers t
-		dired-clean-up-buffers-too t
-		dired-create-destination-dirs 'always
-		dired-free-space 'separate
-		dired-mouse-drag-files 'move))
+  :bind (:map dired-mode-map
+			  ("<left>"  . dired-up-directory)
+			  ("<right>" . dired-find-file))
+  :config (setq dired-listing-switches "-laGvh --group-directories-first"
+				dired-auto-revert-buffer 'dired-directory-changed-p
+				dired-clean-confirm-killing-deleted-buffers t
+				dired-clean-up-buffers-too t
+				dired-create-destination-dirs 'always
+				dired-free-space 'separate
+				dired-mouse-drag-files 'move))
 
 (provide 'dired)
 ;;; dired.el ends here

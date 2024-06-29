@@ -7,10 +7,11 @@
 (message "[ Moss ] Loading module, exwm  ... ")
 
 (use-package xelb
+  :if (eq my-hostname "laptop")
   :ensure (:host github :repo "emacs-exwm/xelb"))
 
 (use-package exwm
-  ;; currently exwm is changing repo, recipes havent been updated correctly
+  :if (eq my-hostname "laptop")
   :after xelb
   :ensure (:host github :repo "emacs-exwm/exwm")
   :hook (exwm-update-class . (lambda ()
@@ -74,25 +75,8 @@
           ([?\C-g] . [escape]))))
 
 (use-package app-launcher
+  :if (eq my-hostname "laptop")
   :ensure (:host github :repo "SebastienWae/app-launcher"))
-
-;; (define-keymap
-;;   :name    "desktop-environment-map"
-;;   '())
-
-;; (define-minor-mode desktop-environment-mode
-;;   "A global minor-mode that binds DE keys."
-;;   :global t
-;;   :group 'bindings
-;;   :keymap )
-
-;; (set-keymap-parent exwm-mode-map desktop-environment-mode-map)
-
-;; (keymap-set desktop-environmnt-mode-map
-
-
-;; After everything has loaded
-
 
 (provide 'moss-exwm)
 ;;; moss-exwm.el ends here -----------------------------------------------------

@@ -13,7 +13,10 @@
           ;; -- Built in modules --
           ;; List of modules that are part of the emacs distribution and their
           ;; customisation
+          "startup"
           "dired"
+
+		  ;; vvv not done yet vvv
           "recentf"
 		  "savehist"
           "display-fill-column"

@@ -24,17 +24,18 @@
 ;; Specific customisations of the Emacs editor that are more sane (maybe?)
 
 ;;; Code:
-(indent-tabs-mode nil)          ; always replace tabs with spaces
+(indent-tabs-mode nil)             ; always replace tabs with spaces
 (electric-quote-mode t)
 (electric-pair-mode t)
 (global-font-lock-mode t)
 (save-place-mode 1)
-(global-auto-revert-mode 1)    ; updates buffer if file is updated
-(fset 'yes-or-no-p 'y-or-n-p)  ; set all Yes/No to the easier Y/N
+(global-auto-revert-mode 1)        ; updates buffer if file is updated
+(fset 'yes-or-no-p 'y-or-n-p)      ; set all Yes/No to the easier Y/N
 
-(setq-default tab-width 4  ; Visual tab amount
+(setq-default tab-width 4          ; Visual tab amount
               truncate-lines t
-              fill-column 80)
+              fill-column 80
+			  indent-tabs-mode nil)
 
 (setq tab-stop-list (number-sequence 4 120 4)  ; generates tabs distances at 4 spaces increments
       require-final-newline t

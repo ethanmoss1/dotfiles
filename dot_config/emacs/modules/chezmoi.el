@@ -1,22 +1,10 @@
-;;; moss-chezmoi.el --- Summary
-
-;;; Commentary : ---------------------------------------------------------------
-
-;;; Code : ---------------------------------------------------------------------
-
-(message "[ Moss ] Loading module, chezmoi  ... ")
-
 (use-package chezmoi
   :bind
   ("C-c d f" . 'chezmoi-find)
   ("C-c d s" . 'chezmoi-magit-status)
+  ("C-c d e" . 'chezmoi-goto-emacs-folder)
+  ("C-c d c" . 'chezmoi-goto-chezmoi-folder)
   :config
-  ;;;; For Company
-  ;; (add-hook 'chezmoi-mode-hook #'(lambda ()
-  ;;           (if chezmoi-mode
-  ;;               (add-to-list 'company-backends 'chezmoi-company-backend)
-  ;;             (delete 'chezmoi-company-backend 'company-backends))))
-
   (defun chezmoi-dired-add-marked-files ()
     "Add files marked in Dired to source state."
     (interactive)
@@ -26,7 +14,14 @@
   (defun chezmoi-magit-status ()
     "Show the status of the chezmoi source repository."
     (interactive)
-    (magit-status-setup-buffer (cl-first (chezmoi--dispatch "source-path")))))
+    (magit-status-setup-buffer (cl-first (chezmoi--dispatch "source-path"))))
 
-(provide 'moss-chezmoi)
-;;; moss-chezmoi.el ends here -----------------------------------------------------
+  (defun chezmoi-goto-emacs-folder ()
+	"Go to the emacs user directory"
+	(interactive)
+	(dired user-emacs-directory))
+
+  (defun chezmoi-goto-chezmoi-folder ()
+	"Go to the chezmoi directory"
+    (interactive)
+	(dired "~/.local/share/chezmoi")))
