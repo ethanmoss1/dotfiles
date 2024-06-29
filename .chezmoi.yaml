@@ -1,4 +1,4 @@
-# ~/.local/share/chezmoi/.chezmoi.toml.tmpl  ---  -*- mode:conf -*-
+# ~/.local/share/chezmoi/.chezmoi.yaml  ---  -*- mode:conf -*-
 # =============================================================================
 # Used to customize configuration when doing a `chezmoi init`.
 #
