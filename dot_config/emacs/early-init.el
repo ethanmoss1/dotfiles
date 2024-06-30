@@ -28,8 +28,8 @@
 
 (setq package-enable-at-startup nil)
 
-(setq tool-bar-mode nil
-      menu-bar-mode nil)
+(setq tool-bar-mode nil)
+(menu-bar-mode -1)
 (when (fboundp 'set-scroll-bar-mode)
   (set-scroll-bar-mode nil))
 

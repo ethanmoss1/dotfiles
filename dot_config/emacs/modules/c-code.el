@@ -26,14 +26,18 @@
 ;;; Code:
 (use-package emacs
   :ensure nil
-  :config (setq scroll-margin 2                               ; Scroll when x lines from window boundary.
-                scroll-step 0                                 ; scroll amount
-                scroll-conservatively most-positive-fixnum    ; dont want to jumps around
-                use-dialog-box nil                 ; Dont want GUI popups
-                frame-title-format '("Emacs - " (:eval (if (buffer-file-name)
-                                                           (abbreviate-file-name
-                                                            (buffer-file-name))
-                                                         "%b"))))
+  :config
+  (setq-default tab-width 4          ; Visual tab amount
+                truncate-lines t
+                fill-column 80)
+  (setq scroll-margin 2                               ; Scroll when x lines from window boundary.
+        scroll-step 0                                 ; scroll amount
+        scroll-conservatively most-positive-fixnum    ; dont want to jumps around
+        use-dialog-box nil                 ; Dont want GUI popups
+        frame-title-format '("Emacs - " (:eval (if (buffer-file-name)
+                                                   (abbreviate-file-name
+                                                    (buffer-file-name))
+                                                 "%b"))))
 
   ;; Set default font based on priority list
   (if window-system

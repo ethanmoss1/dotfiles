@@ -50,5 +50,4 @@
          ("<home>" . 'back-to-indentation)  ; TODO: this needs to be based on the derived mode
          ("M-o" . 'other-window)))
 
-(provide 'keybindings)
 ;;; keybindings.el ends here

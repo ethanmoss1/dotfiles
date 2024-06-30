@@ -31,7 +31,7 @@
 (use-package dired
   :ensure nil
   :defer t
-  :bind (:map dired-mode-map
+  :bind (:map dired-mode-map ;; Variable is void when evaluated for first time
 			  ("<left>"  . dired-up-directory)
 			  ("<right>" . dired-find-file))
   :config (setq dired-listing-switches "-laGvh --group-directories-first"
@@ -42,5 +42,4 @@
 				dired-free-space 'separate
 				dired-mouse-drag-files 'move))
 
-(provide 'dired)
 ;;; dired.el ends here

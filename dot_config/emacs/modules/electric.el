@@ -1,9 +1,9 @@
-;;; recentf.el --- Recent files  -*- lexical-binding: t; -*-
+;;; electric.el ---   -*- lexical-binding: t;-*-
 
-;; Copyright (C) 2023  Ethan Moss
+;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: recent files
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,16 +25,10 @@
 
 ;;; Code:
 
-
-(use-package recentf
+(use-package electric
   :ensure nil
-  :demand t
   :config
-  (setq recentf-save-file (concat user-emacs-directory "recentf")
-        recentf-max-saved-items 10000
-        recentf-max-menu-items 1000
-        recentf-auto-cleanup 'never
-        recentf-exclude '("\\.git.*"))
-  (recentf-mode t))
+  (electric-quote-mode t)
+  (electric-pair-mode t))
 
-;;; recentf.el ends here
+;;; electric.el ends here

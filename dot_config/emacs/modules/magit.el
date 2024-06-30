@@ -9,7 +9,9 @@
 (use-package transient)
 
 (use-package magit
-  :after transient)
+  :after transient
+  (setq vc-make-backup-files t
+        version-control t))
 
 (provide 'moss-magit)
 ;;; moss-magit.el ends here

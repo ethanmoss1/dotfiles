@@ -1,9 +1,9 @@
-;;; recentf.el --- Recent files  -*- lexical-binding: t; -*-
+;;; term.el ---   -*- lexical-binding: t;-*-
 
-;; Copyright (C) 2023  Ethan Moss
+;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: recent files
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,16 +25,15 @@
 
 ;;; Code:
 
+;; Kill term buffer when exiting
+(defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+  "Advice to kill buffer when you exit terminal."
+  (if (memq (process-status proc) '(signal exit))
+      (let ((buffer (process-buffer proc)))
+        ad-do-it
+        (kill-buffer buffer))
+    ad-do-it))
 
-(use-package recentf
-  :ensure nil
-  :demand t
-  :config
-  (setq recentf-save-file (concat user-emacs-directory "recentf")
-        recentf-max-saved-items 10000
-        recentf-max-menu-items 1000
-        recentf-auto-cleanup 'never
-        recentf-exclude '("\\.git.*"))
-  (recentf-mode t))
+(ad-activate 'term-sentinel)
 
-;;; recentf.el ends here
+;;; term.el ends here

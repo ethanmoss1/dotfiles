@@ -38,5 +38,4 @@
         inhibit-startup-echo-area-message t
         initial-scratch-message nil))
 
-(provide 'startup)
 ;;; startup.el ends here

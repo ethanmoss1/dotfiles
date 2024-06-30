@@ -73,5 +73,4 @@
 ;; Block until current queue processed.
 (elpaca-wait)
 
-(provide 'moss-package-manager-elpaca)
-;;; moss-package-manager-elpaca.el ends here
+;;; elpaca.el ends here

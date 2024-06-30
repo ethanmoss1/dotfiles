@@ -119,7 +119,6 @@ after creating the file (not implemented yet)"
 			   ";; " long-desc "\n\n"
 			   ";;; Code:\n\n"
 			   "(use-package " pkg-name ")\n\n"
-			   "(provide '" pkg-name ")\n"
 			   ";;; " pkg-name ".el ends here\n")))
     ;; -- END - New module contents --
     (find-file (concat module-dir pkg-name ".el"))))

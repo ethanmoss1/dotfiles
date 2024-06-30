@@ -33,5 +33,4 @@
 		uniquify-after-kill-buffer-p t
 		uniquify-ignore-buffers-re "^\\*"))
 
-(provide 'uniquify)
 ;;; uniquify.el ends here

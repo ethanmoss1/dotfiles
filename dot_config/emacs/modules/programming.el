@@ -1,20 +1,39 @@
-;;; programming.el ---
+;;; programming.el ---   -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2023  Ethan Moss
+
+;; Author: Ethan Moss <cywinskimoss@gmail.com>
+;; Keywords: lisp
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary : ---------------------------------------------------------------
 
 ;;; Code : ---------------------------------------------------------------------
+(defun programming-minor-modes ()
+  "Enable minor modes for programming buffer"
+  (display-line-numbers-mode t)
+  (display-fill-column-indicator-mode t)
+  (hl-line-mode t)
+  (column-number-mode t)
+  (flyspell-prog-mode)
+  (subword-mode t)
+  (if (fboundp 'rainbow-mode)
+	  (rainbow-mode 1)))
+
 (use-package emacs
   :ensure nil
   :hook (prog-mode . programming-minor-modes))
 
-(defun programming-minor-modes ()
-  "Enable minor modes for programming buffer"
-  (display-line-numbers-mode 1)
-  (hl-line-mode 1)
-  (column-number-mode 1)
-  (flyspell-prog-mode)
-  (if (fboundp 'rainbow-mode)
-	  (rainbow-mode 1)))
-
-(provide 'programming)
 ;;; programming.el ends here -----------------------------------------------------

@@ -35,5 +35,4 @@
   ;; No ugly button for checkboxes
   (setq widget-image-enable nil))
 
-(provide 'widget)
 ;;; widget.el ends here

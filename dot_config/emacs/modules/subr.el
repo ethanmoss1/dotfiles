@@ -1,9 +1,9 @@
-;;; recentf.el --- Recent files  -*- lexical-binding: t; -*-
+;;; subr.el ---   -*- lexical-binding: t;-*-
 
-;; Copyright (C) 2023  Ethan Moss
+;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: recent files
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,16 +25,7 @@
 
 ;;; Code:
 
+;; set all Yes/No to the easier Y/N
+(fset 'yes-or-no-p 'y-or-n-p)
 
-(use-package recentf
-  :ensure nil
-  :demand t
-  :config
-  (setq recentf-save-file (concat user-emacs-directory "recentf")
-        recentf-max-saved-items 10000
-        recentf-max-menu-items 1000
-        recentf-auto-cleanup 'never
-        recentf-exclude '("\\.git.*"))
-  (recentf-mode t))
-
-;;; recentf.el ends here
+;;; subr.el ends here

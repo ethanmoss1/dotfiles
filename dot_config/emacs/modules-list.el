@@ -2,29 +2,29 @@
 (mapcar 'module-load
         '(;;;;;; ---- List of modules to load ----
           ;; -- Package manager --
-          "elpaca"               ; Required to load additional packages
-
-          ;; -- Emacs Default --
-          ;; Changes to the way emacs works from the defaults.
-          "keybindings"
-          "ui"
-          "editor"
+          "elpaca"
 
           ;; -- Built in modules --
-          ;; List of modules that are part of the emacs distribution and their
-          ;; customisation
           "c-code"
           "startup"
           "frame"
           "mouse"
           "widget"
-                    "uniquify"
+          "simple"
+          "electric"
+          "font-core"
+          "saveplace"
+          "subr"
+          "files"
+          "delsel"
+          "paren"
+          "uniquify"
           "dired"
-
-		  ;; vvv not done yet vvv
+          "keybindings"
           "recentf"
-		  "savehist"
-          "display-fill-column"
+          "savehist"
+
+          ;; vvv not done yet vvv
 
           ;; -- Compolsory Modules --
           "vertico"

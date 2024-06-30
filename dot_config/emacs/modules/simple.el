@@ -1,9 +1,9 @@
-;;; recentf.el --- Recent files  -*- lexical-binding: t; -*-
+;;; simple.el ---   -*- lexical-binding: t;-*-
 
-;; Copyright (C) 2023  Ethan Moss
+;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: recent files
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,17 +24,15 @@
 ;;
 
 ;;; Code:
-
-
-(use-package recentf
+(use-package simple
   :ensure nil
-  :demand t
   :config
-  (setq recentf-save-file (concat user-emacs-directory "recentf")
-        recentf-max-saved-items 10000
-        recentf-max-menu-items 1000
-        recentf-auto-cleanup 'never
-        recentf-exclude '("\\.git.*"))
-  (recentf-mode t))
+  (setq indent-tabs-mode nil
+		tab-stop-list (number-sequence 4 120 4))  ; generates tabs distances at 4 spaces increments
 
-;;; recentf.el ends here
+  ;; Enable some modes
+  (indent-tabs-mode nil)
+  (line-number-mode -1)
+  (visual-line-mode nil))
+
+;;; simple.el ends here
