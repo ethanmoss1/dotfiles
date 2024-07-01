@@ -1,17 +1,32 @@
-;;; moss-exwm.el --- Summary  -*- lexical-binding: t; -*-
+;;; exwm.el ---   -*- lexical-binding: t; -*-
 
-;;; Commentary : ---------------------------------------------------------------
+;; Copyright (C) 2023  Ethan Moss
 
-;;; Code : ---------------------------------------------------------------------
+;; Author: Ethan Moss <cywinskimoss@gmail.com>
+;; Keywords: lisp
 
-(message "[ Moss ] Loading module, exwm  ... ")
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary :
+
+;;; Code :
 (use-package xelb
-  :if (eq my-hostname "laptop")
+  :if '(eq my-hostname "laptop")
   :ensure (:host github :repo "emacs-exwm/xelb"))
 
 (use-package exwm
-  :if (eq my-hostname "laptop")
+  :if '(eq my-hostname "laptop")
   :after xelb
   :ensure (:host github :repo "emacs-exwm/exwm")
   :hook (exwm-update-class . (lambda ()
@@ -75,8 +90,7 @@
           ([?\C-g] . [escape]))))
 
 (use-package app-launcher
-  :if (eq my-hostname "laptop")
+  :if '(eq my-hostname "laptop")
   :ensure (:host github :repo "SebastienWae/app-launcher"))
 
-(provide 'moss-exwm)
-;;; moss-exwm.el ends here -----------------------------------------------------
+;;; exwm.el ends here -----------------------------------------------------

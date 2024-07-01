@@ -1,35 +1,50 @@
-;;; moss-notmuch.el --- Summary
+;;; notmuch.el ---   -*- lexical-binding: t; -*-
 
-;;; Commentary : ---------------------------------------------------------------
+;; Copyright (C) 2023  Ethan Moss
 
-;;; Code : ---------------------------------------------------------------------
+;; Author: Ethan Moss <cywinskimoss@gmail.com>
+;; Keywords: lisp
 
-(message "[ Moss ] Loading module, notmuch  ... ")
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary :
+
+;;; Code :
 (use-package notmuch
   :config
   ;; Notmuch on remote server, ssh config and custom bash file needed
-  (setq notmuch-command "/data/data/com.termux/files/usr/bin/notmuch")
+  (setq notmuch-command "/data/data/com.termux/files/usr/bin/notmuch"
 
   ;;;; Notmuch - Welcome screen
-  (setq notmuch-show-logo nil)
-  (setq notmuch-hello-sections '(notmuch-hello-insert-header
+		notmuch-show-logo nil
+		notmuch-hello-sections '(notmuch-hello-insert-header
                                  notmuch-hello-insert-search
                                  notmuch-hello-insert-saved-searches
                                  ;; notmuch-hello-insert-recent-searches
-                                 notmuch-hello-insert-alltags))
-  (setq notmuch-saved-searches '((:name "inbox" :query "tag:inbox" :key "i")
+                                 notmuch-hello-insert-alltags)
+		notmuch-saved-searches '((:name "inbox" :query "tag:inbox" :key "i")
                                  (:name "unread" :query "tag:unread" :key "u")
                                  (:name "flagged" :query "tag:flagged" :key "f")
                                  (:name "sent" :query "tag:sent" :key "t")
                                  (:name "important" :query "tag:important" :key "p")
-                                 (:name "all mail" :query "*" :key "a")))
+                                 (:name "all mail" :query "*" :key "a"))
   ;;;; Notmuch - Mail view
-  (setq mm-text-html-renderer 'shr))
+		mm-text-html-renderer 'shr))
 
-;;;; ----------------------------------------------------
+;;;; --------------------------------
 ;;;; Additional config for future use
-;;;; ----------------------------------------------------
+;;;; --------------------------------
 
 ;; To prevent you from having to maintain your GPG private keys on the remote
 ;; server, you can add advice to notmuch-show-view-raw-message to enable epa
@@ -129,5 +144,4 @@
 
 ;;;; ----------------------------------------------------
 
-(provide 'moss-notmuch)
-;;; moss-notmuch.el ends here -----------------------------------------------------
+;;; notmuch.el ends here

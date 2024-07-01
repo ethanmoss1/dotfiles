@@ -18,9 +18,9 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary : ---------------------------------------------------------------
+;;; Commentary :
 
-;;; Code : ---------------------------------------------------------------------
+;;; Code :
 (defun programming-minor-modes ()
   "Enable minor modes for programming buffer"
   (display-line-numbers-mode t)
@@ -36,4 +36,4 @@
   :ensure nil
   :hook (prog-mode . programming-minor-modes))
 
-;;; programming.el ends here -----------------------------------------------------
+;;; programming.el ends here

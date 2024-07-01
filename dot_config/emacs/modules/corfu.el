@@ -1,11 +1,26 @@
-;;; moss-corfu.el --- Summary
+;;; corfu.el ---   -*- lexical-binding: t; -*-
 
-;;; Commentary : ---------------------------------------------------------------
+;; Copyright (C) 2023  Ethan Moss
 
-;;; Code : ---------------------------------------------------------------------
+;; Author: Ethan Moss <cywinskimoss@gmail.com>
+;; Keywords: lisp
 
-(message "[ Moss ] Loading module, corfu  ... ")
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary :
+
+;;; Code :
 (use-package corfu
   :config
   (require 'corfu-popupinfo)
@@ -38,6 +53,7 @@
 
 ;; Additional package to make it work on terminal.
 (use-package corfu-terminal
+  :after corfu
   :init (corfu-terminal-mode))
 
 ;; A few more useful configurations...
@@ -56,5 +72,4 @@
   ;; `completion-at-point' is often bound to M-TAB.
   (setq tab-always-indent 'complete))
 
-(provide 'moss-corfu)
-;;; moss-corfu.el ends here ----------------------------------------------------
+;;; corfu.el ends here ----------------------------------------------------

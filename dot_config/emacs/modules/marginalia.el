@@ -1,18 +1,33 @@
-;;; marginalia --- summary
-;;; Commentary:
-;;; Code:
+;;; marginalia.el ---   -*- lexical-binding: t; -*-
 
-(message "[ Moss ] Loading module, Marginalia  ... ")
+;; Copyright (C) 2023  Ethan Moss
 
+;; Author: Ethan Moss <cywinskimoss@gmail.com>
+;; Keywords: lisp
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary :
+
+;;; Code :
 (use-package marginalia
-  :init (marginalia-mode +1)
-  :bind
-  (:map minibuffer-local-map
-            ("M-A" . 'marginalia-cycle))
+  :init (marginalia-mode t)
+  :bind (:map minibuffer-local-map
+              ("M-A" . 'marginalia-cycle))
   :config
-  (setq marginalia-align-offset 10
-        marginalia-field-width 160
-        marginalia-separator "  "))
+  (setq marginalia-align-offset 0
+        marginalia-field-width 80
+        marginalia-separator ""))
 
-(provide 'moss-marginalia)
-;;; moss-marginalia.el ends here
+;;; marginalia.el ends here

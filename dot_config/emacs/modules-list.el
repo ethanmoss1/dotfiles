@@ -19,19 +19,18 @@
           "delsel"
           "paren"
           "uniquify"
+		  "tab-bar"
+		  "recentf"
+          "savehist"
           "dired"
           "keybindings"
-          "recentf"
-          "savehist"
-
-          ;; vvv not done yet vvv
 
           ;; -- Compolsory Modules --
           "vertico"
           "orderless"
           "marginalia"
           "chezmoi"
-          ;; "exwm"                 ; will only load for laptop
+          "exwm"                 ; will only load for laptop
 
           ;; -- Themeing Modules --
           "alltheicons"
@@ -39,8 +38,7 @@
 		  "moodline"
 
           ;; -- Other modules --
-		  ;; "notmuch"
-          "tab-bar"
+		  "notmuch"
           "programming"
           "helpful"
           "consult"
