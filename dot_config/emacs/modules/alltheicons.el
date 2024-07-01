@@ -22,6 +22,6 @@
 
 ;;; Code :
 (use-package all-the-icons
-  :if (display-graphic-p))
+  :if '(display-graphic-p))
 
 ;;; alltheicons.el ends here
