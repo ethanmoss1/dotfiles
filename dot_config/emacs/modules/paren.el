@@ -29,7 +29,7 @@
   :config
   (setq show-paren-style 'parenthesis
         show-paren-when-point-inside-paren t
-        show-paren-when-point-inside 'paren
+        show-paren-when-point-in-periphery t
         show-paren-context-when-offscreen 'overlay)
   (show-paren-mode t))
 

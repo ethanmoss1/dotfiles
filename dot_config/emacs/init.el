@@ -42,21 +42,12 @@
   "test group"
   :group 'emacs)
 
-;; Get the device we are on, for specific settings
 (defvar my-devices
   '("laptop"
     "server"
     "tablet")
   "List of devices that I run Emacs on. This effects whether certain packages,
 settings, variables, ect. are set or loaded")
-
-(let ((hostname-file (concat user-emacs-directory "hostname")))
-  (if (not (file-exists-p hostname-file))
-      (with-temp-file hostname-file
-        (insert (completing-read "Select Device: " my-devices))))
-  (setq my-hostname (with-temp-buffer
-                      (insert-file-contents hostname-file)
-                      (buffer-string))))
 
 ;; Set up module loading and creation
 (defvar module-dir
@@ -77,16 +68,19 @@ settings, variables, ect. are set or loaded")
 
 (defun module-load (&optional module)
   "load MODULE that contains a package/elisp for a particular
- purpose and its configuration
-If called interactively, select MODULE to load from the list of available modules."
+purpose and its configuration. If called interactively, select
+MODULE to load from the list of available modules."
   (interactive)
   (condition-case err
-      (module--to-load module)
-	(error (display-warning 'config
-							(format-message "Loading %s: %s"
-											(or (concat "module " module)
-												"interactive module")
-											(error-message-string err))
+	  (if (called-interactively-p 'interactive)
+		  (module--to-load (module--get-option))
+		(if (not (eq module nil))
+			(module--to-load module)))
+  (error (display-warning 'config
+						  (format-message "Loading %s: %s"
+										  (or (concat "module " module)
+											  "interactive module")
+										  (error-message-string err))
 							:warning))))
 
 (defun module-new ()
@@ -122,6 +116,15 @@ after creating the file (not implemented yet)"
 			   ";;; " pkg-name ".el ends here\n")))
     ;; -- END - New module contents --
     (find-file (concat module-dir pkg-name ".el"))))
+
+;; Set up devices specific configuration
+(let ((hostname-file (concat user-emacs-directory "hostname")))
+  (if (not (file-exists-p hostname-file))
+      (with-temp-file hostname-file
+        (insert (completing-read "Select Device: " my-devices))))
+  (setq my-hostname (with-temp-buffer
+                      (insert-file-contents hostname-file)
+                      (buffer-string))))
 
 (load-file (concat user-emacs-directory "modules-list.el"))
 
