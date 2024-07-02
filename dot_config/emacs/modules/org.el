@@ -79,7 +79,7 @@
   :custom
   (org-directory "~/documents/org/")
   (org-agenda-files (directory-files-recursively "~/documents/org" "\\.org$"))
-  (org-format-latex-options (plist-put org-format-latex-options :scale 1))
+  ;; (org-format-latex-options (plist-put org-format-latex-options :scale 1))
   (org-hide-emphasis-markers t)
   ;; (org-refile-targets
   ;;     '((nil :maxlevel . 3)

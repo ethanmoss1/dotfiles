@@ -1,0 +1,18 @@
+# -*- mode:sh -*-
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Source additional bash configurations
+BASH_DIR=$HOME"/.config/bash"
+source $BASH_DIR/bash_prompt
+source $BASH_DIR/bash_aliases
+source $BASH_DIR/bash_functions
+source $BASH_DIR/bash_env
+
+# Completion
+source $BASH_DIR/bash_chezmoi
+
+PROMPT_COMMAND='history -a'
