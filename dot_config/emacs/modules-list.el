@@ -22,6 +22,7 @@
 		  "tab-bar"
 		  "recentf"
           "savehist"
+		  "autoinsert"
           "dired"
           "keybindings"
 
