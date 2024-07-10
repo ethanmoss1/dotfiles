@@ -49,4 +49,5 @@
 		  "docker"
 		  "hl-todo"
 		  "rainbow"
+		  "nix"
           )) ;; -- End of Modules --
