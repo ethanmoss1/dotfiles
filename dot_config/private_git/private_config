@@ -1,0 +1,5 @@
+[user]
+	name = Ethan Moss
+	email = cywinskimoss@gmail.com
+[core]
+	editor = emacsclient
