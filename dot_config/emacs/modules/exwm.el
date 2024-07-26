@@ -22,11 +22,11 @@
 
 ;;; Code :
 (use-package xelb
-  :if '(eq my-hostname "laptop")
+  :if (eq my-hostname "laptop")
   :ensure (:host github :repo "emacs-exwm/xelb"))
 
 (use-package exwm
-  :if '(eq my-hostname "laptop")
+  :if (eq my-hostname "laptop")
   :after xelb
   :ensure (:host github :repo "emacs-exwm/exwm")
   :hook (exwm-update-class . (lambda ()
@@ -89,8 +89,9 @@
           ;; exit
           ([?\C-g] . [escape]))))
 
+
 (use-package app-launcher
-  :if '(eq my-hostname "laptop")
+  :if (eq my-hostname "laptop")
   :ensure (:host github :repo "SebastienWae/app-launcher"))
 
 ;;; exwm.el ends here -----------------------------------------------------

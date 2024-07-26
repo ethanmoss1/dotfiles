@@ -1,5 +1,5 @@
 #! /bin/bash
-export HISTTIMEFORMAT='%F %T > '
+export HISTTIMEFORMAT='[%F %T] '
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="clear:history:cd ..:ls -*:ls:[bf]g:exit:date:* --help"
 export HISTSIZE=2000
