@@ -21,25 +21,26 @@
 ;;; Commentary :
 
 ;;; Code :
-(defun moss/display-time ()
-  "function that return the string, for tab-bar"
+(defun my/display-time ()
+  "function that returns the string of the shell command ’date’, for tab-bar"
   (shell-command-to-string "date"))
+
+;; (defun my/)
 
 (use-package tab-bar
   :ensure nil
-  :bind ("s-0" . 'tab-switcher)
+  :bind ("C-c t 0" . 'tab-switcher)
   :config
-  ;; Configure keybindings, uses the selected modifier + digit eg, s-1
-  ;; (setq tab-bar-select-tab-modifiers '(super))
-
   ;; Set up the visuals of the tab-bar
   (setq tab-bar-tab-hints t
         tab-bar-close-button-show 'nil
-        tab-bar-format '(tab-bar-format-tabs
+		tab-bar-separator "  "
+        tab-bar-format '(tab-bar-separator
+						 tab-bar-format-tabs
                          tab-bar-separator
                          tab-bar-format-align-right
-                         moss/display-time
-                         tab-bar-format-global))
+                         ;; my/display-time
+						 tab-bar-format-global))
 
   ;; Enable the tab-bar
   (tab-bar-mode 1))
