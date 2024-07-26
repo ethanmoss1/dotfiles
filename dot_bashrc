@@ -7,12 +7,10 @@
 
 # Source additional bash configurations
 BASH_DIR=$HOME"/.config/bash"
-source $BASH_DIR/bash_prompt
-source $BASH_DIR/bash_aliases
-source $BASH_DIR/bash_functions
-source $BASH_DIR/bash_env
+for FILE in $BASH_DIR/*; do
+	if [ -f $FILE ]; then
+		source $FILE
+	fi
+done
 
-# Completion
-source $BASH_DIR/bash_chezmoi
-
-PROMPT_COMMAND='history -a'
+# End of .bashrc

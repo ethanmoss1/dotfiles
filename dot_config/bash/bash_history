@@ -1,0 +1,9 @@
+#! /bin/bash
+export HISTTIMEFORMAT='%F %T > '
+export HISTCONTROL=ignoreboth
+export HISTIGNORE="clear:history:cd ..:ls -*:ls:[bf]g:exit:date:* --help"
+export HISTSIZE=2000
+export HISTFILESIZE=5000
+
+shopt -s histappend
+export PROMPT_COMMAND='history -a'
