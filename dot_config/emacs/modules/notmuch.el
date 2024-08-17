@@ -24,7 +24,7 @@
 (use-package notmuch
   :config
   ;; Notmuch on remote server, ssh config and custom bash file needed
-  (setq notmuch-command "/data/data/com.termux/files/usr/bin/notmuch"
+  (setq notmuch-command "/data/data/com.termux/files/home/mail/.notmuch/remote-notmuch"
 
   ;;;; Notmuch - Welcome screen
 		notmuch-show-logo nil
