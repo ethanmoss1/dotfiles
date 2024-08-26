@@ -25,6 +25,7 @@
 		  "auto-insert"
           "dired"
           "keybindings"
+		  "ibuffer"
 
           ;; -- Compolsory Modules --
           "vertico"
