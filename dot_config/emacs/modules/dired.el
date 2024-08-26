@@ -34,7 +34,7 @@
   :bind (:map dired-mode-map ;; Variable is void when evaluated for first time
 			  ("<left>"  . dired-up-directory)
 			  ("<right>" . dired-find-file))
-  :config (setq dired-listing-switches "-laGvh --group-directories-first"
+  :config (setq dired-listing-switches "-lAGvh --group-directories-first"
 				dired-auto-revert-buffer 'dired-directory-changed-p
 				dired-clean-confirm-killing-deleted-buffers t
 				dired-clean-up-buffers-too t

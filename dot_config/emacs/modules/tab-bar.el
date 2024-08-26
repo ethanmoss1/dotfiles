@@ -43,6 +43,7 @@
 						 tab-bar-format-global))
 
   ;; Enable the tab-bar
-  (tab-bar-mode 1))
+  ;; (tab-bar-mode 1)
+  )
 
 ;;; tab-bar.el ends here

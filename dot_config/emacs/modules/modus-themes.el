@@ -46,6 +46,6 @@
 		;;    (agenda-structure . (variable-pitch light 1.8))
 		;;    (t . (1.1)))
 		)
-  (load-theme 'modus-vivendi-tinted t))
+  (load-theme 'modus-vivendi t))
 
 ;;; modus-themes.el ends here -----------------------------------------------------
