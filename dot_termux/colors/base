@@ -1,0 +1,40 @@
+# -*- mode: sh -*-
+# Base16 Colors
+# https://github.com/chriskempson/base16-xresources/blob/master/base16-colors.dark.256.xresources
+
+foreground=#bbbbbb
+background=#111111
+cursor=#bbbbbb
+
+# BG and Black
+color0=#111111
+# Red
+color1=#ff4136
+# Green
+color2=#2ecc40
+# Yellow
+color3=#ffdc00
+# Blue
+color4=#0074d9
+# Purple
+color5=#b10dc9
+# Cyan
+color6=#7fdbff
+# Grey Light
+color7=#bbbbbb
+# Grey Dark
+color8=#777777
+# Bright Red
+color9=#ff4136
+# Bright Green
+color10=#2ecc40
+# Bright Yellow
+color11=#ffdc00
+# Bright Blue
+color12=#0074d9
+# Bright Purple
+color13=#b10dc9
+# Bright Cyan
+color14=#7fdbff
+# FG or White
+color15=#ffffff

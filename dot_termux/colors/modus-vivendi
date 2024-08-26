@@ -1,0 +1,40 @@
+# -*- mode: sh -*-
+# Modus-vivendi by Protesilaos
+# https://github.com/protesilaos/modus-themes
+
+foreground=#FFFFFF
+background=#000000
+cursor=#feacd0
+
+# BG and Black
+color0=#000000
+# Red
+color1=#ff5f59
+# Green
+color2=#44bc44
+# Yellow
+color3=#d0bc00
+# Blue
+color4=#2fafff
+# Magenta
+color5=#feacd0
+# Cyan
+color6=#00d3d0
+# Grey Light
+color7=#a6a6a6
+# Grey Dark
+color8=#595959
+# Bright Red
+color9=#ff6b55
+# Bright Green
+color10=#00c06f
+# Bright Yellow
+color11=#fec43f
+# Bright Blue
+color12=#79A8FF
+# Bright Magenta
+color13=#b6a0ff
+# Bright Cyan
+color14=#6ae4b9
+# FG or White
+color15=#ffffff
