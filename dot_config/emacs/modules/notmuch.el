@@ -42,6 +42,11 @@
   ;;;; Notmuch - Mail view
 		mm-text-html-renderer 'shr))
 
+(defun notmuch-edit-config ()
+  "Edit the taggin config for notmuch"
+  (interactive)
+  (find-file "/ssh:syncthing:~/mail/.notmuch/tagmail"))
+
 ;;;; --------------------------------
 ;;;; Additional config for future use
 ;;;; --------------------------------

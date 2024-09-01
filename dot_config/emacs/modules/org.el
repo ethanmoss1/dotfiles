@@ -32,13 +32,13 @@
   (setq org-agenda-files (directory-files-recursively "~/documents/org" "\\.org$")))
 
 
-(defun moss/load-minor-modes-for-org ()
+(defun my/load-minor-modes-for-org ()
   "Loads all the minor modes for use with Org mode"
   (flyspell-mode 1)
   (toggle-truncate-lines 0)
   (toggle-word-wrap 1))
 
-(defun moss/add-latex-block ()
+(defun my/add-latex-block ()
   "Adds a latex block ready for input"
   (interactive)
   (end-of-line)
@@ -57,7 +57,7 @@
 ;;   266)
 
 (use-package org
-  :hook (org-mode . moss/load-minor-modes-for-org)
+  :hook (org-mode . my/load-minor-modes-for-org)
   :bind
   ("C-c o a" . 'org-agenda)
   ("C-c o c" . 'org-capture)
