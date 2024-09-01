@@ -24,6 +24,10 @@
 ;; Nix mode with syntax and more
 
 ;;; Code:
+(defun nixos-edit-config ()
+  "Edit the nixos config file"
+  (interactive)
+  (find-file "/sudo::/etc/nixos/configuration.nix"))
 
 (use-package nix-mode)
 
