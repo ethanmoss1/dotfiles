@@ -21,43 +21,53 @@
 ;;; Commentary :
 
 ;;; Code :
-(use-package xelb
-  :if (eq my-hostname "laptop")
-  :ensure (:host github :repo "emacs-exwm/xelb"))
+
+;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
+(define-minor-mode desktop-environment-mode
+  "A global minor-mode that binds DE keys."
+  :global t
+  :group 'bindings
+  :keymap (make-sparse-keymap))
 
 (use-package exwm
-  :if (eq my-hostname "laptop")
+  :if (string-equal my-hostname "laptop")
   :after xelb
   :ensure (:host github :repo "emacs-exwm/exwm")
-  :hook (exwm-update-class . (lambda ()
-                               (exwm-workspace-rename-buffer exwm-class-name)))
   :init (exwm-init)
+  :hook (exwm-update-class . exwm-rename-buffer-class-name)
+  :bind (:map desktop-environment-mode-map
+			  ;; Move around the buffers and X apps
+			  ("s-<left>" . windmove-left)
+			  ("s-<right>" . windmove-right)
+			  ("s-<up>" . windmove-up)
+			  ("s-<down>" . windmove-down)
+			  ;; EXWM functions
+			  ("s-R" . exwm-reset)
+			  ("s-w" . exwm-workspace-switch)
+			  ;; DE bindings
+			  ("s-<return>" . (lambda ()
+								(interactive)
+								(eshell))))
   :config
-  ;; system tray
+  (defun exwm-rename-buffer-class-name ()
+	"Rename the EXWM buffers with the X11 Class name"
+	(exwm-workspace-rename-buffer exwm-class-name))
+
+  ;; Setup the keymap to allow for keybindings in EXWM and non-EXMW buffers
+  ;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
+  (set-keymap-parent exwm-mode-map desktop-environment-mode-map)
+  (desktop-environment-mode)
+
+  ;; Systemtray
   (require 'exwm-systemtray)
   (exwm-systemtray-enable)
 
-  ;; Hide the minibuffer
-  ;; (setq exwm-workspace-minibuffer-position 'bottom)
-
-  ;; allow resizing of x applications
+  ;; Allow resizing of x applications, otherwise difficult
   (setq window-divider-default-right-width 12
         window-divider-default-places 'right-only)
   (window-divider-mode)
 
-  ;; Set up workspaces and hotkeys
   (setq exwm-workspace-number 1)
-  (setq exwm-input-global-keys
-   `(([s-left]  . windmove-left)
-     ([s-right] . windmove-right)
-     ([s-up]    . windmove-up)
-     ([s-down]  . windmove-down)
-
-     ;; 's-r': Reset (to line-mode).
-     ([s-r] . exwm-reset)
-
-     ([?\s-w] . exwm-workspace-switch)
-     ([s-tab] . app-launcher-run-app)))
 
   ;; Mimic behaviour of emacs bindings in x sessions
   (setq exwm-input-simulation-keys
@@ -88,10 +98,5 @@
 
           ;; exit
           ([?\C-g] . [escape]))))
-
-
-(use-package app-launcher
-  :if (eq my-hostname "laptop")
-  :ensure (:host github :repo "SebastienWae/app-launcher"))
 
 ;;; exwm.el ends here -----------------------------------------------------

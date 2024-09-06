@@ -1,9 +1,9 @@
-;;; buffer-move.el --- Move buffers to a window  -*- lexical-binding: t;-*-
+;;; tramp.el --- Sudo or ssh access  -*- lexical-binding: t;-*-
 
 ;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: buffer exwm
+;; Keywords: tramp internal
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,18 +19,11 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; Move buffers to a window
+;; Sudo or ssh access
 
-;; Allows moving of buffers to another window with direction.
+;; same as above
 
 ;;; Code:
+(setq tramp-allow-unsafe-temporary-files t)
 
-(use-package buffer-move
-  :if (string-equal my-hostname "laptop")
-  :bind (:map desktop-environment-mode-map
-			  ("s-S-<left>" . buf-move-left)
-			  ("s-S-<right>" . buf-move-right)
-			  ("s-S-<up>" . buf-move-up)
-			  ("s-S-<down>" . buf-move-down)))
-
-;;; buffer-move.el ends here
+;;; tramp.el ends here

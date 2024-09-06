@@ -1,9 +1,9 @@
-;;; buffer-move.el --- Move buffers to a window  -*- lexical-binding: t;-*-
+;;; desktop-environment.el --- Keybindings for desktop-enviroment  -*- lexical-binding: t;-*-
 
 ;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: buffer exwm
+;; Keywords: exwm tabs
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,18 +19,17 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; Move buffers to a window
+;; Keybindings for desktop-enviroment
 
-;; Allows moving of buffers to another window with direction.
+;; Allows for global desktop keybindings
 
 ;;; Code:
+;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
+(if (string-equal my-hostname "laptop")
+	(define-minor-mode desktop-environment-mode
+	  "A global minor-mode that binds DE keys."
+	  :global t
+	  :group 'bindings
+	  :keymap (make-sparse-keymap)))
 
-(use-package buffer-move
-  :if (string-equal my-hostname "laptop")
-  :bind (:map desktop-environment-mode-map
-			  ("s-S-<left>" . buf-move-left)
-			  ("s-S-<right>" . buf-move-right)
-			  ("s-S-<up>" . buf-move-up)
-			  ("s-S-<down>" . buf-move-down)))
-
-;;; buffer-move.el ends here
+;;; desktop-environment.el ends here

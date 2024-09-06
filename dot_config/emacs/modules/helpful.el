@@ -23,11 +23,14 @@
 ;;; Code :
 (use-package helpful
   :bind
-  ;; ("C-h" . 'helpful-hydra/body)
   ("C-h h" . 'helpful-at-point)
   ("C-h v" . 'helpful-variable)
   ("C-h f" . 'helpful-callable)
   ("C-h k" . 'helpful-key)
-  ("C-h o" . 'helpful-symbol))
+  ("C-h o" . 'helpful-symbol)
+  :config
+  (add-to-list 'display-buffer-alist
+			   '("\\*helpful"
+				 (display-buffer-same-window))))
 
 ;; helpful.el ends here

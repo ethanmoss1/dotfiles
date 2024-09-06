@@ -19,20 +19,30 @@
           "delsel"
           "paren"
           "uniquify"
-		  "tab-bar"
 		  "recentf"
           "savehist"
 		  "auto-insert"
           "dired"
           "keybindings"
 		  "ibuffer"
+		  "window"
+		  "tramp"
 
           ;; -- Compolsory Modules --
           "vertico"
           "orderless"
           "marginalia"
           "chezmoi"
-          "exwm"                 ; will only load for laptop
+
+		  ;; Window manager and accompying modules
+		  ;; Will only load on hostname laptop
+		  "desktop-environment"
+		  "xelb"
+		  "exwm"
+		  "app-launcher"
+		  "buffer-move"
+		  "tab-bar"
+		  "display-time"
 
           ;; -- Themeing Modules --
           "alltheicons"

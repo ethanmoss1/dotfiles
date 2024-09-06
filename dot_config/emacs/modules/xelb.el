@@ -1,9 +1,9 @@
-;;; buffer-move.el --- Move buffers to a window  -*- lexical-binding: t;-*-
+;;; xelb.el --- X11 bindings in elisp  -*- lexical-binding: t;-*-
 
 ;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: buffer exwm
+;; Keywords: xelb
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,18 +19,14 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; Move buffers to a window
+;; X11 bindings in elisp
 
-;; Allows moving of buffers to another window with direction.
+;; Allows for EXWM to use X11 bindings
+
 
 ;;; Code:
-
-(use-package buffer-move
+(use-package xelb
   :if (string-equal my-hostname "laptop")
-  :bind (:map desktop-environment-mode-map
-			  ("s-S-<left>" . buf-move-left)
-			  ("s-S-<right>" . buf-move-right)
-			  ("s-S-<up>" . buf-move-up)
-			  ("s-S-<down>" . buf-move-down)))
+  :ensure (:host github :repo "emacs-exwm/xelb"))
 
-;;; buffer-move.el ends here
+;;; xelb.el ends here

@@ -1,9 +1,9 @@
-;;; buffer-move.el --- Move buffers to a window  -*- lexical-binding: t;-*-
+;;; display-time.el --- Display the time  -*- lexical-binding: t;-*-
 
 ;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: buffer exwm
+;; Keywords: time modeline tabs
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,18 +19,15 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; Move buffers to a window
+;; Display the time
 
-;; Allows moving of buffers to another window with direction.
+;; Displays the time and other useful information on the modeline
 
 ;;; Code:
 
-(use-package buffer-move
+(use-package time
   :if (string-equal my-hostname "laptop")
-  :bind (:map desktop-environment-mode-map
-			  ("s-S-<left>" . buf-move-left)
-			  ("s-S-<right>" . buf-move-right)
-			  ("s-S-<up>" . buf-move-up)
-			  ("s-S-<down>" . buf-move-down)))
+  :ensure nil
+  )
 
-;;; buffer-move.el ends here
+;;; display-time.el ends here

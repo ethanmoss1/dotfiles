@@ -1,9 +1,9 @@
-;;; buffer-move.el --- Move buffers to a window  -*- lexical-binding: t;-*-
+;;; app-launcher.el --- Launch Desktop Applications  -*- lexical-binding: t;-*-
 
 ;; Copyright (C) 2024  Ethan Moss
 
 ;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords: buffer exwm
+;; Keywords: app x11 exwm
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,18 +19,15 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; Move buffers to a window
+;; Launch Desktop Applications
 
-;; Allows moving of buffers to another window with direction.
+;; Launch applications such as a web browser from within emacs
 
 ;;; Code:
-
-(use-package buffer-move
+(use-package app-launcher
   :if (string-equal my-hostname "laptop")
+  :ensure (:host github :repo "SebastienWae/app-launcher")
   :bind (:map desktop-environment-mode-map
-			  ("s-S-<left>" . buf-move-left)
-			  ("s-S-<right>" . buf-move-right)
-			  ("s-S-<up>" . buf-move-up)
-			  ("s-S-<down>" . buf-move-down)))
+			  ("s-<tab>" . app-launcher-run-app)))
 
-;;; buffer-move.el ends here
+;;; app-launcher.el ends here
