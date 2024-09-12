@@ -35,7 +35,7 @@
           "chezmoi"
 
 		  ;; Window manager and accompying modules
-		  ;; Will only load on hostname laptop
+		  ;; Will only load when ‘my-hostname’ is equal to laptop
 		  "desktop-environment"
 		  "xelb"
 		  "exwm"
@@ -43,6 +43,7 @@
 		  "buffer-move"
 		  "tab-bar"
 		  "display-time"
+		  "pdf-tools"
 
           ;; -- Themeing Modules --
           "alltheicons"
