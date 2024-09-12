@@ -29,8 +29,7 @@
 (defun my/reload-org-agenda-files ()
   "Reloads the agenda file list"
   (interactive)
-  (setq org-agenda-files (directory-files-recursively "~/documents/org" "\\.org$")))
-
+  (setq org-agenda-files (directory-files-recursively "~/documents" "\\.org$")))
 
 (defun my/load-minor-modes-for-org ()
   "Loads all the minor modes for use with Org mode"
@@ -61,12 +60,14 @@
 														   (C . t)))
 
   (setq org-directory "~/documents/org/"
-		org-agenda-files (directory-files-recursively "~/documents/org"
+		org-agenda-files (directory-files-recursively "~/documents"
 													  "\\.org$")
-		org-todo-keywords '("TODO(t)" "NEXT(n!)" "|" "DONE(d!@)")
+		;; Capture time entered and exited ‘NEXT’ as well as any notes for when
+		;; changing the state to ‘DONE’
+		org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)")
 		org-hide-emphasis-markers t
 		org-capture-templates `(("i" "Inbox" entry (file "inbox.org")
-								 ,(s-join "\n" '("* TODO: %?"
+								 ,(s-join "\n" '("* TODO %?"
 												 ":PROPERTIES:"
 												 ":ENTERED: %U"
 												 ":FILE: [[%F]]"

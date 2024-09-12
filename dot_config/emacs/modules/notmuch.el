@@ -24,10 +24,14 @@
 (use-package notmuch
   :config
   ;; Notmuch on remote server, ssh config and custom bash file needed
-  (setq notmuch-command "/data/data/com.termux/files/home/mail/.notmuch/remote-notmuch"
+  (if (string-equal my-hostname "tablet")
+	  (setq notmuch-command "/data/data/com.termux/files/home/mail/.notmuch/remote-notmuch")
+	(setq notmuch-command "~/mail/.notmuch/remote-notmuch"))
+
+
 
   ;;;; Notmuch - Welcome screen
-		notmuch-show-logo nil
+  (setq	notmuch-show-logo nil
 		notmuch-hello-sections '(notmuch-hello-insert-header
                                  notmuch-hello-insert-search
                                  notmuch-hello-insert-saved-searches
