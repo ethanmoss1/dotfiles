@@ -29,6 +29,18 @@
   (interactive)
   (find-file "/sudo::/etc/nixos/configuration.nix"))
 
+;; Run a nice buffer with the output of the nix rebuild
+(defun my/nixos-rebuild ()
+  "Rebuild the system nixos rebuild"
+  (interactive)
+  ;; (let ((rebuild-command "nixos-rebuild --switch"))
+  (let* ((password (read-passwd "Enter your password: "))
+		 (command (format "echo %s | sudo -S nixos-rebuild switch \n" password ))
+		 (buffer (get-buffer-create "*Nixos-rebuild*")))
+	(start-process-shell-command "nix-rebuild" buffer command)
+	(with-current-buffer buffer
+	  (setq buffer-read-only t))))
+
 (use-package nix-mode)
 
 ;;; nix.el ends here
