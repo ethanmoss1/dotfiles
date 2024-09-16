@@ -12,20 +12,26 @@
 		   :repo "https://git.savannah.gnu.org/git/emacs.git")
   :config
   (setq user-full-name "Ethan Moss"
-		gnus-select-method '(nntp "news.eternal-september.org"))
+		user-mail-address "cywinskimoss@gmail.com"
 
-  (add-to-list 'gnus-secondary-select-methods
-               '(nnatom "learn2.open.ac.uk/blocks/news/feed.php?bi=304299"
-						(nnatom-name "M269 News")))
-  (add-to-list 'nnrss-group-alist '(("xkcd.com"
-									"https://xkcd.com/rss.xml"
-									"A webcomic of romance and math humor."))))
+		gnus-select-method '(nntp "news.eternal-september.org")
+		gnus-secondary-select-methods ;; Remember, no http or https
+		    '((nnatom "learn2.open.ac.uk/blocks/news/feed.php?bi=304299")
+			  (nnatom "yummymelon.com/devnull/feeds/all.atom.xml")
+			  (nnrss "xkcd.com/rss.xml"))
 
+		;; When we add another feed, allow subscribing to topics interactivly
+		gnus-subscribe-newsgroup-method 'gnus-subscribe-interactively
+		;; dont use the newsrc file, i only use gnus
+		gnus-save-newsrc-file 'nil
+		gnus-read-newsrc-file 'nil))
 
+;; (add-to-list 'nnrss-group-alist '(("xkcd.com"
+;; 									"https://xkcd.com/rss.xml"
+;; 									"A webcomic of romance and math humor.")))
 ;; https://xkcd.com/rss.xml
 ;; (nnrss "https://emacs.org/rss/emacs.xml"
 ;;				  (nnrss-name "Emacs News"))
-
 
 ;;;; Welcome as a new user of news.eternal-september.org
 ;; You have successfully registered as a user of the news.eternal-september.org

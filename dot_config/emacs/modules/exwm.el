@@ -60,7 +60,7 @@
 
   ;; Systemtray
   (require 'exwm-systemtray)
-  (exwm-systemtray-enable)
+  (exwm-systemtray-mode 1)
 
   ;; Allow resizing of x applications, otherwise difficult
   (setq window-divider-default-right-width 12

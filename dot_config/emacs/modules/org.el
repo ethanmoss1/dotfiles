@@ -66,7 +66,7 @@
 		;; changing the state to ‘DONE’
 		org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)")
 		org-hide-emphasis-markers t
-		org-capture-templates `(("i" "Inbox" entry (file "inbox.org")
+		org-capture-templates `(("i" "Inbox" entry (file "Inbox.org")
 								 ,(s-join "\n" '("* TODO %?"
 												 ":PROPERTIES:"
 												 ":ENTERED: %U"

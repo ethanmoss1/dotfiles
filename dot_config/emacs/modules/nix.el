@@ -33,11 +33,10 @@
 (defun my/nixos-rebuild ()
   "Rebuild the system nixos rebuild"
   (interactive)
-  ;; (let ((rebuild-command "nixos-rebuild --switch"))
-  (let* ((password (read-passwd "Enter your password: "))
-		 (command (format "echo %s | sudo -S nixos-rebuild switch \n" password ))
+  (let* ((default-directory "/sudo::/")
+		 (command "nixos-rebuild switch")
 		 (buffer (get-buffer-create "*Nixos-rebuild*")))
-	(start-process-shell-command "nix-rebuild" buffer command)
+	(start-file-process-shell-command "nix-rebuild" buffer command)
 	(with-current-buffer buffer
 	  (setq buffer-read-only t))))
 

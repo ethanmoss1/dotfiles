@@ -27,6 +27,7 @@
 		  "ibuffer"
 		  "window"
 		  "tramp"
+		  "gnus"
 
           ;; -- Compolsory Modules --
           "vertico"
@@ -44,6 +45,7 @@
 		  "tab-bar"
 		  "display-time"
 		  "pdf-tools"
+		  "org-caldav"
 
           ;; -- Themeing Modules --
           "alltheicons"
