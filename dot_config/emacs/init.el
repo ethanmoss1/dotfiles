@@ -83,39 +83,25 @@ MODULE to load from the list of available modules."
 										  (error-message-string err))
 							:warning))))
 
+;; Don’t ask about inserting templates into new files, for the module new
+;; function.
+(setq auto-insert-query 'nil)
+
 (defun module-new ()
   "Create a new module file in the modules directory that allows
-loading of the module, C-u allows loading of the module straight
-after creating the file (not implemented yet)"
+loading of the module"
   (interactive)
-  (let ((pkg-name (read-string "Package Name: "))
-		(year (format-time-string "%Y"))
-		(keywords (read-string "Keywords describing package: "))
-		(short-desc (read-string "Short description of package: "))
-		(long-desc (read-string "Long description of package: ")))
-    (with-temp-file (concat module-dir pkg-name ".el")
-      (insert (concat ;; -- START - New module contents --
-			   ";;; " pkg-name ".el --- " short-desc "  -*- lexical-binding: t;"
-               "-*-\n\n;; Copyright (C) " year "  Ethan Moss\n\n"
-               ";; Author: Ethan Moss <cywinskimoss@gmail.com>\n"
-			   ";; Keywords: " keywords "\n\n"
-			   ";; This program is free software; you can redistribute it and/or modify\n"
-			   ";; it under the terms of the GNU General Public License as published by\n"
-			   ";; the Free Software Foundation, either version 3 of the License, or\n"
-			   ";; (at your option) any later version.\n\n"
-			   ";; This program is distributed in the hope that it will be useful,\n"
-			   ";; but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-			   ";; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-			   ";; GNU General Public License for more details.\n\n"
-			   ";; You should have received a copy of the GNU General Public License\n"
-			   ";; along with this program.  If not, see <https://www.gnu.org/licenses/>.\n\n"
-			   ";;; Commentary:\n;; " short-desc "\n\n"
-			   ";; " long-desc "\n\n"
-			   ";;; Code:\n\n"
-			   "(use-package " pkg-name ")\n\n"
-			   ";;; " pkg-name ".el ends here\n")))
-    ;; -- END - New module contents --
-    (find-file (concat module-dir pkg-name ".el"))))
+  (let* ((module-name (read-string "Package Name: "))
+		 (buffer-name (concat module-name ".el"))
+		 (module-file (concat module-dir buffer-name)))
+	(if (file-exists-p module-file)
+		(user-error "Module %s exists already" buffer-name)
+	  (find-file module-file)
+	  (with-current-buffer buffer-name
+		(auto-insert)
+		(mark-marker)
+		(replace-regexp "\(provide '.*\)" "")
+		(goto-char (mark-marker))))))
 
 ;; Set up devices specific configuration
 (let ((hostname-file (concat user-emacs-directory "hostname")))
