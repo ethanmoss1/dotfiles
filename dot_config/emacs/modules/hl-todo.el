@@ -25,11 +25,14 @@
   :hook (prog-mode)
   :config
   (setq hl-todo-highlight-punctuation ":"
-		hl-todo-keyword-faces `(("TODO"       warning bold)
-								("FIXME"      error bold)
-								("HACK"       font-lock-constant-face bold)
-								("REVIEW"     font-lock-keyword-face bold)
-								("NOTE"       success bold)
-								("DEPRECATED" font-lock-doc-face bold))))
+		;;hl-todo-color-background 't
+		hl-todo-keyword-faces '(("TODO" . warning)
+								("FIX" . error)
+								;; ("TODO" . (warning :inverse-video t))
+								;; ("FIX" . (error :inverse-video))
+								("HACK" . (font-lock-constant-face bold))
+								("REVIEW" . font-lock-keyword-face)
+								("NOTE" . success)
+								("DEPRECATED"  . (font-lock-doc-face bold)))))
 
-;;; hl-todo.el ends here -----------------------------------------------------
+;;; hl-todo.el ends here

@@ -18,7 +18,8 @@
 		gnus-secondary-select-methods ;; Remember, no http or https
 		    '((nnatom "learn2.open.ac.uk/blocks/news/feed.php?bi=304299")
 			  (nnatom "yummymelon.com/devnull/feeds/all.atom.xml")
-			  (nnrss "xkcd.com/rss.xml"))
+			  (nnrss "xkcd.com/rss.xml")
+			  (nnrss "https://emacs.org/rss/emacs.xml"))
 
 		;; When we add another feed, allow subscribing to topics interactivly
 		gnus-subscribe-newsgroup-method 'gnus-subscribe-interactively
@@ -26,11 +27,15 @@
 		gnus-save-newsrc-file 'nil
 		gnus-read-newsrc-file 'nil))
 
-;; (add-to-list 'nnrss-group-alist '(("xkcd.com"
-;; 									"https://xkcd.com/rss.xml"
-;; 									"A webcomic of romance and math humor.")))
-;; https://xkcd.com/rss.xml
-;; (nnrss "https://emacs.org/rss/emacs.xml"
+;; One thing to note, for some reason when adding devnull, it only works on
+;; http. this may be an issue for the future. if that is the case modifying the
+;; ‘nnatom--read-feed’ function on the line;
+;;
+;; (mm-url-insert-file-contents (concat "https://" feed)))
+;;
+;; replacing https with http will allow for adding the feed in this instance
+
+;;
 ;;				  (nnrss-name "Emacs News"))
 
 ;;;; Welcome as a new user of news.eternal-september.org

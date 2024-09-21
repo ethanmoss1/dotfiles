@@ -53,6 +53,9 @@
 	"Rename the EXWM buffers with the X11 Class name"
 	(exwm-workspace-rename-buffer exwm-class-name))
 
+  ;; Dont ask to replace, if I have another WM open its probably for a reason
+  (setq exwm-replace 'nil)
+
   ;; Setup the keymap to allow for keybindings in EXWM and non-EXMW buffers
   ;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
   (set-keymap-parent exwm-mode-map desktop-environment-mode-map)
