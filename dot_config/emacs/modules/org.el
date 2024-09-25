@@ -70,6 +70,12 @@
 												 ":PROPERTIES:"
 												 ":ENTERED: %U"
 												 ":FILE: [[%F]]"
+												 ":END:")))
+								("n" "Notes" entry (file "Inbox.org")
+								 ,(s-join "\n" '("* %?"
+												 ":PROPERTIES:"
+												 ":ENTERED: %U"
+												 ":FILE: [[%F]]"
 												 ":END:"))))))
 
 ;;; org.el ends here

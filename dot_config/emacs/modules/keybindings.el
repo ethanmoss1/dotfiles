@@ -30,13 +30,15 @@
   (interactive)
   (split-window-below)
   (redisplay)           ; for exwm bug
-  (windmove-down))
+  (windmove-down)
+  (consult-buffer))
 
 (defun split-window-right-and-focus ()
   (interactive)
   (split-window-right)
   (redisplay)           ; for exwm bug
-  (windmove-right))
+  (windmove-right)
+  (consult-buffer))
 
 ;; Unbind suspend
 (global-unset-key (kbd "C-z"))
@@ -48,6 +50,7 @@
          ("C-x 2" . 'split-window-below-and-focus)
          ("C-x 3" . 'split-window-right-and-focus)
          ("<home>" . 'back-to-indentation)  ; TODO: this needs to be based on the derived mode
-         ("M-o" . 'other-window)))
+         ;;("M-o" . 'other-window)
+		 ))
 
 ;;; keybindings.el ends here
