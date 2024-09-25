@@ -19,24 +19,3 @@ edit:
 
 data:
   private_: false
-# ~/.local/share/chezmoi/.chezmoi.toml.tmpl  ---  -*- mode:conf -*-
-# =============================================================================
-# Used to customize configuration when doing a `chezmoi init`.
-#
-# This template file will trigger prompts to fill-in machine-specific
-# templateable values. The resulting file is then created at
-# `~/.config/chezmoi/chezmoi.toml`
-# See https://www.chezmoi.io/docs/how-to/
-# {{- /* This file supports Go's text/template language. */}}
-
-progress: true
-
-git:
-  autoCommit: false
-
-edit:
-  command: "emacs"
-  # Args: ["", ""]
-
-data:
-  private_: false
