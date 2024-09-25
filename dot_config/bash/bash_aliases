@@ -1,6 +1,7 @@
 #! /bin/bash
 
 alias ls="ls --color=auto"
+alias ip="ip --color=always"
 alias grep="grep --color=auto"
 alias nixconf="emacs --eval '(find-file \"/sudo::/etc/nixos/configuration.nix\")'"
 alias nixswitch="sudo nixos-rebuild switch"
