@@ -19,7 +19,9 @@
 		    '((nnatom "learn2.open.ac.uk/blocks/news/feed.php?bi=304299")
 			  (nnatom "yummymelon.com/devnull/feeds/all.atom.xml")
 			  (nnrss "xkcd.com/rss.xml")
-			  (nnrss "https://emacs.org/rss/emacs.xml"))
+			  (nnrss "https://emacs.org/rss/emacs.xml")
+			  (nnrss "https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100")
+			  (nnrss "https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637"))
 
 		;; When we add another feed, allow subscribing to topics interactivly
 		gnus-subscribe-newsgroup-method 'gnus-subscribe-interactively

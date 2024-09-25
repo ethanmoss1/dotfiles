@@ -49,9 +49,8 @@
 
 (use-package org
   :hook (org-mode . my/load-minor-modes-for-org)
-  :bind
-  ("C-c o a" . 'org-agenda)
-  ("C-c o c" . 'org-capture)
+  :bind (("C-c o a" . 'org-agenda)
+		 ("C-c o c" . 'org-capture))
   :config
   (org-babel-do-load-languages 'org-babel-load-languages '((python . t)
 														   (gnuplot . t)

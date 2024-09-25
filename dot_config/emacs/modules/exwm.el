@@ -34,7 +34,7 @@
   :after xelb
   :ensure (:host github :repo "emacs-exwm/exwm")
   :init (exwm-init)
-  :hook (exwm-update-class . exwm-rename-buffer-class-name)
+  :hook (exwm-update-title . exwm-rename-buffer-class-name)
   :bind (:map desktop-environment-mode-map
 			  ;; Move around the buffers and X apps
 			  ("s-<left>" . windmove-left)
@@ -43,15 +43,17 @@
 			  ("s-<down>" . windmove-down)
 			  ;; EXWM functions
 			  ("s-R" . exwm-reset)
-			  ("s-w" . exwm-workspace-switch)
+			  ;; ("s-w" . exwm-workspace-switch)
 			  ;; DE bindings
-			  ("s-<return>" . (lambda ()
-								(interactive)
-								(eshell))))
+			  ("s-<return>" . (lambda () (interactive) (eshell))))
   :config
   (defun exwm-rename-buffer-class-name ()
 	"Rename the EXWM buffers with the X11 Class name"
-	(exwm-workspace-rename-buffer exwm-class-name))
+	(if (and (string-equal exwm-class-name "firefox") exwm-title)
+		(let* ((page-title (car (split-string exwm-title "\\ +[-—]\\ +")))
+			   (new-buffer-name (concat "*" exwm-class-name " - " page-title "*")))
+		  (exwm-workspace-rename-buffer new-buffer-name))
+	  (exwm-workspace-rename-buffer exwm-class-name)))
 
   ;; Dont ask to replace, if I have another WM open its probably for a reason
   (setq exwm-replace 'nil)
@@ -73,33 +75,32 @@
   (setq exwm-workspace-number 1)
 
   ;; Mimic behaviour of emacs bindings in x sessions
-  (setq exwm-input-simulation-keys
-        '(;; movement
-          ([?\C-b] . [left])
-          ([?\M-b] . [C-left])
-          ([?\C-f] . [right])
-          ([?\M-f] . [C-right])
-          ([?\C-p] . [up])
-          ([?\C-n] . [down])
-          ([?\C-a] . [home])
-          ([?\C-e] . [end])
-          ([?\M-v] . [prior])
-          ([?\C-v] . [next])
-          ([?\C-d] . [delete])
-          ([?\C-k] . [S-end C-x])
+  (setq exwm-input-simulation-keys '(;; movement
+									 ([?\C-b] . [left])
+									 ([?\M-b] . [C-left])
+									 ([?\C-f] . [right])
+									 ([?\M-f] . [C-right])
+									 ([?\C-p] . [up])
+									 ([?\C-n] . [down])
+									 ([?\C-a] . [home])
+									 ([?\C-e] . [end])
+									 ([?\M-v] . [prior])
+									 ([?\C-v] . [next])
+									 ([?\C-d] . [delete])
+									 ([?\C-k] . [S-end C-x])
 
-          ;; cut/paste.
-          ([?\C-w] . [?\C-x])
-          ([?\M-w] . [?\C-c])
-          ([?\C-y] . [?\C-v])
+									 ;; cut/paste.
+									 ([?\C-w] . [?\C-x])
+									 ([?\M-w] . [?\C-c])
+									 ([?\C-y] . [?\C-v])
 
-          ;; search
-          ([?\C-s] . [?\C-f])
+									 ;; search
+									 ([?\C-s] . [?\C-f])
 
-          ;; save
-          ([C-x C-s] . [?\C-s])
+									 ;; save
+									 ([C-x C-s] . [?\C-s])
 
-          ;; exit
-          ([?\C-g] . [escape]))))
+									 ;; exit
+									 ([?\C-g] . [escape]))))
 
 ;;; exwm.el ends here -----------------------------------------------------
