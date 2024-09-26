@@ -27,9 +27,9 @@
 		  "ibuffer"
 		  "window"
 		  "tramp"
-		  "gnus"
+		  ;; "gnus"
 
-          ;; -- Compolsory Modules --
+          ;; -- Compulsory Modules --
           "vertico"
           "orderless"
           "marginalia"

@@ -4,21 +4,24 @@
 
 ;;; Code : ---------------------------------------------------------------------
 (use-package gnus
-  :ensure (:package "gnus"
-		   ;; :depth 1
-		   :inherit nil
-		   :protocol https
-		   :files (:defaults "lisp/gnus/*" (:exclude ".git"))
-		   :repo "https://git.savannah.gnu.org/git/emacs.git")
-  :config
+  :ensure nil
+           ;; (:package "gnus"
+		   ;; ;; :depth 1
+		   ;; :inherit nil
+		   ;; :protocol https
+		   ;; :files (:defaults "lisp/gnus/*" (:exclude ".git"))
+		   ;; :repo "https://git.savannah.gnu.org/git/emacs.git")
+  :init
   (setq user-full-name "Ethan Moss"
 		user-mail-address "cywinskimoss@gmail.com"
 
+		nnrss-directory (concat user-emacs-directory "rss/")
+
 		gnus-select-method '(nntp "news.eternal-september.org")
 		gnus-secondary-select-methods ;; Remember, no http or https
-		    '((nnatom "learn2.open.ac.uk/blocks/news/feed.php?bi=304299")
-			  (nnatom "yummymelon.com/devnull/feeds/all.atom.xml")
-			  (nnrss "xkcd.com/rss.xml")
+		    '(;;(nnatom "learn2.open.ac.uk/blocks/news/feed.php?bi=304299")
+			  ;;(nnatom "yummymelon.com/devnull/feeds/all.atom.xml")
+			  (nnrss "https://xkcd.com/rss.xml")
 			  (nnrss "https://emacs.org/rss/emacs.xml")
 			  (nnrss "https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100")
 			  (nnrss "https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637"))
