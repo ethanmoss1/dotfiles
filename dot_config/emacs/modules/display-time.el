@@ -27,7 +27,6 @@
 
 (use-package time
   :if (string-equal my-hostname "laptop")
-  :ensure nil
-  )
+  :ensure nil)
 
 ;;; display-time.el ends here
