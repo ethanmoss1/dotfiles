@@ -21,8 +21,6 @@
 ;;; Commentary :
 
 ;;; Code :
-(global-unset-key (kbd "C-x C-b"))
-
 (use-package consult
   :bind (("C-t" . consult-imenu)
 		 ("C-x b" . consult-buffer)

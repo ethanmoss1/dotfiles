@@ -27,10 +27,31 @@
 
 (use-package ibuffer
   :ensure nil
+  :hook (ibuffer . (lambda ()
+						  (ibuffer-switch-to-saved-filter-groups "Groups")))
   :config
+
   (setq ibuffer-show-empty-filter-groups nil
-		ibuffer-saved-filter-groups `(("Default"
-									   ("Dired" (mode . dired-mode))
-									   ("Temporary" (name . "\*.*\*"))))))
+		ibuffer-saved-filter-groups '(("Groups"
+									   ("Files"
+										(and
+										 (visiting-file)
+										 (not derived-mode . org-mode)))
+									   ("Firefox"
+										(and
+										 (derived-mode . exwm-mode)
+										 (name . "firefox")))
+									   ("Magit"
+										(name . "^magit"))
+									   ("Help"
+										(or
+										 (derived-mode . help-mode)
+										 (derived-mode . helpful-mode)))
+									   ("Dired"
+										(derived-mode . dired-mode))
+									   ("Org"
+										(derived-mode . org-mode))
+									   ("Temporary"
+										(name . "*.**"))))))
 
 ;;; ibuffer.el ends here
