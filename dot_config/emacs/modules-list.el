@@ -28,6 +28,7 @@
 		  "window"
 		  "tramp"
 		  ;; "gnus"
+		  "ispell"
 
           ;; -- Compulsory Modules --
           "vertico"
@@ -54,7 +55,6 @@
 
 		  ;; -- News and Email --
 		  "elfeed"
-		  "elfeed-goodies"
 		  "notmuch"
 
           ;; -- Other modules --
