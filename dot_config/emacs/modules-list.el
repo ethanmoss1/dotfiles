@@ -52,9 +52,13 @@
 		  "modus-themes"
 		  "moodline"
 
-          ;; -- Other modules --
+		  ;; -- News and Email --
+		  "elfeed"
+		  "elfeed-goodies"
 		  "notmuch"
-          "programming"
+
+          ;; -- Other modules --
+		  "programming"
           "helpful"
           "consult"
           "magit"
