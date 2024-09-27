@@ -19,9 +19,9 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;;
-
-;;
+;; `recentf' is an Emacs package that maintains a list of recently
+;; accessed files, making it easier to reopen files you have worked on
+;; recently.
 
 ;;; Code:
 
@@ -30,11 +30,12 @@
   :ensure nil
   :demand t
   :config
-  (setq recentf-save-file (concat user-emacs-directory "recentf")
-        recentf-max-saved-items 10000
+  (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
+        recentf-max-saved-items 1000
         recentf-max-menu-items 1000
-        recentf-auto-cleanup 'never
+        recentf-auto-cleanup 'mode
         recentf-exclude '("\\.git.*"))
+
   (recentf-mode t))
 
 ;;; recentf.el ends here

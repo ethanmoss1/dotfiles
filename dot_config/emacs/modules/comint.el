@@ -1,9 +1,9 @@
-;;; simple.el ---   -*- lexical-binding: t;-*-
+;;; comint.el --- general command interpreter in a window stuff  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024  Ethan Moss
+;; Copyright (C) 2024
 
-;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords:
+;; Author:  <ethan@nixos>
+;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -18,25 +18,12 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-;;
-
-;;
-
 ;;; Code:
-(use-package simple
+
+(use-package comint
   :ensure nil
   :config
-  (setq indent-tabs-mode nil
-		; generates tabs distances at 4 spaces increments
-		tab-stop-list (number-sequence 4 120 4))
+  (setq comint-prompt-read-only t
+		comint-buffer-maximum-size 2048))
 
-  (setq line-number-mode t
-        column-number-mode t)
-
-  ;; Enable some modes
-  (indent-tabs-mode nil)
-  (line-number-mode -1)
-  (visual-line-mode nil))
-
-;;; simple.el ends here
+;;; comint.el ends here

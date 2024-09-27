@@ -27,7 +27,9 @@
   :ensure nil
   :config
   (setq savehist-autosave-interval 60
-        savehist-file (concat user-emacs-directory "savehist"))
+		history-length 300
+        savehist-file (expand-file-name "cache/savehist" user-emacs-directory))
+
   (savehist-mode t))
 
 

@@ -1,9 +1,9 @@
-;;; simple.el ---   -*- lexical-binding: t;-*-
+;;; compile.el --- run compiler as inferior of Emacs, parse error messages  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024  Ethan Moss
+;; Copyright (C) 2024
 
-;; Author: Ethan Moss <cywinskimoss@gmail.com>
-;; Keywords:
+;; Author:  <ethan@nixos>
+;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -18,25 +18,14 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-;;
-
-;;
-
 ;;; Code:
-(use-package simple
+
+(use-package compile
   :ensure nil
   :config
-  (setq indent-tabs-mode nil
-		; generates tabs distances at 4 spaces increments
-		tab-stop-list (number-sequence 4 120 4))
+  (setq compilation-always-kill t
+		compilation-ask-about-save nil
+		compilation-scroll-output 'first-error))
 
-  (setq line-number-mode t
-        column-number-mode t)
 
-  ;; Enable some modes
-  (indent-tabs-mode nil)
-  (line-number-mode -1)
-  (visual-line-mode nil))
-
-;;; simple.el ends here
+;;; compile.el ends here

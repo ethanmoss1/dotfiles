@@ -24,6 +24,9 @@
 ;; same as above
 
 ;;; Code:
-(setq tramp-allow-unsafe-temporary-files t)
+(setq tramp-allow-unsafe-temporary-files t
+	  tramp-backup-directory-alist `(("." . ,(expand-file-name
+											  "backup"
+											  user-emacs-directory))))
 
 ;;; tramp.el ends here

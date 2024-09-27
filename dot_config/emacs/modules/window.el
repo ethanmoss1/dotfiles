@@ -25,6 +25,21 @@
 
 ;;; Code:
 
-(setq switch-to-buffer-obey-display-actions t)
+(use-package window
+  :ensure nil
+  :hook (after-init . window-divider-mode)
+  :config
+  (setq switch-to-buffer-obey-display-actions t
+		split-width-threshold 170
+		split-height-threshold nil)
+
+  ;; resizing windows
+  (setq window-resize-pixelwise nil
+		resize-mini-windows 'grow-only)
+
+  ;; Window divider
+  (setq window-divider-default-places t
+		window-divider-default-right-width 1
+		window-divider-default-bottom-width 1))
 
 ;;; window.el ends here

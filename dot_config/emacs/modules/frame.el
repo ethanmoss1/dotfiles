@@ -18,15 +18,89 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-;;
-
-;;
-
 ;;; Code:
 (use-package frame
   :ensure nil
-  :config (setq blink-cursor-delay 0.5
-                blink-cursor-interval 0.5))
+  :config
+  ;; Frame
+  (setq frame-resize-pixelwise t)
+
+
+  ;; Cursor
+  ;; The blinking cursor is distracting and interferes with cursor settings in
+  ;; some minor modes that try to change it buffer-locally (e.g., Treemacs).
+  ;; Additionally, it can cause freezing, especially on macOS, for users with
+  ;; customized and colored cursors.
+  (blink-cursor-mode -1)
+
+  ;; Don't stretch the cursor to fit wide characters, it is disorienting,
+  ;; especially for tabs.
+  (setq x-stretch-cursor nil)
+
+
+  ;; Display line number
+  (setq-default display-line-numbers-width 3
+				display-line-numbers-width t)
+
+
+  ;; mule
+  (setq truncate-string-ellipsis "…")
+
+  ;;; Indent and formatting
+  (setq-default left-fringe-width  8)
+  (setq-default right-fringe-width 8)
+
+  ;; Do not show an arrow at the top/bottomin the fringe and empty lines
+  (setq-default indicate-buffer-boundaries nil)
+  (setq-default indicate-empty-lines nil)
+
+  ;; Continue wrapped lines at whitespace rather than breaking in the
+  ;; middle of a word.
+  (setq-default word-wrap t)
+
+  ;; Disable wrapping by default due to its performance cost.
+  (setq-default truncate-lines t)
+
+  ;; If enabled and `truncate-lines' is disabled, soft wrapping will not occur
+  ;; when the window is narrower than `truncate-partial-width-windows'
+  ;; characters.
+  (setq truncate-partial-width-windows nil)
+
+  ;; Prefer spaces over tabs. Spaces offer a more consistent default compared to
+  ;; 8-space tabs. This setting can be adjusted on a per-mode basis as needed.
+  (setq-default indent-tabs-mode nil
+				tab-width 4)
+
+  ;; Enable indentation and completion using the TAB key
+  (setq-default tab-always-indent nil)
+
+  ;; Enable multi-line commenting which ensures that `comment-indent-new-line'
+  ;; properly continues comments onto new lines, which is useful for writing
+  ;; longer comments or docstrings that span multiple lines.
+  (setq comment-multi-line t)
+
+  ;; We often split terminals and editor windows or place them side-by-side,
+  ;; making use of the additional horizontal space.
+  (setq-default fill-column 80)
+
+  ;; Disable the obsolete practice of end-of-line spacing from the
+  ;; typewriter era.
+  (setq sentence-end-double-space nil)
+
+  ;; According to the POSIX, a line is defined as "a sequence of zero or
+  ;; more non-newline characters followed by a terminating newline".
+  (setq require-final-newline t)
+
+  ;; Remove duplicates from the kill ring to reduce clutter
+  (setq kill-do-not-save-duplicates t)
+
+  ;; Ensures that empty lines within the commented region are also commented
+  ;; out. This prevents unintended visual gaps and maintains a consistent
+  ;; appearance, ensuring that comments apply uniformly to all lines, including
+  ;; those that are otherwise empty.
+  (setq comment-empty-lines t)
+
+  ;; Eliminate delay before highlighting search matches
+  (setq lazy-highlight-initial-delay 0))
 
 ;;; frame.el ends here

@@ -26,7 +26,9 @@
 ;;; Code:
 
 (use-package time
-  :if (string-equal my-hostname "laptop")
-  :ensure nil)
+  ;; :if (string-equal my-hostname "laptop")
+  :ensure nil
+  :config
+  (setq display-time-default-load-average nil))
 
 ;;; display-time.el ends here

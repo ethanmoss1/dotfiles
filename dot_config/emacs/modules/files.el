@@ -27,14 +27,77 @@
 (use-package files
   :ensure nil
   :config
-  (setq require-final-newline        t
-        large-file-warning-threshold nil
-        make-backup-files            nil
-        backup-by-copying            t
-        delete-old-versions          t
-        kept-new-versions            10
-        kept-old-versions            0)
-  (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+  ;; Delete by moving to trash
+  (setq delete-by-moving-to-trash (not noninteractive))
+
+  ;; Disable the warning "X and Y are the same file". Ignoring this warning is
+  ;; acceptable since it will redirect you to the existing buffer regardless.
+  (setq find-file-suppress-same-file-warnings t)
+
+  ;; Resolve symlinks when opening files, so that any operations are conducted
+  ;; from the file's true directory (like `find-file').
+  (setq find-file-visit-truename t
+		vc-follow-symlinks t)
+
+  ;; Skip confirmation prompts when creating a new file or buffer
+  (setq confirm-nonexistent-file-or-buffer nil)
+
+
+  ;; Avoid generating backups or lockfiles to prevent creating world-readable
+  ;; copies of files.
+  (setq create-lockfiles nil
+		make-backup-files nil)
+
+  (setq backup-directory-alist `(("." . ,(expand-file-name
+										  "cache/backup/"
+										  user-emacs-directory))))
+
+  ;; Backup by copying rather than renaming
+  (setq backup-by-copying t
+		backup-by-copying-when-linked t)
+
+  ;; Version control
+  (setq version-control t
+		vc-make-backup-files nil
+		kept-new-versions 5
+		kept-old-versions 5
+		delete-old-versions t)
+
+  ;; misc file options
+  (setq require-final-newline t
+        large-file-warning-threshold nil)
+
+  ;; Auto save options
+  ;; Enable auto-save to safeguard against crashes or data loss. The
+  ;; `recover-file' or `recover-session' functions can be used to restore
+  ;; auto-saved data.
+  (setq auto-save-default t)
+
+  ;; Do not auto-disable auto-save after deleting large chunks of
+  ;; text. The purpose of auto-save is to provide a failsafe, and
+  ;; disabling it contradicts this objective.
+  (setq auto-save-include-big-deletions t)
+
+  (setq auto-save-list-file-prefix
+		(expand-file-name "cache/autosave/" user-emacs-directory)
+		tramp-auto-save-directory
+		(expand-file-name "cache/tramp-autosave/" user-emacs-directory))
+
+  ;; Auto save options
+  (setq kill-buffer-delete-auto-save-files t)
+
+  ;;; Auto revert
+  ;; Auto-revert in Emacs is a feature that automatically updates the
+  ;; contents of a buffer to reflect changes made to the underlying file
+  ;; on disk.
+  (setq revert-without-query (list ".")  ; Do not prompt
+		auto-revert-stop-on-user-input nil
+		auto-revert-verbose t)
+
+  ;; Revert other buffers (e.g, Dired)
+  (setq global-auto-revert-non-file-buffers t)
+
+
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
   (add-hook 'before-save-hook
             (lambda ()
@@ -43,6 +106,7 @@
                   (when (and (not (file-exists-p dir))
                              (y-or-n-p
                               (format "Directory %s doesn't exist.  Create it?" dir)))
-                    (make-directory dir t)))))))
+                    (make-directory dir t))))))
+  (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p))
 
 ;;; files.el ends here

@@ -85,7 +85,7 @@ MODULE to load from the list of available modules."
 
 ;; Don’t ask about inserting templates into new files, for the module new
 ;; function.
-(setq auto-insert-query 'nil)
+(setq auto-insert-query nil)
 
 (defun module-new ()
   "Create a new module file in the modules directory that allows

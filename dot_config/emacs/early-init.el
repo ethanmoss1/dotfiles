@@ -27,6 +27,7 @@
 (setq native-comp-async-query-on-exit t
       comp-async-query-on-exit t)
 
+
 (let ((deny-list '("\\(?:[/\\\\]\\.dir-locals\\.el$\\)")))
   (if (boundp 'native-comp-deferred-compilation-deny-list)
       (setq native-comp-deferred-compilation-deny-list deny-list)
@@ -50,7 +51,38 @@
 ;; Turn off Package.el, we use our own package manager
 (setq package-enable-at-startup nil)
 
-;; remove some features
+(set-language-environment "UTF-8")
+
+;; Set-language-environment sets default-input-method, which is unwanted.
+(setq default-input-method nil)
+
+;; Increase how much is read from processes in a single chunk (default is 4kb).
+(setq read-process-output-max (* 512 1024))  ; 512kb
+
+;; Increase how much is read from processes in a single chunk (default is 4kb).
+(setq read-process-output-max (* 512 1024))  ; 512kb
+
+;; Reduce rendering/line scan work by not rendering cursors or regions in
+;; non-focused windows.
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
+;; Disable warnings from the legacy advice API. They aren't useful.
+(setq ad-redefinition-action 'accept)
+
+(setq warning-suppress-types '((lexical-binding)))
+
+;; Don't ping things that look like domain names.
+(setq ffap-machine-p-known 'reject)
+
+;; By default, Emacs "updates" its ui more often than it needs to
+(setq idle-update-delay 1.0)
+
+;; Font compacting can be very resource-intensive, especially when rendering
+;; icon fonts on Windows. This will increase memory usage.
+(setq inhibit-compacting-font-caches t)
+
+;; Remove some features
 (setq tool-bar-mode nil)
 (menu-bar-mode -1)
 (when (fboundp 'set-scroll-bar-mode)
@@ -60,5 +92,9 @@
 ;; font. By inhibiting this, we easily halve startup times with fonts that are
 ;; larger than the system default.
 (setq frame-inhibit-implied-resize t)
+
+;; No beeping or blinking
+(setq visible-bell nil
+	  ring-bell-function #'ignore)
 
 ;;; early-init.el ends here

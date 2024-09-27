@@ -28,6 +28,7 @@
 		mood-line-show-eol-style t
 		mood-line-show-indentation-style t
 		mood-line-show-major-mode t)
+
   (mood-line-mode t))
 
 ;;; moodline.el ends here -----------------------------------------------------

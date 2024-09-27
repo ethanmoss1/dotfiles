@@ -29,6 +29,7 @@
 		  "tramp"
 		  ;; "gnus"
 		  "ispell"
+		  "minibuffer"
 
           ;; -- Compulsory Modules --
           "vertico"
@@ -50,7 +51,8 @@
 
           ;; -- Themeing Modules --
           "alltheicons"
-		  "modus-themes"
+		  ;; "modus-themes"
+		  "gruvbox"
 		  "moodline"
 
 		  ;; -- News and Email --

@@ -19,14 +19,16 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;;
-
-;;
+;; `save-place-mode` enables Emacs to remember the last location within a file
+;; upon reopening. This feature is particularly beneficial for resuming work at
+;; the precise point where you previously left off.
 
 ;;; Code:
 (use-package saveplace
   :ensure nil
   :config
+  (setq save-place-file (expand-file-name "cache/saveplace" user-emacs-directory)
+		save-place-limit 800)
   (save-place-mode t))
 
 ;;; saveplace.el ends here

@@ -26,11 +26,18 @@
 ;;; Code:
 (use-package paren
   :ensure nil
+  :defer t
+  :hook (prog-mode . show-paren-mode)
   :config
   (setq show-paren-style 'parenthesis
+		show-paren-delay 0.1
+		show-paren-highlight-openparen t
         show-paren-when-point-inside-paren t
         show-paren-when-point-in-periphery t
         show-paren-context-when-offscreen 'overlay)
-  (show-paren-mode t))
+
+  ;; Don't blink the paren matching the one at point, it's too distracting.
+  (setq blink-matching-paren nil))
+
 
 ;;; paren.el ends here

@@ -40,6 +40,8 @@
 				dired-clean-up-buffers-too t
 				dired-create-destination-dirs 'always
 				dired-free-space 'separate
-				dired-mouse-drag-files 'move))
+				dired-mouse-drag-files 'move
+                dired-recursive-copies 'always
+                dired-recursive-deletes 'top))
 
 ;;; dired.el ends here

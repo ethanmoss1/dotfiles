@@ -18,14 +18,15 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary :
-
 ;;; Code :
 (use-package transient)
 
 (use-package magit
   :after transient
-  (setq vc-make-backup-files t
-        version-control t))
+  :config
+  (setq vc-make-backup-files nil
+        version-control t)
+
+  (setq magit-delete-by-moving-to-trash delete-by-moving-to-trash))
 
 ;;; magit.el ends here

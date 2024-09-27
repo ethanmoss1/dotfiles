@@ -67,13 +67,6 @@
   (require 'exwm-systemtray)
   (exwm-systemtray-mode 1)
 
-  ;; Allow resizing of x applications, otherwise difficult
-  (setq window-divider-default-right-width 12
-        window-divider-default-places 'right-only)
-  (window-divider-mode)
-
-  (setq exwm-workspace-number 1)
-
   ;; Mimic behaviour of emacs bindings in x sessions
   (setq exwm-input-simulation-keys '(;; movement
 									 ([?\C-b] . [left])
