@@ -47,13 +47,19 @@
 		  "tab-bar"
 		  "display-time"
 		  "pdf-tools"
-		  "org-caldav"
 
           ;; -- Themeing Modules --
           "alltheicons"
-		  ;; "modus-themes"
-		  "gruvbox"
+		  "modus-themes"
+		  ;; "gruvbox"
 		  "moodline"
+
+          ;; Org Extras
+		  "org-caldav"
+          "orgroam"
+          ;; "org-fragtog"
+          ;; "org-noter"
+          ;; "org-gtd"
 
 		  ;; -- News and Email --
 		  "elfeed"
