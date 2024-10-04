@@ -47,35 +47,57 @@
   (insert "\\]")
   (previous-line))
 
+(defun my/org-agenda-with-groups ()
+  "Open org-agenda and all TODOs"
+  (interactive)
+  (org-agenda nil "n"))
+
 (use-package org
   :hook (org-mode . my/load-minor-modes-for-org)
-  :bind (("C-c o a" . 'org-agenda)
+  :bind (("C-c o a" . 'my/org-agenda-with-groups)
 		 ("C-c o c" . 'org-capture))
   :config
-  (org-babel-do-load-languages 'org-babel-load-languages '((python . t)
-														   (gnuplot . t)
-														   (maxima . t)
-														   (shell . t)
-														   (C . t)))
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((python . t)
+								 (gnuplot . t)
+								 ;; (maxima . t)
+								 (shell . t)
+								 (C . t)))
 
   (setq org-directory "~/documents/org/"
-		org-agenda-files (directory-files-recursively "~/documents"
-													  "\\.org$")
-		;; Capture time entered and exited ‘NEXT’ as well as any notes for when
-		;; changing the state to ‘DONE’
-		org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)")
+        org-default-notes-file (concat org-directory "notes.org")
+        org-agenda-files (directory-files-recursively "~/documents"
+													  "\\.org$"))
+
+  ;; Refiling options
+  (setq org-outline-path-complete-in-steps nil
+        org-refile-use-outline-path 'file
+        org-refile-targets '((nil :maxlevel . 1)
+                             (org-agenda-files :maxlevel . 1)))
+
+  ;; Capture time entered and exited ‘NEXT’ as well as any notes for when
+  ;; changing the state to ‘DONE’
+  (setq org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)")
 		org-hide-emphasis-markers t
-		org-capture-templates `(("i" "Inbox" entry (file "Inbox.org")
-								 ,(s-join "\n" '("* TODO %?"
+		org-capture-templates `(("i"               ; keys
+                                 "Inbox"           ; description
+                                 entry             ; type
+                                 (file+headline "inbox.org" "todo")  ; target
+								 ,(s-join "\n"     ; template
+                                          '("** TODO %? %(org-set-tags \"new\")"
+	                                        ":PROPERTIES:"
+											":ENTERED: %U"
+											":FILE: [[%F]]"
+											":END:"))
+                                 :empty-lines 1) ; properties
+
+								("n" "Notes" entry (file+headline "inbox.org"
+                                                                  "notes")
+								 ,(s-join "\n" '("** %? %^G"
 												 ":PROPERTIES:"
 												 ":ENTERED: %U"
 												 ":FILE: [[%F]]"
-												 ":END:")))
-								("n" "Notes" entry (file "Inbox.org")
-								 ,(s-join "\n" '("* %?"
-												 ":PROPERTIES:"
-												 ":ENTERED: %U"
-												 ":FILE: [[%F]]"
-												 ":END:"))))))
+												 ":END:"))
+                                 :empty-lines 1))))
 
 ;;; org.el ends here

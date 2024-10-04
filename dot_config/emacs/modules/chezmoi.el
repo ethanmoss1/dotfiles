@@ -24,10 +24,14 @@
 (use-package chezmoi
   :bind
   ("C-c d f" . 'chezmoi-find)
+  ("C-c d o" . 'chezmoi-find-in-files)
   ("C-c d s" . 'chezmoi-magit-status)
   ("C-c d e" . 'chezmoi-goto-emacs-folder)
   ("C-c d c" . 'chezmoi-goto-chezmoi-folder)
   :config
+  (defvar chezmoi-directory "~/.local/share/chezmoi"
+    "Folder of the Chezmoi directory")
+
   (defun chezmoi-dired-add-marked-files ()
     "Add files marked in Dired to source state."
     (interactive)
@@ -47,6 +51,11 @@
   (defun chezmoi-goto-chezmoi-folder ()
 	"Go to the chezmoi directory"
     (interactive)
-	(dired "~/.local/share/chezmoi")))
+	(dired chezmoi-directory))
+
+  (defun chezmoi-find-in-files ()
+    "Find the given REGEX in the chezmoi directory"
+    (interactive)
+    (consult-grep chezmoi-directory)))
 
 ;; chezmoi.el ends here

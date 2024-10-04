@@ -30,13 +30,26 @@
   :hook (ibuffer . (lambda ()
 						  (ibuffer-switch-to-saved-filter-groups "Groups")))
   :config
+  ;; Configure the way the ibuffer looks
+  (setq ibuffer-eliding-string "…"
+        ibuffer-formats '(( mark
+                            modified
+                            " "
+                            (name 16 -1 :left :elide)
+                            " "
+                            (filename 40 -1 :right))))
 
+  ;; Set up filters
   (setq ibuffer-show-empty-filter-groups nil
 		ibuffer-saved-filter-groups '(("Groups"
 									   ("Files"
 										(and
 										 (visiting-file)
 										 (not derived-mode . org-mode)))
+                                       ("EXWM"
+                                        (and
+                                         (derived-mode . exwm-mode)
+                                         (not (name . "firefox"))))
 									   ("Firefox"
 										(and
 										 (derived-mode . exwm-mode)
