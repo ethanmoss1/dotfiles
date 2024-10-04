@@ -29,6 +29,7 @@
   :group 'bindings
   :keymap (make-sparse-keymap))
 
+
 (use-package exwm
   :if (string-equal my-hostname "laptop")
   :after xelb

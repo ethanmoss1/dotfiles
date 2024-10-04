@@ -4,21 +4,15 @@
 
 ;;; Code : ---------------------------------------------------------------------
 
-(message "[ Moss ] Loading module, doom-modeline  ... ")
-
 (use-package doom-modeline
-  :init
-  ;; (setq-default mode-line-format "")
   :config
-  (doom-modeline-mode 1)
-  :custom
-  ;; (doom-modeline-mu4e t)
-  (doom-modeline-major-mode-icon nil)
-  (doom-modeline-buffer-file-name-style 'auto)
-  (doom-modeline-buffer-encoding nil)
-  ;; (doom-modeline-modal t)
-  (doom-modeline-minor-modes t)
-  (doom-modeline-hud t))
+  (setq doom-modeline-major-mode-icon nil
+        doom-modeline-buffer-file-name-style 'auto
+        doom-modeline-buffer-encoding nil
+        ;; doom-modeline-modal t
+        doom-modeline-minor-modes t
+        doom-modeline-hud t)
 
-(provide 'moss-doom-modeline)
+  (doom-modeline-mode 1))
+
 ;;; moss-doom-modeline.el ends here -----------------------------------------------------

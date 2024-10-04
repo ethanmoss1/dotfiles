@@ -23,7 +23,7 @@
 (use-package org-roam
   :bind (("C-c r l" . org-roam-buffer-toggle)
          ("C-c r f" . org-roam-node-find)
-         ("C-c r g" . org-roam-graph)
+         ("C-c r g" . org-roam-ui-open)
          ("C-c r i" . org-roam-node-insert)
          ("C-c r c" . org-roam-capture)
          ("C-c n j" . org-roam-dailies-capture-today))
@@ -46,32 +46,20 @@
 
   ;; If using org-roam-protocol
   ;; (require 'org-roam-protocol)
-
   (org-roam-db-autosync-mode 1))
 
-
 ;;; Additional Org-roam package;
-
 (use-package org-roam-ui
-  :after org-roam
-  ;; normally we'd recommend hooking orui after org-roam, but since org-roam
-  ;; does not have a hookable mode anymore, you're advised to pick something
-  ;; yourself if you don't care about startup time, use;
-  ;; :hook (after-init . org-roam-ui-mode)
+  :hook (after-init . org-roam-ui-mode)
   :config
+  ;; To sync the theme your using, run ‘orui-sync-theme’
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start nil)
-
-  ;; To sync the theme your using, run ‘orui-sync-theme’
-
-  (org-roam-ui-mode))
-
-
+        org-roam-ui-open-on-start nil))
 
 (use-package org-roam-timestamps
-  :after org-roam-ui
+  :hook (after-init . org-roam-ui-mode)
   :config
   ;; Run ‘org-roam-timestamps-all’, This will add ctime and mtime properties to
   ;; all the property drawers of your notes.

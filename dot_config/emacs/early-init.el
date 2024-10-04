@@ -64,7 +64,7 @@
 
 ;; Reduce rendering/line scan work by not rendering cursors or regions in
 ;; non-focused windows.
-(setq-default cursor-in-non-selected-windows nil)
+(setq-default cursor-in-non-selected-windows t) ;; default t,
 (setq highlight-nonselected-windows nil)
 
 ;; Disable warnings from the legacy advice API. They aren't useful.
@@ -76,7 +76,7 @@
 (setq ffap-machine-p-known 'reject)
 
 ;; By default, Emacs "updates" its ui more often than it needs to
-(setq idle-update-delay 1.0)
+(setq idle-update-delay 0.5) ;; default 0.5
 
 ;; Font compacting can be very resource-intensive, especially when rendering
 ;; icon fonts on Windows. This will increase memory usage.

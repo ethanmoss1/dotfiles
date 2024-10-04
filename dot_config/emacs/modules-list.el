@@ -56,7 +56,7 @@
 
           ;; Org Extras
 		  "org-caldav"
-          "orgroam"
+          "org-roam"
           ;; "org-fragtog"
           ;; "org-noter"
           ;; "org-gtd"
