@@ -1,4 +1,5 @@
 # -*- mode:conf -*-
+
 #
 # General Settings
 #
@@ -13,8 +14,12 @@ set output-meta on
 # Complete word or show completions on TAB
 set show-all-if-ambiguous on
 
+# Complete case insensitive
+set completion-ignore-case on
+
 # Disable echoing of control chars
 set echo-control-characters off
+
 
 #
 #  Keybindings
@@ -35,6 +40,7 @@ set echo-control-characters off
 #"\e[5D": backward-word
 
 #"\e[8~": end-of-line
+
 
 #
 #  Color files by types
