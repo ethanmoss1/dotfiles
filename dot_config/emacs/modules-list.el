@@ -55,6 +55,7 @@
 		  "moodline"
 
           ;; Org Extras
+          "org"
 		  "org-caldav"
           "org-roam"
           ;; "org-fragtog"
@@ -65,15 +66,19 @@
 		  "elfeed"
 		  "notmuch"
 
-          ;; -- Other modules --
-		  "programming"
-          "helpful"
-          "consult"
-          "magit"
-          "org"
+          ;; -- Editing modules --
+          "programming"
+          "vundo"  ;; Visual undo history
+          "hl-todo"
           "corfu"
-		  "docker"
-		  "hl-todo"
-		  "rainbow"
+          "rainbow"
+          "consult"
+
+          ;; -- Version Control --
+          "magit"
+
+          ;; -- Other modules --
+		  "helpful"
+          "docker"
 		  "nix"
           )) ;; -- End of Modules --
