@@ -28,7 +28,10 @@
 (use-package ibuffer
   :ensure nil
   :hook (ibuffer . (lambda ()
-						  (ibuffer-switch-to-saved-filter-groups "Groups")))
+                     ;; Apply filter and collapse ‘Org’ heading.
+                     (ibuffer-switch-to-saved-filter-groups "Groups")
+                     (setq ibuffer-hidden-filter-groups '("Org"))
+                     (ibuffer-update nil)))
   :config
   ;; Configure the way the ibuffer looks
   (setq ibuffer-eliding-string "…"

@@ -21,6 +21,8 @@
 ;;; Commentary :
 
 ;;; Code :
+(require 's)
+
 (defun org-latex-preview-buffer ()
   "Generate the previews of all latex fragments in the buffer"
   (interactive)

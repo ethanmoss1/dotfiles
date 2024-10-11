@@ -20,6 +20,12 @@
 
 ;;; Code:
 
+;; (use-package consult-org-roam)
+(defun consult-org-roam-grep ()
+  "Find in files in org roam directory"
+  (interactive)
+  (consult-grep org-roam-directory))
+
 (use-package org-roam
   :bind (("C-c r l" . org-roam-buffer-toggle)
          ("C-c r f" . org-roam-node-find)
@@ -50,7 +56,7 @@
 
 ;;; Additional Org-roam package;
 (use-package org-roam-ui
-  :hook (after-init . org-roam-ui-mode)
+  :hook (elpaca-after-init . org-roam-ui-mode)
   :config
   ;; To sync the theme your using, run ‘orui-sync-theme’
   (setq org-roam-ui-sync-theme t
@@ -59,7 +65,7 @@
         org-roam-ui-open-on-start nil))
 
 (use-package org-roam-timestamps
-  :hook (after-init . org-roam-ui-mode)
+  :hook (elpaca-after-init . org-roam-ui-mode)
   :config
   ;; Run ‘org-roam-timestamps-all’, This will add ctime and mtime properties to
   ;; all the property drawers of your notes.
