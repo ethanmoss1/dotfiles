@@ -31,11 +31,14 @@
   ;; some minor modes that try to change it buffer-locally (e.g., Treemacs).
   ;; Additionally, it can cause freezing, especially on macOS, for users with
   ;; customized and colored cursors.
-
-  (setq blink-cursor-mode t
-        blink-cursor-delay 0.3
+  (setq blink-cursor-delay 0.3
         blink-cursor-blinks 0
-        blink-cursor-interval 0.3)
+        blink-cursor-interval 0.3
+        ;; Reduce rendering/line scan work by not rendering cursors or regions in
+        ;; non-focused windows.
+        cursor-in-non-selected-windows t ;; default t,
+        highlight-nonselected-windows nil)
+  (add-hook 'elpaca-after-init-hook 'blink-cursor-mode)
 
 
   ;; Don't stretch the cursor to fit wide characters, it is disorienting,

@@ -27,7 +27,7 @@
 
 (use-package window
   :ensure nil
-  :hook (after-init . window-divider-mode)
+  :hook (elpaca-after-init . window-divider-mode)
   :config
   (setq switch-to-buffer-obey-display-actions t
 		split-width-threshold 170

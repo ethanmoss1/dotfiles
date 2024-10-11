@@ -62,11 +62,6 @@
 ;; Increase how much is read from processes in a single chunk (default is 4kb).
 (setq read-process-output-max (* 512 1024))  ; 512kb
 
-;; Reduce rendering/line scan work by not rendering cursors or regions in
-;; non-focused windows.
-(setq-default cursor-in-non-selected-windows t) ;; default t,
-(setq highlight-nonselected-windows nil)
-
 ;; Disable warnings from the legacy advice API. They aren't useful.
 (setq ad-redefinition-action 'accept)
 
