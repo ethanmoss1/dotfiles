@@ -29,6 +29,13 @@
   :group 'bindings
   :keymap (make-sparse-keymap))
 
+(defun exwm-rename-buffer-class-name ()
+	"Rename the EXWM buffers with the X11 Class name"
+	(if (and (string-equal exwm-class-name "firefox") exwm-title)
+		(let* ((page-title (car (split-string exwm-title "\\ +[-—]\\ +")))
+			   (new-buffer-name (concat "*" exwm-class-name " - " page-title "*")))
+		  (exwm-workspace-rename-buffer new-buffer-name))
+	  (exwm-workspace-rename-buffer exwm-class-name)))
 
 (use-package exwm
   :if (string-equal my-hostname "laptop")
@@ -48,14 +55,6 @@
 			  ;; DE bindings
 			  ("s-<return>" . (lambda () (interactive) (eshell))))
   :config
-  (defun exwm-rename-buffer-class-name ()
-	"Rename the EXWM buffers with the X11 Class name"
-	(if (and (string-equal exwm-class-name "firefox") exwm-title)
-		(let* ((page-title (car (split-string exwm-title "\\ +[-—]\\ +")))
-			   (new-buffer-name (concat "*" exwm-class-name " - " page-title "*")))
-		  (exwm-workspace-rename-buffer new-buffer-name))
-	  (exwm-workspace-rename-buffer exwm-class-name)))
-
   ;; Dont ask to replace, if I have another WM open its probably for a reason
   (setq exwm-replace 'nil)
 
@@ -65,8 +64,9 @@
   (desktop-environment-mode)
 
   ;; Systemtray
-  (require 'exwm-systemtray)
-  (exwm-systemtray-mode 1)
+  ;; (unless /some-exwm-chexk/
+  ;;   (require 'exwm-systemtray)
+  ;;   (exwm-systemtray-mode 1))
 
   ;; Mimic behaviour of emacs bindings in x sessions
   (setq exwm-input-simulation-keys '(;; movement

@@ -21,8 +21,6 @@
 ;;; Commentary :
 
 ;;; Code :
-(require 's)
-
 (defun org-latex-preview-buffer ()
   "Generate the previews of all latex fragments in the buffer"
   (interactive)
@@ -79,6 +77,7 @@
 
   ;; Capture time entered and exited ‘NEXT’ as well as any notes for when
   ;; changing the state to ‘DONE’
+  (require 's)
   (setq org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)")
 		org-hide-emphasis-markers t
 		org-capture-templates `(("i"               ; keys
