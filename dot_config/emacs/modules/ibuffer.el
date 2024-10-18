@@ -49,7 +49,12 @@
 										(and
 										 (visiting-file)
 										 (not derived-mode . org-mode)))
-                                       ("EXWM"
+                                       ("Shell"
+                                        (or
+                                         (derived-mode . eshell-mode)
+                                         (derived-mode . shell-mode)
+                                         (derived-mode . eat-mode)))
+                                        ("EXWM"
                                         (and
                                          (derived-mode . exwm-mode)
                                          (not (name . "firefox"))))

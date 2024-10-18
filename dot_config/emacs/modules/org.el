@@ -53,7 +53,8 @@
   (org-agenda nil "n"))
 
 (use-package org
-  :hook (org-mode . my/load-minor-modes-for-org)
+  :hook ((org-mode . my/load-minor-modes-for-org)
+         (org-agenda-mode  . hl-line-mode))
   :bind (("C-c o a" . 'my/org-agenda-with-groups)
 		 ("C-c o c" . 'org-capture))
   :config
@@ -69,6 +70,10 @@
         org-agenda-files (directory-files-recursively "~/documents"
 													  "\\.org$"))
 
+
+  (if (string-equal my-hostname "laptop")
+      (plist-put org-format-latex-options :scale 1.8)
+    (plist-put org-format-latex-options :scale 1))
   ;; Refiling options
   (setq org-outline-path-complete-in-steps nil
         org-refile-use-outline-path 'file
@@ -99,6 +104,14 @@
 												 ":ENTERED: %U"
 												 ":FILE: [[%F]]"
 												 ":END:"))
-                                 :empty-lines 1))))
+                                 :empty-lines 1)))
+  (add-to-list 'display-buffer-alist
+			   '("^*Org Select"
+                 (display-buffer-in-side-window)
+                 (side . bottom)
+                 (slot . 0)
+                 (window-height . 0.33)
+                 (window-parameters
+                  (no-delete-other-windows . t)))))
 
 ;;; org.el ends here

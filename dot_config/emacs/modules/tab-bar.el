@@ -28,15 +28,26 @@ including to the given tab."
   (interactive)
   (tab-bar-select-tab num))
 
-`(use-package tab-bar
+
+(use-package tab-bar
    :if (string-equal my-hostname "laptop")
    :ensure nil  ;; Because tab-bar is built-in, no need to install
    :init (tab-bar-mode)
+   ;; :bind (:map desktop-environment-mode-map
+   ;;  	       ,@(mapcar (lambda (i)
+   ;;  					   `(,(format "s-%d" i) .
+   ;;  						 (lambda () (interactive) (my/tab-bar-select-tab i))))
+   ;;  					 (number-sequence 1 9)))
    :bind (:map desktop-environment-mode-map
-		       ,@(mapcar (lambda (i)
-						   `(,(format "s-%d" i) .
-							 (lambda () (interactive) (my/tab-bar-select-tab i))))
-						 (number-sequence 1 9)))
+		       ("s-1" . (lambda () (interactive) (my/tab-bar-select-tab 1)))
+		       ("s-2" . (lambda () (interactive) (my/tab-bar-select-tab 2)))
+		       ("s-3" . (lambda () (interactive) (my/tab-bar-select-tab 3)))
+		       ("s-4" . (lambda () (interactive) (my/tab-bar-select-tab 4)))
+		       ("s-5" . (lambda () (interactive) (my/tab-bar-select-tab 5)))
+		       ("s-6" . (lambda () (interactive) (my/tab-bar-select-tab 6)))
+		       ("s-7" . (lambda () (interactive) (my/tab-bar-select-tab 7)))
+		       ("s-8" . (lambda () (interactive) (my/tab-bar-select-tab 8)))
+		       ("s-9" . (lambda () (interactive) (my/tab-bar-select-tab 9))))
    :config
    ;; Set up the visuals of the tab-bar
    (setq tab-bar-tab-hints t

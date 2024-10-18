@@ -58,7 +58,7 @@
           "org"
 		  "org-caldav"
           "org-roam"
-          ;; "org-fragtog"
+          "org-fragtog"
           ;; "org-noter"
           ;; "org-gtd"
 
