@@ -31,6 +31,9 @@
   :config
   (add-to-list 'display-buffer-alist
 			   '("\\*helpful"
-				 (display-buffer-same-window))))
+                 (display-buffer-reuse-window display-buffer-below-selected)
+                 (window-height . 0.8)
+                 (window-parameters
+                  (no-delete-other-windows . t))))
 
 ;; helpful.el ends here

@@ -30,15 +30,29 @@
   (find-file "/sudo::/etc/nixos/configuration.nix"))
 
 ;; Run a nice buffer with the output of the nix rebuild
-(defun my/nixos-rebuild ()
+(defun nixos-rebuild-config ()
   "Rebuild the system nixos rebuild"
   (interactive)
-  (let* ((default-directory "/sudo::/")
-		 (command "nixos-rebuild switch")
-		 (buffer (get-buffer-create "*Nixos-rebuild*")))
-	(start-file-process-shell-command "nix-rebuild" buffer command)
-	(with-current-buffer buffer
-	  (setq buffer-read-only t))))
+  (let* ((default-directory "/sudo::/"))
+    (compile "nixos-rebuild switch")))
+
+;;; Old code for nixos rebuild
+;; --
+;;   (let* ((default-directory "/sudo::/")
+;; 		 (command "nixos-rebuild switch")
+;; 		 (buffer (get-buffer-create "*nixos-rebuild*")))
+;; 	(start-file-process-shell-command "nix-rebuild" buffer command)
+;;     (switch-to-buffer buffer)
+;;     (with-current-buffer buffer
+;; 	  (setq buffer-read-only t))))
+;; --
+
+(add-to-list 'display-buffer-alist
+			 '("^*comp"
+               (display-buffer-reuse-window display-buffer-below-selected)
+               (window-height . 0.33)
+               (window-parameters
+                (no-delete-other-windows . t))))
 
 (use-package nix-mode)
 
