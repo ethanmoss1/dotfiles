@@ -40,17 +40,7 @@
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag))
         org-roam-completion-everywhere t)
 
-  ;; Where should the buffer popup.
-  (add-to-list 'display-buffer-alist
-			   '("^CAPTURE-"
-                 (display-buffer-in-side-window)
-                 (side . bottom)
-                 (slot . 0)
-                 (window-height . 0.33)
-                 (window-parameters
-                  (no-delete-other-windows . t))))
-
-  ;; If using org-roam-protocol
+    ;; If using org-roam-protocol
   ;; (require 'org-roam-protocol)
   (org-roam-db-autosync-mode 1))
 

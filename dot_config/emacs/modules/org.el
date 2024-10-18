@@ -71,9 +71,11 @@
 													  "\\.org$"))
 
 
+  ;; Scale latex to size based on the hostname
   (if (string-equal my-hostname "laptop")
       (plist-put org-format-latex-options :scale 1.8)
     (plist-put org-format-latex-options :scale 1))
+
   ;; Refiling options
   (setq org-outline-path-complete-in-steps nil
         org-refile-use-outline-path 'file
@@ -105,13 +107,25 @@
 												 ":FILE: [[%F]]"
 												 ":END:"))
                                  :empty-lines 1)))
+  ;; Set up buffer views
   (add-to-list 'display-buffer-alist
-			   '("^*Org Select"
+               ;; If the buffer is one of the following; (case insensitive)
+               ;; *Org Note*
+               ;; *Org Select*
+               ;; CAPTURE-...
+               '("^\\(*org \\(note\\|select\\)\\*\\|capture\\)"
                  (display-buffer-in-side-window)
                  (side . bottom)
                  (slot . 0)
                  (window-height . 0.33)
                  (window-parameters
-                  (no-delete-other-windows . t)))))
+                  (no-delete-other-windows . t))))
+
+
+  ;; show just the subtree I’m interested in, lowers visual clutter.
+  ;; (advice-add 'org-agenda-goto :after
+  ;;             (lambda (&rest args)
+  ;;               (org-narrow-to-subtree)))
+  )
 
 ;;; org.el ends here
