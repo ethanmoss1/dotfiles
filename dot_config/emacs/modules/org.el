@@ -105,13 +105,12 @@ https://www.reddit.com/r/orgmode/comments/ae2ak0/orgmode_clean_tag_string_on_ref
            ((agenda "")
             (tags-todo "+new"
                        ((org-agenda-overriding-header "Inbox")
-                        (org-agenda-prefix-format '((tags . " %i ")))))
-            ;; (todo "NEXT"
-            ;;       ((org-agenda-overriding-header "In progress")
-            ;;        (org-agenda-block-separator nil)))
+                        (org-agenda-prefix-format '((tags . " %i ")))
+                        (org-agenda-remove-tags t)))
             (tags-todo "-habit-new"
                        ((org-agenda-overriding-header "Tasks and Next actions")
-                        (org-agenda-block-separator nil)))))
+                        (org-agenda-block-separator nil)
+                        (org-agenda-remove-tags t)))))
 
           ;; Default - show all org files in ‘~/documents’ recursively.
           ("b"
