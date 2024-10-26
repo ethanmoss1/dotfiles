@@ -28,7 +28,7 @@
   :ensure nil
   :config
   (setq auto-insert-directory (concat user-emacs-directory "auto-insert/")
-		auto-insert-query 'function)
+		auto-insert-query nil)
 
   (auto-insert-mode t))
 

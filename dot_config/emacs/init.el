@@ -42,7 +42,7 @@
   "test group"
   :group 'emacs)
 
-(defvar my-devices
+(defconst my-devices
   '("laptop"
     "server"
     "tablet")
@@ -50,13 +50,15 @@
 settings, variables, ect. are set or loaded")
 
 ;; Set up module loading and creation
-(defvar module-dir
-  (concat user-emacs-directory "modules/")
+(defconst module-emacs-dir (concat user-emacs-directory "modules/")
   "Directory where the modules are located")
+
+(defconst module-managed-dotfiles (if (executable-find "chezmoi") t)
+  "Check if modules are managed by a dotfile manager")
 
 (defun module--list-modules ()
   "returns the list of modules available to the user"
-  (mapcar 'file-name-sans-extension (directory-files module-dir nil "\\.el")))
+  (mapcar 'file-name-sans-extension (directory-files module-emacs-dir nil "\\.el")))
 
 (defun module--get-option ()
   "Get the module that you want to load"
@@ -64,7 +66,22 @@ settings, variables, ect. are set or loaded")
 
 (defun module--to-load (module)
   "Load the given MODULE"
-  (load (concat module-dir module ".el") nil nil nil nil))
+  (load (concat module-emacs-dir module ".el") nil nil nil nil))
+
+(defun module--get-save-location ()
+  "Directory where the main modules are saved, this is dependent on
+how your dotfiles are stored.
+
+Checks for the following Dotfile solutions:
+ - Chezmoi
+ - more to come
+
+This will default to the standard emacs module directory"
+  (if module-managed-dotfiles
+    (shell-command-to-string (format "printf %s \"$(chezmoi source-path %s)\""
+                                     "%s"  ; banana
+                                     module-emacs-dir))
+  module-emacs-dir))
 
 (defun module-load (&optional module)
   "load MODULE that contains a package/elisp for a particular
@@ -83,9 +100,26 @@ MODULE to load from the list of available modules."
 										  (error-message-string err))
 							:warning))))
 
+(defun module--populate-buffer (module-name buffer-name module-file)
+  "Open a new BUFFER-NAME with the file location of MODULE-FILE
+ and populate with auto-insert
+Provide is removed as this is not a normal lisp file."
+  (find-file module-file)
+  (with-current-buffer buffer-name
+	(auto-insert)
+	(mark-marker)
+	(replace-regexp "\n\n\(provide '.*\)" "")
+	(insert (format "(use-package %s)\n" module-name))
+	(goto-char (point-max))
+	(insert ";; Local Variables:
+;; eval: (if module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:")
+	(goto-char (mark-marker))
+	(normal-mode)))
+
 ;; Don’t ask about inserting templates into new files, for the module new
 ;; function.
-(setq auto-insert-query nil)
+(setq auto-insert-query nil)  ; redundant as it is in the auto-insert module.
 
 (defun module-new ()
   "Create a new module file in the modules directory that allows
@@ -93,15 +127,10 @@ loading of the module"
   (interactive)
   (let* ((module-name (read-string "Package Name: "))
 		 (buffer-name (concat module-name ".el"))
-		 (module-file (concat module-dir buffer-name)))
-	(if (file-exists-p module-file)
+		 (module-file (concat (module--get-save-location) "/" buffer-name)))
+    (if (file-exists-p module-file)
 		(user-error "Module %s exists already" buffer-name)
-	  (find-file module-file)
-	  (with-current-buffer buffer-name
-		(auto-insert)
-		(mark-marker)
-		(replace-regexp "\(provide '.*\)" "")
-		(goto-char (mark-marker))))))
+	  (module--populate-buffer module-name buffer-name module-file))))
 
 ;; Set up devices specific configuration
 (let ((hostname-file (concat user-emacs-directory "hostname")))

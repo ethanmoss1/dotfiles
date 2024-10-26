@@ -27,9 +27,9 @@
 (use-package sitesearch
   :ensure (:repo "~/documents/dev/elisp/sitesearch")
   :config
-  (setq sitesearch-browser "firefox"
+  (setq sitesearch-browser      "firefox"
 		sitesearch-browser-args "--new-window"
-		sitesearch-bookmarks '(("google" :url "https://google.com/"))
-		sitesearch-search '(("google" :url "https://google.com/search?q=%s"))))
+		sitesearch-bookmarks    '(("google" :url "https://google.com/"))
+		sitesearch-search       '(("google" :url "https://google.com/search?q=%s"))))
 
 ;;; sitesearch.el ends here
