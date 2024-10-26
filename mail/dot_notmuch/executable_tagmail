@@ -26,8 +26,14 @@ notmuch tag -inbox -unread +shopping +ebay from:*ebay.co.uk or from:*ebay.com
 ## Autotrader listings
 notmuch tag -inbox +autotrader from:*@service.autotrader.co.uk
 
+## Ali Express
+notmuch tag -inbox -unread +aliexpress +marketing from:*@deals.aliexpress.com
 
 # Finances
+## Banking
+notmuch tag -inbox +finance +bank from:donotreply@lloydsbank.co*
+notmuch tag -inbox -unread +finance +bank from:info@emails.lloydsbank.co*
+
 ## O2 billing
 notmuch tag -inbox -unread +finance +bill +sims +o2 from:"O2 Billing"
 
@@ -49,8 +55,14 @@ notmuch tag -inbox -unread +receipt +uber from:"Uber Receipts"
 
 ## clearscore
 notmuch tag -inbox +clearscore from:"Clearscore"
-notmuch tag -unread tag:clearscore and from:marketing@clearscore.com
+notmuch tag -unread +marketing tag:clearscore and from:marketing@clearscore.com
 
+## Trading 212
+notmuch tag -inbox -unread +marketing +stocks from:*@trading212.co*
+
+## Website (domain ect)
+notmuch tag -inbox -unread +domain +marketing from:*@mail.squarespace.com
+notmuch tag -inbox +domain from:*@squarespace.com
 
 # Uni related emails
 ## Open uni
@@ -63,7 +75,12 @@ notmuch tag -inbox -unread from:netacademail@external.cisco.co.uk or from:netaca
 
 # health related
 notmuch tag -inbox +dentist from:Braintree@mail.together.dental
-notmuch tag -inbox +fitbit from:"Fitbit"
+notmuch tag -inbox +fitbit from:*@fitbit.com
+notmuch tag -inbox +cats from:*@animalfriends.co*
+
+# Entertainment
+notmuch tag -inbox -unread +chess from:*@chess.com
+notmuch tag -inboc -unread +steam from:*@steam*
 
 # Other
 notmuch tag -inbox -unread +tfl from:*@email.tfl.gov.uk
@@ -71,3 +88,6 @@ notmuch tag +gov from:*.gov.uk
 notmuch tag -inbox +youtube from:*@youtube.co.uk or from:*@youtube.com
 notmuch tag -inbox +halfords from:*halfords.com or from:*halfords.co.uk
 notmuch tag -inbox +family from:lyndamiller1987@gmail.com
+notmuch tag -inbox -unread +marketing from:*@*oneplus.co*
+notmuch tag -inbox -unread +newsletter from:newsletter*
+notmuch tag -inbox -unread from:googlewallet-noreply@google.com
