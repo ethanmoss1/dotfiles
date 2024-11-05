@@ -63,6 +63,7 @@
    "org-fragtog"
    ;; "org-noter"
    ;; "org-gtd"
+   "org-man"
 
    ;; -- News and Email --
    "elfeed"
@@ -75,6 +76,7 @@
    "corfu"
    "rainbow"
    "consult"
+   "adaptive-wrap"
 
    ;; -- Version Control --
    "magit"
@@ -84,5 +86,6 @@
    "docker"
    "nix"
    "eat"
+   "gptel"
 
    )) ;; -- End of Modules --

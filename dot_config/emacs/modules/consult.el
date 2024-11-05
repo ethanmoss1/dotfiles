@@ -25,7 +25,8 @@
   :bind (("C-t" . consult-imenu)
 		 ("C-x b" . consult-buffer)
 		 ("C-s" . consult-line)
-		 ("M-g M-g" . consult-goto-line))
+		 ("M-g M-g" . consult-goto-line)
+         ("C-x r b" . consult-bookmark))
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :init
   ;; Optionally configure the register formatting. This improves the register

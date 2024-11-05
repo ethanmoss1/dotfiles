@@ -42,7 +42,10 @@
 		;; Google Alerts "Spinal Muscular Atrophy"
 		("https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100" news medical)
 		;; Google Alerts "Bridge RNA"
-		("https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637" news medical))))
+		("https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637" news medical)
+        ;; Planet Emacs
+        ("https://planet.emacslife.com/atom.xml" emacs news)
+        )))
 
 ;; (use-package elfeed-goodies
 ;;   :after elfeed
