@@ -25,8 +25,8 @@
   :if (executable-find "chezmoi")
   :bind
   ("C-c d f" . 'chezmoi-find)
-  ("C-c d o" . 'chezmoi-find-in-files)
-  ("C-c d s" . 'chezmoi-magit-status)
+  ("C-c d s" . 'chezmoi-find-in-files)
+  ("C-c d g" . 'chezmoi-magit-status)
   ("C-c d e" . 'chezmoi-goto-emacs-folder)
   ("C-c d c" . 'chezmoi-goto-chezmoi-folder)
   :config

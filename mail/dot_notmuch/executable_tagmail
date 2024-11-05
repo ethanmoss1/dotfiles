@@ -15,6 +15,8 @@ notmuch tag -inbox +me from:cywinskimoss@gmail.com or from:wow.ethm@gmail.com
 notmuch tag -inbox -unread +familysafe from:families-noreply@google.com or from:familysafety@microsoft.com
 notmuch tag -inbox +familysafe from:account-security-noreply@accountprotection.microsoft.com
 
+## Family emails
+notmuch tag -inbox +family from:lyndamiller1987@gmail.com
 
 # Shopping and delivery information
 ## Amazon
@@ -33,6 +35,7 @@ notmuch tag -inbox -unread +aliexpress +marketing from:*@deals.aliexpress.com
 ## Banking
 notmuch tag -inbox +finance +bank from:donotreply@lloydsbank.co*
 notmuch tag -inbox -unread +finance +bank from:info@emails.lloydsbank.co*
+notmuch tag -inbox -unread from:googlewallet-noreply@google.com
 
 ## O2 billing
 notmuch tag -inbox -unread +finance +bill +sims +o2 from:"O2 Billing"
@@ -81,13 +84,13 @@ notmuch tag -inbox +cats from:*@animalfriends.co*
 # Entertainment
 notmuch tag -inbox -unread +chess from:*@chess.com
 notmuch tag -inboc -unread +steam from:*@steam*
-
-# Other
-notmuch tag -inbox -unread +tfl from:*@email.tfl.gov.uk
-notmuch tag +gov from:*.gov.uk
 notmuch tag -inbox +youtube from:*@youtube.co.uk or from:*@youtube.com
-notmuch tag -inbox +halfords from:*halfords.com or from:*halfords.co.uk
-notmuch tag -inbox +family from:lyndamiller1987@gmail.com
+
+# Gov
+notmuch tag +gov from:*.gov.uk
+
+# Unwanted
+notmuch tag -inbox -unread +tfl from:*@email.tfl.gov.uk
+notmuch tag -inbox -unread +halfords from:*halfords.com or from:*halfords.co.uk
 notmuch tag -inbox -unread +marketing from:*@*oneplus.co*
 notmuch tag -inbox -unread +newsletter from:newsletter*
-notmuch tag -inbox -unread from:googlewallet-noreply@google.com

@@ -31,6 +31,13 @@
   (interactive)
   (setq org-agenda-files (directory-files org-directory t "\\.org$")))
 
+(defun my/reload-org-agenda-files-and-study ()
+  "Reloads the agenda file list"
+  (interactive)
+  (setq org-agenda-files-and-study
+        (append (directory-files org-directory t "\\.org$")
+                (directory-files-recursively "~/documents/study" "\\.org$"))))
+
 (defun my/reload-org-agenda-files-all ()
   "Reloads the agenda file list"
   (interactive)
@@ -40,7 +47,8 @@
   "Loads all the minor modes for use with Org mode"
   (flyspell-mode 1)
   (toggle-truncate-lines 0)
-  (toggle-word-wrap 1))
+  (toggle-word-wrap 1)
+  (adaptive-wrap-prefix-mode))
 
 (defun my/add-latex-block ()
   "Adds a latex block ready for input"
@@ -110,7 +118,9 @@ https://www.reddit.com/r/orgmode/comments/ae2ak0/orgmode_clean_tag_string_on_ref
             (tags-todo "-habit-new"
                        ((org-agenda-overriding-header "Tasks and Next actions")
                         (org-agenda-block-separator nil)
-                        (org-agenda-remove-tags t)))))
+                        (org-agenda-remove-tags t))))
+           ((org-agenda-files org-agenda-files-and-study)))
+
 
           ;; Default - show all org files in ‘~/documents’ recursively.
           ("b"

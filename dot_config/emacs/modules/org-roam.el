@@ -21,7 +21,7 @@
 ;;; Code:
 
 ;; (use-package consult-org-roam)
-(defun consult-org-roam-grep ()
+(defun org-roam-node-grep ()
   "Find in files in org roam directory"
   (interactive)
   (consult-grep org-roam-directory))
@@ -32,7 +32,8 @@
          ("C-c r g" . org-roam-ui-open)
          ("C-c r i" . org-roam-node-insert)
          ("C-c r c" . org-roam-capture)
-         ("C-c n j" . org-roam-dailies-capture-today))
+         ("C-c r s" . org-roam-node-grep)
+         ("C-c r j" . org-roam-dailies-capture-today))
 
   :config
   (setq org-roam-directory (expand-file-name "roam/" org-directory))
