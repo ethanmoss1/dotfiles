@@ -10,6 +10,10 @@ notmuch tag -inbox +xelb to:xelb@noreply.github.com
 # Me
 notmuch tag -inbox +me from:cywinskimoss@gmail.com or from:wow.ethm@gmail.com
 
+# google related
+notmuch tag -inbox +google from:*@google.com
+notmuch tag -inbox +google from:*@google.co.uk
+
 # Family related emails.
 ## Familiy safety for the kids
 notmuch tag -inbox -unread +familysafe from:families-noreply@google.com or from:familysafety@microsoft.com
@@ -17,6 +21,7 @@ notmuch tag -inbox +familysafe from:account-security-noreply@accountprotection.m
 
 ## Family emails
 notmuch tag -inbox +family from:lyndamiller1987@gmail.com
+notmuch tag -inbox +appliance from:*@hotpointservice.co.uk
 
 # Shopping and delivery information
 ## Amazon
@@ -31,17 +36,25 @@ notmuch tag -inbox +autotrader from:*@service.autotrader.co.uk
 ## Ali Express
 notmuch tag -inbox -unread +aliexpress +marketing from:*@deals.aliexpress.com
 
+## PCB way
+notmuch tag -inbox -unread +pcbway from:*@pcbway.com
+
 # Finances
 ## Banking
 notmuch tag -inbox +finance +bank from:donotreply@lloydsbank.co*
 notmuch tag -inbox -unread +finance +bank from:info@emails.lloydsbank.co*
 notmuch tag -inbox -unread from:googlewallet-noreply@google.com
+notmuch tag +finance -unread tag:google from:googleplay-noreply@google*
 
-## O2 billing
-notmuch tag -inbox -unread +finance +bill +sims +o2 from:"O2 Billing"
+## Mobiles
+### O2
+notmuch tag -inbox -unread +o2 +sims from:*@s-email-o2.co.uk
+notmuch tag -inbox -unread +o2 +sims from:*@o2-welcome.com
+notmuch tag +finance +bill tag:o2 from:"O2 Billing"
 
-## O2 general
-notmuch tag -inbox -unread +o2 +sims from:noreply@s-email-o2.co.uk or from:o2payments@s-email-o2.co.uk or from:o2shop@s-email-o2.co.uk
+### Vodafone
+notmuch -inbox -unread +vodafone from:*@help.vodafone.co.uk
+notmuch -inbox -unread +vodafone from:*@email.vodafone.co.uk
 
 ## Virgin media
 notmuch tag -inbox -unread +virgin +internet from:*@virginmedia.co.uk
@@ -83,14 +96,21 @@ notmuch tag -inbox +cats from:*@animalfriends.co*
 
 # Entertainment
 notmuch tag -inbox -unread +chess from:*@chess.com
-notmuch tag -inboc -unread +steam from:*@steam*
+notmuch tag -inbox -unread +steam from:*@steam*
 notmuch tag -inbox +youtube from:*@youtube.co.uk or from:*@youtube.com
+notmuch tag -inbox -unread +ea from:EA@e.ea.com
+notmuch tag -inbox -unread +g2a from:*@g2a.com
+
 
 # Gov
 notmuch tag +gov from:*.gov.uk
 
+# AI
+notmuch tag -inbox -unread +ai from:googleaistudio-noreply@google.com
+notmuch tag -inbox -unread +ai from:google-gemini-noreply@google.com
+
 # Unwanted
 notmuch tag -inbox -unread +tfl from:*@email.tfl.gov.uk
 notmuch tag -inbox -unread +halfords from:*halfords.com or from:*halfords.co.uk
-notmuch tag -inbox -unread +marketing from:*@*oneplus.co*
+notmuch tag -inbox -unread +marketing from:*@email.oneplus.co*
 notmuch tag -inbox -unread +newsletter from:newsletter*
