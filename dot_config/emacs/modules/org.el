@@ -97,11 +97,14 @@ https://www.reddit.com/r/orgmode/comments/ae2ak0/orgmode_clean_tag_string_on_ref
 								 ;; (maxima . t)
 								 (shell . t)
 								 (C . t)))
+  (setq org-hide-emphasis-markers nil)
 
   ;; Org related files.
   (setq org-directory "~/documents/org/"
         org-default-notes-file (concat org-directory "notes.org")
         org-agenda-files (directory-files org-directory t "\\.org$")
+        org-agenda-files-and-study (append (directory-files org-directory t "\\.org$")
+                                           (directory-files-recursively "~/documents/study" "\\.org$"))
         org-agenda-files-all (directory-files-recursively "~/documents" "\\.org$"))
 
   ;; Org-agenda settings
@@ -146,7 +149,6 @@ https://www.reddit.com/r/orgmode/comments/ae2ak0/orgmode_clean_tag_string_on_ref
   ;; changing the state to ‘DONE’
   (require 's)
   (setq org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)" "CANCELLED(c@)")
-		org-hide-emphasis-markers t
 		org-capture-templates `(("i"               ; keys
                                  "Inbox"           ; description
                                  entry             ; type
