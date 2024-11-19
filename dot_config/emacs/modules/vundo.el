@@ -21,7 +21,8 @@
 ;;; Code:
 
 (use-package vundo
-  :bind ("C-/" . vundo)
+  :bind (("M-/" . vundo)
+         ("C-/" . undo))
   :config
   (setq vundo-glyph-alist '((selected-node . ?●)
                             (node . ?○)

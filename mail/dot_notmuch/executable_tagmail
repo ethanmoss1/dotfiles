@@ -112,5 +112,6 @@ notmuch tag -inbox -unread +ai from:google-gemini-noreply@google.com
 # Unwanted
 notmuch tag -inbox -unread +tfl from:*@email.tfl.gov.uk
 notmuch tag -inbox -unread +halfords from:*halfords.com or from:*halfords.co.uk
-notmuch tag -inbox -unread +marketing from:*@email.oneplus.co*
+notmuch tag -inbox -unread +marketing from:*@email.oneplus.com
+notmuch tag -inbox -unread +marketing from:*@email.oneplus.co.uk
 notmuch tag -inbox -unread +newsletter from:newsletter*

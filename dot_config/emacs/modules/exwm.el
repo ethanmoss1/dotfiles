@@ -30,12 +30,21 @@
   :keymap (make-sparse-keymap))
 
 (defun exwm-rename-buffer-class-name ()
-	"Rename the EXWM buffers with the X11 Class name"
-	(if (and (string-equal exwm-class-name "firefox") exwm-title)
-		(let* ((page-title (car (split-string exwm-title "\\ +[-—]\\ +")))
-			   (new-buffer-name (concat "*" exwm-class-name " - " page-title "*")))
-		  (exwm-workspace-rename-buffer new-buffer-name))
-	  (exwm-workspace-rename-buffer exwm-class-name)))
+  "Rename the EXWM buffers with the X11 Class name"
+  (if (and (string-equal exwm-class-name "firefox") exwm-title)
+	  (let* ((page-title (car (split-string exwm-title "\\ +[-—]\\ +")))
+			 (new-buffer-name (concat "*" exwm-class-name " - " page-title "*")))
+		(exwm-workspace-rename-buffer new-buffer-name))
+	(exwm-workspace-rename-buffer exwm-class-name)))
+
+(defun exwm-launch-terminal ()
+  "Launch EAT if installed otherwise launch eshell"
+  (interactive)
+  ;; check if eat is installed
+  ;; otherwise use eshell
+  (if (fboundp 'eat)
+      (eat)
+    (eshell)))
 
 (use-package exwm
   :if (string-equal my-hostname "laptop")
@@ -53,8 +62,7 @@
 			  ("s-R" . exwm-reset)
 			  ;; ("s-w" . exwm-workspace-switch)
 			  ;; DE bindings
-			  ("s-<return>" . (lambda () (interactive) (eshell))))
-  :config
+			  ("s-<return>" . exwm-launch-terminal))
   ;; Dont ask to replace, if I have another WM open its probably for a reason
   (setq exwm-replace 'nil)
 
@@ -69,32 +77,40 @@
   ;;   (exwm-systemtray-mode 1))
 
   ;; Mimic behaviour of emacs bindings in x sessions
-  (setq exwm-input-simulation-keys '(;; movement
-									 ([?\C-b] . [left])
-									 ([?\M-b] . [C-left])
-									 ([?\C-f] . [right])
-									 ([?\M-f] . [C-right])
-									 ([?\C-p] . [up])
-									 ([?\C-n] . [down])
-									 ([?\C-a] . [home])
-									 ([?\C-e] . [end])
-									 ([?\M-v] . [prior])
-									 ([?\C-v] . [next])
-									 ([?\C-d] . [delete])
-									 ([?\C-k] . [S-end C-x])
+  (setq exwm-input-simulation-keys
+        '(;; movement
+		  ([?\C-b] . [left])
+		  ([?\M-b] . [C-left])
+		  ([?\C-f] . [right])
+		  ([?\M-f] . [C-right])
+		  ([?\C-p] . [up])
+		  ([?\C-n] . [down])
+		  ([?\C-a] . [home])
+		  ([?\C-e] . [end])
+		  ([?\M-v] . [prior])
+		  ([?\C-v] . [next])
+		  ([?\C-d] . [delete])
+		  ([?\C-k] . [S-end C-x])
 
-									 ;; cut/paste.
-									 ([?\C-w] . [?\C-x])
-									 ([?\M-w] . [?\C-c])
-									 ([?\C-y] . [?\C-v])
+		  ;; cut/paste.
+		  ([?\C-w] . [?\C-x])
+		  ([?\M-w] . [?\C-c])
+		  ([?\C-y] . [?\C-v])
 
-									 ;; search
-									 ([?\C-s] . [?\C-f])
+		  ;; search
+		  ([?\C-s] . [?\C-f])
 
-									 ;; save
-									 ([C-x C-s] . [?\C-s])
+		  ;; save
+		  ([C-x C-s] . [?\C-s])
 
-									 ;; exit
-									 ([?\C-g] . [escape]))))
+		  ;; exit
+		  ([?\C-g] . [escape])))
+
+  ;; Setup keys in applications
+  (add-hook 'exwm-manage-finish-hook
+            (lambda ()
+              (when (and exwm-class-name
+                         (string= exwm-class-name "Firefox"))
+                (exwm-input-set-local-simulation-keys exwm-input-simulation-keys)))))
 
 ;;; exwm.el ends here -----------------------------------------------------

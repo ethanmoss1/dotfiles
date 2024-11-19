@@ -21,6 +21,9 @@
 ;;; Commentary :
 
 ;;; Code :
+
+(require 's)
+
 (defun org-latex-preview-buffer ()
   "Generate the previews of all latex fragments in the buffer"
   (interactive)
@@ -83,6 +86,14 @@ https://www.reddit.com/r/orgmode/comments/ae2ak0/orgmode_clean_tag_string_on_ref
     (org-refile-goto-last-stored)
     (org-set-tags "")))
 
+(defun my/org-agenda-skip-tags (tags)
+  "Return T if any string in the list TAGS is in the headers tags.
+Otherwise will return NIL"
+  ;; (org-back-to-heading t)
+  (and (not (null (cl-intersection tags (org-get-tags) :test 'string=)))
+       (org-entry-end-position)))
+
+
 (use-package org
   :hook ((org-mode . my/load-minor-modes-for-org)
          (org-agenda-mode  . hl-line-mode)
@@ -108,20 +119,42 @@ https://www.reddit.com/r/orgmode/comments/ae2ak0/orgmode_clean_tag_string_on_ref
         org-agenda-files-all (directory-files-recursively "~/documents" "\\.org$"))
 
   ;; Org-agenda settings
-  (setq org-agenda-show-future-repeats t)
-  (setq org-agenda-include-diary nil)
+  (setq org-agenda-show-future-repeats t
+        org-agenda-include-diary nil)
+
+        ;; Only show TODO’s that dont have a set date.
+        ;; Once that date has come, show the TODO.
+  (setq org-agenda-todo-ignore-deadlines 'future
+        org-agenda-todo-ignore-scheduled 'future
+        org-agenda-tags-todo-honor-ignore-options t)
+
   (setq org-agenda-custom-commands  ;; Setting up the agenda views
         '(("n"       ; Key
            "Agenda"  ; Description
-           ((agenda "")
+           ((agenda ""
+                    ((org-agenda-remove-tags t)))
+
             (tags-todo "+new"
                        ((org-agenda-overriding-header "Inbox")
                         (org-agenda-prefix-format '((tags . " %i ")))
                         (org-agenda-remove-tags t)))
-            (tags-todo "-habit-new"
-                       ((org-agenda-overriding-header "Tasks and Next actions")
-                        (org-agenda-block-separator nil)
-                        (org-agenda-remove-tags t))))
+
+            (todo "NEXT"
+                  ((org-agenda-overriding-header "\nNext Actions")
+                   (org-agenda-block-separator nil)
+                   (org-agenda-remove-tags t)
+                   (org-agenda-skip-function
+                    ;; Skip the heading if it has any of the tags
+                    '(my/org-agenda-skip-tags '("new" "habit")))))
+
+            (todo "TODO"
+                  ((org-agenda-overriding-header "\nTODO Tasks")
+                   (org-agenda-block-separator nil)
+                   (org-agenda-remove-tags t)
+                   (org-agenda-skip-function
+                    ;; Skip the heading if it has any of the tags
+                    '(my/org-agenda-skip-tags '("new" "habit"))))))
+
            ((org-agenda-files org-agenda-files-and-study)))
 
 
@@ -147,7 +180,6 @@ https://www.reddit.com/r/orgmode/comments/ae2ak0/orgmode_clean_tag_string_on_ref
 
   ;; Capture time entered and exited ‘NEXT’ as well as any notes for when
   ;; changing the state to ‘DONE’
-  (require 's)
   (setq org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)" "CANCELLED(c@)")
 		org-capture-templates `(("i"               ; keys
                                  "Inbox"           ; description

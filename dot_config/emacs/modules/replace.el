@@ -1,6 +1,6 @@
-;;; eat.el --- Better shell in emacs                -*- lexical-binding: t; -*-
+;;; replace.el --- replace commands for Emacs        -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024
+;; Copyright (C) 2024  
 
 ;; Author:  <ethan@nixos>
 ;; Keywords: lisp
@@ -20,28 +20,21 @@
 
 ;;; Code:
 
-(use-package eat
+(use-package replace
+  ;; Built-in
+  :ensure nil
   :config
-  ;; Eat settings
-  (setq eat-kill-buffer-on-exit t)
-  ;; Set shell for android
-  (if (string-equal my-hostname "tablet")
-      (setq eat-shell "/data/data/com.termux/files/usr/bin/bash"))
-  ;; For `eat-eshell-mode'
-  (add-hook 'eshell-load-hook #'eat-eshell-mode)
-
-  ;; For `eat-eshell-visual-command-mode'
-  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
-
-  ;; Set up the popup shell
   (add-to-list 'display-buffer-alist
                ;; *shell*  *eshell*  *eat*
-               '("\\*\\(e?shell\\|eat\\)\\*"
+               '("\\*Occur\\*"
                  (display-buffer-in-side-window)
                  (side . bottom)
                  (slot . -1) ;; -1 == L  0 == Mid 1 == R
-                 (window-height . 0.33) ;; take 2/3 on bottom left
+                 (window-height . 0.3) ;; take 2/3 on bottom left
                  (window-parameters
                   (no-delete-other-windows . nil)))))
 
-;;; eat.el ends here
+;;; replace.el ends here
+;; Local Variables:
+;; eval: (if module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

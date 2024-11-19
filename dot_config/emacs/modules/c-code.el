@@ -27,9 +27,14 @@
 (use-package emacs
   :ensure nil
   :config
+  ;; Allow all commands
+  (setq disabled-command-function nil)
+
+  ;; Visual
   (setq-default tab-width 4          ; Visual tab amount
                 truncate-lines t
                 fill-column 80)
+
   (setq scroll-margin 2                               ; Scroll when x lines from window boundary.
         scroll-step 0                                 ; scroll amount
         scroll-conservatively most-positive-fixnum    ; dont want to jumps around

@@ -30,7 +30,7 @@
   ("C-h o" . 'helpful-symbol)
   :config
   (add-to-list 'display-buffer-alist
-			   '("\\*helpful"
+			   '("^\\*helpful"
                  (display-buffer-reuse-window display-buffer-below-selected)
                  (window-height . 0.8)
                  (window-parameters

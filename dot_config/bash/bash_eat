@@ -1,0 +1,5 @@
+#! /bin/bash
+
+# For the Emacs package, EAT
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  source "$EAT_SHELL_INTEGRATION_DIR/bash"

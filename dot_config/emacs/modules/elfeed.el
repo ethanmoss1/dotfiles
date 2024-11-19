@@ -45,6 +45,7 @@
 		("https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637" news medical)
         ;; Planet Emacs
         ("https://planet.emacslife.com/atom.xml" emacs news)
+        ("https://themkat.net/feed/by_tag/emacs.xml" emacs news)
         )))
 
 ;; (use-package elfeed-goodies
