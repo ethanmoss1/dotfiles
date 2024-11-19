@@ -27,6 +27,16 @@
   (setq vc-make-backup-files nil
         version-control t)
 
-  (setq magit-delete-by-moving-to-trash delete-by-moving-to-trash))
+  (setq magit-delete-by-moving-to-trash delete-by-moving-to-trash)
+
+  ;; buffer alist
+  (add-to-list 'display-buffer-alist
+               '("^COMMIT"
+                 (display-buffer-in-side-window)
+                 (side . bottom)
+                 (slot . 0)
+                 (window-height . 0.33)
+                 (window-parameters
+                  (no-delete-other-windows . t)))))
 
 ;;; magit.el ends here

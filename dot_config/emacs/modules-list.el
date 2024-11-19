@@ -31,7 +31,10 @@
    ;; "gnus"
    "ispell"
    "minibuffer"
-
+   "calendar"
+   "webjump"
+   "replace"
+   
    ;; -- Compulsory Modules --
    "vertico"
    "orderless"
@@ -78,14 +81,19 @@
    "consult"
    "adaptive-wrap"
 
+   ;; -- Programming languages --
+   "nix"
+   "python"
+
    ;; -- Version Control --
    "magit"
+   "magit-gptcommit"
 
    ;; -- Other modules --
    "helpful"
    "docker"
-   "nix"
    "eat"
    "gptel"
+
 
    )) ;; -- End of Modules --

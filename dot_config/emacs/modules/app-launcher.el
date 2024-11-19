@@ -26,7 +26,9 @@
 ;;; Code:
 (use-package app-launcher
   :if (string-equal my-hostname "laptop")
-  :ensure (:host github :repo "SebastienWae/app-launcher")
+  :ensure ( :host github
+            :protocol ssh
+            :repo "ethanmoss1/app-launcher")
   :bind (:map desktop-environment-mode-map
 			  ("s-<tab>" . app-launcher-run-app)))
 

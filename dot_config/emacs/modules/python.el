@@ -1,4 +1,4 @@
-;;; gptel.el --- LLM chat for Emacs                  -*- lexical-binding: t; -*-
+;;; python.el --- Package for Python programming language  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024
 
@@ -18,38 +18,12 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
-;; For more info visit the github page.
-;; https://github.com/karthink/gptel
-
 ;;; Code:
 
-;; Optional package
-;; (use-package markdown-mode)
-
-(use-package gptel
+(use-package python
   :config
-  ;; gptel configurations
-  (setq gptel-default-mode 'org-mode)
-
-  ;; Hooks
-  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
-  (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
-  ;; Change to Gemini
-  (setq gptel-model 'gemini-pro
-        gptel-backend (gptel-make-gemini "Gemini"
-                        :key (funcall (plist-get (car (auth-source-search
-                                                       :max 1
-                                                       :host "ai.gemini"
-                                                       :user "google"))
-                                                 :secret))
-                        :stream t))
-
-
-
-  ;; Display buffer alist
   (add-to-list 'display-buffer-alist
-               '("\\*gemini\\*"
+               '("^\\*Python\\*"
                  (display-buffer-in-side-window)
                  (side . bottom)
                  (slot . -1) ;; -1 == L  0 == Mid 1 == R
@@ -57,7 +31,7 @@
                  (window-parameters
                   (no-delete-other-windows . nil)))))
 
-;;; gptel.el ends here
+;;; python.el ends here
 ;; Local Variables:
 ;; eval: (if module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
 ;; End:

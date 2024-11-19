@@ -23,7 +23,17 @@
 ;;; Code:
 
 (use-package calendar
-  :ensure nil)
+  :ensure nil
+  :config
+  (add-to-list 'display-buffer-alist
+               ;; *shell*  *eshell*  *eat*
+               '("^\\*Calendar\\*"
+                 (display-buffer-in-side-window)
+                 (side . bottom)
+                 (slot . -1) ;; -1 == L  0 == Mid 1 == R
+                 (window-height . 0.33) ;; take 2/3 on bottom left
+                 (window-parameters
+                  (no-delete-other-windows . nil)))))
 
 ;;; calendar.el ends here
 ;; Local Variables:
