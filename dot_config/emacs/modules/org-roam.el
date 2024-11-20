@@ -47,7 +47,6 @@
 
 ;;; Additional Org-roam package;
 (use-package org-roam-ui
-  :hook (elpaca-after-init . org-roam-ui-mode)
   :config
   ;; To sync the theme your using, run ‘orui-sync-theme’
   (setq org-roam-ui-sync-theme t
@@ -56,7 +55,6 @@
         org-roam-ui-open-on-start nil))
 
 (use-package org-roam-timestamps
-  :hook (elpaca-after-init . org-roam-ui-mode)
   :config
   ;; Run ‘org-roam-timestamps-all’, This will add ctime and mtime properties to
   ;; all the property drawers of your notes.

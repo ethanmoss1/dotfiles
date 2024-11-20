@@ -48,10 +48,10 @@
 
 (use-package exwm
   :if (string-equal my-hostname "laptop")
-  :after xelb
+  :after (xelb)
   :ensure (:host github :repo "emacs-exwm/exwm")
-  :init (exwm-init)
   :hook (exwm-update-title . 'exwm-rename-buffer-class-name)
+  :init (exwm-init)
   :bind ( :map desktop-environment-mode-map
 		  ;; Move around the buffers and X apps
 		  ("s-<left>" . windmove-left)

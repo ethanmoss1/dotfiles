@@ -21,6 +21,7 @@
 ;;; Code:
 
 (use-package python
+  :ensure nil
   :config
   (add-to-list 'display-buffer-alist
                '("^\\*Python\\*"

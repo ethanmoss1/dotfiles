@@ -21,13 +21,13 @@
 ;;; Code:
 
 (use-package magit-gptcommit
-  :after gptel magit
+  :requires (gptel magit)
   :ensure ( :fetcher github
             :repo "douo/magit-gptcommit"
             :branch "gptel"
             :files ("magit-gptcommit.el"))
   :bind (:map git-commit-mode-map
-              ("C-c C-g" . magit-gptcommit-commit-accept)))
+              ("C-c C-g" . magit-gptcommit-commit-accept))
   :config
   ;; Enable magit-gptcommit-mode to watch staged changes and generate commit
   ;; message automatically in magit status buffer This mode is optional, you can
@@ -37,7 +37,7 @@
 
   ;; Add gptcommit transient commands to `magit-commit'
   ;; Eval (transient-remove-suffix 'magit-commit '(1 -1)) to remove gptcommit transient commands
-  (magit-gptcommit-status-buffer-setup)
+  (magit-gptcommit-status-buffer-setup))
 
 
 ;;; magit-gptcommit.el ends here
