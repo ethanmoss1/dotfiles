@@ -130,7 +130,8 @@ loading of the module"
 		 (module-file (concat (module--get-save-location) "/" buffer-name)))
     (if (file-exists-p module-file)
 		(user-error "Module %s exists already" buffer-name)
-	  (module--populate-buffer module-name buffer-name module-file))))
+	  (module--populate-buffer module-name buffer-name module-file)))
+  (message "Don’t forget to add the module to the ‘module-list.el’ file."))
 
 ;; Set up devices specific configuration
 (let ((hostname-file (concat user-emacs-directory "hostname")))

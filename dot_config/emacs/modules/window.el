@@ -29,8 +29,12 @@
   :ensure nil
   :hook (elpaca-after-init . window-divider-mode)
   :config
-  (setq switch-to-buffer-obey-display-actions t
-		split-width-threshold 170
+  ;; Respect display actions specified. eg, in ‘display-buffer-alist’
+  (setq switch-to-buffer-obey-display-actions t)
+  (setq switch-to-buffer-in-dedicated-window 'pop)
+  (setq display-buffer-base-action '(nil))  ; default
+
+  (setq split-width-threshold 170
 		split-height-threshold nil)
 
   ;; resizing windows
@@ -40,6 +44,19 @@
   ;; Window divider
   (setq window-divider-default-places t
 		window-divider-default-right-width 1
-		window-divider-default-bottom-width 1))
+		window-divider-default-bottom-width 1)
+
+  ;; helper to make a window a dedicated one.
+  (defun my/make-window-dedicated-toggle ()
+    "Toggles the selected window, making it dedicated."
+    (interactive)
+    (let ((is-dedicated (window-dedicated-p (selected-window))))
+	  (set-window-dedicated-p (selected-window) (not is-dedicated))
+	  (message "Window dedicated: %s" (not is-dedicated))))
+
+  (defun my/reset-frame-window-state ()
+    "For when experementing with window states."
+    (interactive)
+    (set-frame-parameter (selected-frame) 'window-state nil)))
 
 ;;; window.el ends here
