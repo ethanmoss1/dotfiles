@@ -1,6 +1,6 @@
 ;;; webjump.el --- Programmable Web Hotlist          -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024  
+;; Copyright (C) 2024
 
 ;; Author:  <ethan@nixos>
 ;; Keywords: lisp, comm, www
@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -36,20 +36,19 @@
   :bind ("C-c j" . webjump)
   :config
   (setq webjump-use-internal-browser nil
-        webjump-sites
-        (append '(("My Website" . "www.ethanmoss.uk")
-                  ("Open Uni" . "Student")
-                  ("Google Search" . [ simple-query "www.google.co.uk"
-                                       "www.google.co.uk/search?q=" ""])
-                  ("Emacs Wiki" . [ simple-query "www.emacswiki.org"
-		                            "www.emacswiki.org/cgi-bin/wiki/" ""])
-                  ("DuckDuckGo" . [ simple-query "www.duckduckgo.com"
-		                            "www.duckduckgo.com/?q=" ""])
-                  ("Gemini" . "gemini.google.com/")
-                  ("Google Drive" . "drive.google.com")
-                  )))
-  :init
-  (defun webjump ()
+        webjump-sites '(("My Website" . "www.ethanmoss.uk")
+                        ("Open Uni" . "Student")
+                        ("Google Search" . [ simple-query "www.google.co.uk"
+                                             "www.google.co.uk/search?q=" ""])
+                        ("Emacs Wiki" . [ simple-query "www.emacswiki.org"
+		                                  "www.emacswiki.org/cgi-bin/wiki/" ""])
+                        ("DuckDuckGo" . [ simple-query "www.duckduckgo.com"
+		                                  "www.duckduckgo.com/?q=" ""])
+                        ("Gemini" . "gemini.google.com/")
+                        ("Google Drive" . "drive.google.com")
+                        ))
+:init
+(defun webjump ()
   "Jumps to a Web site from a programmable hotlist.
 
 See the documentation for the `webjump-sites' variable for how to customize the
@@ -65,7 +64,7 @@ Please submit bug reports and other feedback to the author, Neil W. Van Dyke
 		        webjump-sites t))
 	     (name (car item))
 	     (expr (cdr item)))
-    
+
     (browse-url (webjump-url-fix
                  (cond ((not expr) "")
                        ((stringp expr) expr)

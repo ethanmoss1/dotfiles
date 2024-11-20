@@ -22,8 +22,6 @@
 
 ;;; Code :
 
-(require 's)
-
 (defun org-latex-preview-buffer ()
   "Generate the previews of all latex fragments in the buffer"
   (interactive)
@@ -79,7 +77,6 @@
 
 (defun my/org-clean-tags ()
   "Visit last refiled headline and remove inherited tags from tag string.
-
 Inspiration from:
 https://www.reddit.com/r/orgmode/comments/ae2ak0/orgmode_clean_tag_string_on_refile/"
   (save-window-excursion
@@ -93,8 +90,10 @@ Otherwise will return NIL"
   (and (not (null (cl-intersection tags (org-get-tags) :test 'string=)))
        (org-entry-end-position)))
 
-
+(use-package s)
 (use-package org
+  :ensure nil
+  :after s
   :hook ((org-mode . my/load-minor-modes-for-org)
          (org-agenda-mode  . hl-line-mode)
          ;; Clean tags on refile
@@ -224,8 +223,6 @@ Otherwise will return NIL"
   ;; show just the subtree I’m interested in, lowers visual clutter.
    (advice-add 'org-agenda-goto :after
                (lambda (&rest args)
-                 (org-narrow-to-subtree)))
-
-  )
+                 (org-narrow-to-subtree))))
 
 ;;; org.el ends here

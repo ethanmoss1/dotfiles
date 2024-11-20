@@ -51,18 +51,20 @@
   :after xelb
   :ensure (:host github :repo "emacs-exwm/exwm")
   :init (exwm-init)
-  :hook (exwm-update-title . exwm-rename-buffer-class-name)
-  :bind (:map desktop-environment-mode-map
-			  ;; Move around the buffers and X apps
-			  ("s-<left>" . windmove-left)
-			  ("s-<right>" . windmove-right)
-			  ("s-<up>" . windmove-up)
-			  ("s-<down>" . windmove-down)
-			  ;; EXWM functions
-			  ("s-R" . exwm-reset)
-			  ;; ("s-w" . exwm-workspace-switch)
-			  ;; DE bindings
-			  ("s-<return>" . exwm-launch-terminal))
+  :hook (exwm-update-title . 'exwm-rename-buffer-class-name)
+  :bind ( :map desktop-environment-mode-map
+		  ;; Move around the buffers and X apps
+		  ("s-<left>" . windmove-left)
+		  ("s-<right>" . windmove-right)
+		  ("s-<up>" . windmove-up)
+		  ("s-<down>" . windmove-down)
+		  ;; EXWM functions
+		  ("s-R" . exwm-reset)
+		  ;; ("s-w" . exwm-workspace-switch)
+		  ;; DE bindings
+		  ("s-<return>" . exwm-launch-terminal))
+
+  :config
   ;; Dont ask to replace, if I have another WM open its probably for a reason
   (setq exwm-replace 'nil)
 

@@ -54,6 +54,8 @@
                (window-parameters
                 (no-delete-other-windows . t))))
 
-(use-package nix-mode)
+(use-package nix-mode
+  :bind ( :map nix-mode-map
+          ("C-c C-c" . 'nixos-rebuild-config)))
 
 ;;; nix.el ends here
