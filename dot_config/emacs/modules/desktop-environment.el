@@ -24,6 +24,7 @@
 ;; Allows for global desktop keybindings
 
 ;;; Code:
+
 ;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
 (if (string-equal my-hostname "laptop")
 	(define-minor-mode desktop-environment-mode
