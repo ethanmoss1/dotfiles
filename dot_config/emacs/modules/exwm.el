@@ -23,11 +23,6 @@
 ;;; Code :
 
 ;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
-(define-minor-mode desktop-environment-mode
-  "A global minor-mode that binds DE keys."
-  :global t
-  :group 'bindings
-  :keymap (make-sparse-keymap))
 
 (defun exwm-rename-buffer-class-name ()
   "Rename the EXWM buffers with the X11 Class name"
@@ -46,37 +41,39 @@
       (eat)
     (eshell)))
 
+(defun exwm-setup-local-simulation-keys ()
+  ""
+  (when (and exwm-class-name
+             ;; TODO: List of classes instead of just firefox
+             (string= exwm-class-name "Firefox"))
+    (exwm-input-set-local-simulation-keys exwm-input-simulation-keys)))
+
 (use-package exwm
+  :ensure nil  ;; supplied by nixos
   :if (string-equal my-hostname "laptop")
-  :after (xelb)
-  :ensure (:host github :repo "emacs-exwm/exwm")
-  :hook (exwm-update-title . 'exwm-rename-buffer-class-name)
-  :init (exwm-init)
+  :hook ((exwm-update-title . exwm-rename-buffer-class-name)
+         (exwm-manage-finish . exwm-setup-local-simulation-keys)
+         (elpaca-after-init . exwm-init))
   :bind ( :map desktop-environment-mode-map
 		  ;; Move around the buffers and X apps
 		  ("s-<left>" . windmove-left)
 		  ("s-<right>" . windmove-right)
 		  ("s-<up>" . windmove-up)
 		  ("s-<down>" . windmove-down)
-		  ;; EXWM functions
+
+          ;; EXWM functions
 		  ("s-R" . exwm-reset)
-		  ;; ("s-w" . exwm-workspace-switch)
+
 		  ;; DE bindings
 		  ("s-<return>" . exwm-launch-terminal))
-
   :config
-  ;; Dont ask to replace, if I have another WM open its probably for a reason
-  (setq exwm-replace 'nil)
-
   ;; Setup the keymap to allow for keybindings in EXWM and non-EXMW buffers
   ;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
   (set-keymap-parent exwm-mode-map desktop-environment-mode-map)
-  (desktop-environment-mode)
+  (desktop-environment-mode t)
 
-  ;; Systemtray
-  ;; (unless /some-exwm-chexk/
-  ;;   (require 'exwm-systemtray)
-  ;;   (exwm-systemtray-mode 1))
+  ;; Dont ask to replace, if I have another WM open its probably for a reason
+  (setq exwm-replace 'nil)
 
   ;; Mimic behaviour of emacs bindings in x sessions
   (setq exwm-input-simulation-keys
@@ -106,13 +103,12 @@
 		  ([C-x C-s] . [?\C-s])
 
 		  ;; exit
-		  ([?\C-g] . [escape])))
+		  ([?\C-g] . [escape]))))
 
-  ;; Setup keys in applications
-  (add-hook 'exwm-manage-finish-hook
-            (lambda ()
-              (when (and exwm-class-name
-                         (string= exwm-class-name "Firefox"))
-                (exwm-input-set-local-simulation-keys exwm-input-simulation-keys)))))
+(if (string= my-hostname "laptop")
+    (elpaca-wait))
 
 ;;; exwm.el ends here -----------------------------------------------------
+;; Local Variables:
+;; eval: (if module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

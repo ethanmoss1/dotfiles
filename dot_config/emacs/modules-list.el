@@ -44,7 +44,7 @@
    ;; Window manager and accompying modules
    ;; Will only load when ‘my-hostname’ is equal to laptop
    "desktop-environment"
-   "xelb"
+;;   "xelb"
    "exwm"
    "app-launcher"
    "buffer-move"
