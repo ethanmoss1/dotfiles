@@ -21,6 +21,7 @@
 ;;; Code:
 
 (use-package eat
+  :bind ("C-c t" . eat)
   :config
   ;; Eat settings
   (setq eat-kill-buffer-on-exit t)
