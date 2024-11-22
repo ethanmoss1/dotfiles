@@ -43,8 +43,8 @@
 
   ;; Window divider
   (setq window-divider-default-places t
-		window-divider-default-right-width 1
-		window-divider-default-bottom-width 1)
+		window-divider-default-right-width 2
+		window-divider-default-bottom-width 2)
 
   ;; helper to make a window a dedicated one.
   (defun my/make-window-dedicated-toggle ()
