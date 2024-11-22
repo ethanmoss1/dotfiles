@@ -32,14 +32,14 @@
 		(exwm-workspace-rename-buffer new-buffer-name))
 	(exwm-workspace-rename-buffer exwm-class-name)))
 
-(defun exwm-launch-terminal ()
-  "Launch EAT if installed otherwise launch eshell"
-  (interactive)
-  ;; check if eat is installed
-  ;; otherwise use eshell
-  (if (fboundp 'eat)
-      (eat)
-    (eshell)))
+;; (defun exwm-launch-terminal ()
+;;   "Launch EAT if installed otherwise launch eshell"
+;;   (interactive)
+;;   ;; check if eat is installed
+;;   ;; otherwise use eshell
+;;   (if (fboundp 'eat)
+;;       (eat)
+;;     (eshell)))
 
 (defun exwm-setup-local-simulation-keys ()
   ""
@@ -62,10 +62,7 @@
 		  ("s-<down>" . windmove-down)
 
           ;; EXWM functions
-		  ("s-R" . exwm-reset)
-
-		  ;; DE bindings
-		  ("s-<return>" . exwm-launch-terminal))
+		  ("s-R" . exwm-reset))
   :config
   ;; Setup the keymap to allow for keybindings in EXWM and non-EXMW buffers
   ;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
