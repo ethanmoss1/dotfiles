@@ -54,11 +54,12 @@
    "ednc"
 
    ;; -- Themeing Modules --
-   "alltheicons"
    "modus-themes"
    ;; "ef-themes"
    ;; "gruvbox"
    "moodline"
+   ;; "alltheicons"
+   "nerd-icons"
 
    ;; Org Extras
    "org"
@@ -75,6 +76,7 @@
    "notmuch"
 
    ;; -- Editing modules --
+   "prot-better-c-g"
    "programming"
    "vundo"  ;; Visual undo history
    "hl-todo"
