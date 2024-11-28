@@ -32,9 +32,9 @@
    "ispell"
    "minibuffer"
    "calendar"
-   "webjump"
+   ;; "webjump"
    "replace"
-   
+
    ;; -- Compulsory Modules --
    "vertico"
    "orderless"
@@ -56,6 +56,7 @@
    ;; -- Themeing Modules --
    "alltheicons"
    "modus-themes"
+   ;; "ef-themes"
    ;; "gruvbox"
    "moodline"
 
@@ -67,6 +68,7 @@
    ;; "org-noter"
    ;; "org-gtd"
    "org-man"
+   "olivetti"
 
    ;; -- News and Email --
    "elfeed"
