@@ -49,7 +49,9 @@
   (flyspell-mode 1)
   (toggle-truncate-lines 0)
   (toggle-word-wrap 1)
-  (adaptive-wrap-prefix-mode))
+  (adaptive-wrap-prefix-mode)
+  (if (fboundp 'olivetti-mode)
+      (olivetti-mode t)))
 
 (defun my/add-latex-block ()
   "Adds a latex block ready for input"
@@ -107,7 +109,15 @@ Otherwise will return NIL"
 								 ;; (maxima . t)
 								 (shell . t)
 								 (C . t)))
-  (setq org-hide-emphasis-markers nil)
+  ;; Org Visuals
+  (setq org-hide-emphasis-markers nil
+        org-pretty-entities t
+        org-ellipsis " ⌄")
+  ;; Org Feel
+  (setq org-src-fontify-natively t
+	    org-src-tab-acts-natively t
+        org-edit-src-content-indentation 2)
+
 
   ;; Org related files.
   (setq org-directory "~/documents/org/"

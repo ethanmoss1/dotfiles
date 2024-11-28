@@ -25,6 +25,11 @@
 (use-package calendar
   :ensure nil
   :config
+  ;; Change to euro style
+  (setq calendar-week-start-day 1  ;; monday week start
+        calendar-date-style 'European)
+
+  ;; display buffer position
   (add-to-list 'display-buffer-alist
                ;; *shell*  *eshell*  *eat*
                '("^\\*Calendar\\*"
