@@ -145,8 +145,9 @@ loading of the module"
 (load-file (concat user-emacs-directory "modules-list.el"))
 
 ;; Customise file - for semi-temporary customisations
-(setq custom-file (concat user-emacs-directory "custom-file.el"))
-(when (file-exists-p custom-file)
-  (load custom-file))
+(setq custom-file (expand-file-name "custom-file.el"	user-emacs-directory))
+(if (file-exists-p custom-file)
+	(load custom-file t)
+  (make-empty-file custom-file))
 
 ;; init.el ends here
