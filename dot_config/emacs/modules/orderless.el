@@ -23,8 +23,13 @@
 ;;; Code :
 (use-package orderless
   :config
+  ;; Orderless Configuration
+  (setq orderless-component-separator " +\\|[-/]") ;; Space, FwdSlashes, hyphen.
+
+  ;; Emacs completion configuration
   (setq completion-styles '(orderless basic)
-		completion-category-overrides '((file
-										 (styles basic partial-completion)))))
+		completion-category-overrides
+        '((file (styles basic partial-completion))))
+  )
 
 ;; orderless.el ends here
