@@ -31,6 +31,7 @@
 (use-package dired
   :ensure nil
   :defer t
+  :hook ((dired-mode . dired-hide-details-mode))
   :bind (:map dired-mode-map ;; Variable is void when evaluated for first time
 			  ("<left>"  . dired-up-directory)
 			  ("<right>" . dired-find-file))
@@ -44,6 +45,21 @@
 		dired-mouse-drag-files 'move
         dired-recursive-copies 'always
         dired-recursive-deletes 'top
-        dired-kill-when-opening-new-dired-buffer t))
+        dired-kill-when-opening-new-dired-buffer t)
+
+  )
+
+;; ;; TODO: this works but the problem is that the buffer doesnt exit on
+;; ;; selecting a file, an the window doesnt replace the window that was last
+;; ;; selected
+
+;; (add-to-list 'display-buffer-alist
+;;                '((major-mode . dired-mode)
+;;                  (display-buffer-in-side-window)
+;;                  (side . left)
+;;                  (slot . -1) ;; -1 == L  0 == Mid 1 == R
+;;                  (window-height . 0.20) ;; take 2/3 on bottom left
+;;                  (window-parameters
+;;                   (no-delete-other-windows . nil))))
 
 ;;; dired.el ends here
