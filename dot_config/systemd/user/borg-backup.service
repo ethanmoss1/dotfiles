@@ -1,0 +1,8 @@
+[Unit]
+Description=Back up files to a Borg repo
+After=
+
+[Service]
+Type=oneshot
+ExecStart=/root/.config/borg/borg-backup-script
+ExecStart=/bin/rclone copy borg my_drive:borg -v
