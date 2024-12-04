@@ -5,6 +5,7 @@ Description=Mailbox Sync service
 Type=oneshot
 ExecStart=/usr/bin/mbsync -Va
 ExecStartPost=/home/ethan/mail/.notmuch/tagmail
+OnFailure=notify-service@%i.service
 
 [Install]
 WantedBy=default.target

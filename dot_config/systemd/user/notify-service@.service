@@ -1,0 +1,6 @@
+[Unit]
+Description=Send a notification on failure of a Service.
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c 'echo "Subject: Service Failed\n\nService %i failed on $(hostname)\n$(systemctl status %i)" | /bin/msmtp cywinskimoss@gmail.com'
