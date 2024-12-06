@@ -23,16 +23,19 @@
 (use-package eat
   :bind ("C-c t" . eat)
   :config
-  ;; Eat settings
-  (setq eat-kill-buffer-on-exit t)
-  ;; Set shell for android
+  ;; Set shell for certain hosts
   (if (string-equal my-hostname "tablet")
       (setq eat-shell "/data/data/com.termux/files/usr/bin/bash"))
-  ;; For `eat-eshell-mode'
-  (add-hook 'eshell-load-hook #'eat-eshell-mode)
 
-  ;; For `eat-eshell-visual-command-mode'
-  (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
+  ;; Eat settings
+  (setq eat-kill-buffer-on-exit t
+        eat-tramp-shells '(("docker" . "/bin/sh")
+                           ("ssh" . "/bin/bash")))
+
+  (add-hook 'eshell-load-hook
+            #'eat-eshell-mode) ;; For `eat-eshell-mode'
+  (add-hook 'eshell-load-hook
+            #'eat-eshell-visual-command-mode) ;; For `eat-eshell-visual-command-mode'
 
   ;; Set up the popup shell
   (add-to-list 'display-buffer-alist
