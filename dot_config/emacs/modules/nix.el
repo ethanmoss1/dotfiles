@@ -32,7 +32,6 @@
 ;; Run a nice buffer with the output of the nix rebuild
 (defun nixos-rebuild-config ()
   "Rebuild the system nixos rebuild"
-  (interactive)
   (let* ((default-directory "/sudo::/"))
     (compile "nixos-rebuild switch")))
 
@@ -56,6 +55,6 @@
 
 (use-package nix-mode
   :bind ( :map nix-mode-map
-          ("C-c C-c" . 'nixos-rebuild-config)))
+          ("C-c C-c" . (lambda () (interactive) (nixos-rebuild-config)))))
 
 ;;; nix.el ends here
