@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-set -euo pipfail
+set -euo pipefail
