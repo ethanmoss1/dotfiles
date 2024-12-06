@@ -30,18 +30,10 @@
 (defun my/reload-org-agenda-files ()
   "Reloads the agenda file list"
   (interactive)
-  (setq org-agenda-files (directory-files org-directory t "\\.org$")))
-
-(defun my/reload-org-agenda-files-and-study ()
-  "Reloads the agenda file list"
-  (interactive)
+  (setq org-agenda-files (directory-files org-directory t "\\.org$"))
   (setq org-agenda-files-and-study
         (append (directory-files org-directory t "\\.org$")
-                (directory-files-recursively "~/documents/study" "\\.org$"))))
-
-(defun my/reload-org-agenda-files-all ()
-  "Reloads the agenda file list"
-  (interactive)
+                (directory-files-recursively "~/documents/study" "\\.org$")))
   (setq org-agenda-files-all (directory-files-recursively "~/documents" "\\.org$")))
 
 (defun my/load-minor-modes-for-org ()
