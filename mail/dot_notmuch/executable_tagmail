@@ -53,8 +53,8 @@ notmuch tag -inbox -unread +o2 +sims from:*@o2-welcome.com
 notmuch tag +finance +bill tag:o2 from:"O2 Billing"
 
 ### Vodafone
-notmuch -inbox -unread +vodafone from:*@help.vodafone.co.uk
-notmuch -inbox -unread +vodafone from:*@email.vodafone.co.uk
+notmuch tag -inbox -unread +vodafone from:*@help.vodafone.co.uk
+notmuch tag -inbox -unread +vodafone from:*@email.vodafone.co.uk
 
 ## Virgin media
 notmuch tag -inbox -unread +virgin +internet from:*@virginmedia.co.uk
