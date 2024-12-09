@@ -22,6 +22,8 @@
 
 ;;; Code :
 
+;;;; Org Related functions -----------------------------------------------------
+
 (defun org-latex-preview-buffer ()
   "Generate the previews of all latex fragments in the buffer"
   (interactive)
@@ -84,6 +86,32 @@ Otherwise will return NIL"
   (and (not (null (cl-intersection tags (org-get-tags) :test 'string=)))
        (org-entry-end-position)))
 
+;; Emphasis words easily. pilfered from;
+;; https://christiantietze.de/posts/2024/12/org-mode-emphasis-keymap-mnemonics/
+(defun my/org-emphasize-below-point (&optional char)
+  "Emphasisez region with CHAR.
+
+If there's no region, marks the closest s-expression, first.
+Opposed to word boundaries, sexp's work with `subword-mode' enabled."
+  (interactive)
+  (unless (region-active-p)
+    (backward-sexp)
+    (mark-sexp))
+  (org-emphasize char))
+
+(defvar-keymap my/org-emphasis-map
+  :doc "Keymap for quickly applying Org emphasis rules."
+  :name "[b]old [i]talic [u]nderscore [v]erbatim [c]ode [s]trike-though"
+  "b" (lambda () (interactive) (my/org-emphasize-below-point ?*))
+  "i" (lambda () (interactive) (my/org-emphasize-below-point ?/))
+  "u" (lambda () (interactive) (my/org-emphasize-below-point ?_))
+  "v" (lambda () (interactive) (my/org-emphasize-below-point ?=))
+  "c" (lambda () (interactive) (my/org-emphasize-below-point ?~))
+  "s" (lambda () (interactive) (my/org-emphasize-below-point ?+)))
+
+;;;; Use-package ---------------------------------------------------------------
+
+;; Requires ‘s’ ?
 (use-package s)
 (use-package org
   :ensure nil
@@ -92,8 +120,12 @@ Otherwise will return NIL"
          (org-agenda-mode  . hl-line-mode)
          ;; Clean tags on refile
          (org-after-refile-insert . my/org-clean-tags))
-  :bind (("C-c o a" . 'my/org-agenda-with-groups)
-		 ("C-c o c" . 'org-capture))
+  :bind (;; Global keybindings
+         ("C-c o a" . 'my/org-agenda-with-groups)
+		 ("C-c o c" . 'org-capture)
+         ;; Mapped keybindings
+         :map org-mode-map
+         ("C-c C-x C-f" . my/org-emphasis-map))
   :config
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((python . t)
@@ -110,6 +142,12 @@ Otherwise will return NIL"
 	    org-src-tab-acts-natively t
         org-edit-src-content-indentation 2)
 
+  ;; Other Org settings
+  ;; Scale latex to size based on the hostname
+  (if (string-equal my-hostname "laptop")
+      (plist-put org-format-latex-options :scale 1.8)
+    (plist-put org-format-latex-options :scale 1))
+
 
   ;; Org related files.
   (setq org-directory "~/documents/org/"
@@ -119,27 +157,28 @@ Otherwise will return NIL"
                                            (directory-files-recursively "~/documents/study" "\\.org$"))
         org-agenda-files-all (directory-files-recursively "~/documents" "\\.org$"))
 
+
   ;; Org-agenda settings
   (setq org-agenda-show-future-repeats t
         org-agenda-include-diary nil)
 
-        ;; Only show TODO’s that dont have a set date.
-        ;; Once that date has come, show the TODO.
+  ;; Only show TODO’s that dont have a set date.
+  ;; Once that date has come, show the TODO.
   (setq org-agenda-todo-ignore-deadlines 'future
         org-agenda-todo-ignore-scheduled 'future
         org-agenda-tags-todo-honor-ignore-options t)
 
-  (setq org-agenda-custom-commands  ;; Setting up the agenda views
+
+  ;; Setting up the agenda views
+  (setq org-agenda-custom-commands
         '(("n"       ; Key
            "Agenda"  ; Description
            ((agenda ""
                     ((org-agenda-remove-tags t)))
-
             (tags-todo "+new"
                        ((org-agenda-overriding-header "Inbox")
                         (org-agenda-prefix-format '((tags . " %i ")))
                         (org-agenda-remove-tags t)))
-
             (todo "NEXT"
                   ((org-agenda-overriding-header "\nNext Actions")
                    (org-agenda-block-separator nil)
@@ -147,7 +186,6 @@ Otherwise will return NIL"
                    (org-agenda-skip-function
                     ;; Skip the heading if it has any of the tags
                     '(my/org-agenda-skip-tags '("new" "habit")))))
-
             (todo "TODO"
                   ((org-agenda-overriding-header "\nTODO Tasks")
                    (org-agenda-block-separator nil)
@@ -155,9 +193,7 @@ Otherwise will return NIL"
                    (org-agenda-skip-function
                     ;; Skip the heading if it has any of the tags
                     '(my/org-agenda-skip-tags '("new" "habit"))))))
-
            ((org-agenda-files org-agenda-files-and-study)))
-
 
           ;; Default - show all org files in ‘~/documents’ recursively.
           ("b"
@@ -166,11 +202,6 @@ Otherwise will return NIL"
             (alltodo ""))
            ((org-agenda-files org-agenda-files-all)))))
 
-
-  ;; Scale latex to size based on the hostname
-  (if (string-equal my-hostname "laptop")
-      (plist-put org-format-latex-options :scale 1.8)
-    (plist-put org-format-latex-options :scale 1))
 
   ;; Refiling options
   (setq org-outline-path-complete-in-steps nil
@@ -203,7 +234,21 @@ Otherwise will return NIL"
 												 ":ENTERED: %U"
 												 ":FILE: [[%F]]"
 												 ":END:"))
-                                 :empty-lines 1)))
+                                 :empty-lines 1)
+                                ("c"
+                                 "Calendar"
+                                 entry
+                                 (file+headline "inbox.org" "todo")
+                                 ;,(concat "* %?\n"
+                                 ;         "SCHEDULED: <%<%Y-%m-%d %a %^{Scheduled Time: }>>")
+                                 ,(s-join "\n" '("* TODO %?"
+                                                 "SCHEDULED: <%(org-read-date t)>"
+                                                 ":PROPERTIES:"
+											     ":ENTERED: %U"
+											     ":FILE: [[%F]]"
+											     ":END:"))
+                                 :time-prompt t)))
+
 
   ;; Set up org buffer views:
   (add-to-list 'display-buffer-alist
