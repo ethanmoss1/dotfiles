@@ -31,7 +31,7 @@
 ;; external packages but configuration of built in packages as well as custom
 ;; modules that contain my own code for a specific function.
 
-;;;; References:
+;;;; References and Inspiration:
 ;; Emacs Siren .............................. https://github.com/jimeh/.emacs.d
 ;; Emacs Prelude ........................... https://github.com/bbatsov/prelude
 ;; Emacs Nano ........................... https://github.com/rougier/nano-emacs
@@ -44,7 +44,7 @@
 
 (defconst my-devices
   '("laptop"
-    "server"
+    "mac"
     "tablet")
   "List of devices that I run Emacs on. This effects whether certain packages,
 settings, variables, ect. are set or loaded")
