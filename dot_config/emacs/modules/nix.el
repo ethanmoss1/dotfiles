@@ -18,12 +18,8 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-;; Nix mode for syntax
-
-;; Nix mode with syntax and more
-
 ;;; Code:
+
 (defun nixos-edit-config ()
   "Edit the nixos config file"
   (interactive)
@@ -33,7 +29,11 @@
 (defun nixos-rebuild-config ()
   "Rebuild the system nixos rebuild"
   (let* ((default-directory "/sudo::/"))
-    (compile "nixos-rebuild switch")))
+    (if (string= my-hostname "mac")
+        ;; TODO: This is hard coded and needs to change
+        (compile "darwin-rebuild switch --flake /Users/ethan/.config/nix-darwin")
+      (compile "nixos-rebuild switch"))))
+
 
 ;;; Old code for nixos rebuild
 ;; --
