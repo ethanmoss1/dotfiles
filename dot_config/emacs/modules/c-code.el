@@ -46,19 +46,23 @@
 
   ;; Set default font based on priority list
   (if window-system
-
       (let* ((families '("JetBrains Nerd Font Mono"
                          "JetBrains Mono"
-                         "Roboto Nerd Font Mono"
                          "Roboto Mono"
+                         "RobotoMono NF"
                          "Droid Sans Mono"
-                         "Roboto"))
+                         "Roboto"
+                         ;; Mac familys
+                         "JetBrainsMono"
+                         "RobotoMono Nerd Font Mono"))
              (family (catch 'found
                        (dolist (f families)
                          (if (member f (font-family-list))
                              (throw 'found f))))))
         (set-face-attribute 'default nil
                             :family family :height 120)
-        (message (concat "Font loaded: " family)))))
+        (if family
+            (message (concat "Font loaded: " family))
+          (message (concat "No Font loaded, Could not find a font"))))))
 
 ;;; c-code.el ends here
