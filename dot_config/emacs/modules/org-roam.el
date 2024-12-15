@@ -27,6 +27,7 @@
   (consult-grep org-roam-directory))
 
 (use-package org-roam
+  :defer t
   :bind (("C-c r l" . org-roam-buffer-toggle)
          ("C-c r f" . org-roam-node-find)
          ("C-c r g" . org-roam-ui-open)
@@ -43,38 +44,40 @@
 
     ;; If using org-roam-protocol
   ;; (require 'org-roam-protocol)
-  (org-roam-db-autosync-mode 1))
+  (org-roam-db-autosync-mode 1)
 
-;;; Additional Org-roam package;
-(use-package org-roam-ui
-  :config
-  ;; To sync the theme your using, run ‘orui-sync-theme’
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start nil))
 
-(use-package org-roam-timestamps
-  :config
-  ;; Run ‘org-roam-timestamps-all’, This will add ctime and mtime properties to
-  ;; all the property drawers of your notes.
+  ;;; Additional Org-roam package;
+  (use-package org-roam-ui
+    :config
+    ;; To sync the theme your using, run ‘orui-sync-theme’
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start nil))
 
-  ;; This will also update the parent file when you update a subnote.
-  (setq org-roam-timestamps-parent-file t)
+  (use-package org-roam-timestamps
+    :config
+    ;; Run ‘org-roam-timestamps-all’, This will add ctime and mtime properties to
+    ;; all the property drawers of your notes.
 
-  ;; This will remember previous mtimes and add the new timestamp to the front
-  ;; of the list rather than replace the old one. This will allow us to create
-  ;; git-like time-tracker-views in org-roam-ui, showing you when you modified
-  ;; which files. It will however clog up your properties drawer a lot more and
-  ;; of course increase file size. If you previously had this turned on but want
-  ;; to remove it for all files, run org-roam-timestamps-clean-mtimes.
-  (setq org-roam-timestamps-remember-timestamps t)
+    ;; This will also update the parent file when you update a subnote.
+    (setq org-roam-timestamps-parent-file t)
 
-  ;; Minimum time in seconds between two timestamps. Defaults to an hour. Only
-  ;; does something if org-roam-timestamps-remember-timestamps is t
-  (setq org-roam-timestamps-minimum-gap 3600)
+    ;; This will remember previous mtimes and add the new timestamp to the front
+    ;; of the list rather than replace the old one. This will allow us to create
+    ;; git-like time-tracker-views in org-roam-ui, showing you when you modified
+    ;; which files. It will however clog up your properties drawer a lot more and
+    ;; of course increase file size. If you previously had this turned on but want
+    ;; to remove it for all files, run org-roam-timestamps-clean-mtimes.
+    (setq org-roam-timestamps-remember-timestamps t)
 
-  ;; Start the minor mode.
-  (org-roam-timestamps-mode))
+    ;; Minimum time in seconds between two timestamps. Defaults to an hour. Only
+    ;; does something if org-roam-timestamps-remember-timestamps is t
+    (setq org-roam-timestamps-minimum-gap 3600)
+
+    ;; Start the minor mode.
+    (org-roam-timestamps-mode)))
+
 
 ;;; orgroam.el ends here
