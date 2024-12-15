@@ -27,7 +27,6 @@
 
 (use-package window
   :ensure nil
-  :hook (elpaca-after-init . window-divider-mode)
   :config
   ;; Respect display actions specified. eg, in ‘display-buffer-alist’
   (setq switch-to-buffer-obey-display-actions t)
@@ -41,7 +40,10 @@
   (setq window-resize-pixelwise nil
 		resize-mini-windows 'grow-only)
 
-  ;; Window divider
+  ;; Window divider on EXWM
+  (if (string= my-hostname "laptop")
+      (add-hook 'elpaca-after-init-hook window-divider-mode))
+  ;; and its settings
   (setq window-divider-default-places t
 		window-divider-default-right-width 2
 		window-divider-default-bottom-width 2)
