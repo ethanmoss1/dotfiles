@@ -45,9 +45,7 @@
 		dired-mouse-drag-files 'move
         dired-recursive-copies 'always
         dired-recursive-deletes 'top
-        dired-kill-when-opening-new-dired-buffer t)
-
-  )
+        dired-kill-when-opening-new-dired-buffer t))
 
 ;; ;; TODO: this works but the problem is that the buffer doesnt exit on
 ;; ;; selecting a file, an the window doesnt replace the window that was last
