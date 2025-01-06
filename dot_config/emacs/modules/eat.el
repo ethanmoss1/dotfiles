@@ -21,21 +21,27 @@
 ;;; Code:
 
 (use-package eat
-  :bind ("C-c t" . eat)
+  :bind ("C-c t" . eshell)
   :config
   ;; Set shell for certain hosts
   (if (string-equal my-hostname "tablet")
-      (setq eat-shell "/data/data/com.termux/files/usr/bin/bash"))
+      (setq eat-shell "/data/data/com.termux/files/usr/bin/bash")
+    ;; (setq eat-shell "/bin/bash")
+    (setq eat-shell "/bin/zsh"))
 
   ;; Eat settings
   (setq eat-kill-buffer-on-exit t
+        eat-term-name "xterm"  ;; easier than trying to hack eat-term to work
         eat-tramp-shells '(("docker" . "/bin/sh")
                            ("ssh" . "/bin/bash")))
 
-  (add-hook 'eshell-load-hook
-            #'eat-eshell-mode) ;; For `eat-eshell-mode'
-  (add-hook 'eshell-load-hook
-            #'eat-eshell-visual-command-mode) ;; For `eat-eshell-visual-command-mode'
+  ;; For `eat-eshell-mode'.
+  ;; (add-hook 'eshell-load-hook #'eat-eshell-mode)
+
+  ;; For `eat-eshell-visual-command-mode'.
+  ;; (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
+
+  (eat-eshell-mode)
 
   ;; Set up the popup shell
   (add-to-list 'display-buffer-alist
