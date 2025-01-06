@@ -23,15 +23,17 @@
 (defun nixos-edit-config ()
   "Edit the nixos config file"
   (interactive)
-  (find-file "/sudo::/etc/nixos/configuration.nix"))
+  (if (string= my-hostname "mac")
+      (find-file "/Users/ethan/.config/nix-darwin" )
+    (find-file "/sudo::/etc/nixos/configuration.nix")))
 
 ;; Run a nice buffer with the output of the nix rebuild
 (defun nixos-rebuild-config ()
   "Rebuild the system nixos rebuild"
-  (let* ((default-directory "/sudo::/"))
-    (if (string= my-hostname "mac")
+  (if (string= my-hostname "mac")
         ;; TODO: This is hard coded and needs to change
-        (compile "darwin-rebuild switch --flake /Users/ethan/.config/nix-darwin")
+        (compile "darwin-rebuild switch --flake /Users/ethan/.config/nix-darwin" t)
+    (let* ((default-directory "/sudo::/"))
       (compile "nixos-rebuild switch"))))
 
 
