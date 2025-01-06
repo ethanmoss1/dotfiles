@@ -30,6 +30,12 @@
   (setq auto-insert-directory (concat user-emacs-directory "auto-insert/")
 		auto-insert-query nil)
 
+  (add-to-list 'auto-insert-alist
+               '((".+\\.nix" . "Template for Nix Modules")
+                 nil
+                 "{ config, pkgs, ... }:" \n
+                 "{" \n _ "\n}"))
+
   (auto-insert-mode t))
 
 ;;; auto-insert.el ends here
