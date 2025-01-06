@@ -25,7 +25,8 @@
   :config
   (add-to-list 'default-frame-alist '((ns-transparent-titlebar . t)
                                       (ns-appearance . dark)))
-  (setq frame-title-format nil))
+  (setq frame-title-format nil)
+  (add-to-list 'default-frame-alist '(undecorated . t)))
 
 ;;; macos-config.el ends here
 ;; Local Variables:
