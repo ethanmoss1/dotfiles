@@ -1,6 +1,6 @@
 ;; Load modules
 (mapcar
- 'module-load
+ 'config-module-load
  '(;;;;;; ---- List of modules to load ----
    ;; -- Package manager --
    "elpaca"

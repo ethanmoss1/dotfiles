@@ -50,25 +50,25 @@
 settings, variables, ect. are set or loaded")
 
 ;; Set up module loading and creation
-(defconst module-emacs-dir (concat user-emacs-directory "modules/")
+(defconst config-module-emacs-dir (concat user-emacs-directory "modules/")
   "Directory where the modules are located")
 
-(defconst module-managed-dotfiles (if (executable-find "chezmoi") t)
+(defconst config-module-managed-dotfiles (if (executable-find "chezmoi") t)
   "Check if modules are managed by a dotfile manager")
 
-(defun module--list-modules ()
+(defun config-module--list-modules ()
   "returns the list of modules available to the user"
-  (mapcar 'file-name-sans-extension (directory-files module-emacs-dir nil "\\.el")))
+  (mapcar 'file-name-sans-extension (directory-files config-module-emacs-dir nil "\\.el")))
 
-(defun module--get-option ()
+(defun config-module--get-option ()
   "Get the module that you want to load"
   (completing-read "Name of module to load: " (module--list-modules)))
 
-(defun module--to-load (module)
+(defun config-module--to-load (module)
   "Load the given MODULE"
-  (load (concat module-emacs-dir module ".el") nil nil nil nil))
+  (load (concat config-module-emacs-dir module ".el") nil nil nil nil))
 
-(defun module--get-save-location ()
+(defun config-module--get-save-location ()
   "Directory where the main modules are saved, this is dependent on
 how your dotfiles are stored.
 
@@ -77,13 +77,13 @@ Checks for the following Dotfile solutions:
  - more to come
 
 This will default to the standard emacs module directory"
-  (if module-managed-dotfiles
+  (if config-module-managed-dotfiles
     (shell-command-to-string (format "printf %s \"$(chezmoi source-path %s)\""
                                      "%s"  ; banana
-                                     module-emacs-dir))
-  module-emacs-dir))
+                                     config-module-emacs-dir))
+  config-module-emacs-dir))
 
-(defun module-load (&optional module)
+(defun config-module-load (&optional module)
   "load MODULE that contains a package/elisp for a particular
 purpose and its configuration. If called interactively, select
 MODULE to load from the list of available modules."
@@ -100,19 +100,19 @@ MODULE to load from the list of available modules."
 										  (error-message-string err))
 							:warning))))
 
-(defun module--populate-buffer (module-name buffer-name module-file)
-  "Open a new BUFFER-NAME with the file location of MODULE-FILE
+(defun config-module--populate-buffer (module-name buffer-name config-module-file)
+  "Open a new BUFFER-NAME with the file location of CONFIG-MODULE-FILE
  and populate with auto-insert
 Provide is removed as this is not a normal lisp file."
-  (find-file module-file)
+  (find-file config-module-file)
   (with-current-buffer buffer-name
 	(auto-insert)
 	(mark-marker)
 	(replace-regexp "\n\n\(provide '.*\)" "")
-	(insert (format "(use-package %s)\n" module-name))
+	(insert (format "(use-package %s)\n" config-module-name))
 	(goto-char (point-max))
 	(insert ";; Local Variables:
-;; eval: (if module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
 ;; End:")
 	(goto-char (mark-marker))
 	(normal-mode)))
@@ -121,16 +121,16 @@ Provide is removed as this is not a normal lisp file."
 ;; function.
 (setq auto-insert-query nil)  ; redundant as it is in the auto-insert module.
 
-(defun module-new ()
+(defun config-module-new ()
   "Create a new module file in the modules directory that allows
 loading of the module"
   (interactive)
-  (let* ((module-name (read-string "Package Name: "))
-		 (buffer-name (concat module-name ".el"))
-		 (module-file (concat (module--get-save-location) "/" buffer-name)))
-    (if (file-exists-p module-file)
+  (let* ((config-module-name (read-string "Package Name: "))
+		 (buffer-name (concat config-module-name ".el"))
+		 (config-module-file (concat (config-module--get-save-location) "/" buffer-name)))
+    (if (file-exists-p config-module-file)
 		(user-error "Module %s exists already" buffer-name)
-	  (module--populate-buffer module-name buffer-name module-file)))
+	  (config-module--populate-buffer config-module-name buffer-name config-module-file)))
   (message "Don’t forget to add the module to the ‘module-list.el’ file."))
 
 ;; Set up devices specific configuration
