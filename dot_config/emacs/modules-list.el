@@ -79,6 +79,7 @@
    ;; -- News and Email --
    "elfeed"
    "notmuch"
+   ;; "ntfy"
 
    ;; -- Editing modules --
    "prot-better-c-g"
