@@ -63,12 +63,17 @@
   ;; which should quickly self-correct.
   (setq fast-but-imprecise-scrolling t)
 
-  ;; Move point to top/bottom of buffer before signaling a scrolling
+  ;; Move point to top/bottom of buffer before signalling a scrolling
   ;; error.
   (setq scroll-error-top-bottom t)
 
   ;; Keeps screen position if the scroll command moved it vertically out
   ;; of the window.
-  (setq scroll-preserve-screen-position t))
+  (setq scroll-preserve-screen-position t)
+
+  ;; Mac only for now, set precision scrolling, this makes Emacs feel more
+  ;; modern and makes is easier to see content as is scrolls.
+  (if (string= my-hostname "mac")
+      (pixel-scroll-precision-mode)))
 
 ;;; mouse.el ends here
