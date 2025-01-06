@@ -26,6 +26,8 @@
   :ensure nil
   :config
   (setq ispell-dictionary "en_GB"
-		ispell-program-name (executable-find "hunspell")))
+        ;; This is done automatically.
+		;; ispell-program-name (executable-find "hunspell")
+        ))
 
 ;;; ispell.el ends here
