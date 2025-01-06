@@ -45,7 +45,14 @@
 		dired-mouse-drag-files 'move
         dired-recursive-copies 'always
         dired-recursive-deletes 'top
-        dired-kill-when-opening-new-dired-buffer t))
+        dired-kill-when-opening-new-dired-buffer nil)
+
+  ;; -- Functions --
+  (defun dired-do-delete-skip-trash (&optional arg)
+    "Delete marked files PERMANENTLY."
+    (interactive "P")
+    (let ((delete-by-moving-to-trash nil))
+      (dired-do-delete arg))))
 
 ;; ;; TODO: this works but the problem is that the buffer doesnt exit on
 ;; ;; selecting a file, an the window doesnt replace the window that was last
