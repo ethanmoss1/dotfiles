@@ -26,7 +26,12 @@
   (interactive)
   (consult-grep org-roam-directory))
 
+(defun org-element--property (PROPERTY ELEMENT)
+  "Fix org-roam issues"
+  (org-element-property PROPERTY ELEMENT))
+
 (use-package org-roam
+  ;; :after other
   :defer t
   :bind (("C-c r l" . org-roam-buffer-toggle)
          ("C-c r f" . org-roam-node-find)
