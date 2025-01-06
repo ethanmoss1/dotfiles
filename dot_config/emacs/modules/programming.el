@@ -23,11 +23,13 @@
 ;;; Code :
 (defun programming-minor-modes ()
   "Enable minor modes for programming buffer"
-  (display-line-numbers-mode t)
+  ;; (display-line-numbers-mode t)
   (display-fill-column-indicator-mode t)
   (hl-line-mode t)
   (column-number-mode t)
-  (flyspell-prog-mode)
+  ;; currently using jinx
+  ;; (if (fboundp 'jinx-mode)
+  ;;     (flyspell-prog-mode))
   (subword-mode t)
   (if (fboundp 'rainbow-mode)
 	  (rainbow-mode 1)))
