@@ -26,9 +26,12 @@
   (interactive)
   (consult-grep org-roam-directory))
 
-(defun org-element--property (PROPERTY ELEMENT)
-  "Fix org-roam issues"
-  (org-element-property PROPERTY ELEMENT))
+;; (defun org-element--property (PROPERTY ELEMENT)
+;;   "Fix org-roam issues"
+;;   (org-element-property PROPERTY ELEMENT))
+
+(defalias 'org-element--property 'org-element-property
+  "Fix org-roam issues")
 
 (use-package org-roam
   ;; :after other
