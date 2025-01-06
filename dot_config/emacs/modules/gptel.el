@@ -27,6 +27,16 @@
 ;; Optional package
 ;; (use-package markdown-mode)
 
+(defun get-gemini-key ()
+  "Gets the gemini key if it is available."
+  (let ((key   (plist-get (car (auth-source-search
+                                :max 1
+                                :host "ai.gemini"
+                                :user "google"))
+                          :secret)))
+    (unless key
+      (message "Failed getting key for GPTel: Setup API key in Authinfo"))))
+
 (use-package gptel
   :config
   ;; gptel configurations
@@ -35,14 +45,11 @@
   ;; Hooks
   (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+
   ;; Change to Gemini
   (setq gptel-model 'gemini-pro
         gptel-backend (gptel-make-gemini "Gemini"
-                        :key (funcall (plist-get (car (auth-source-search
-                                                       :max 1
-                                                       :host "ai.gemini"
-                                                       :user "google"))
-                                                 :secret))
+                        :key (funcall 'get-gemini-key)
                         :stream t))
 
 
