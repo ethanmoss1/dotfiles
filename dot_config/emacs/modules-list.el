@@ -39,9 +39,12 @@
    "vertico"
    "orderless"
    "marginalia"
+   "exec-path-from-shell"  ;; Chezmoi wont load otherwise
    "chezmoi"
 
-   "macos-config"
+   ;; MacOS packages
+   ;; "macos-config"
+   "ns-auto-titlebar"
 
    ;; Window manager and accompying modules
    ;; Will only load when ‘my-hostname’ is equal to laptop
@@ -86,6 +89,7 @@
    "rainbow"
    "consult"
    "adaptive-wrap"
+   "jinx"
 
    ;; -- Programming languages --
    "nix"
@@ -99,6 +103,7 @@
    "helpful"
    "docker"
    "eat"
+   "systemd"
    "gptel"
 
 
