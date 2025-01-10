@@ -90,9 +90,9 @@ MODULE to load from the list of available modules."
   (interactive)
   (condition-case err
 	  (if (called-interactively-p 'interactive)
-		  (module--to-load (module--get-option))
+		  (config-module--to-load (module--get-option))
 		(if (not (eq module nil))
-			(module--to-load module)))
+			(config-module--to-load module)))
   (error (display-warning 'config
 						  (format-message "Loading %s: %s"
 										  (or (concat "module " module)
@@ -109,7 +109,7 @@ Provide is removed as this is not a normal lisp file."
 	(auto-insert)
 	(mark-marker)
 	(replace-regexp "\n\n\(provide '.*\)" "")
-	(insert (format "(use-package %s)\n" config-module-name))
+	(insert (format "(use-package %s)\n" module-name))
 	(goto-char (point-max))
 	(insert ";; Local Variables:
 ;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
