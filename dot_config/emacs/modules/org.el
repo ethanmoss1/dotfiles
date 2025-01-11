@@ -130,7 +130,8 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   :config
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((python . t)
-								 (gnuplot . t)
+                                 (emacs-lisp . t)
+								 ;; (gnuplot . t)
 								 ;; (maxima . t)
 								 (shell . t)
 								 (C . t)))
@@ -145,9 +146,13 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 
   ;; Other Org settings
   ;; Scale latex to size based on the hostname
-  (if (string-equal my-hostname "laptop")
-      (plist-put org-format-latex-options :scale 1.8)
-    (plist-put org-format-latex-options :scale 1))
+  ;; (if (string-equal my-hostname "laptop")
+  ;;     (plist-put org-format-latex-options :scale 1.8)
+  ;;   (plist-put org-format-latex-options :scale 1))
+  (pcase my-hostname
+    ("laptop" (plist-put org-format-latex-options :scale 1.8))
+    ("mac" (plist-put org-format-latex-options :scale 1.4))
+    (t (plist-put org-format-latex-options :scale 1.0)))
 
 
   ;; Org related files.
