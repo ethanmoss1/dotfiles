@@ -144,16 +144,20 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 	    org-src-tab-acts-natively t
         org-edit-src-content-indentation 2)
 
-  ;; Other Org settings
+  ;;;; -- Other Org settings
   ;; Scale latex to size based on the hostname
-  ;; (if (string-equal my-hostname "laptop")
-  ;;     (plist-put org-format-latex-options :scale 1.8)
-  ;;   (plist-put org-format-latex-options :scale 1))
   (pcase my-hostname
     ("laptop" (plist-put org-format-latex-options :scale 1.8))
-    ("mac" (plist-put org-format-latex-options :scale 1.4))
+    ("mac" (progn (setq org-format-latex-options
+                        '( :foreground default
+                           :background "Transparent"
+                           :scale 1.4
+                           :html-foreground "Black"
+                           :html-background "Transparent"
+                           :html-scale 1.0
+                           :matchers '("begin" "$1" "$" "$$" "\\(" "\\[")))
+                  (setq org-preview-latex-default-process 'dvisvgm)))
     (t (plist-put org-format-latex-options :scale 1.0)))
-
 
   ;; Org related files.
   (setq org-directory "~/documents/org/"
