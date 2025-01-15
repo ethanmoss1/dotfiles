@@ -1,0 +1,9 @@
+[Unit]
+Description=Run the agenda export service
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

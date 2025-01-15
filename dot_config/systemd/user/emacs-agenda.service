@@ -1,0 +1,7 @@
+[Unit]
+Description=Export a ICS file to the Caldav server
+
+[Service]
+Type=oneshot
+ExecStart=/root/.config/systemd/scripts/emacs-agenda.el
+OnFailure=notify-service@%i.service
