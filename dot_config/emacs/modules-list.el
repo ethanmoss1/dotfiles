@@ -4,6 +4,7 @@
  '(;;;;;; ---- List of modules to load ----
    ;; -- Package manager --
    "elpaca"
+   "exec-path-from-shell"  ;; Need for path
 
    ;; -- Built in modules --
    "c-code"
