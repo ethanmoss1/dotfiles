@@ -23,13 +23,19 @@
 
 ;;; Code:
 
+;; allow elpaca to see the makeinfo binary on a new install without exec-path
+(if (eq system-type 'darwin)
+    (setq elpaca-makeinfo-executable "/usr/local/bin/makeinfo"
+          elpaca-install-info-executable "/usr/local/bin/install-info"))
+
+
 ;; ELPACA BOOTSTRAP CODE - START
-(defvar elpaca-installer-version 0.8)
+(defvar elpaca-installer-version 0.9)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
 (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                              :ref nil :depth 1
+                              :ref nil :depth 1 :inherit ignore
                               :files (:defaults "elpaca-test.el" (:exclude "extensions"))
                               :build (:not elpaca--activate-package)))
 (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
