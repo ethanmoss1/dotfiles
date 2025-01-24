@@ -18,8 +18,6 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary :
-
 ;;; Code :
 
 ;;;; Org Related functions -----------------------------------------------------
@@ -137,8 +135,9 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 								 (C . t)))
   ;; Org Visuals
   (setq org-hide-emphasis-markers nil
-        org-pretty-entities t
+        org-pretty-entities nil
         org-ellipsis " ⌄")
+
   ;; Org Feel
   (setq org-src-fontify-natively t
 	    org-src-tab-acts-natively t
@@ -169,8 +168,10 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 
 
   ;; Org-agenda settings
-  (setq org-agenda-show-future-repeats t
-        org-agenda-include-diary nil)
+  (setq org-agenda-show-future-repeats 'next
+        org-agenda-include-diary nil
+        org-agenda-span 10
+        org-agenda-start-on-weekday nil)
 
   ;; Only show TODO’s that dont have a set date.
   ;; Once that date has come, show the TODO.
@@ -231,7 +232,8 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                                           '("** TODO %?" ;; %(org-set-tags \"new\")"
 	                                        ":PROPERTIES:"
 											":ENTERED: %U"
-											":FILE: [[%F]]"
+											":FILE: [[%f]]"
+                                            ":LINK: %a"
 											":END:"))
                                  :empty-lines 1) ; properties
 
@@ -242,22 +244,31 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 								 ,(s-join "\n" '("** %? %^G"
 												 ":PROPERTIES:"
 												 ":ENTERED: %U"
-												 ":FILE: [[%F]]"
+												 ":FILE: [[%f]]"
+                                                 ":LINK: %a"
 												 ":END:"))
                                  :empty-lines 1)
                                 ("c"
                                  "Calendar"
                                  entry
                                  (file+headline "inbox.org" "todo")
-                                 ;,(concat "* %?\n"
-                                 ;         "SCHEDULED: <%<%Y-%m-%d %a %^{Scheduled Time: }>>")
+                                        ;,(concat "* %?\n"
+                                        ;         "SCHEDULED: <%<%Y-%m-%d %a %^{Scheduled Time: }>>")
                                  ,(s-join "\n" '("* TODO %?"
                                                  "SCHEDULED: <%(org-read-date t)>"
                                                  ":PROPERTIES:"
 											     ":ENTERED: %U"
-											     ":FILE: [[%F]]"
+											     ":FILE: [[%f]]"
+                                                 ":LINK: %a"
 											     ":END:"))
-                                 :time-prompt t)))
+                                 :time-prompt t)
+                                ("w"
+                                 "Web site"
+                                 entry
+                                 (file+headline "inbox.org" "notes")
+                                 "* %c :website:\n%U %?%:initial")
+                                ))
+
 
 
   ;; Set up org buffer views:
@@ -278,8 +289,8 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
   ;; show just the subtree I’m interested in, lowers visual clutter.
-   (advice-add 'org-agenda-goto :after
-               (lambda (&rest args)
-                 (org-narrow-to-subtree))))
+  (advice-add 'org-agenda-goto :after
+              (lambda (&rest args)
+                (org-narrow-to-subtree))))
 
 ;;; org.el ends here
