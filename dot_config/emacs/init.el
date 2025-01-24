@@ -62,7 +62,7 @@ settings, variables, ect. are set or loaded")
 
 (defun config-module--get-option ()
   "Get the module that you want to load"
-  (completing-read "Name of module to load: " (module--list-modules)))
+  (completing-read "Name of module to load: " (config-module--list-modules)))
 
 (defun config-module--to-load (module)
   "Load the given MODULE"
@@ -90,14 +90,14 @@ MODULE to load from the list of available modules."
   (interactive)
   (condition-case err
 	  (if (called-interactively-p 'interactive)
-		  (config-module--to-load (module--get-option))
+		  (config-module--to-load (config-module--get-option))
 		(if (not (eq module nil))
 			(config-module--to-load module)))
-  (error (display-warning 'config
-						  (format-message "Loading %s: %s"
-										  (or (concat "module " module)
-											  "interactive module")
-										  (error-message-string err))
+    (error (display-warning 'config
+						    (format-message "Loading %s: %s"
+										    (or (concat "module " module)
+											    "interactive module")
+										    (error-message-string err))
 							:warning))))
 
 (defun config-module--populate-buffer (module-name buffer-name config-module-file)
