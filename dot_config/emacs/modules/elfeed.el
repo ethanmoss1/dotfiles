@@ -18,35 +18,46 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-
-;;
-
 ;;; Code:
 
+
+;; Allow capturing of elfeed entry in org capture
+;; https://yiming.dev/blog/2016/01/28/add-org-store-link-entry-for-elfeed/
+(defun my/org-elfeed-entry-store-link ()
+  (when elfeed-show-entry
+    (let* ((link (elfeed-entry-link elfeed-show-entry))
+           (title (elfeed-entry-title elfeed-show-entry)))
+      (org-store-link-props
+       :link link
+       :description title))))
+
 (use-package elfeed
+  ;; :hook (org-store-link-functions . my/org-elfeed-entry-store-link)
   :config
   (setq elfeed-feeds
-      '(;; Computing & IT News
-		("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304299" uni news)
-		;; Module M269 news
-		("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304300" uni news)
-		;; Module T257 news
-		("https://learn2.open.ac.uk/blocks/news/feed.php?bi=299153" uni news)
-		;; /dev/null
-		("yummymelon.com/devnull/feeds/all.atom.xml" emacs blog)
-		;; XKCD
-		("https://xkcd.com/rss.xml" humour cartoon)
-		;; Emacs release news
-		("https://emacs.org/rss/emacs.xml" emacs news release)
-		;; Google Alerts "Spinal Muscular Atrophy"
-		("https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100" news medical)
-		;; Google Alerts "Bridge RNA"
-		("https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637" news medical)
-        ;; Planet Emacs
-        ("https://planet.emacslife.com/atom.xml" emacs news)
-        ("https://themkat.net/feed/by_tag/emacs.xml" emacs news)
-        )))
+        '(;; Computing & IT News
+		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304299" uni news)
+		  ;; Module M269 news
+		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304300" uni news)
+		  ;; Module TM257 news
+		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=299153" uni news)
+          ;; Module TM256 news
+          ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=311531" uni news)
+		  ;; /dev/null
+		  ("yummymelon.com/devnull/feeds/all.atom.xml" emacs blog)
+		  ;; XKCD
+		  ("https://xkcd.com/rss.xml" humour cartoon)
+		  ;; Emacs release news
+		  ("https://emacs.org/rss/emacs.xml" emacs news release)
+		  ;; Google Alerts "Spinal Muscular Atrophy"
+		  ("https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100" news medical)
+		  ;; Google Alerts "Bridge RNA"
+		  ("https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637" news medical)
+          ;; Planet Emacs
+          ("https://planet.emacslife.com/atom.xml" emacs news)
+          ("https://themkat.net/feed/by_tag/emacs.xml" emacs news)))
+  (add-hook 'org-store-link-functions
+            'my/org-elfeed-entry-store-link))
 
 ;; (use-package elfeed-goodies
 ;;   :after elfeed
