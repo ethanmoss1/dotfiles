@@ -32,7 +32,7 @@
   (add-to-list 'display-buffer-alist
 			   '("^\\*helpful"
                  (display-buffer-reuse-window display-buffer-below-selected)
-                 (window-height . 0.8)
+                 (window-height . 0.5)
                  (window-parameters
                   (no-delete-other-windows . t)))))
 
