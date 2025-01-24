@@ -1,8 +1,8 @@
-;;; modus-themes.el ---   -*- lexical-binding: t; -*-
+;;; ultra-scroll.el --- Super Smooth scrolling       -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2023  Ethan Moss
+;; Copyright (C) 2025  Ethan Moss
 
-;; Author: Ethan Moss <cywinskimoss@gmail.com>
+;; Author: Ethan Moss <ethan@Ethans-MacBook-Pro.local>
 ;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -18,18 +18,14 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary :
+;;; Code:
 
-;;; Code :
-(use-package modus-themes
-  :custom-face
-  ;; (fringe ((t (:background "#000000"))))
-  :config
-  (setq modus-themes-disable-other-themes t
-		modus-themes-italic-constructs t
-		modus-themes-bold-constructs t
-		modus-themes-org-blocks 'tinted-background)
+(use-package ultra-scroll
+  :ensure ( :host github
+            :repo "jdtsmith/ultra-scroll"
+            :files (:defaults "*.el")))
 
-  (load-theme 'modus-vivendi t))
-
-;;; modus-themes.el ends here -----------------------------------------------------
+;;; ultra-scroll.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:
