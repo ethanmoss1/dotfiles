@@ -35,6 +35,11 @@
                  nil
                  "{ config, pkgs, ... }:" \n
                  "{" \n _ "\n}"))
+  (add-to-list 'auto-insert-alist
+               '((".+\\.sh" . "Template for shell scripts")
+                 nil
+                 "#!/usr/bin/env bash" \n
+                 "set -euo pipefail" \n \n))
 
   (auto-insert-mode t))
 
