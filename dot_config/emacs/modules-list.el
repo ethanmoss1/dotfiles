@@ -40,11 +40,11 @@
    "vertico"
    "orderless"
    "marginalia"
-   "exec-path-from-shell"  ;; Chezmoi wont load otherwise
    "chezmoi"
+   "embark"
 
    ;; MacOS packages
-   ;; "macos-config"
+   "macos-config"
    "ns-auto-titlebar"
 
    ;; Window manager and accompying modules
@@ -69,6 +69,7 @@
 
    ;; Org Extras
    "org"
+   "org-protocol"
    "org-caldav"
    "org-roam"
    "org-fragtog"
@@ -92,6 +93,7 @@
    "consult"
    "adaptive-wrap"
    "jinx"
+   "aggressive-indent"
 
    ;; -- Programming languages --
    "nix"

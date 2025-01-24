@@ -1,4 +1,4 @@
-;;; embark.el --- Emacs Mini-Buffer Actions Rooted in Keymaps  -*- lexical-binding: t; -*-
+;;; aggressive-indent-mode.el --- Indenting to the extreme  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025  Ethan Moss
 
@@ -20,10 +20,10 @@
 
 ;;; Code:
 
-(use-package embark
-  :bind ("C-," . embark-act))
+(use-package aggressive-indent
+  :hook ((emacs-lisp-mode . aggressive-indent-mode)))
 
-(use-package embark-consult
-  :after embark)
-
-;;; embark.el ends here
+;;; aggressive-indent-mode.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

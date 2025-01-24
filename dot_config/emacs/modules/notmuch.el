@@ -28,8 +28,6 @@
 	  (setq notmuch-command "/data/data/com.termux/files/home/mail/.notmuch/remote-notmuch")
 	(setq notmuch-command "~/mail/.notmuch/remote-notmuch"))
 
-
-
   ;;;; Notmuch - Welcome screen
   (setq	notmuch-show-logo nil
 		notmuch-hello-sections '(notmuch-hello-insert-header

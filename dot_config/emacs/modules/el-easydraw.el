@@ -1,4 +1,5 @@
-;;; embark.el --- Emacs Mini-Buffer Actions Rooted in Keymaps  -*- lexical-binding: t; -*-
+;;; el-easydraw.el --- Draw in Emacs!
+-*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025  Ethan Moss
 
@@ -20,10 +21,16 @@
 
 ;;; Code:
 
-(use-package embark
-  :bind ("C-," . embark-act))
+(use-package edraw-org
+  :after org
+  :ensure ( :host github
+            :repo "misohena/el-easydraw"
+            :files (:defaults "*.el"))
+  :config
+  (edraw-org-setup-default)
+  (edraw-org-setup-exporter))
 
-(use-package embark-consult
-  :after embark)
-
-;;; embark.el ends here
+;;; el-easydraw.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:
