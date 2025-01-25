@@ -109,5 +109,5 @@
    "eat"
    "systemd"
    "gptel"
-   "mini-ontop"  ;; stops windows jiggling
+   ;; "mini-ontop"  ;; stops windows jiggling
    )) ;; -- End of Modules --
