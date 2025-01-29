@@ -26,6 +26,16 @@
 
 ;;; Code:
 
+(defun my/move-beginning-of-line ()
+  "Go to beginning of line or to first non-whitespace character
+depending on current position of point
+
+https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
+  (interactive)
+  (if (= 0 (current-column))
+      (back-to-indentation)
+    (move-beginning-of-line 1)))
+
 (defun split-window-below-and-focus ()
   (interactive)
   (split-window-below)
@@ -51,8 +61,8 @@
 		 ("C-x C-b" . 'ibuffer)
          ("C-x 2" . 'split-window-below-and-focus)
          ("C-x 3" . 'split-window-right-and-focus)
-         ("<home>" . 'back-to-indentation)  ; TODO: this needs to be based on the derived mode
+         ("<home>" . 'my/move-beginning-of-line)
          ;;("M-o" . 'other-window)
-		 ))
+         ("C-a" . 'my/move-beginning-of-line)))
 
 ;;; keybindings.el ends here

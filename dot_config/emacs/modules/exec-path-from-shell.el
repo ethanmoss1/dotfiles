@@ -1,4 +1,4 @@
-;;; exec-path-from-shell.el --- Get envrionment variables from user shell  -*- lexical-binding: t; -*-
+;;; exec-path-from-shell.el --- Get environment variables from user shell  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024  Ethan Moss
 
@@ -19,7 +19,9 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; Mac has an issue importing env vars, this package fixes is.
+;; Mac has an issue importing environment variables, this package fixes this by importing
+;; them. We have this right after Elpaca so that we can make info, check for
+;; executable’s and more.
 
 ;;; Code:
 
@@ -27,6 +29,8 @@
   :if (string= my-hostname "mac")
   :config
   (exec-path-from-shell-initialize))
+
+(elpaca-wait)
 
 ;;; exec-path-from-shell.el ends here
 ;; Local Variables:
