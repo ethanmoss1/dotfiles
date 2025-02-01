@@ -21,7 +21,7 @@
 ;;; Code:
 
 (use-package aggressive-indent
-  :hook ((emacs-lisp-mode . aggressive-indent-mode)))
+  :hook (emacs-lisp-mode . aggressive-indent-mode))
 
 ;;; aggressive-indent-mode.el ends here
 ;; Local Variables:
