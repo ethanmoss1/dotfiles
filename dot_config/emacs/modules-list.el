@@ -110,4 +110,5 @@
    "systemd"
    "gptel"
    ;; "mini-ontop"  ;; stops windows jiggling
+   "el-easydraw"
    )) ;; -- End of Modules --
