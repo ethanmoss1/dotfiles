@@ -19,16 +19,10 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Code:
-
-;; (use-package consult-org-roam)
 (defun org-roam-node-grep ()
   "Find in files in org roam directory"
   (interactive)
   (consult-grep org-roam-directory))
-
-;; (defun org-element--property (PROPERTY ELEMENT)
-;;   "Fix org-roam issues"
-;;   (org-element-property PROPERTY ELEMENT))
 
 (defalias 'org-element--property 'org-element-property
   "Fix org-roam issues")
@@ -50,7 +44,7 @@
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag))
         org-roam-completion-everywhere t)
 
-    ;; If using org-roam-protocol
+  ;; If using org-roam-protocol
   ;; (require 'org-roam-protocol)
   (org-roam-db-autosync-mode 1)
 
@@ -86,6 +80,5 @@
 
     ;; Start the minor mode.
     (org-roam-timestamps-mode)))
-
 
 ;;; orgroam.el ends here
