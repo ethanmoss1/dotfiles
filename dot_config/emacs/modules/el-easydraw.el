@@ -1,5 +1,4 @@
-;;; el-easydraw.el --- Draw in Emacs!
--*- lexical-binding: t; -*-
+;;; el-easydraw.el --- Draw in Emacs!                -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025  Ethan Moss
 
@@ -28,7 +27,8 @@
             :files (:defaults "*.el"))
   :config
   (edraw-org-setup-default)
-  (edraw-org-setup-exporter))
+  (edraw-org-setup-exporter)
+  (edraw-org-link-image-mode))
 
 ;;; el-easydraw.el ends here
 ;; Local Variables:
