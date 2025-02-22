@@ -56,7 +56,10 @@
           ;; Planet Emacs
           ("https://planet.emacslife.com/atom.xml" emacs news)
           ("https://themkat.net/feed/by_tag/emacs.xml" emacs news)
-          ("https://arialdomartini.github.io/feed.xml" emacs blog)))
+          ("https://arialdomartini.github.io/feed.xml" emacs blog)
+          ("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml" cyber-security news)
+          ("https://daryl.wakatara.com/posts/index.xml" emacs blog)
+          ))
 
   (add-hook 'org-store-link-functions
             'my/org-elfeed-entry-store-link))
