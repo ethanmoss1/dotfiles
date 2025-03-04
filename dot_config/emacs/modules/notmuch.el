@@ -21,6 +21,11 @@
 ;;; Commentary :
 
 ;;; Code :
+(defun my/notmuch-edit-config ()
+  "Edit the taggin config for notmuch"
+  (interactive)
+  (find-file "/ssh:syncthing:~/mail/.notmuch/tagmail"))
+
 (use-package notmuch
   :config
   ;; Notmuch on remote server, ssh config and custom bash file needed
@@ -36,18 +41,14 @@
                                  ;; notmuch-hello-insert-recent-searches
                                  notmuch-hello-insert-alltags)
 		notmuch-saved-searches '((:name "inbox" :query "tag:inbox" :key "i")
-                                 (:name "unread" :query "tag:unread" :key "u")
+                                 (:name "unread" :query "tag:unread AND NOT tag:mailinglist" :key "u")
+                                 (:name "mailing lists" :query "tag:mailinglist AND tag:unread" :key "l" :search-type tree)
                                  (:name "flagged" :query "tag:flagged" :key "f")
                                  (:name "sent" :query "tag:sent" :key "t")
                                  (:name "important" :query "tag:important" :key "p")
                                  (:name "all mail" :query "*" :key "a"))
   ;;;; Notmuch - Mail view
 		mm-text-html-renderer 'shr))
-
-(defun my/notmuch-edit-config ()
-  "Edit the taggin config for notmuch"
-  (interactive)
-  (find-file "/ssh:syncthing:~/mail/.notmuch/tagmail"))
 
 ;;;; --------------------------------
 ;;;; Additional config for future use
