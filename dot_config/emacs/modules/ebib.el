@@ -24,7 +24,6 @@
   :config
   (setq ebib-default-directory (expand-file-name "ref/" org-directory)
         ebib-preload-bib-files nil  ; load .bib files when ebib is started
-
         ))
 
 ;;; ebib.el ends here
