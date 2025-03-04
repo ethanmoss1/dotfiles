@@ -59,6 +59,9 @@
           ("https://arialdomartini.github.io/feed.xml" emacs blog)
           ("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml" cyber-security news)
           ("https://daryl.wakatara.com/posts/index.xml" emacs blog)
+          ("https://www.jeffgeerling.com/blog.xml" blog linux dev)
+          ("https://medium.com/feed/mitre-attack" cyber-security news)
+          ("https://martinfowler.com/feed.atom" sofware blog)
           ))
 
   (add-hook 'org-store-link-functions
