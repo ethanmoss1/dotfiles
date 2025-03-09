@@ -27,6 +27,9 @@
 ;; commands to operate on the listed files.  Dired works with both local and
 ;; remote directories.
 
+;; TODO: Emacs 30 has a setting to not trash on remote sessions. need to set
+;; that up.
+
 ;;; Code:
 (use-package dired
   :ensure nil
@@ -45,7 +48,8 @@
 		dired-mouse-drag-files 'move
         dired-recursive-copies 'always
         dired-recursive-deletes 'top
-        dired-kill-when-opening-new-dired-buffer nil)
+        dired-kill-when-opening-new-dired-buffer nil
+        dired-dwim-target t)
 
   ;; -- Functions --
   (defun dired-do-delete-skip-trash (&optional arg)

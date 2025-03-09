@@ -24,10 +24,16 @@
 (use-package magit
   :after transient
   :config
+  ;; VC Generic settings
   (setq vc-make-backup-files nil
         version-control t)
 
+  ;; follow the default
   (setq magit-delete-by-moving-to-trash delete-by-moving-to-trash)
+
+  ;; Magit Settings;
+  ;; Diff settings
+  (setq magit-diff-refine-hunk 'all)
 
   ;; buffer alist
   (add-to-list 'display-buffer-alist

@@ -46,6 +46,18 @@
   (if (fboundp 'olivetti-mode)
       (olivetti-mode t)))
 
+;; TODO: Make sure this is correct and runs as expected.
+(defun my/org-mode-hook ()
+  "My custom org-mode hook."
+  (unless (and org-refile-targets
+               (bound-and-true-p org-agenda-mode)
+               org-agenda-files)
+    ;; Your hooks here (e.g., enable specific modes, set variables, etc.)
+    (message "Running my org-mode hooks.")
+    (my/load-minor-modes-for-org)
+    ))
+
+
 (defun my/add-latex-block ()
   "Adds a latex block ready for input"
   (interactive)
@@ -115,7 +127,7 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 (use-package org
   :ensure nil
   :after s
-  :hook ((org-mode . my/load-minor-modes-for-org)
+  :hook ((org-mode . my/org-mode-hook)
          (org-agenda-mode  . hl-line-mode)
          ;; Clean tags on refile
          (org-after-refile-insert . my/org-clean-tags))

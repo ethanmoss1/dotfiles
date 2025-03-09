@@ -62,6 +62,7 @@
           ("https://www.jeffgeerling.com/blog.xml" blog linux dev)
           ("https://medium.com/feed/mitre-attack" cyber-security news)
           ("https://martinfowler.com/feed.atom" sofware blog)
+          ("https://frame.work/gb/en/blog.rss" blog hardware news)
           ))
 
   (add-hook 'org-store-link-functions

@@ -24,7 +24,8 @@
   :config
   (setq ebib-default-directory (expand-file-name "ref/" org-directory)
         ebib-preload-bib-files nil  ; load .bib files when ebib is started
-        ))
+        ebib-file-associations '(("pdf")
+                                 ("ps" . "gv"))))
 
 ;;; ebib.el ends here
 ;; Local Variables:

@@ -44,6 +44,12 @@
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag))
         org-roam-completion-everywhere t)
 
+  ;; Backlinks mode sections
+  (setq org-roam-mode-sections
+        (list #'org-roam-backlinks-section
+              #'org-roam-reflinks-section
+              #'org-roam-unlinked-references-section))
+
   ;; If using org-roam-protocol
   ;; (require 'org-roam-protocol)
   (org-roam-db-autosync-mode 1)

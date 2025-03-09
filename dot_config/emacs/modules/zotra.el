@@ -58,7 +58,7 @@ attachment for it and adds the filename to a bibtex field named ’File'."
     (zotra-add-entry url)))
 
 (use-package zotra
-  :defer t
+  ;;  :defer nil
   :config
   ;; setup local translation server
   (when (string-equal my-hostname "mac")

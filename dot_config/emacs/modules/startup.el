@@ -36,6 +36,9 @@
   (setq inhibit-startup-screen t
         inhibit-startup-message t
         inhibit-startup-echo-area-message t
-        initial-scratch-message nil))
+
+        ;; Scratch buffer settings
+        initial-scratch-message nil
+        initial-major-mode 'org-mode))
 
 ;;; startup.el ends here
