@@ -104,6 +104,7 @@
    "magit-gptcommit"
 
    ;; -- Other modules --
+   "edit-server"
    "helpful"
    "docker"
    "eat"
