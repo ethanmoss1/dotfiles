@@ -30,14 +30,21 @@
 ;; TODO: Emacs 30 has a setting to not trash on remote sessions. need to set
 ;; that up.
 
+;; Thanks to;
+;; https://baty.net/posts/2025/03/toggle-hidden-files-in-dired-buffers/
+;; for the dired-omit dotfiles
+
 ;;; Code:
 (use-package dired
   :ensure nil
   :defer t
-  :hook ((dired-mode . dired-hide-details-mode))
+  :hook (;; (dired-mode . dired-hide-details-mode)
+         (dired-mode . dired-omit-mode))
   :bind (:map dired-mode-map ;; Variable is void when evaluated for first time
 			  ("<left>"  . dired-up-directory)
-			  ("<right>" . dired-find-file))
+			  ("<right>" . dired-find-file)
+              ;; omit dotfiles
+              ("s->" . dired-omit-mode))
   :config
   (setq dired-listing-switches "-lAGvh --group-directories-first"
 		dired-auto-revert-buffer 'dired-directory-changed-p
@@ -49,7 +56,10 @@
         dired-recursive-copies 'always
         dired-recursive-deletes 'top
         dired-kill-when-opening-new-dired-buffer nil
-        dired-dwim-target t)
+        dired-dwim-target t
+
+        ;; hide .dot files when in dired-omit-mode
+        dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 
   ;; -- Functions --
   (defun dired-do-delete-skip-trash (&optional arg)
