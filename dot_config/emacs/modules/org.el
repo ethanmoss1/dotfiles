@@ -100,7 +100,7 @@ Otherwise will return NIL"
 ;; Emphasis words easily. pilfered from;
 ;; https://christiantietze.de/posts/2024/12/org-mode-emphasis-keymap-mnemonics/
 (defun my/org-emphasize-below-point (&optional char)
-  "Emphasisez region with CHAR.
+  "Emphasise region with CHAR.
 
 If there's no region, marks the closest s-expression, first.
 Opposed to word boundaries, sexp's work with `subword-mode' enabled."
