@@ -46,6 +46,7 @@
               ;; omit dotfiles
               ("s->" . dired-omit-mode))
   :config
+  (require 'dired-x)
   (setq dired-listing-switches "-lAGvh --group-directories-first"
 		dired-auto-revert-buffer 'dired-directory-changed-p
 		dired-clean-confirm-killing-deleted-buffers t
