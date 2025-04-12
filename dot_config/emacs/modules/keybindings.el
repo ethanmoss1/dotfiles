@@ -34,8 +34,8 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
   (interactive)
   (let ((current-pos (current-column)))
     (back-to-indentation)
-    (if (= current-pos (current-column))
-        (move-beginning-of-line 1))))
+    (cond ((and (<= current-pos (current-column)) (not (= current-pos 0))) (move-beginning-of-line 1))
+          ((= current-pos 0) (back-to-indentation)))))
 
 (defun split-window-below-and-focus ()
   (interactive)
