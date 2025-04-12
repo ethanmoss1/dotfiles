@@ -66,6 +66,7 @@
    "moodline"
    ;; "alltheicons"
    "nerd-icons"
+   "spacious-padding"  ;; adds padding, looks nice
 
    ;; Org Extras
    "org"
@@ -112,4 +113,6 @@
    "gptel"
    ;; "mini-ontop"  ;; stops windows jiggling
    "el-easydraw"
+
+   "secrets.el"
    )) ;; -- End of Modules --
