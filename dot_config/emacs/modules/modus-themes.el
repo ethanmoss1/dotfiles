@@ -22,14 +22,25 @@
 
 ;;; Code :
 (use-package modus-themes
-  :custom-face
+  ;; :custom-face
   ;; (fringe ((t (:background "#000000"))))
   :config
-  (setq modus-themes-disable-other-themes t
-		modus-themes-italic-constructs t
-		modus-themes-bold-constructs t
-		modus-themes-org-blocks 'tinted-background)
+  (setopt modus-themes-disable-other-themes t
+		  modus-themes-italic-constructs t
+		  modus-themes-bold-constructs t
+		  modus-themes-org-blocks 'tinted-background
+          modus-themes-variable-pitch-ui nil
+          )
+  (setopt modus-themes-common-palette-overrides
+          '(;; Make the `tab-bar-mode' mode subtle while keepings its
+            ;; original grey aesthetic.
+            (bg-tab-bar bg-main)
+            (bg-tab-current bg-active)
+            (bg-tab-other bg-dim)
+
+            ;; Make the fringe invisible
+            (fringe unspecified)))
 
   (load-theme 'modus-vivendi t))
 
-;;; modus-themes.el ends here -----------------------------------------------------
+;;; modus-themes.el ends here -------------------------------------------------
