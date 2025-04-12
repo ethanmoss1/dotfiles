@@ -298,7 +298,7 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                   (no-delete-other-windows . t))))
 
   ;; Follow links in the same window, not the other window.
-  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
+  ;; (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
   ;; show just the subtree I’m interested in, lowers visual clutter.
   (advice-add 'org-agenda-goto :after
