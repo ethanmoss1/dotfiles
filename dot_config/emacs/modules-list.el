@@ -114,5 +114,5 @@
    ;; "mini-ontop"  ;; stops windows jiggling
    "el-easydraw"
 
-   "secrets.el"
+   "secrets"
    )) ;; -- End of Modules --
