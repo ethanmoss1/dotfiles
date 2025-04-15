@@ -24,12 +24,19 @@
 
 ;; Make sure to install enchant-2 and pkgconf on you system
 (let ((enchant (executable-find "enchant-2"))
-       (pkg-conf (executable-find "pkgconf")))
+      (pkg-conf (executable-find "pkgconf")))
   (if (and enchant pkg-conf)
+      ;; We have the executable
       (use-package jinx
         :hook (elpaca-after-init . global-jinx-mode)
         :bind (("C-." . jinx-correct)
-               ("C->" . jinx-languages)))
+               ("C->" . jinx-languages))
+        :config
+        (add-to-list 'vertico-multiform-categories
+                     '(jinx grid (vertico-grid-annotate . 20) (vertico-count . 4)))
+        (vertico-multiform-mode))
+
+    ;; one of the executable not found
     (message "Jinx Not Loaded: Cannot find executable(s): %s"
              (concat (if (not enchant) "enchant-2 ")
                      (if (not pkg-conf) "pkgconf ")))))
