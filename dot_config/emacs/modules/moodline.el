@@ -50,12 +50,6 @@
                               "  "
                               (mood-line-segment-scroll))
                              (;; Right Aligned
-                              (mood-line-segment-indentation)
-                              "  "
-                              (mood-line-segment-eol)
-                              "  "
-                              (mood-line-segment-encoding)
-                              "  "
                               (mood-line-segment-vc)
                               "  "
                               (mood-line-segment-major-mode)
@@ -65,7 +59,6 @@
                               (mood-line-segment-checker)
                               "  "
                               (mood-line-segment-process)
-                              "  "
                               " ")))
 
   (mood-line-mode t))
