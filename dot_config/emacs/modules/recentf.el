@@ -30,11 +30,11 @@
   :ensure nil
   :demand t
   :config
-  (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
-        recentf-max-saved-items 1000
-        recentf-max-menu-items 1000
-        recentf-auto-cleanup 'mode
-        recentf-exclude '("\\.git.*"))
+  (setopt recentf-save-file (expand-file-name "recentf" user-emacs-directory)
+          recentf-max-saved-items nil
+          recentf-max-menu-items 100
+          recentf-auto-cleanup 10
+          recentf-exclude '("\\.git.*"))
 
   (recentf-mode t))
 
