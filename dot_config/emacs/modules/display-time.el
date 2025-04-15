@@ -26,9 +26,8 @@
 ;;; Code:
 
 (use-package time
-  :if (string-equal my-hostname "laptop")
   :ensure nil
-  :init (display-time-mode)
+  ;; :init (display-time-mode)
   :config
   (setq display-time-day-and-date t
 		display-time-default-load-average 'none
