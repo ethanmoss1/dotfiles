@@ -20,20 +20,24 @@
 
 ;;; Code:
 
+(defun my/jinx-vertico-multiform ()
+  "If vertico is enabled, setup multiform"
+  (if (not vertico-mode)
+      (message "Jinx: Vertico-mode is not enabled")
+    (vertico-multiform-mode)
+    (add-to-list 'vertico-multiform-categories
+                 '(jinx grid (vertico-grid-annotate . 20) (vertico-count . 4)))))
+
 ;; Make sure to install enchant-2 and pkgconf on you system
 (let ((enchant (executable-find "enchant-2"))
       (pkg-conf (executable-find "pkgconf")))
   (if (and enchant pkg-conf)
       ;; We have the executable
       (use-package jinx
-        :hook (elpaca-after-init . global-jinx-mode)
+        :hook ((elpaca-after-init . global-jinx-mode)
+               (elpaca-after-init . my/jinx-vertico-multiform))
         :bind (("C-." . jinx-correct)
-               ("C->" . jinx-languages))
-        :config
-        (if vertico-mode
-            (add-to-list 'vertico-multiform-categories
-                         '(jinx grid (vertico-grid-annotate . 20) (vertico-count . 4)))
-          (vertico-multiform-mode)))
+               ("C->" . jinx-languages)))
 
     ;; one of the executable not found
     (message "Jinx Not Loaded: Cannot find executable(s): %s"
