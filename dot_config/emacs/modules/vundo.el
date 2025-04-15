@@ -24,11 +24,13 @@
   :bind (("M-/" . vundo)
          ("C-/" . undo))
   :config
+  ;; Set up the glyphs used in the graph.
   (setq vundo-glyph-alist '((selected-node . ?●)
                             (node . ?○)
                             (horizontal-stem . ?─)
                             (vertical-stem . ?│)
                             (branch . ?├)
-                            (last-branch . ?└))))
+                            (last-branch . ?└)))
+  (vundo-popup-mode))
 
 ;;; vundo.el ends here
