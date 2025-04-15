@@ -23,11 +23,50 @@
 ;;; Code :
 (use-package mood-line
   :config
-  (setq mood-line-show-cursor-point t
-		mood-line-show-encoding-information t
-		mood-line-show-eol-style t
-		mood-line-show-indentation-style t
-		mood-line-show-major-mode t)
+  ;; Glyph style
+  (setopt mood-line-glyph-alist mood-line-glyphs-fira-code)
+
+  ;; Setup settings
+  (setopt mood-line-show-eol-style t
+          mood-line-show-major-mode t
+          mood-line-show-cursor-point t
+          mood-line-show-indentation-style t
+          mood-line-show-encoding-information t
+          mood-line-segment-indentation-always-show-offset t)
+
+  ;; Setup the style of the moodline
+  (setopt mood-line-format '(;; Modified version of `mood-line-format-default-extended’
+                             (;; Left aligned
+                              " "
+                              (or (mood-line-segment-buffer-status)
+                                  (mood-line-segment-client)
+                                  " ")
+                              " "
+                              (mood-line-segment-project)
+                              " | "
+                              (mood-line-segment-buffer-name)
+                              "  "
+                              (mood-line-segment-cursor-position)
+                              "  "
+                              (mood-line-segment-scroll))
+                             (;; Right Aligned
+                              (mood-line-segment-indentation)
+                              "  "
+                              (mood-line-segment-eol)
+                              "  "
+                              (mood-line-segment-encoding)
+                              "  "
+                              (mood-line-segment-vc)
+                              "  "
+                              (mood-line-segment-major-mode)
+                              "  "
+                              (mood-line-segment-misc-info)
+                              "  "
+                              (mood-line-segment-checker)
+                              "  "
+                              (mood-line-segment-process)
+                              "  "
+                              " ")))
 
   (mood-line-mode t))
 
