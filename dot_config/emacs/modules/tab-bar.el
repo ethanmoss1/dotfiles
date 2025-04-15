@@ -21,47 +21,22 @@
 ;;; Commentary :
 
 ;;; Code :
-(defun my/tab-bar-select-tab (num)
-  "Select the tab NUM in the tab bar.
-If the selected tab is not created we create all the tabs up and
-including to the given tab."
-  (interactive)
-  (tab-bar-select-tab num))
-
-
 (use-package tab-bar
-   :if (string-equal my-hostname "laptop")
-   :ensure nil  ;; Because tab-bar is built-in, no need to install
-   :init (tab-bar-mode)
-   ;; :bind (:map desktop-environment-mode-map
-   ;;  	       ,@(mapcar (lambda (i)
-   ;;  					   `(,(format "s-%d" i) .
-   ;;  						 (lambda () (interactive) (my/tab-bar-select-tab i))))
-   ;;  					 (number-sequence 1 9)))
-   :bind (:map desktop-environment-mode-map
-		       ("s-1" . (lambda () (interactive) (my/tab-bar-select-tab 1)))
-		       ("s-2" . (lambda () (interactive) (my/tab-bar-select-tab 2)))
-		       ("s-3" . (lambda () (interactive) (my/tab-bar-select-tab 3)))
-		       ("s-4" . (lambda () (interactive) (my/tab-bar-select-tab 4)))
-		       ("s-5" . (lambda () (interactive) (my/tab-bar-select-tab 5)))
-		       ("s-6" . (lambda () (interactive) (my/tab-bar-select-tab 6)))
-		       ("s-7" . (lambda () (interactive) (my/tab-bar-select-tab 7)))
-		       ("s-8" . (lambda () (interactive) (my/tab-bar-select-tab 8)))
-		       ("s-9" . (lambda () (interactive) (my/tab-bar-select-tab 9))))
-   :config
-   ;; Set up the visuals of the tab-bar
-   (setq tab-bar-tab-hints t
-         tab-bar-close-button-show 'nil
-	     tab-bar-separator 'nil
-	     tab-bar-tab-name-function #'tab-bar-tab-name-truncated
-	     tab-bar-tab-name-truncated-max 0
-	     tab-bar-tab-name-ellipsis 'nil
-	     tab-bar-auto-width 'nil
-	     ;; tab-bar-select-tab-modifiers '(super)
-	     tab-bar-format '(tab-bar-format-tabs
-                          tab-bar-separator
-                          tab-bar-format-align-right
-                          ;; my/display-time
-					      tab-bar-format-global)))
+  :ensure nil  ;; Because tab-bar is built-in, no need to install
+  :init (tab-bar-mode)
+  :config
+  ;; Set up the visuals of the tab-bar
+  (setopt tab-bar-tab-hints nil
+          tab-bar-close-button-show nil
+	      ;; tab-bar-tab-name-function #'tab-bar-tab-name-truncated
+	      tab-bar-tab-name-truncated-max 20
+	      tab-bar-tab-name-ellipsis nil
+	      tab-bar-auto-width t
+	      ;; tab-bar-select-tab-modifiers '(super)
+          tab-bar-separator nil
+	      tab-bar-format '(tab-bar-format-tabs
+                           tab-bar-format-align-right
+                           ;; my/display-time
+					       tab-bar-format-global)))
 
 ;;; tab-bar.el ends here
