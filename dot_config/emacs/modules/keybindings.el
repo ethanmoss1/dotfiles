@@ -32,10 +32,11 @@ depending on current position of point
 
 https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
   (interactive)
-  (let ((current-pos (current-column)))
+  (let ((pos (current-column)))
     (back-to-indentation)
-    (cond ((and (<= current-pos (current-column)) (not (= current-pos 0))) (move-beginning-of-line 1))
-          ((= current-pos 0) (back-to-indentation)))))
+    (if (and (<= pos (current-column)) (not (= pos 0)))
+        (move-beginning-of-line 1))))
+
 
 (defun split-window-below-and-focus ()
   (interactive)
