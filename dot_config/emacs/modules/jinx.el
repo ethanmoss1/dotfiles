@@ -18,8 +18,6 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-;; TODO:
 ;;; Code:
 
 ;; Make sure to install enchant-2 and pkgconf on you system
@@ -32,17 +30,14 @@
         :bind (("C-." . jinx-correct)
                ("C->" . jinx-languages))
         :config
-        (add-to-list 'vertico-multiform-categories
-                     '(jinx grid (vertico-grid-annotate . 20) (vertico-count . 4)))
-        (vertico-multiform-mode))
+        (if vertico-mode
+            (add-to-list 'vertico-multiform-categories
+                         '(jinx grid (vertico-grid-annotate . 20) (vertico-count . 4)))
+          (vertico-multiform-mode)))
 
     ;; one of the executable not found
     (message "Jinx Not Loaded: Cannot find executable(s): %s"
              (concat (if (not enchant) "enchant-2 ")
                      (if (not pkg-conf) "pkgconf ")))))
-
-
-;; This is a badly spelt word, I hope is can correctly fix these words.
-
 
 ;;; jinx.el ends here
