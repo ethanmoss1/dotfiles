@@ -36,7 +36,8 @@
          ("C-c r i" . org-roam-node-insert)
          ("C-c r c" . org-roam-capture)
          ("C-c r s" . org-roam-node-grep)
-         ("C-c r j" . org-roam-dailies-capture-today))
+         ("C-c r j" . org-roam-dailies-capture-today)
+         ("C-c r t" . org-roam-tag-add))
 
   :config
   (setq org-roam-directory (expand-file-name "roam/" org-directory))
