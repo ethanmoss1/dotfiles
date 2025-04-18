@@ -34,6 +34,8 @@
 (use-package elfeed
   ;; :hook (org-store-link-functions . my/org-elfeed-entry-store-link)
   :config
+  (setopt elfeed-sort-order 'ascending)  ;; Oldest first.
+
   (setq elfeed-feeds
         '(;; Computing & IT News
 		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304299" uni news)
@@ -61,9 +63,10 @@
           ("https://daryl.wakatara.com/posts/index.xml" emacs blog)
           ("https://www.jeffgeerling.com/blog.xml" blog linux dev)
           ("https://medium.com/feed/mitre-attack" cyber-security news)
-          ("https://martinfowler.com/feed.atom" sofware blog)
+          ("https://martinfowler.com/feed.atom" software blog)
           ("https://frame.work/gb/en/blog.rss" blog hardware news)
           ("https://www.tomscott.com/updates.xml" blog news)
+          ("https://joshblais.com/index.xml" blog emacs)
           ))
 
   (add-hook 'org-store-link-functions
