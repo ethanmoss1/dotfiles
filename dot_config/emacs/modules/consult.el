@@ -19,14 +19,26 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary :
+;; `consult-line-symbol-at-point’ from;
+;; http://arialdomartini.github.io/consult-line-at-point
 
 ;;; Code :
+
+;; Functions
+(defun consult-line-symbol-at-point ()
+  "Search for a line matching the symbol found near point."
+  (interactive)
+  (consult-line
+   (or (thing-at-point 'symbol))))
+
+;; Declaration
 (use-package consult
   :bind (("C-t" . consult-imenu)
 		 ("C-x b" . consult-buffer)
 		 ("C-s" . consult-line)
 		 ("M-g M-g" . consult-goto-line)
-         ("C-x r b" . consult-bookmark))
+         ("C-x r b" . consult-bookmark)
+         ("M-s ." . consult-line-symbol-at-point))
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :init
   ;; Optionally configure the register formatting. This improves the register
