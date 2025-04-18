@@ -30,7 +30,7 @@
                             (horizontal-stem . ?─)
                             (vertical-stem . ?│)
                             (branch . ?├)
-                            (last-branch . ?└)))
-  (vundo-popup-mode))
+                            (last-branch . ?└))))
+  ;; (vundo-popup-mode))
 
 ;;; vundo.el ends here
