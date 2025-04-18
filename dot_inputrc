@@ -47,7 +47,9 @@ set echo-control-characters off
 #
 
 # Note that this may cause completion text blink in some terminals (e.g. xterm).
+if bash
 set colored-stats On
+end if
 
 # Append char to indicate type
 set visible-stats On
