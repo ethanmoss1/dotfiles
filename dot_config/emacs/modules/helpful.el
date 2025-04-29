@@ -25,7 +25,8 @@
   :bind
   ("C-h h" . 'helpful-at-point)
   ("C-h v" . 'helpful-variable)
-  ("C-h f" . 'helpful-callable)
+  ("C-h f" . 'helpful-function)
+  ("C-h c" . 'helpful-callable)
   ("C-h k" . 'helpful-key)
   ("C-h o" . 'helpful-symbol)
   :config
