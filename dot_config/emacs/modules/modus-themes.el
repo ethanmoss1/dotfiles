@@ -24,6 +24,7 @@
 (use-package modus-themes
   ;; :custom-face
   ;; (fringe ((t (:background "#000000"))))
+  :bind (("<f8>" . 'modus-themes-toggle))
   :config
   (setopt modus-themes-disable-other-themes t
 		  modus-themes-italic-constructs t
