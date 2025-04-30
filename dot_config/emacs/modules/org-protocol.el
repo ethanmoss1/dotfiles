@@ -25,6 +25,10 @@
   :if (string= my-hostname "mac")
   :after org
   :config
+  ;; for scrim
+  (setopt server-use-tcp t)
+
+  ;; Start server and require org protocol
   (server-start)
   (require 'org-protocol))
 
