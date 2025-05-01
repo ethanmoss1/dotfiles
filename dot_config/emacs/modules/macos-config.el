@@ -23,13 +23,7 @@
   :ensure nil
   :if (string= my-hostname "mac")
   :config
-  (server-start)
-
-  ;; (add-to-list 'default-frame-alist '((ns-transparent-titlebar . t)
-  ;;                                     (ns-appearance . dark)))
-  (setq frame-title-format nil)
-  ;; (add-to-list 'default-frame-alist '(undecorated . t))
-  )
+  (frame-title-format nil))
 
 ;;; macos-config.el ends here
 ;; Local Variables:
