@@ -167,7 +167,9 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                            :html-background "Transparent"
                            :html-scale 1.0
                            :matchers '("begin" "$1" "$" "$$" "\\(" "\\[")))
-                  (setq org-preview-latex-default-process 'dvisvgm)))
+                  (setq org-preview-latex-default-process 'dvisvgm)
+                  (setq org-latex-to-mathml-convert-command
+                        "latexmlmath %i --presentationmathml=%o")))
     (t (plist-put org-format-latex-options :scale 1.0)))
 
   ;; Org related files.
