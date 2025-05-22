@@ -97,6 +97,8 @@
    "aggressive-indent"
 
    ;; -- Programming languages --
+   "lsp-mode"
+   ;; "eglot"
    "nix"
    "python"
 
