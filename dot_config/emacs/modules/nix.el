@@ -31,6 +31,7 @@
 ;; TODO: move the directory of the nix files to a variable that can change
 (defun nixos-rebuild-config ()
   "Rebuild the system nixos rebuild"
+  (interactive)
   (pcase my-hostname
     ("mac"   (compile "darwin-rebuild switch --flake /Users/ethan/.config/nix-darwin" t))
     ("linux" (let ((default-directory "/sudo::"))
