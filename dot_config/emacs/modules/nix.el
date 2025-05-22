@@ -28,6 +28,7 @@
     (find-file "/home/ethan/.config/nixos")))
 
 ;; Run a nice buffer with the output of the nix rebuild
+;; TODO: move the directory of the nix files to a variable that can change
 (defun nixos-rebuild-config ()
   "Rebuild the system nixos rebuild"
   (pcase my-hostname
