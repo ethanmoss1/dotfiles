@@ -44,7 +44,7 @@
 			  ("<left>"  . dired-up-directory)
 			  ("<right>" . dired-find-file)
               ;; omit dotfiles
-              ("s->" . dired-omit-mode))
+              ("." . dired-omit-mode))
   :config
   (require 'dired-x)
   (setq dired-listing-switches "-lAGvh --group-directories-first"
