@@ -35,6 +35,7 @@
 (use-package consult
   :bind (("C-t" . consult-imenu)
 		 ("C-x b" . consult-buffer)
+         ("C-x 4 b" . 'consult-buffer-other-window)
 		 ("C-s" . consult-line)
 		 ("M-g M-g" . consult-goto-line)
          ("C-x r b" . consult-bookmark)

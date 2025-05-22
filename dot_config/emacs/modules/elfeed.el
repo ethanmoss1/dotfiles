@@ -67,6 +67,8 @@
           ("https://frame.work/gb/en/blog.rss" blog hardware news)
           ("https://www.tomscott.com/updates.xml" blog news)
           ("https://joshblais.com/index.xml" blog emacs)
+          ("duncanbritt.com/feed.xml" blog emacs)
+          ("https://saylesss88.github.io/rss.xml" blog nix)
           ))
 
   (add-hook 'org-store-link-functions
