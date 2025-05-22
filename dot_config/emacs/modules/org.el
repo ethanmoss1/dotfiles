@@ -33,8 +33,8 @@
   (setq org-agenda-files (directory-files org-directory t "\\.org$"))
   (setq org-agenda-files-and-study
         (append (directory-files org-directory t "\\.org$")
-                (directory-files-recursively "~/documents/study" "\\.org$")))
-  (setq org-agenda-files-all (directory-files-recursively "~/documents" "\\.org$")))
+                (directory-files-recursively "~/Documents/study" "\\.org$")))
+  (setq org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$")))
 
 (defun my/load-minor-modes-for-org ()
   "Loads all the minor modes for use with Org mode"
@@ -171,12 +171,23 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
     (t (plist-put org-format-latex-options :scale 1.0)))
 
   ;; Org related files.
-  (setq org-directory "~/documents/org/"
+
+  ;; Automatically setup the org folder if it is not present?
+  ;; (dolist (docs '("~/Documents" "~/Documents"))
+  ;;   (when (f-directory-p docs)
+  ;;     (message docs))
+  ;;   (let ((org-dir (expand-file-name "org" docs) t))
+  ;;     (when (make-directory org-dir t)
+  ;;       (message "Org Directory created: %s" org-dir))
+  ;;     (setq org-directory org-dir)))
+
+
+  (setq org-directory "~/Documents/org/"
         org-default-notes-file (concat org-directory "notes.org")
         org-agenda-files (directory-files org-directory t "\\.org$")
         org-agenda-files-and-study (append (directory-files org-directory t "\\.org$")
-                                           (directory-files-recursively "~/documents/study" "\\.org$"))
-        org-agenda-files-all (directory-files-recursively "~/documents" "\\.org$"))
+                                           (directory-files-recursively "~/Documents/study" "\\.org$"))
+        org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$"))
 
 
   ;; Org-agenda settings
@@ -218,13 +229,12 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                     '(my/org-agenda-skip-tags '("new" "habit"))))))
            ((org-agenda-files org-agenda-files-and-study)))
 
-          ;; Default - show all org files in ‘~/documents’ recursively.
+          ;; Default - show all org files in ‘~/Documents’ recursively.
           ("b"
            "Agenda - All Org Files"
            ((agenda "")
             (alltodo ""))
            ((org-agenda-files org-agenda-files-all)))))
-
 
   ;; Refiling options
   (setq org-outline-path-complete-in-steps nil
