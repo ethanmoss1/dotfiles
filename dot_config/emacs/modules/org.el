@@ -268,21 +268,26 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                                  (file+headline "inbox.org" "todo")
                                         ;,(concat "* %?\n"
                                         ;         "SCHEDULED: <%<%Y-%m-%d %a %^{Scheduled Time: }>>")
-                                 ,(s-join "\n" '("* TODO %?"
-                                                 "SCHEDULED: <%(org-read-date t)>"
-                                                 ":PROPERTIES:"
-											     ":ENTERED: %U"
-											     ":FILE: [[%f]]"
-                                                 ":LINK: %a"
-											     ":END:"))
+                                 ,(s-join "\n"
+                                          '("* TODO %?"
+                                            "SCHEDULED: <%(org-read-date t)>"
+                                            ":PROPERTIES:"
+											":ENTERED: %U"
+											":FILE: [[%f]]"
+                                            ":LINK: %a"
+											":END:"))
                                  :time-prompt t)
                                 ("w"
                                  "Web site"
                                  entry
                                  (file+headline "inbox.org" "notes")
-                                 "* %c :website:\n%U %?%:initial")
-                                ))
-
+                                 ,(s-join "\n"
+                                          '("* LINK %?"
+                                            ":PROPERTIES:"
+											":ENTERED: %U"
+                                            ":LINK: %a"
+											":TITLE: %:initial"
+											":END:"))
 
 
   ;; Set up org buffer views:
