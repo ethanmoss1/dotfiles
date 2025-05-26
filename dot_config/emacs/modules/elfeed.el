@@ -50,7 +50,7 @@
 		  ;; XKCD
 		  ("https://xkcd.com/rss.xml" humour cartoon)
 		  ;; Emacs release news
-		  ("https://emacs.org/rss/emacs.xml" emacs news release)
+		  ;; ("https://emacs.org/rss/emacs.xml" emacs news release)
 		  ;; Google Alerts "Spinal Muscular Atrophy"
 		  ("https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100" news medical)
 		  ;; Google Alerts "Bridge RNA"
@@ -68,7 +68,6 @@
           ("https://www.tomscott.com/updates.xml" blog news)
           ("https://joshblais.com/index.xml" blog emacs)
           ("duncanbritt.com/feed.xml" blog emacs)
-          ("https://saylesss88.github.io/rss.xml" blog nix)
           ))
 
   (add-hook 'org-store-link-functions
