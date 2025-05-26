@@ -1,8 +1,8 @@
-;;; python.el --- Package for Python programming language  -*- lexical-binding: t; -*-
+;;; lsp-mode.el --- language server for programming  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024
+;; Copyright (C) 2025
 
-;; Author:  <ethan@nixos>
+;; Author:  <ethan@macbook-pro>
 ;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -20,20 +20,23 @@
 
 ;;; Code:
 
-(use-package python
-  :ensure nil
-  :hook (python-mode . lsp-deferred)
-  :config
-  (add-to-list 'display-buffer-alist
-               '("^\\*Python\\*"
-                 (display-buffer-in-side-window)
-                 (side . bottom)
-                 (slot . -1) ;; -1 == L  0 == Mid 1 == R
-                 (window-height . 0.33) ;; take 2/3 on bottom left
-                 (window-parameters
-                  (no-delete-other-windows . nil)))))
+(use-package lsp-mode
+  :defer t
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((lsp-mode . lsp-enable-which-key-integration))
+  :commands (lsp lsp-deferred))
 
-;;; python.el ends here
+(use-package lsp-ui
+  :after lsp-mode
+  :commands lsp-ui-mode)
+
+;; optionally if you want to use debugger
+;; (use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+;;; lsp-mode.el ends here
 ;; Local Variables:
-;; eval: (if module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
 ;; End:

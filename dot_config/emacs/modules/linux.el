@@ -1,8 +1,8 @@
-;;; python.el --- Package for Python programming language  -*- lexical-binding: t; -*-
+;;; linux.el --- modifications for linux on macbook  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024
+;; Copyright (C) 2025
 
-;; Author:  <ethan@nixos>
+;; Author:  <ethan@macbook>
 ;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -20,20 +20,13 @@
 
 ;;; Code:
 
-(use-package python
+(use-package emacs
   :ensure nil
-  :hook (python-mode . lsp-deferred)
+  :if (string= my-hostname "linux")
   :config
-  (add-to-list 'display-buffer-alist
-               '("^\\*Python\\*"
-                 (display-buffer-in-side-window)
-                 (side . bottom)
-                 (slot . -1) ;; -1 == L  0 == Mid 1 == R
-                 (window-height . 0.33) ;; take 2/3 on bottom left
-                 (window-parameters
-                  (no-delete-other-windows . nil)))))
+  (set-face-attribute 'default nil :height 100))
 
-;;; python.el ends here
+;;; linux.el ends here
 ;; Local Variables:
-;; eval: (if module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
 ;; End:

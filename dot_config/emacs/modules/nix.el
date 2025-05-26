@@ -24,17 +24,19 @@
   "Edit the nixos config file"
   (interactive)
   (if (string= my-hostname "mac")
-      (find-file "/Users/ethan/.config/nix-darwin" )
-    (find-file "/sudo::/etc/nixos/configuration.nix")))
+      (find-file "/Users/ethan/.config/nix-darwin")
+    (find-file "/home/ethan/.config/nixos")))
 
 ;; Run a nice buffer with the output of the nix rebuild
+;; TODO: move the directory of the nix files to a variable that can change
 (defun nixos-rebuild-config ()
   "Rebuild the system nixos rebuild"
-  (if (string= my-hostname "mac")
-        ;; TODO: This is hard coded and needs to change
-        (compile "darwin-rebuild switch --flake /Users/ethan/.config/nix-darwin" t)
-    (let* ((default-directory "/sudo::/"))
-      (compile "nixos-rebuild switch"))))
+  (interactive)
+  (pcase my-hostname
+    ("mac"   (compile "darwin-rebuild switch --flake /Users/ethan/.config/nix-darwin" t))
+    ("linux" (let ((default-directory "/sudo::"))
+               (compile "nixos-rebuild switch --verbose --flake /home/ethan/.config/nixos" )))
+    (_       (message "No compile command for this host"))))
 
 
 ;;; Old code for nixos rebuild
@@ -56,7 +58,17 @@
                 (no-delete-other-windows . t))))
 
 (use-package nix-mode
+  :after lsp-mode
+  :hook (nix-mode . lsp-deferred) ;; So that envrc can load
   :bind ( :map nix-mode-map
-          ("C-c C-c" . (lambda () (interactive) (nixos-rebuild-config)))))
+          ("C-c C-c" . (lambda () (interactive) (nixos-rebuild-config))))
+  :custom
+  (lsp-disabled-clients '((nix-mode . nix-nil))) ;; Disable nil so that nixd will be used as lsp-server
+  :config
+  (setq lsp-nix-nixd-server-path "nixd"
+        lsp-nix-nixd-formatting-command [ "nixfmt" ]
+        lsp-nix-nixd-nixpkgs-expr "import <nixpkgs> { }"
+        lsp-nix-nixd-nixos-options-expr "(builtins.getFlake \"/home/nb/nixos\").nixosConfigurations.mnd.options"
+        lsp-nix-nixd-home-manager-options-expr "(builtins.getFlake \"/home/nb/nixos\").homeConfigurations.\"nb@mnd\".options"))
 
 ;;; nix.el ends here

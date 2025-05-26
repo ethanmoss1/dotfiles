@@ -49,15 +49,15 @@
 
    ;; Window manager and accompying modules
    ;; Will only load when ‘my-hostname’ is equal to laptop
-   "desktop-environment"
+   ;; "desktop-environment"
    ;; "xelb"
-   "exwm"
-   "app-launcher"
+   ;; "exwm"
+   ;; "app-launcher"
    "buffer-move"
    "tab-bar"
    "display-time"
    "pdf-tools"
-   "ednc"
+   ;; "ednc"
 
    ;; -- Themeing Modules --
    "modus-themes"
@@ -97,6 +97,8 @@
    "aggressive-indent"
 
    ;; -- Programming languages --
+   "lsp-mode"
+   ;; "eglot"
    "nix"
    "python"
 
@@ -114,5 +116,7 @@
    ;; "mini-ontop"  ;; stops windows jiggling
    "el-easydraw"
 
+   ;; -- Final modifications
+   "linux"
    "secrets"
    )) ;; -- End of Modules --
