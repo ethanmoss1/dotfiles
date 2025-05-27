@@ -6,7 +6,7 @@
 
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["temperature", "wireplumber", "battery", "backlight", "network", "bluetooth", "tray"],
+    "modules-right": ["temperature", "wireplumber", "backlight", "network", "bluetooth", "battery", "tray"],
 
     "hyprland/workspaces": {
         "format": "<span size='larger'>{icon}</span>",
@@ -37,7 +37,7 @@
     },
 
     "battery": {
-        "bat": "BAT1",
+        "bat": "BAT0",
         "interval": 60,
         "format": "{icon}  {capacity}%",
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
@@ -62,7 +62,7 @@
         "format-wifi": "{icon}",
         "format-disconnected": "\udb83\udc9c",
         "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) - {ipaddr}",
         "tooltip-format-ethernet": "{ifname}",
         "tooltip-format-disconnected": "Disconnected",
     },
@@ -71,9 +71,10 @@
         "format": "\udb80\udcaf",
         "format-disabled": "\udb80\udcb2",
         "format-connected": "\udb80\udcb1",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+        "tooltip-format": "{controller_alias} - {controller_address}",
+        "tooltip-format-connected": "{controller_alias} - {controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias} - {device_address}",
+        "on-click": "/home/ethan/.config/waybar/dmenu-bluetooth"
     },
 
     "tray": {
