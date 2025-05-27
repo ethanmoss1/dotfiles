@@ -25,9 +25,13 @@
   :config
   ;; Set shell for certain hosts
   (if (string-equal my-hostname "tablet")
-      (setq eat-shell "/data/data/com.termux/files/usr/bin/bash")
-    ;; (setq eat-shell "/bin/bash")
-    (setq eat-shell "/bin/zsh"))
+      (setq eat-shell "/data/data/com.termux/files/usr/bin/bash"))
+  ;; (setq eat-shell "/bin/bash")
+  ;; (setq eat-shell "/bin/zsh")
+
+  ;; NixOS
+  (setq eat-shell "/run/current-system/sw/bin/bash")
+
 
   ;; Eat settings
   (setq eat-kill-buffer-on-exit t
@@ -41,7 +45,8 @@
   ;; For `eat-eshell-visual-command-mode'.
   ;; (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
 
-  (eat-eshell-mode))
+  ;; (eat-eshell-mode)
+  )
 
 ;; Set up the popup shell
 (add-to-list 'display-buffer-alist
