@@ -4,7 +4,7 @@
  '(;;;;;; ---- List of modules to load ----
    ;; -- Package manager --
    "elpaca"
-   "exec-path-from-shell"  ;; Need for path
+   "exec-path-from-shell"  ;; Need for path on MacOS
 
    ;; -- Built in modules --
    "c-code"
@@ -70,6 +70,7 @@
 
    ;; Org Extras
    "org"
+   "org-extra"
    "org-protocol"
    "org-caldav"
    "org-roam"
@@ -104,7 +105,7 @@
 
    ;; -- Version Control --
    "magit"
-   "magit-gptcommit"
+   ;; "magit-gptcommit"
 
    ;; -- Other modules --
    "edit-server"
@@ -112,7 +113,7 @@
    "docker"
    "eat"
    "systemd"
-   "gptel"
+   ;; "gptel"
    ;; "mini-ontop"  ;; stops windows jiggling
    "el-easydraw"
 
