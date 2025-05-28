@@ -37,10 +37,10 @@
   (setopt elfeed-sort-order 'ascending)  ;; Oldest first.
 
   (setq elfeed-feeds
-        '(;; Computing & IT News
+        '(;; Module M269 news - broken?
 		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304299" uni news)
-		  ;; Module M269 news
-		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304300" uni news)
+		  ;; M269 computing and IT news
+		  ;; ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304300" uni news)
 		  ;; Module TM257 news
 		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=299153" uni news)
           ;; Module TM256 news
@@ -68,6 +68,7 @@
           ("https://www.tomscott.com/updates.xml" blog news)
           ("https://joshblais.com/index.xml" blog emacs)
           ("duncanbritt.com/feed.xml" blog emacs)
+          ("https://tsawyer87.github.io//index.xml" nix blog)
           ))
 
   (add-hook 'org-store-link-functions
