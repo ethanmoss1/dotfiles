@@ -23,7 +23,7 @@
 ;;; Code :
 (use-package tab-bar
   :ensure nil  ;; Because tab-bar is built-in, no need to install
-  :init (tab-bar-mode)
+  ;; :init (tab-bar-mode)
   :config
   ;; Set up the visuals of the tab-bar
   (setopt tab-bar-tab-hints nil
