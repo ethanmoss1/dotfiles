@@ -21,7 +21,7 @@
 ;;; Code:
 
 (use-package eat
-  :bind ("C-c t" . eshell)
+  :bind ("C-c t" . eat)
   :config
   ;; Set shell for certain hosts
   (if (string-equal my-hostname "tablet")
