@@ -24,14 +24,12 @@
   :bind ("C-c t" . eat)
   :config
   ;; Set shell for certain hosts
-  (if (string-equal my-hostname "tablet")
-      (setq eat-shell "/data/data/com.termux/files/usr/bin/bash"))
-  ;; (setq eat-shell "/bin/bash")
-  ;; (setq eat-shell "/bin/zsh")
-
-  ;; NixOS
-  (setq eat-shell "/run/current-system/sw/bin/bash")
-
+  (pcase my-hostname
+    ("tablet" (setopt eat-shell "/data/data/com.termux/files/usr/bin/bash"))
+    ("linux"  (setopt eat-shell "/run/current-system/sw/bin/bash"))  ;; NixOS
+    (_        (setopt eat-shell (or explicit-shell-file-name
+                                    (getenv "ESHELL")
+                                    shell-file-name))))
 
   ;; Eat settings
   (setq eat-kill-buffer-on-exit t
@@ -39,13 +37,14 @@
         eat-tramp-shells '(("docker" . "/bin/sh")
                            ("ssh" . "/bin/bash")))
 
+  ;; One of the following;
   ;; For `eat-eshell-mode'.
-  ;; (add-hook 'eshell-load-hook #'eat-eshell-mode)
+  (add-hook 'eshell-load-hook #'eat-eshell-mode)
+  (eat-eshell-mode)
 
   ;; For `eat-eshell-visual-command-mode'.
   ;; (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
-
-  ;; (eat-eshell-mode)
+  ;; (eat-eshell-visual-command-mode)
   )
 
 ;; Set up the popup shell
