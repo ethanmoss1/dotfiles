@@ -1,0 +1,21 @@
+Clone the following to the location of default profile location
+
+* Auto install
+#+begin_src sh
+  cd ../..
+  cd *.default
+  pwd
+#+end_src
+
+#+RESULTS:
+: /home/ethan/.mozilla/firefox/vx488uij.default
+
+If this (above) is the correct location, run the following;
+#+begin_src sh
+  cd ../..
+  cd *.default
+  pwd
+#+end_src
+
+#+RESULTS:
+: /home/ethan/.local/share/chezmoi/dot_mozilla/firefox
