@@ -23,6 +23,7 @@
 
 (use-package magit
   :after transient
+  :bind ("C-c m m" . 'magit)
   :config
   ;; VC Generic settings
   (setq vc-make-backup-files nil
