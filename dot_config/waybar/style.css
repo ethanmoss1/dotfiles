@@ -16,17 +16,16 @@
 
 #workspaces button {
     color: @foreground;
-    padding-left: 0.7em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 #workspaces button.empty {
     color: @foreground-inactive;
 }
 
-#memory {
-    padding-left: 1em
-}
 
+#memory,
 #temperature,
 #wireplumber,
 #battery,
@@ -35,5 +34,10 @@
 #network,
 #bluetooth,
 #tray {
-    padding-right: 1em
+    padding-right: 0.5em;
+    padding-left: 0.5em;
 }
+
+/* Local Variables: */
+/* eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t)) */
+/* End: */

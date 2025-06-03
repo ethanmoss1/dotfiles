@@ -1,19 +1,23 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 24,
-    "spacing": 5,
+    "height": 26,
+    "spacing": 7,
 
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": [
-        "bluetooth",
-        "network",
+
+    "modules-center": [
         "temperature",
         "wireplumber",
         "backlight",
         "battery",
-        "tray"
+    ],
+
+    "modules-right": [
+        "bluetooth",
+        "network",
+        "tray",
+        "clock",
     ],
 
     "hyprland/workspaces": {
@@ -35,7 +39,7 @@
     },
 
     "clock": {
-        "format": "{:%d.%m.%Y  |  %H:%M}"
+        "format": "{:%A %d %B  -  %H:%M  }"
     },
 
     "wireplumber": {
