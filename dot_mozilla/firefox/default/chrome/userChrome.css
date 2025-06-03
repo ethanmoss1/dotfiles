@@ -1,5 +1,14 @@
-@import "autohide_toolbox.css";
-@import "hide_tabs_toolbar.css";
+/*
+  To import a hack, use the following
+  @import "firefox-csshacks/chrome/???.css";
+*/
+@import "firefox-csshacks/chrome/hide_tabs_toolbar_v2.css";
 
 /* Remove close button*/
-.titlebar-buttonbox-container{ display:none }
+.titlebar-buttonbox-container { display: none }
+
+/*
+Sidebar heading, removed. From;
+https://www.reddit.com/r/FirefoxCSS/comments/77ehp1/how_to_hide_the_title_of_webextension_sidebars/
+*/
+#sidebar-box #sidebar-header { display: none; }
