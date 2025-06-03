@@ -4,7 +4,7 @@
  '(;;;;;; ---- List of modules to load ----
    ;; -- Package manager --
    "elpaca"
-   "exec-path-from-shell"  ;; Need for path on MacOS
+   ;; "exec-path-from-shell"  ;; Need for path on MacOS
 
    ;; -- Built in modules --
    "c-code"
@@ -44,8 +44,8 @@
    "embark"
 
    ;; MacOS packages
-   "macos-config"
-   "ns-auto-titlebar"
+                                        ; "macos-config"
+                                        ; "ns-auto-titlebar"
 
    ;; Window manager and accompying modules
    ;; Will only load when ‘my-hostname’ is equal to laptop
@@ -53,7 +53,7 @@
    ;; "xelb"
    ;; "exwm"
    ;; "app-launcher"
-   "buffer-move"
+                                        ; "buffer-move"
    "tab-bar"
    "display-time"
    "pdf-tools"
@@ -72,7 +72,7 @@
    "org"
    "org-extra"
    "org-protocol"
-   "org-caldav"
+   ;; "org-caldav"
    "org-roam"
    "org-fragtog"
    ;; "org-noter"
@@ -108,11 +108,11 @@
    ;; "magit-gptcommit"
 
    ;; -- Other modules --
-   "edit-server"
+   ;; "edit-server"
    "helpful"
-   "docker"
+   ;; "docker"
    "eat"
-   "systemd"
+   ;; "systemd"
    ;; "gptel"
    ;; "mini-ontop"  ;; stops windows jiggling
    "el-easydraw"
