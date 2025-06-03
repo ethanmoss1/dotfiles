@@ -37,13 +37,14 @@
   (setq magit-diff-refine-hunk 'all)
 
   ;; buffer alist
-  (add-to-list 'display-buffer-alist
-               '("^COMMIT"
-                 (display-buffer-in-side-window)
-                 (side . bottom)
-                 (slot . 0)
-                 (window-height . 0.33)
-                 (window-parameters
-                  (no-delete-other-windows . t)))))
+  ;; (add-to-list 'display-buffer-alist
+  ;;              '("^COMMIT"
+  ;;                (display-buffer-in-side-window)
+  ;;                (side . bottom)
+  ;;                (slot . 0)
+  ;;                (window-height . 0.33)
+  ;;                (window-parameters
+  ;;                 (no-delete-other-windows . t))))
+  )
 
 ;;; magit.el ends here
