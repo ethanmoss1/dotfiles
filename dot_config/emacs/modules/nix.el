@@ -38,18 +38,6 @@
                (compile "nixos-rebuild switch --flake /home/ethan/.config/nixos")))
     (_       (message "No compile command for this host: %s" my-hostname))))
 
-
-;;; Old code for nixos rebuild
-;; --
-;;   (let* ((default-directory "/sudo::/")
-;; 		 (command "nixos-rebuild switch")
-;; 		 (buffer (get-buffer-create "*nixos-rebuild*")))
-;; 	(start-file-process-shell-command "nix-rebuild" buffer command)
-;;     (switch-to-buffer buffer)
-;;     (with-current-buffer buffer
-;; 	  (setq buffer-read-only t))))
-;; --
-
 (add-to-list 'display-buffer-alist
 			 '("^*comp"
                (display-buffer-reuse-window display-buffer-below-selected)
@@ -67,7 +55,11 @@
   (setq lsp-nix-nixd-server-path "nixd"
         lsp-nix-nixd-formatting-command [ "nixfmt" ]
         lsp-nix-nixd-nixpkgs-expr "import <nixpkgs> { }"
-        lsp-nix-nixd-nixos-options-expr "(builtins.getFlake \"/home/nb/nixos\").nixosConfigurations.mnd.options"
-        lsp-nix-nixd-home-manager-options-expr "(builtins.getFlake \"/home/nb/nixos\").homeConfigurations.\"nb@mnd\".options"))
+        ;; lsp-nix-nixd-nixos-options-expr "(builtins.getFlake \"/home/ethan/nixos\").nixosConfigurations.mnd.options"
+        ;; lsp-nix-nixd-home-manager-options-expr "(builtins.getFlake \"/home/ethan/nixos\").homeConfigurations.\"nb@mnd\".options")
+        )
 
 ;;; nix.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:
