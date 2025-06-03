@@ -22,11 +22,10 @@
 
 (use-package emacs
   :ensure nil
-  :if (string= my-hostname "mac")
   :after org
   :config
   ;; for scrim
-  (setopt server-use-tcp t)
+  ;; (setopt server-use-tcp t)
 
   ;; Start server and require org protocol
   (server-start)
