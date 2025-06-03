@@ -35,8 +35,8 @@
   (pcase my-hostname
     ("mac"   (compile "darwin-rebuild switch --flake /Users/ethan/.config/nix-darwin" t))
     ("linux" (let ((default-directory "/sudo::"))
-               (compile "nixos-rebuild switch --verbose --flake /home/ethan/.config/nixos" )))
-    (_       (message "No compile command for this host"))))
+               (compile "nixos-rebuild switch --flake /home/ethan/.config/nixos")))
+    (_       (message "No compile command for this host: %s" my-hostname))))
 
 
 ;;; Old code for nixos rebuild
