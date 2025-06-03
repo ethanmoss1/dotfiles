@@ -296,8 +296,9 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                                             ":PROPERTIES:"
 											":ENTERED: %U"
                                             ":LINK: %a"
-											":TITLE: %:initial"
-											":END:")))))
+											":END:"
+                                            ""
+                                            "%:initial")))))
 
   ;; Set up org buffer views:
   (add-to-list 'display-buffer-alist
