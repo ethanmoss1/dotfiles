@@ -43,7 +43,7 @@
    "orderless"
    "marginalia"
    "chezmoi"
-   "embark"
+   ;; "embark"
 
    "wait"
 
