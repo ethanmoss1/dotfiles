@@ -15,10 +15,13 @@
   :init
   (setq nano-font-size 10)
   (setq nano-font-family-monospaced "JetBrainsMono Nerd Font Mono")
-)
+  )
 
 (require 'nano-base-colors)
 (require 'nano-faces)
 
 (provide 'moss-nano)
 ;;; moss-nano.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

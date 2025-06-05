@@ -62,3 +62,6 @@
     (set-frame-parameter (selected-frame) 'window-state nil)))
 
 ;;; window.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

@@ -11,10 +11,10 @@
 
 (use-package mu4e
   :ensure (:host github
-           :repo "djcb/mu"
-           :branch "release/1.10"
-           :pre-build (("./autogen.sh") ("make"))
-           :files ("build/mu4e/*.el"))
+                 :repo "djcb/mu"
+                 :branch "release/1.10"
+                 :pre-build (("./autogen.sh") ("make"))
+                 :files ("build/mu4e/*.el"))
 
   :commands (mu4e)
 
@@ -43,33 +43,36 @@
 
 
   (setq mu4e-contexts (list
-                  ;; Cywinskimoss Gmail Account
-                  (make-mu4e-context
-                   :name "Cywinskimoss"
-                   :match-func
-                   (lambda (msg) (when msg
-                    (string-prefix-p "/cywin" (mu4e-message-field msg :maildir))))
-                   :vars '((user-mail-address   . "cywinskimoss@gmail.com")
-                           (user-full-name      . "Ethan Moss")
-                           (mu4e-drafts-folder  . "/cywin/[Gmail]/Drafts")
-                           (mu4e-sent-folder    . "/cywin/[Gmail]/Sent Mail")
-                           (mu4e-refile-folder  . "/cywin/[Gmail]/All Mail")
-                           (mu4e-trash-folder   . "/cywin/[Gmail]/Trash")))
+                       ;; Cywinskimoss Gmail Account
+                       (make-mu4e-context
+                        :name "Cywinskimoss"
+                        :match-func
+                        (lambda (msg) (when msg
+                                        (string-prefix-p "/cywin" (mu4e-message-field msg :maildir))))
+                        :vars '((user-mail-address   . "cywinskimoss@gmail.com")
+                                (user-full-name      . "Ethan Moss")
+                                (mu4e-drafts-folder  . "/cywin/[Gmail]/Drafts")
+                                (mu4e-sent-folder    . "/cywin/[Gmail]/Sent Mail")
+                                (mu4e-refile-folder  . "/cywin/[Gmail]/All Mail")
+                                (mu4e-trash-folder   . "/cywin/[Gmail]/Trash")))
 
-                  ;; Wow.ethm Gmail account
-                  (make-mu4e-context
-                   :name "Wow.ethm"
-                   :match-func
-                   (lambda (msg) (when msg
-                    (string-prefix-p "/wowethm" (mu4e-message-field msg :maildir))))
-                   :vars '((user-mail-address   . "wow.ethm@gmail.com")
-                           (user-full-name      . "Ethan Moss")
-                           (mu4e-drafts-folder  . "/wowethm/[Gmail]/Drafts")
-                           (mu4e-sent-folder    . "/wowethm/[Gmail]/Sent Mail")
-                           (mu4e-refile-folder  . "/wowethm/[Gmail]/All Mail")
-                           (mu4e-trash-folder   . "/wowethm/[Gmail]/Trash"))))))
+                       ;; Wow.ethm Gmail account
+                       (make-mu4e-context
+                        :name "Wow.ethm"
+                        :match-func
+                        (lambda (msg) (when msg
+                                        (string-prefix-p "/wowethm" (mu4e-message-field msg :maildir))))
+                        :vars '((user-mail-address   . "wow.ethm@gmail.com")
+                                (user-full-name      . "Ethan Moss")
+                                (mu4e-drafts-folder  . "/wowethm/[Gmail]/Drafts")
+                                (mu4e-sent-folder    . "/wowethm/[Gmail]/Sent Mail")
+                                (mu4e-refile-folder  . "/wowethm/[Gmail]/All Mail")
+                                (mu4e-trash-folder   . "/wowethm/[Gmail]/Trash"))))))
 
 (message "mu4e loaded")
 (provide 'moss-mu4e)
 
 ;;; moss-mu4e.el ends here -----------------------------------------------------
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

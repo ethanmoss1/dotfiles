@@ -5,12 +5,12 @@
 ;;; Code : ---------------------------------------------------------------------
 (use-package gnus
   :ensure nil
-           ;; (:package "gnus"
-		   ;; ;; :depth 1
-		   ;; :inherit nil
-		   ;; :protocol https
-		   ;; :files (:defaults "lisp/gnus/*" (:exclude ".git"))
-		   ;; :repo "https://git.savannah.gnu.org/git/emacs.git")
+  ;; (:package "gnus"
+  ;; ;; :depth 1
+  ;; :inherit nil
+  ;; :protocol https
+  ;; :files (:defaults "lisp/gnus/*" (:exclude ".git"))
+  ;; :repo "https://git.savannah.gnu.org/git/emacs.git")
   :init
   (setq user-full-name "Ethan Moss"
 		user-mail-address "cywinskimoss@gmail.com"
@@ -19,12 +19,12 @@
 
 		gnus-select-method '(nntp "news.eternal-september.org")
 		gnus-secondary-select-methods ;; Remember, no http or https
-		    '(;;(nnatom "learn2.open.ac.uk/blocks/news/feed.php?bi=304299")
-			  ;;(nnatom "yummymelon.com/devnull/feeds/all.atom.xml")
-			  (nnrss "https://xkcd.com/rss.xml")
-			  (nnrss "https://emacs.org/rss/emacs.xml")
-			  (nnrss "https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100")
-			  (nnrss "https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637"))
+		'(;;(nnatom "learn2.open.ac.uk/blocks/news/feed.php?bi=304299")
+		  ;;(nnatom "yummymelon.com/devnull/feeds/all.atom.xml")
+		  (nnrss "https://xkcd.com/rss.xml")
+		  (nnrss "https://emacs.org/rss/emacs.xml")
+		  (nnrss "https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100")
+		  (nnrss "https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637"))
 
 		;; When we add another feed, allow subscribing to topics interactivly
 		gnus-subscribe-newsgroup-method 'gnus-subscribe-interactively
@@ -63,3 +63,7 @@
 ;; information on how to configure server access with authentication or check
 ;; the FAQ In case of problems or questions don't hesitate to conatct
 ;; support@eternal-september.org.
+
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

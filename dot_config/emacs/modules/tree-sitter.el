@@ -24,7 +24,7 @@
   :hook
   ((java-mode . tree-sitter-hl-mode)
    ;; (emacs-lisp-mode . tree-sitter-hl-mode)
-  ))
+   ))
 
 
 
@@ -32,3 +32,6 @@
 
 (provide 'moss-tree-sitter)
 ;;; moss-tree-sitter.el ends here -----------------------------------------------------
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

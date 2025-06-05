@@ -68,3 +68,6 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
          ("C-a" . 'my/move-beginning-of-line)))
 
 ;;; keybindings.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

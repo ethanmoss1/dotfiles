@@ -31,7 +31,7 @@
 
   ;; Emacs 29
   (when (and (display-graphic-p) (fboundp 'context-menu-mode)
-	  (add-hook 'elpaca-after-init-hook #'context-menu-mode)))
+	         (add-hook 'elpaca-after-init-hook #'context-menu-mode)))
 
   (setq hscroll-margin 2
 		hscroll-step 1
@@ -77,3 +77,6 @@
       (pixel-scroll-precision-mode)))
 
 ;;; mouse.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

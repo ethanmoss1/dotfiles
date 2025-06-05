@@ -28,7 +28,7 @@
   :ensure nil
   :config
   (setq indent-tabs-mode nil
-		; generates tabs distances at 4 spaces increments
+                                        ; generates tabs distances at 4 spaces increments
 		tab-stop-list (number-sequence 4 120 4))
 
   (setq line-number-mode t
@@ -40,3 +40,6 @@
   (visual-line-mode nil))
 
 ;;; simple.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

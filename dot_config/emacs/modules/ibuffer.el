@@ -54,7 +54,7 @@
                                          (derived-mode . eshell-mode)
                                          (derived-mode . shell-mode)
                                          (derived-mode . eat-mode)))
-                                        ("EXWM"
+                                       ("EXWM"
                                         (and
                                          (derived-mode . exwm-mode)
                                          (not (name . "firefox"))))
@@ -76,3 +76,6 @@
 										(name . "*.**"))))))
 
 ;;; ibuffer.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

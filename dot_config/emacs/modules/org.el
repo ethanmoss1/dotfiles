@@ -323,3 +323,6 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                 (org-narrow-to-subtree))))
 
 ;;; org.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

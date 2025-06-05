@@ -23,8 +23,11 @@
             (lambda () (overlay-put (make-overlay (point-min) (+ (point-min) 1))
                                     'before-string
                                     (propertize "\n" 'face `(:extend t
-                                                             :height .5)))))
+                                                                     :height .5)))))
   (mini-frame-mode +1))
 
 (provide 'moss-mini-frame)
 ;;; moss-mini-frame.el ends here
+;; Local Variables:
+;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+;; End:

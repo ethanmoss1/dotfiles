@@ -47,7 +47,7 @@ The DWIM behaviour of this command is as follows:
    (t
     (keyboard-quit))))
 
-;; (global-set-key [remap keyboard-quit] #'prot/keyboard-quit-dwim)
+(global-set-key [remap keyboard-quit] #'prot/keyboard-quit-dwim)
 
 ;;; prot-better-c-g.el ends here
 ;; Local Variables:
