@@ -170,7 +170,7 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                   (setq org-preview-latex-default-process 'dvisvgm)
                   (setq org-latex-to-mathml-convert-command
                         "latexmlmath %i --presentationmathml=%o")))
-    (t (plist-put org-format-latex-options :scale 1.0)))
+    (_ (plist-put org-format-latex-options :scale 1.0)))
 
   ;; Org related files.
 
