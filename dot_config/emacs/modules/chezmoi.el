@@ -59,5 +59,4 @@
     (interactive)
     (consult-grep chezmoi-directory)))
 
-(elpaca-wait)
 ;; chezmoi.el ends here
