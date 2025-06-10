@@ -30,7 +30,9 @@
                             (horizontal-stem . ?─)
                             (vertical-stem . ?│)
                             (branch . ?├)
-                            (last-branch . ?└))))
+                            (last-branch . ?└))
+        undo-limit 10000000) ; 1mb
+  )
 ;; (vundo-popup-mode))
 
 ;;; vundo.el ends here

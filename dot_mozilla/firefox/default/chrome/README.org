@@ -2,8 +2,7 @@ Clone the following to the location of default profile location
 
 * Auto install
 #+begin_src sh
-  cd ../..
-  cd *.default
+  cd ../../*.default
   pwd
 #+end_src
 
@@ -12,10 +11,16 @@ Clone the following to the location of default profile location
 
 If this (above) is the correct location, run the following;
 #+begin_src sh
-  cd ../..
-  cd *.default
-  pwd
+  cd ../../*.default
+  mkdir -p chrome
+  cd chrome
+  git clone git@github.com:MrOtherGuy/firefox-csshacks.git
+  echo $?
 #+end_src
 
 #+RESULTS:
-: /home/ethan/.local/share/chezmoi/dot_mozilla/firefox
+: 128
+
+# Local Variables:
+# eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
+# End:

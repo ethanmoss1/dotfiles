@@ -37,7 +37,9 @@
         :hook ((elpaca-after-init . global-jinx-mode)
                (elpaca-after-init . my/jinx-vertico-multiform))
         :bind (("C-." . jinx-correct)
-               ("C->" . jinx-languages)))
+               ("C->" . jinx-languages))
+        :config
+        (setopt jinx-languages "en_GB"))
 
     ;; one of the executable not found
     (message "Jinx Not Loaded: Cannot find executable(s): %s"
