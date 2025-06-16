@@ -170,6 +170,10 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                   (setq org-preview-latex-default-process 'dvisvgm)
                   (setq org-latex-to-mathml-convert-command
                         "latexmlmath %i --presentationmathml=%o")))
+    ("linux" (setq org-format-latex-options '( :scale 0.5 )
+                   org-preview-latex-default-process 'dvisvgm
+                   org-latex-to-mathml-convert-command
+                   "latexmlmath %i --presentationmathml=%o"))
     (_ (plist-put org-format-latex-options :scale 1.0)))
 
   ;; Org related files.
@@ -196,7 +200,8 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   (setq org-agenda-show-future-repeats 'next
         org-agenda-include-diary nil
         org-agenda-span 10
-        org-agenda-start-on-weekday nil)
+        org-agenda-start-on-weekday nil
+        org-agenda-window-setup 'only-window)
 
   ;; Only show TODO’s that dont have a set date.
   ;; Once that date has come, show the TODO.
