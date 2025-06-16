@@ -57,15 +57,16 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
 
 (use-package emacs
   :ensure nil
-  :bind (("RET" . 'newline-and-indent)
+  :bind (;; ("RET" . 'newline-and-indent)
          ;; ("C-x k" . 'kill-current-buffer)   ; Kill buffer without asking which one
          ("C-x k" . 'kill-buffer-and-window)
 		 ("C-x C-b" . 'ibuffer)
          ("C-x 2" . 'split-window-below-and-focus)
          ("C-x 3" . 'split-window-right-and-focus)
-         ("<home>" . 'my/move-beginning-of-line)
-         ;;("M-o" . 'other-window)
-         ("C-a" . 'my/move-beginning-of-line)))
+         ;; ("<home>" . 'my/move-beginning-of-line)
+         ;; ("M-o" . 'other-window)
+         ;; ("C-a" . 'my/move-beginning-of-line)
+         ))
 
 ;;; keybindings.el ends here
 ;; Local Variables:
