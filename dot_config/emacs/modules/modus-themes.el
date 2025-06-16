@@ -22,6 +22,7 @@
 
 ;;; Code :
 (use-package modus-themes
+  :if (display-graphic-p)
   ;; :custom-face
   ;; (fringe ((t (:background "#000000"))))
   :bind (("<f8>" . 'modus-themes-toggle))
