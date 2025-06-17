@@ -21,7 +21,6 @@
 ;;; Code:
 
 (use-package spacious-padding
-  :if (display-graphic-p)
   :config
   (setopt spacious-padding-subtle-mode-line t)
   (spacious-padding-mode))
