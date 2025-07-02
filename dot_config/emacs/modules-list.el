@@ -81,8 +81,11 @@
    "org-fragtog"
    ;; "org-noter"
    ;; "org-gtd"
-   "org-man"
    "olivetti"
+   ;; org links stuff
+   "org-link-man"
+   "org-link-rfc"
+
 
    ;; -- News and Email --
    "elfeed"
