@@ -110,6 +110,11 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
     (mark-sexp))
   (org-emphasize char))
 
+(defun my/org-files-grep ()
+  "Search the files in the Org directory to find what you need!"
+  (interactive)
+  (consult-grep org-directory))
+
 (defvar-keymap my/org-emphasis-map
   :doc "Keymap for quickly applying Org emphasis rules."
   :name "[b]old [i]talic [u]nderscore [v]erbatim [c]ode [s]trike-though"
@@ -134,6 +139,7 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   :bind (;; Global keybindings
          ("C-c o a" . 'my/org-agenda-with-groups)
 		 ("C-c o c" . 'org-capture)
+         ("C-c o s" . 'my/org-files-grep)
          ;; Mapped keybindings
          :map org-mode-map
          ("C-c C-x C-f" . my/org-emphasis-map))
