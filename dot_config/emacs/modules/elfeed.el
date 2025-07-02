@@ -35,6 +35,7 @@
   ;; :hook (org-store-link-functions . my/org-elfeed-entry-store-link)
   :config
   (setopt elfeed-sort-order 'ascending)  ;; Oldest first.
+  (setopt elfeed-search-filter "+unread")
 
   (setq elfeed-feeds
         '(;; Module M269 news - broken?
