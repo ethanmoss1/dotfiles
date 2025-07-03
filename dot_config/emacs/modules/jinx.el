@@ -39,7 +39,7 @@
         :bind (("C-." . jinx-correct)
                ("C->" . jinx-languages))
         :config
-        (setopt jinx-languages "en_GB"))
+        (setopt jinx-languages "en_GB en_GB-ise en_US"))
 
     ;; one of the executable not found
     (message "Jinx Not Loaded: Cannot find executable(s): %s"
