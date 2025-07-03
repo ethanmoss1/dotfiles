@@ -32,7 +32,16 @@
        :description title))))
 
 (use-package elfeed
-  ;; :hook (org-store-link-functions . my/org-elfeed-entry-store-link)
+  :ensure ( :package "elfeed"
+            ;; Inherited from elpaca-order-functions.
+            :depth treeless
+            :inherit t
+            :protocol https
+            ;; Inherited from elpaca-menu-item.
+            :source "MELPA"
+            :files (:defaults "README.md" "web/*")
+            :fetcher github
+            :repo "skeeto/elfeed")
   :config
   (setopt elfeed-sort-order 'ascending)  ;; Oldest first.
   (setopt elfeed-search-filter "+unread")
