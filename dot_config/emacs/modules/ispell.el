@@ -25,10 +25,11 @@
 (use-package ispell
   :ensure nil
   :config
-  (setq ispell-dictionary "en_GB"
-        ;; This is done automatically.
-		;; ispell-program-name (executable-find "hunspell")
-        ))
+  (setopt ispell-dictionary "en_GB"
+          ispell-alternate-dictionary "en_US"
+          ;; This is done automatically.
+	      ;; ispell-program-name (executable-find "hunspell")
+          ))
 
 ;;; ispell.el ends here
 ;; Local Variables:
