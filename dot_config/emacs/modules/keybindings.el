@@ -37,6 +37,20 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
     (if (and (<= pos (current-column)) (not (= pos 0)))
         (move-beginning-of-line 1))))
 
+(defun my/setup-dashboard-tabs ()
+  "macro? it sets up notmuch, elfeed and agenda quickly"
+  (interactive)
+  ;; close all windows and tabs for a clean slate
+  (delete-other-windows)
+  (tab-bar-mode 1)
+  (tab-close-other)
+  ;; open new tabs and programs
+  (my/org-agenda-with-groups)
+  (tab-new)
+  (notmuch)
+  (tab-new)
+  (elfeed)
+  (elfeed-update))
 
 (defun split-window-below-and-focus ()
   (interactive)
@@ -66,6 +80,7 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
          ;; ("<home>" . 'my/move-beginning-of-line)
          ;; ("M-o" . 'other-window)
          ;; ("C-a" . 'my/move-beginning-of-line)
+         ("C-c a" . #'my/setup-dashboard-tabs)
          ))
 
 ;;; keybindings.el ends here
