@@ -7,6 +7,7 @@
     "modules-left": ["hyprland/workspaces"],
 
     "modules-center": [
+        "custom/toggle-kb",
         "temperature",
         "wireplumber",
         "backlight",
@@ -36,6 +37,11 @@
             "4": [],
             "5": [],
         }
+    },
+
+    "custom/toggle-kb": {
+        "format": "\uf11c ",
+        "on-click": "sh /home/ethan/Documents/dev/system/keyboard/toggle_keyboard"
     },
 
     "clock": {
