@@ -126,5 +126,6 @@
 
    ;; -- Final modifications
    "linux"
+   "bluetooth"
    "secrets"
    )) ;; -- End of Modules --
