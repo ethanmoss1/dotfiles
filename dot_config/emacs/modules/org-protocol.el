@@ -30,8 +30,7 @@
   ;; Start server and require org protocol
   (if (not server-mode)
       (server-start))
-  (require 'org-protocol)
-  )
+  (require 'org-protocol))
 
 ;;; org-protocol.el ends here
 ;; Local Variables:
