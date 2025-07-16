@@ -44,7 +44,9 @@
   (toggle-word-wrap 1)
   (adaptive-wrap-prefix-mode)
   (if (fboundp 'olivetti-mode)
-      (olivetti-mode t)))
+      (olivetti-mode t))
+  (if (fboundp 'org-appear-mode)
+      (org-appear-mode t)))
 
 ;; TODO: Make sure this is correct and runs as expected.
 (defun my/org-mode-hook ()
@@ -97,6 +99,11 @@ Otherwise will return NIL"
   (and (not (null (cl-intersection tags (org-get-tags) :test 'string=)))
        (org-entry-end-position)))
 
+(defun my/org-files-grep ()
+  "Search the files in the Org directory to find what you need!"
+  (interactive)
+  (consult-grep org-directory))
+
 ;; Emphasis words easily. pilfered from;
 ;; https://christiantietze.de/posts/2024/12/org-mode-emphasis-keymap-mnemonics/
 (defun my/org-emphasize-below-point (&optional char)
@@ -110,20 +117,15 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
     (mark-sexp))
   (org-emphasize char))
 
-(defun my/org-files-grep ()
-  "Search the files in the Org directory to find what you need!"
-  (interactive)
-  (consult-grep org-directory))
-
-(defvar-keymap my/org-emphasis-map
-  :doc "Keymap for quickly applying Org emphasis rules."
-  :name "[b]old [i]talic [u]nderscore [v]erbatim [c]ode [s]trike-though"
-  "b" (lambda () (interactive) (my/org-emphasize-below-point ?*))
-  "i" (lambda () (interactive) (my/org-emphasize-below-point ?/))
-  "u" (lambda () (interactive) (my/org-emphasize-below-point ?_))
-  "v" (lambda () (interactive) (my/org-emphasize-below-point ?=))
-  "c" (lambda () (interactive) (my/org-emphasize-below-point ?~))
-  "s" (lambda () (interactive) (my/org-emphasize-below-point ?+)))
+;; (defvar-keymap my/org-emphasis-map
+;;   :doc "Keymap for quickly applying Org emphasis rules."
+;;   :name "[b]old [i]talic [u]nderscore [v]erbatim [c]ode [s]trike-though"
+;;   "b" (lambda () (interactive) (my/org-emphasize-below-point ?*))
+;;   "i" (lambda () (interactive) (my/org-emphasize-below-point ?/))
+;;   "u" (lambda () (interactive) (my/org-emphasize-below-point ?_))
+;;   "v" (lambda () (interactive) (my/org-emphasize-below-point ?=))
+;;   "c" (lambda () (interactive) (my/org-emphasize-below-point ?~))
+;;   "s" (lambda () (interactive) (my/org-emphasize-below-point ?+)))
 
 ;;;; Use-package ---------------------------------------------------------------
 
@@ -141,8 +143,9 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 		 ("C-c o c" . 'org-capture)
          ("C-c o s" . 'my/org-files-grep)
          ;; Mapped keybindings
-         :map org-mode-map
-         ("C-c C-x C-f" . my/org-emphasis-map))
+         ;; :map org-mode-map
+         ;; ("C-c C-x C-f" . my/org-emphasis-map)
+         )
   :config
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((python . t)
