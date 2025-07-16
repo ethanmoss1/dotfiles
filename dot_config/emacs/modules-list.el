@@ -79,6 +79,7 @@
    "org-caldav"
    "org-roam"
    "org-fragtog"
+   "org-appear"
    ;; "org-noter"
    ;; "org-gtd"
    "olivetti"
