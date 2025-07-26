@@ -146,6 +146,10 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
          ;; :map org-mode-map
          ;; ("C-c C-x C-f" . my/org-emphasis-map)
          )
+  :custom
+  ;; Org Export
+  (org-odt-preferred-output-format "docx")  ; Make ODT export as docx
+
   :config
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((python . t)
