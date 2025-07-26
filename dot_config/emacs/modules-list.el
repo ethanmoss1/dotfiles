@@ -123,7 +123,7 @@
    ;; "systemd"
    ;; "gptel"
    ;; "mini-ontop"  ;; stops windows jiggling
-   "el-easydraw"
+   "el-easydraw" ;; edraw
 
    ;; -- Final modifications
    "linux"

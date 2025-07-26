@@ -18,6 +18,9 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+;;; Commentary
+;; Also known as edraw
+
 ;;; Code:
 
 (use-package edraw-org
@@ -26,9 +29,16 @@
             :repo "misohena/el-easydraw"
             :files (:defaults "*.el"))
   :config
-  (edraw-org-setup-default)
-  (edraw-org-setup-exporter)
-  (edraw-org-link-image-mode))
+  ;; Set up all the hooks and minor modes for edraw
+  (edraw-org-link-setup-exporter)
+  (edraw-org-setup-inline-images)
+  (edraw-org-setup-text-conversion) ;; For android
+  (edraw-org-link-image-mode)
+
+  ;; Customise the defaults
+  :custom
+  (edraw-popup-menu-style 'nil)
+  )
 
 ;;; el-easydraw.el ends here
 ;; Local Variables:
