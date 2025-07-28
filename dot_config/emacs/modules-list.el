@@ -53,15 +53,17 @@
 
    ;; Window manager and accompying modules
    ;; Will only load when ‘my-hostname’ is equal to laptop
-   ;; "desktop-environment"
-   ;; "xelb"
-   ;; "exwm"
-   ;; "app-launcher"
+   "desktop-environment"
+   "xelb"
+   "exwm"
+   "app-launcher"
    ;; "buffer-move"
    "tab-bar"
    "display-time"
    "pdf-tools"
    ;; "ednc"
+
+   "wait"
 
    ;; -- Themeing Modules --
    "modus-themes"
@@ -118,9 +120,10 @@
    ;; -- Other modules --
    "edit-server"
    "helpful"
-   ;; "docker"
+   "docker"
    "eat"
-   ;; "systemd"
+   "systemd"
+   "daemon"
    ;; "gptel"
    ;; "mini-ontop"  ;; stops windows jiggling
    "el-easydraw" ;; edraw
