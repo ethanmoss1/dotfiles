@@ -50,10 +50,10 @@
 
 (use-package exwm
   :ensure nil  ;; supplied by nixos
-  :if (string-equal my-hostname "laptop")
+  :if (string-equal my-hostname "linux")
   :hook ((exwm-update-title . exwm-rename-buffer-class-name)
          (exwm-manage-finish . exwm-setup-local-simulation-keys)
-         (elpaca-after-init . exwm-init))
+         (elpaca-after-init . exwm-wm-mode))
   :bind ( :map desktop-environment-mode-map
 		  ;; Move around the buffers and X apps
 		  ("s-<left>" . windmove-left)
@@ -100,9 +100,10 @@
 		  ([C-x C-s] . [?\C-s])
 
 		  ;; exit
-		  ([?\C-g] . [escape]))))
+		  ([?\C-g] . [escape])))
+  )
 
-(if (string= my-hostname "laptop")
+(if (string= my-hostname "linux")
     (elpaca-wait))
 
 ;;; exwm.el ends here -----------------------------------------------------

@@ -52,19 +52,21 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
   (elfeed)
   (elfeed-update))
 
-(defun split-window-below-and-focus ()
-  (interactive)
+(defun split-window-below-and-focus (&optional arg)
+  (interactive "P")
   (split-window-below)
   (redisplay)           ; for exwm bug
   (windmove-down)
-  (consult-buffer))
+  (if arg
+      (consult-buffer)))
 
-(defun split-window-right-and-focus ()
-  (interactive)
+(defun split-window-right-and-focus (&optional arg)
+  (interactive "P")
   (split-window-right)
   (redisplay)           ; for exwm bug
   (windmove-right)
-  (consult-buffer))
+  (if arg
+      (consult-buffer)))
 
 ;; Unbind suspend
 (global-unset-key (kbd "C-z"))

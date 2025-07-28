@@ -24,7 +24,7 @@
   :ensure nil
   :if (string= my-hostname "linux")
   :config
-  (set-face-attribute 'default nil :height 100))
+  (set-face-attribute 'default nil :height 170))
 
 ;;; linux.el ends here
 ;; Local Variables:
