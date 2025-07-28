@@ -34,11 +34,18 @@
 ;; Declaration
 (use-package consult
   :bind (("C-t" . consult-imenu)
+         ("C-s" . consult-line)
+
 		 ("C-x b" . consult-buffer)
          ("C-x 4 b" . 'consult-buffer-other-window)
-		 ("C-s" . consult-line)
-		 ("M-g M-g" . consult-goto-line)
          ("C-x r b" . consult-bookmark)
+
+         ;; Project related
+         ("C-x p b" . 'consult-project-buffer)
+
+
+		 ("M-g M-g" . consult-goto-line)
+
          ("M-s ." . consult-line-symbol-at-point))
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :init
