@@ -37,7 +37,8 @@
   ;; Enable some modes
   (indent-tabs-mode nil)
   (line-number-mode -1)
-  (visual-line-mode nil))
+  (visual-line-mode nil)
+  (setopt save-interprogram-paste-before-kill t))
 
 ;;; simple.el ends here
 ;; Local Variables:
