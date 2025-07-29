@@ -60,6 +60,7 @@
 		  ("s-<right>" . windmove-right)
 		  ("s-<up>" . windmove-up)
 		  ("s-<down>" . windmove-down)
+          ("s-<tab>" . #'app-launcher-run-app)
 
           ;; EXWM functions
 		  ("s-R" . exwm-reset))
