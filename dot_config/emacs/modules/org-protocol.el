@@ -28,7 +28,7 @@
   ;; (setopt server-use-tcp t)
 
   ;; Start server and require org protocol
-  (if (not server-mode)
+  (if (not (string= my-hostname "linux"))
       (server-start))
   (require 'org-protocol))
 
