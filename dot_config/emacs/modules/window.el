@@ -24,29 +24,28 @@
 ;; Modifying Window function that aren't written in C.
 
 ;;; Code:
-
 (use-package window
   :ensure nil
   :config
   ;; Respect display actions specified. eg, in ‘display-buffer-alist’
-  (setq switch-to-buffer-obey-display-actions t)
-  (setq switch-to-buffer-in-dedicated-window 'pop)
-  (setq display-buffer-base-action '(nil))  ; default
+  (setopt switch-to-buffer-obey-display-actions t)
+  (setopt switch-to-buffer-in-dedicated-window 'pop)
+  ;; (setopt display-buffer-base-action '(display-buffer-same-window))  ; default nil
 
-  (setq split-width-threshold 170
-		split-height-threshold nil)
+  (setopt split-width-threshold 170
+		  split-height-threshold nil)
 
   ;; resizing windows
-  (setq window-resize-pixelwise nil
-		resize-mini-windows 'grow-only)
+  (setopt window-resize-pixelwise t
+	      resize-mini-windows 'grow-only)
 
   ;; Window divider on EXWM
   (if (string= my-hostname "laptop")
       (add-hook 'elpaca-after-init-hook window-divider-mode))
   ;; and its settings
-  (setq window-divider-default-places t
-		window-divider-default-right-width 2
-		window-divider-default-bottom-width 2)
+  (setopt window-divider-default-places t
+	      window-divider-default-right-width 2
+	      window-divider-default-bottom-width 2)
 
   ;; helper to make a window a dedicated one.
   (defun my/make-window-dedicated-toggle ()
