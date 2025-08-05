@@ -1,6 +1,8 @@
 ;;; moss-android.el --- Summary
 
 ;;; Commentary : ---------------------------------------------------------------
+;; TODO: This all needs updating, it needs the old message and provide ripped out
+;; as well as changing some of the code to be updated to better conventions
 
 ;;; Code : ---------------------------------------------------------------------
 
@@ -59,7 +61,7 @@
             window-divider-default-places 'right-only)
       (window-divider-mode 1)))
 
-(server-start)
+;; (server-start)
 (setq termux-dir "/data/data/com.termux/")
 (push (concat "TEXMFLOCAL=" termux-dir "files/usr/share/texlive/texmf-local") process-environment)
 (push (concat "TEXMFROOT=" termux-dir "files/usr/share/texlive/2024") process-environment)
