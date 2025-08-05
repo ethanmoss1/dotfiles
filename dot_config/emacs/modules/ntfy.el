@@ -24,13 +24,15 @@
   ;; :ensure ( :host github
   ;;           :repo "shombando/ntfy"
   ;;           :files (:defaults "*.el"))
-  :ensure ( :repo "/Users/Ethan/Documents/src/ntfy/"
+  :ensure ( :repo "/home/ethan/Documents/src/ntfy"
             :files (defaults "*.el"))
   :config
-  (setq ntfy-server "http://ntfy.hmsrv.uk"
-		ntfy-topic "emacs"
-		ntfy-header "Notification from emacs"
-		ntfy-tags "purple_circle,loudspeaker"))
+  (setopt ntfy-server "http://ntfy.hmsrv.uk"
+		  ntfy-topic "emacs"
+		  ntfy-header "Notification from emacs"
+		  ntfy-tags "purple_circle,loudspeaker"))
+
+;; Test with: (ntfy-send-message "This is a test!")
 
 ;;; ntfy.el ends here
 ;; Local Variables:
