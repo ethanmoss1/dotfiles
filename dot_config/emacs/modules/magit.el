@@ -45,7 +45,7 @@
   ;;                (window-height . 0.33)
   ;;                (window-parameters
   ;;                 (no-delete-other-windows . t))))
-  )
+  (setopt magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 ;;; magit.el ends here
 ;; Local Variables:
