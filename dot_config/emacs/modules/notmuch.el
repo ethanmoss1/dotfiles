@@ -53,6 +53,49 @@
 		  ;; mm-text-html-renderer 'shr
           ))
 
+;;; This is a test function to add to the notmuch wash (makes things when )
+;; (defun notmuch-wash-convert-inline-github-patch-to-part (msg depth)
+;;   "Convert an inline patch sent in github into a fake `text/x-diff' attachment.
+;;
+;; Given that this function guesses whether a buffer includes a
+;; patch and then guesses the extent of the patch, there is scope
+;; for error."
+;;   (goto-char (point-min))
+;;   (when (re-search-forward "^> @@ -.+$" nil t)
+;;     (beginning-of-line -1)
+;;     (let ((patch-start (point))
+;; 	      (patch-end (point-max))
+;; 	      part)
+;;       (goto-char patch-start)
+;;       (when (or
+;; 	         ;; Patch ends with signature.
+;; 	         (re-search-forward notmuch-wash-signature-regexp nil t)
+;; 	         ;; Patch ends with bugtraq comment.
+;; 	         (re-search-forward "^\\*\\*\\* " nil t)
+;;              ;; just a new line?
+;;              (re-search-forward "^\n"))
+;; 	    (setq patch-end (match-beginning 0)))
+;;       (save-restriction
+;; 	    (narrow-to-region patch-start patch-end)
+;; 	    (setq part (plist-put part :content-type "inline patch"))
+;; 	    (setq part (plist-put part :content (buffer-string)))
+;; 	    (setq part (plist-put part :id -1))
+;; 	    (setq part (plist-put part :filename
+;; 			                  (notmuch-wash-subject-to-patch-filename
+;; 			                   (plist-get
+;; 				                (plist-get msg :headers) :Subject))))
+;; 	    (delete-region (point-min) (point-max))
+;; 	    (notmuch-show-insert-bodypart nil part depth)))))
+
+;;; Add it to the show hook for `text/plain’.
+;; (setopt notmuch-show-insert-text/plain-hook
+;;         '(notmuch-wash-convert-inline-patch-to-part
+;;           notmuch-wash-convert-inline-github-patch-to-part
+;;           notmuch-wash-wrap-long-lines
+;;           notmuch-wash-tidy-citations
+;;           notmuch-wash-elide-blank-lines
+;;           notmuch-wash-excerpt-citations))
+
 
 ;;;; --------------------------------
 ;;;; Additional config for future use
