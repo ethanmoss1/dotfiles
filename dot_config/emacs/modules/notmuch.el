@@ -34,21 +34,25 @@
 	(setq notmuch-command "~/mail/.notmuch/remote-notmuch"))
 
   ;;;; Notmuch - Welcome screen
-  (setq	notmuch-show-logo nil
-		notmuch-hello-sections '(notmuch-hello-insert-header
-                                 notmuch-hello-insert-search
-                                 notmuch-hello-insert-saved-searches
-                                 ;; notmuch-hello-insert-recent-searches
-                                 notmuch-hello-insert-alltags)
-		notmuch-saved-searches '((:name "inbox" :query "tag:inbox" :key "i")
-                                 (:name "unread" :query "tag:unread AND NOT tag:mailinglist" :key "u")
-                                 (:name "mailing lists" :query "tag:mailinglist AND tag:unread" :key "l" :search-type tree)
-                                 (:name "flagged" :query "tag:flagged" :key "f")
-                                 (:name "sent" :query "tag:sent" :key "t")
-                                 (:name "important" :query "tag:important" :key "p")
-                                 (:name "all mail" :query "*" :key "a"))
+  (setopt notmuch-show-logo nil
+		  notmuch-hello-sections '(notmuch-hello-insert-header
+                                   notmuch-hello-insert-search
+                                   notmuch-hello-insert-saved-searches
+                                   ;; notmuch-hello-insert-recent-searches
+                                   notmuch-hello-insert-alltags)
+
+		  notmuch-saved-searches '((:name "inbox" :query "tag:inbox" :key "i")
+                                   (:name "unread" :query "tag:unread AND NOT tag:mailinglist" :key "u")
+                                   (:name "mailing lists" :query "tag:mailinglist AND tag:unread" :key "l" :search-type tree)
+                                   (:name "flagged" :query "tag:flagged" :key "f")
+                                   (:name "sent" :query "tag:sent" :key "t")
+                                   (:name "important" :query "tag:important" :key "p")
+                                   (:name "all mail" :query "*" :key "a"))
+
   ;;;; Notmuch - Mail view
-		mm-text-html-renderer 'shr))
+		  ;; mm-text-html-renderer 'shr
+          ))
+
 
 ;;;; --------------------------------
 ;;;; Additional config for future use
