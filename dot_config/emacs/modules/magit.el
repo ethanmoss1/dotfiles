@@ -1,4 +1,4 @@
-;;; magit.el ---   -*- lexical-binding: t; -*-
+;;; magit.el --- Git Porcelain but AWESOME           -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2023  Ethan Moss
 
