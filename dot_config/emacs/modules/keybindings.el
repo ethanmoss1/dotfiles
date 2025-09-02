@@ -88,6 +88,32 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
       (setq my/laptop-keyboard-enabled (not my/laptop-keyboard-enabled))
       (message "Internal Laptop keyboard: %s" kb-enable))))
 
+;;; -- Follow link or symbol at point --
+(defun my/follow-at-point ()
+  "Performs a context-aware action based on the text at point."
+  (interactive)
+  ;; Thing at point? symbol, list, sexp, defun, filename, existing-filename,
+  ;; url, email, uuid, word, sentence, whitespace, line, number, face and page.
+  ;; Get the current thing at point.
+  (let* ((url (thing-at-point 'url t))
+         (email (thing-at-point 'email t))
+         (possible-file (thing-at-point 'filename t))
+         (file (when (and (stringp possible-file)
+                          (file-exists-p possible-file))
+                 possible-file))
+         (symbol (thing-at-point 'symbol t))
+         )
+    (cond
+     ;; http://example.com
+     (url (browse-url url))
+     ;; info@somedomain.co.uk
+     (email (notmuch-mua-mail email))
+     ;; /home/ethan/todo.org or todo.org
+     (file (find-file file))
+     (symbol (xref-find-definitions symbol))
+     (t (message "unknown ’thing’ at point.")))))
+
+
 ;; Unbind suspend
 (global-unset-key (kbd "C-z"))
 
@@ -103,6 +129,7 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
          ;; ("M-o" . 'other-window)
          ;; ("C-a" . 'my/move-beginning-of-line)
          ("C-c a" . #'my/setup-dashboard-tabs)
+         ("M-RET" . #'my/follow-at-point)
          ))
 
 ;;; keybindings.el ends here
