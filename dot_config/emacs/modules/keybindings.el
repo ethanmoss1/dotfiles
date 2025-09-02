@@ -68,14 +68,34 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
   (if arg
       (consult-buffer)))
 
+(when (string-equal my-hostname "linux")
+  ;; Set the default keyboard state
+  (setq my/laptop-keyboard-enabled t)
+  ;; The name of the internal keyboard;
+  (setq my/laptop-keyboard-name "Apple Inc. Apple Internal Keyboard / Trackpad")
+  ;; Get the ID of the internal keyboard
+  (setq my/laptop-keyboard-id (string-to-number (shell-command-to-string (format "xinput list --id-only 'keyboard:%s'" my/laptop-keyboard-name))))
+
+  ;; Toggle keyboard function
+  (defun my/toggle-laptop-keyboard ()
+    "Toggles the intergrated keyboard on my Macbook Pro"
+    (interactive)
+    (let ((kb-enable (if my/laptop-keyboard-enabled "disable" "enable")))
+      (shell-command (format "xinput %s %s"
+                             kb-enable
+                             my/laptop-keyboard-id
+                             ))
+      (setq my/laptop-keyboard-enabled (not my/laptop-keyboard-enabled))
+      (message "Internal Laptop keyboard: %s" kb-enable))))
+
 ;; Unbind suspend
 (global-unset-key (kbd "C-z"))
 
 (use-package emacs
   :ensure nil
   :bind (;; ("RET" . 'newline-and-indent)
-         ;; ("C-x k" . 'kill-current-buffer)   ; Kill buffer without asking which one
-         ("C-x k" . 'kill-buffer-and-window)
+         ("C-x k" . 'kill-current-buffer)   ; Kill buffer without asking which one
+         ;; ("C-x k" . 'kill-buffer-and-window)
 		 ("C-x C-b" . 'ibuffer)
          ("C-x 2" . 'split-window-below-and-focus)
          ("C-x 3" . 'split-window-right-and-focus)
