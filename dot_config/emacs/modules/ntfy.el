@@ -30,7 +30,31 @@
   (setopt ntfy-server "http://ntfy.hmsrv.uk"
 		  ntfy-topic "emacs"
 		  ntfy-header "Notification from emacs"
-		  ntfy-tags "purple_circle,loudspeaker"))
+		  ntfy-tags "purple_circle,loudspeaker")
+
+  ;; For the compile function;
+  (defun point-beginning-of-last-line ()
+    "Get the position of the beginning of the last line"
+    (goto-char (point-max))
+    (if (bolp)
+        (backward-char 1))
+    (beginning-of-line)
+    (point))
+
+  (defun ntfy-compilation-finished (buf str)
+    ""
+    (with-current-buffer buf
+      (let ((first-line (buffer-substring (pos-bol 2)
+                                          (pos-eol 2)))
+            (last-line (buffer-substring (point-beginning-of-last-line)
+                                         (point-max))))
+        ;; (message "\n----------\nlast line: %s \nstr: %s" last-line str)
+        (ntfy-send-message-with-header-and-tags
+         "gear"
+         (format "Compilation %s" (replace-regexp-in-string "\n" "" str))
+         (format "%s\n%s" first-line last-line)))))
+
+  (setopt compilation-finish-functions '(ntfy-compilation-finished)))
 
 ;; Test with: (ntfy-send-message "This is a test!")
 
