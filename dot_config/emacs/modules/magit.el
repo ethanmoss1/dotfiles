@@ -19,11 +19,26 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Code :
-(use-package transient)
 
+;; -- Functions
+;; Replaces the original function, only running Magit if it is bound.
+(defun project-vc-dir ()
+  "Run Magit or VC-Dir in the current project's root."
+  (interactive)
+  (if (fboundp #'magit)
+      (magit-status (project-root (project-current t)))
+    (vc-dir (project-root (project-current t)))))
+
+
+;; -- Configuration
+;; Brand new package, requires its own recipe
+(use-package cond-let
+  :ensure ( :host github :repo "tarsius/cond-let"
+            :files (:defaults "cond-let.el")))
+(use-package transient)
 (use-package magit
-  :after transient
-  :bind ("C-c m m" . 'magit)
+  :after (transient cond-let)
+  :bind (("C-c m m" . 'magit))
   :config
   ;; VC Generic settings
   (setq vc-make-backup-files nil
