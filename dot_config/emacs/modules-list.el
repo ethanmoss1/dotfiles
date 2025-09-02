@@ -37,6 +37,7 @@
    "calendar"
    ;; "webjump"
    "replace"
+   "winner"
 
    ;; -- Compulsory Modules --
    "vertico"
