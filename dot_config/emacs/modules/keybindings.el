@@ -113,6 +113,12 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
      (symbol (xref-find-definitions symbol))
      (t (message "unknown ’thing’ at point.")))))
 
+(defun my/indent-whole-buffer ()
+  "Indent the entire buffer without affecting point or mark."
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (indent-region (point-min) (point-max)))))
 
 ;; Unbind suspend
 (global-unset-key (kbd "C-z"))
@@ -129,8 +135,8 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
          ;; ("M-o" . 'other-window)
          ;; ("C-a" . 'my/move-beginning-of-line)
          ("C-c a" . #'my/setup-dashboard-tabs)
-         ("M-RET" . #'my/follow-at-point)
-         ))
+         ;; ("C-c i" . #'my/indent-whole-buffer)
+         ("M-RET" . #'my/follow-at-point)))
 
 ;;; keybindings.el ends here
 ;; Local Variables:
