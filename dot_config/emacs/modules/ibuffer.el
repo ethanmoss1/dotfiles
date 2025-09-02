@@ -24,6 +24,10 @@
 ;; Manage buffers using filters and marking systems like dired
 
 ;;; Code:
+(use-package nerd-icons-ibuffer
+  :ensure t
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 
 (use-package ibuffer
   :ensure nil
@@ -34,21 +38,34 @@
                      (ibuffer-update nil)))
   :config
   ;; Configure the way the ibuffer looks
-  (setq ibuffer-eliding-string "…"
-        ibuffer-formats '(( mark
-                            modified
-                            " "
-                            (name 16 -1 :left :elide)
-                            " "
-                            (filename 40 -1 :right))))
+  ;; Thanks to The Emacs Cat for the additional configuration. Here;
+  ;; https://olddeuteronomy.github.io/post/emacs-ibuffer-config/
+  (setopt ibuffer-expert nil
+          ibuffer-display-summary nil
+          ibuffer-use-other-window nil
+          ibuffer-show-empty-filter-groups nil
+          ibuffer-default-sorting-mode 'filename/process
+          ibuffer-title-face 'font-lock-doc-face
+          ibuffer-use-header-line nil
+          ibuffer-default-shrink-to-minimum-size nil)
+
+  (setopt ibuffer-eliding-string "…"
+          ibuffer-formats '((mark modified read-only locked " "
+                                  (name 40 40 :left :elide)
+                                  ;; " "
+                                  ;; (size 9 -1 :right)
+                                  " "
+                                  (mode 16 16 :left :elide)
+                                  " "
+                                  filename-and-process)))
 
   ;; Set up filters
   (setq ibuffer-show-empty-filter-groups nil
-		ibuffer-saved-filter-groups '(("Groups"
+	    ibuffer-saved-filter-groups '(("Groups"
 									   ("Files"
-										(and
-										 (visiting-file)
-										 (not derived-mode . org-mode)))
+									    (and
+									     (visiting-file)
+									     (not derived-mode . org-mode)))
                                        ("Shell"
                                         (or
                                          (derived-mode . eshell-mode)
@@ -59,21 +76,21 @@
                                          (derived-mode . exwm-mode)
                                          (not (name . "firefox"))))
 									   ("Firefox"
-										(and
-										 (derived-mode . exwm-mode)
-										 (name . "firefox")))
+									    (and
+									     (derived-mode . exwm-mode)
+									     (name . "firefox")))
 									   ("Magit"
-										(name . "^magit"))
+									    (name . "^magit"))
 									   ("Help"
-										(or
-										 (derived-mode . help-mode)
-										 (derived-mode . helpful-mode)))
+									    (or
+									     (derived-mode . help-mode)
+									     (derived-mode . helpful-mode)))
 									   ("Dired"
-										(derived-mode . dired-mode))
+									    (derived-mode . dired-mode))
 									   ("Org"
-										(derived-mode . org-mode))
+									    (derived-mode . org-mode))
 									   ("Temporary"
-										(name . "*.**"))))))
+									    (name . "*.**"))))))
 
 ;;; ibuffer.el ends here
 ;; Local Variables:
