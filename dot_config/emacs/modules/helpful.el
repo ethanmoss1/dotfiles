@@ -23,17 +23,16 @@
 ;;; Code :
 (use-package helpful
   :bind
-  ("C-h h" . 'helpful-at-point)
-  ("C-h v" . 'helpful-variable)
-  ("C-h f" . 'helpful-function)
-  ("C-h c" . 'helpful-callable)
-  ("C-h k" . 'helpful-key)
-  ("C-h o" . 'helpful-symbol)
+  ("C-h h" . #'helpful-at-point)
+  ("C-h v" . #'helpful-variable)
+  ("C-h f" . #'helpful-function)
+  ("C-h c" . #'helpful-callable)
+  ("C-h k" . #'helpful-key)
+  ("C-h o" . #'helpful-symbol)
   :config
   (add-to-list 'display-buffer-alist
 			   '("^\\*helpful"
-                 (display-buffer-reuse-window display-buffer-below-selected)
-                 (window-height . 0.5)
+                 (display-buffer-same-window)
                  (window-parameters
                   (no-delete-other-windows . t)))))
 

@@ -24,12 +24,11 @@
 ;; website
 
 ;; TODO: Move to a buffer version of the RFC, as they are only text.
-;; TODO: error handling on the RFC nubmer in the open command
+;; TODO: error handling on the RFC number in the open command
 ;; TODO: do the export, store and any other parameters required for org links
 
 
 ;;; Code:
-
 (use-package emacs
   :ensure nil
   :after org

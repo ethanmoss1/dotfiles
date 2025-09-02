@@ -33,19 +33,20 @@
 
 ;; Declaration
 (use-package consult
-  :bind (("C-t" . consult-imenu)
-         ("C-s" . #'consult-isearch-history)
+  :bind (("C-t" . #'consult-imenu)
+         ;; ("C-s" . #'consult-isearch-history)
 
-		 ("C-x b" . consult-buffer)
-         ("C-x 4 b" . 'consult-buffer-other-window)
-         ("C-x r b" . consult-bookmark)
+		 ("C-x b" . #'consult-buffer)
+         ("C-x 4 b" . #'consult-buffer-other-window)
+         ("C-x r b" . #'consult-bookmark)
+         ("C-h i" . #'consult-info)
 
          ;; Project related
-         ("C-x p b" . 'consult-project-buffer)
+         ("C-x p b" . #'consult-project-buffer)
 
 
-		 ("M-g M-g" . consult-goto-line)
-         ("M-s ." . consult-line-symbol-at-point))
+		 ("M-g M-g" . #'consult-goto-line)
+         ("M-s ." . #'consult-line-symbol-at-point))
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :init
   ;; Optionally configure the register formatting. This improves the register

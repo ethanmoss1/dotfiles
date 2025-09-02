@@ -21,7 +21,7 @@
 ;;; Code:
 
 (use-package ednc
-  :if (string-equal my-hostname "laptop")
+  :if (string-equal my-hostname "linux")
   :config (ednc-mode))
 
 ;;; ednc.el ends here

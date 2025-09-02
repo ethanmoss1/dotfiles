@@ -58,11 +58,12 @@
    "xelb"
    "exwm"
    "app-launcher"
-   ;; "buffer-move"
+   "buffer-move"
    "tab-bar"
    "display-time"
    "pdf-tools"
-   ;; "ednc"
+   "ednc"
+   "ultra-scroll"
 
    "wait"
 
@@ -94,7 +95,7 @@
    ;; -- News and Email --
    "elfeed"
    "notmuch"
-   ;; "ntfy"
+   "ntfy"
 
    ;; -- Editing modules --
    ;; "prot-better-c-g"

@@ -26,7 +26,7 @@
 ;;; Code:
 
 (use-package buffer-move
-  :if (string-equal my-hostname "laptop")
+  :if (string-equal my-hostname "linux")
   :bind (:map desktop-environment-mode-map
 			  ("s-S-<left>" . buf-move-left)
 			  ("s-S-<right>" . buf-move-right)

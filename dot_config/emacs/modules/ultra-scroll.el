@@ -18,12 +18,17 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+;;; Commentary:
+;; Use (ultra-scroll-check) to see precision data
+
 ;;; Code:
 
 (use-package ultra-scroll
   :ensure ( :host github
             :repo "jdtsmith/ultra-scroll"
-            :files (:defaults "*.el")))
+            :files (:defaults "*.el"))
+  :config
+  (ultra-scroll-mode))
 
 ;;; ultra-scroll.el ends here
 ;; Local Variables:
