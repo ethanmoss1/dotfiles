@@ -24,10 +24,6 @@
 ;; Manage buffers using filters and marking systems like dired
 
 ;;; Code:
-(use-package nerd-icons-ibuffer
-  :ensure t
-  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
-
 
 (use-package ibuffer
   :ensure nil

@@ -23,17 +23,23 @@
 (use-package nerd-icons)
 
 (use-package nerd-icons-completion
-  :after marginalia
+  :after (marginalia)
   :config
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
 (use-package nerd-icons-corfu
-  :after corfu
+  :after (corfu nerd-icons)
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 (use-package nerd-icons-dired
+  :after (nerd-icons dired)
   :hook (dired-mode . nerd-icons-dired-mode))
+
+(use-package nerd-icons-ibuffer
+  :after (nerd-icons ibuffer)
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 
 ;;; nerd-icons.el ends here
 ;; Local Variables:
