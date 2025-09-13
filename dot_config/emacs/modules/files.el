@@ -48,9 +48,9 @@
   (setq create-lockfiles nil
 		make-backup-files nil)
 
-  (setq backup-directory-alist `(("." . ,(expand-file-name
-										  "cache/backup/"
-										  user-emacs-directory))))
+  (setq backup-directory-alist `((".*" . ,(expand-file-name
+										   "cache/backup/"
+										   user-emacs-directory))))
 
   ;; Backup by copying rather than renaming
   (setq backup-by-copying t
