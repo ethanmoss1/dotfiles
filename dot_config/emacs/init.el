@@ -144,7 +144,7 @@ loading of the module"
 
 (load-file (concat user-emacs-directory "modules-list.el"))
 
-;; Customise file - for semi-temporary customisations
+;; Customise file - for temporary customisations
 (setq custom-file (expand-file-name "custom-file.el"	user-emacs-directory))
 (if (file-exists-p custom-file)
 	(load custom-file t)
