@@ -41,6 +41,7 @@
          ("C-x r b" . #'consult-bookmark)
          ("C-h i" . #'consult-info)
 
+         ("M-y" . #'consult-yank-pop)
          ;; Project related
          ("C-x p b" . #'consult-project-buffer)
 
