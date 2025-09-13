@@ -30,8 +30,8 @@
   (setq mouse-yank-at-point t)
 
   ;; Emacs 29
-  (when (and (display-graphic-p) (fboundp 'context-menu-mode)
-	         (add-hook 'elpaca-after-init-hook #'context-menu-mode)))
+  (when (and (display-graphic-p) (fboundp 'context-menu-mode))
+    (add-hook 'elpaca-after-init-hook 'context-menu-mode))
 
   (setq hscroll-margin 2
 		hscroll-step 1
