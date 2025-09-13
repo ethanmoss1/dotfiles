@@ -9,6 +9,7 @@
    "wait" ;; special wait and install.
 
    ;; -- Built in modules --
+   "keybindings"
    "c-code"
    "startup"
    "frame"
@@ -27,7 +28,6 @@
    "savehist"
    "auto-insert"
    "dired"
-   "keybindings"
    "ibuffer"
    "window"
    "tramp"
@@ -43,14 +43,21 @@
    "vertico"
    "orderless"
    "marginalia"
-   "chezmoi"
-   ;; "embark"
+   "consult"
+   "embark"
 
-   "wait"
+   "chezmoi"
 
    ;; MacOS packages
    ;; "macos-config"
    ;; "ns-auto-titlebar"
+
+   "wait" ;; Install the most important first.
+
+   ;; - Inbuffer Completion
+   "corfu"
+   "cape"
+
 
    ;; Window manager and accompying modules
    ;; Will only load when ‘my-hostname’ is equal to laptop
@@ -58,7 +65,7 @@
    "xelb"
    "exwm"
    "app-launcher"
-   "buffer-move"
+   ;; "buffer-move"
    "tab-bar"
    "display-time"
    "pdf-tools"
@@ -69,32 +76,38 @@
 
    ;; -- Themeing Modules --
    "modus-themes"
-   ;; "ef-themes"
-   ;; "gruvbox"
-   "moodline"
-   ;; "alltheicons"
    "nerd-icons"
    "spacious-padding"  ;; adds padding, looks nice
+   "doom-modeline"
 
    ;; Org & Org related
    "org"
    "org-contrib"
    "org-protocol"
-   "org-caldav"
+
+   "org-link-man"
+   "org-link-rfc"
+
+   ;; "org-caldav"
    "org-roam"
+   ;; "org-roam-ui"
+   "org-roam-timestamps"
+   "org-contacts"
    "org-fragtog"
    "org-appear"
    ;; "org-noter"
    ;; "org-gtd"
    "olivetti"
-   ;; org links stuff
-   "org-link-man"
-   "org-link-rfc"
 
+   ;; -- Bibliography related packages --
+   "citar"
+   "citar-org-roam"
+   "zotra"
 
    ;; -- News and Email --
    "elfeed"
    "notmuch"
+   "microdata" ;; For acting on data in an email
    "ntfy"
 
    ;; -- Editing modules --
@@ -102,9 +115,7 @@
    "programming"
    "vundo"  ;; Visual undo history
    "hl-todo"
-   "corfu"
    "rainbow"
-   "consult"
    "adaptive-wrap"
    "jinx"
    "aggressive-indent"
@@ -118,6 +129,7 @@
    ;; -- Version Control --
    "magit"
    ;; "magit-gptcommit"
+   ;; "conventional-commit"
 
    ;; -- Other modules --
    "edit-server"
