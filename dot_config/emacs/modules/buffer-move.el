@@ -20,18 +20,17 @@
 
 ;;; Commentary:
 ;; Move buffers to a window
-
 ;; Allows moving of buffers to another window with direction.
 
 ;;; Code:
 
 (use-package buffer-move
-  :if (string-equal my-hostname "linux")
+  :if (string-equal my-hostname "laptop")
   :bind (:map desktop-environment-mode-map
-			  ("s-S-<left>" . buf-move-left)
-			  ("s-S-<right>" . buf-move-right)
-			  ("s-S-<up>" . buf-move-up)
-			  ("s-S-<down>" . buf-move-down)))
+			  ("s-SPC <left>" . buf-move-left)
+			  ("s-SPC <right>" . buf-move-right)
+			  ("s-SPC <up>" . buf-move-up)
+			  ("s-SPC <down>" . buf-move-down)))
 
 ;;; buffer-move.el ends here
 ;; Local Variables:

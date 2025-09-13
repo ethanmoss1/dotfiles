@@ -50,7 +50,7 @@
 
 (use-package exwm
   :ensure nil  ;; supplied by nixos
-  :if (string-equal my-hostname "linux")
+  :if (string-equal my-hostname "laptop")
   :hook ((exwm-update-title . exwm-rename-buffer-class-name)
          (exwm-manage-finish . exwm-setup-local-simulation-keys)
          (elpaca-after-init . exwm-wm-mode))

@@ -40,8 +40,9 @@
 	      resize-mini-windows 'grow-only)
 
   ;; Window divider on EXWM
-  (if (string= my-hostname "laptop")
-      (add-hook 'elpaca-after-init-hook window-divider-mode))
+  ;; (if (string= my-hostname "laptop")
+  ;; (add-hook 'elpaca-after-init-hook window-divider-mode))
+
   ;; and its settings
   (setopt window-divider-default-places t
 	      window-divider-default-right-width 2

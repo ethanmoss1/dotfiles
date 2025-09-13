@@ -22,7 +22,7 @@
 
 (use-package emacs
   :ensure nil
-  :if (string= my-hostname "linux")
+  :if (string-equal my-hostname "laptop")
   :config
   (set-face-attribute 'default nil :height 170))
 

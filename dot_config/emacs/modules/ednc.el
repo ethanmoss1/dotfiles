@@ -21,8 +21,8 @@
 ;;; Code:
 
 (use-package ednc
-  :if (string-equal my-hostname "linux")
-  :config (ednc-mode))
+  :if (string-equal my-hostname "laptop")
+  :hook (elpaca-after-init . ednc-mode))
 
 ;;; ednc.el ends here
 ;; Local Variables:

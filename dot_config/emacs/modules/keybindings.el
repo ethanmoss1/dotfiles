@@ -68,7 +68,7 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
   (if arg
       (consult-buffer)))
 
-(when (string-equal my-hostname "linux")
+(when (string-equal my-hostname "laptop")
   ;; Set the default keyboard state
   (setq my/laptop-keyboard-enabled t)
   ;; The name of the internal keyboard;
