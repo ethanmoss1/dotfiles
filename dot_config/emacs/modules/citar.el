@@ -20,8 +20,16 @@
 
 ;;; Code:
 (use-package citar
+  :after (org)
+  :bind (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+  :hook (org-mode . citar-capf-setup)
   :config
-  (setq citar-bibliography (concat org-directory "ref/references.bib"))
+  (setopt citar-bibliography (list (expand-file-name "ref/references.bib" org-directory)))
+
+  ;; This are changes from the org-cite package to use citar
+  (setopt org-cite-insert-processor 'citar
+          org-cite-follow-processor 'citar
+          org-cite-activate-processor 'citar)
 
   ;; Prettify the UI
   (defvar citar-indicator-files-icons
@@ -60,28 +68,16 @@
      :padding "  "
      :tag "is:cited"))
 
-  (setq citar-indicators
-        (list citar-indicator-files-icons
-              citar-indicator-notes-icons
-              citar-indicator-links-icons
-              citar-indicator-cited-icons)))
+  (setopt citar-indicators
+          (list citar-indicator-files-icons
+                citar-indicator-notes-icons
+                citar-indicator-links-icons
+                citar-indicator-cited-icons)))
 
-;; Org-roam integration
-(use-package citar-org-roam
-  :after (citar org-roam)
-  :config
-  (setq citar-org-roam-subdir "cite-notes")
-  (add-to-list 'org-roam-capture-templates '("n" "literature note" plain
-                                             "%?"
-                                             :target
-                                             (file+head
-                                              "#+title: ${citar-citekey} (${citar-date}). ${note-title}.\n")
-                                             "%(expand-file-name (or citar-org-roam-subdir \"\") org-roam-directory)/${citar-citekey}.org"
-                                             :unnarrowed t))
-  (setq citar-org-roam-capture-template-key "n")
-
-  ;; Finally run the damn thing!
-  (citar-org-roam-mode))
+(use-package citar-embark
+  :no-require
+  :after (citar embark)
+  :config (citar-embark-mode))
 
 ;;; citar.el ends here
 ;; Local Variables:

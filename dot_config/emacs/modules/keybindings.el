@@ -1,3 +1,4 @@
+
 ;;; keybindings.el --- Personal keybindings  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024  Ethan Moss
@@ -89,29 +90,30 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
       (message "Internal Laptop keyboard: %s" kb-enable))))
 
 ;;; -- Follow link or symbol at point --
-(defun my/follow-at-point ()
-  "Performs a context-aware action based on the text at point."
-  (interactive)
-  ;; Thing at point? symbol, list, sexp, defun, filename, existing-filename,
-  ;; url, email, uuid, word, sentence, whitespace, line, number, face and page.
-  ;; Get the current thing at point.
-  (let* ((url (thing-at-point 'url t))
-         (email (thing-at-point 'email t))
-         (possible-file (thing-at-point 'filename t))
-         (file (when (and (stringp possible-file)
-                          (file-exists-p possible-file))
-                 possible-file))
-         (symbol (thing-at-point 'symbol t))
-         )
-    (cond
-     ;; http://example.com
-     (url (browse-url url))
-     ;; info@somedomain.co.uk
-     (email (notmuch-mua-mail email))
-     ;; /home/ethan/todo.org or todo.org
-     (file (find-file file))
-     (symbol (xref-find-definitions symbol))
-     (t (message "unknown ’thing’ at point.")))))
+;; OBSOLETE BY EMBARK
+;; (defun my/follow-at-point ()
+;;   "Performs a context-aware action based on the text at point."
+;;   (interactive)
+;;   ;; Thing at point? symbol, list, sexp, defun, filename, existing-filename,
+;;   ;; url, email, uuid, word, sentence, whitespace, line, number, face and page.
+;;   ;; Get the current thing at point.
+;;   (let* ((url (thing-at-point 'url t)) ; change to `when-let*’?
+;;          (email (thing-at-point 'email t))
+;;          (possible-file (thing-at-point 'filename t))
+;;          (file (when (and (stringp possible-file)
+;;                           (file-exists-p possible-file))
+;;                  possible-file))
+;;          (symbol (thing-at-point 'symbol t))
+;;          )
+;;     (cond
+;;      ;; http://example.com
+;;      (url (browse-url url))
+;;      ;; info@somedomain.co.uk
+;;      (email (notmuch-mua-mail email))
+;;      ;; /home/ethan/todo.org or todo.org
+;;      (file (find-file file))
+;;      (symbol (xref-find-definitions symbol))
+;;      (t (message "unknown ’thing’ at point.")))))
 
 (defun my/indent-whole-buffer ()
   "Indent the entire buffer without affecting point or mark."

@@ -30,11 +30,11 @@
 (defun my/reload-org-agenda-files ()
   "Reloads the agenda file list"
   (interactive)
-  (setq org-agenda-files (directory-files org-directory t "\\.org$"))
-  (setq org-agenda-files-and-study
+  (setopt org-agenda-files (directory-files org-directory t "\\.org$"))
+  (setopt org-agenda-files-and-study
         (append (directory-files org-directory t "\\.org$")
                 (directory-files-recursively "~/Documents/study" "\\.org$")))
-  (setq org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$")))
+  (setopt org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$")))
 
 (defun my/load-minor-modes-for-org ()
   "Loads all the minor modes for use with Org mode"
@@ -58,7 +58,6 @@
     (message "Running my org-mode hooks.")
     (my/load-minor-modes-for-org)
     ))
-
 
 (defun my/add-latex-block ()
   "Adds a latex block ready for input"
@@ -143,14 +142,16 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 		 ("C-c o c" . 'org-capture)
          ("C-c o s" . 'my/org-files-grep)
          ;; Mapped keybindings
-         ;; :map org-mode-map
+         :map org-mode-map
          ;; ("C-c C-x C-f" . my/org-emphasis-map)
+         ("C-," . nil) ;; Removed for embark, use C-’
          )
   :custom
   ;; Org Export
   (org-odt-preferred-output-format "docx")  ; Make ODT export as docx
 
   :config
+  ;;; -- GENERAL ORG SETUP --
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((python . t)
                                  (emacs-lisp . t)
@@ -159,165 +160,163 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 								 (shell . t)
 								 (C . t)))
   ;; Org Visuals
-  (setq org-hide-emphasis-markers nil
-        org-pretty-entities nil
-        org-ellipsis " ⌄")
+  (setopt org-hide-emphasis-markers nil
+          org-pretty-entities nil
+          org-ellipsis " ⌄")
 
   ;; Org Feel
-  (setq org-src-fontify-natively t
-	    org-src-tab-acts-natively t
-        org-edit-src-content-indentation 2)
+  (setopt org-src-fontify-natively t
+	      org-src-tab-acts-natively t
+          org-edit-src-content-indentation 2)
 
   ;;;; -- Other Org settings
   ;; Scale latex to size based on the hostname
   (pcase my-hostname
     ("laptop" (plist-put org-format-latex-options :scale 1.8))
-    ("mac" (progn (setq org-format-latex-options
-                        '( :foreground default
-                           :background "Transparent"
-                           :scale 1.4
-                           :html-foreground "Black"
-                           :html-background "Transparent"
-                           :html-scale 1.0
-                           :matchers '("begin" "$1" "$" "$$" "\\(" "\\[")))
-                  (setq org-preview-latex-default-process 'dvisvgm)
-                  (setq org-latex-to-mathml-convert-command
-                        "latexmlmath %i --presentationmathml=%o")))
-    ("linux" (setq org-format-latex-options '( :scale 0.5 )
-                   org-preview-latex-default-process 'dvisvgm
-                   org-latex-to-mathml-convert-command
-                   "latexmlmath %i --presentationmathml=%o"))
+    ("mac" (progn (setopt org-format-latex-options
+                          '( :foreground default
+                             :background "Transparent"
+                             :scale 1.4
+                             :html-foreground "Black"
+                             :html-background "Transparent"
+                             :html-scale 1.0
+                             :matchers '("begin" "$1" "$" "$$" "\\(" "\\[")))
+                  (setopt org-preview-latex-default-process 'dvisvgm)
+                  (setopt org-latex-to-mathml-convert-command
+                          "latexmlmath %i --presentationmathml=%o")))
+    ("linux" (setopt org-format-latex-options '( :scale 0.5 )
+                     org-preview-latex-default-process 'dvisvgm
+                     org-latex-to-mathml-convert-command
+                     "latexmlmath %i --presentationmathml=%o"))
     (_ (plist-put org-format-latex-options :scale 1.0)))
 
-  ;; Org related files.
-
-  ;; Automatically setup the org folder if it is not present?
+  ;; ;; TODO: Automatically setup the org folder if it is not present?
   ;; (dolist (docs '("~/Documents" "~/Documents"))
   ;;   (when (f-directory-p docs)
   ;;     (message docs))
   ;;   (let ((org-dir (expand-file-name "org" docs) t))
   ;;     (when (make-directory org-dir t)
   ;;       (message "Org Directory created: %s" org-dir))
-  ;;     (setq org-directory org-dir)))
+  ;;     (setopt org-directory org-dir)))
 
-
-  (setq org-directory "~/Documents/org/"
-        org-default-notes-file (concat org-directory "notes.org")
-        org-agenda-files (directory-files org-directory t "\\.org$")
-        org-agenda-files-and-study (append (directory-files org-directory t "\\.org$")
-                                           (directory-files-recursively "~/Documents/study" "\\.org$"))
-        org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$"))
+  ;;; -- ORG AGENDA CONFIGURATION --
+  (setopt org-directory "~/Documents/org/"
+          org-default-notes-file (concat org-directory "notes.org")
+          org-agenda-files (directory-files org-directory t "\\.org$")
+          org-agenda-files-and-study (append (directory-files org-directory t "\\.org$")
+                                             (directory-files-recursively "~/Documents/study" "\\.org$"))
+          org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$"))
 
 
   ;; Org-agenda settings
-  (setq org-agenda-show-future-repeats 'next
-        org-agenda-include-diary nil
-        org-agenda-span 10
-        org-agenda-start-on-weekday nil
-        org-agenda-window-setup 'only-window)
+  (setopt org-agenda-show-future-repeats 'next
+          org-agenda-include-diary nil
+          org-agenda-span 10
+          org-agenda-start-on-weekday nil
+          org-agenda-window-setup 'only-window)
 
   ;; Only show TODO’s that dont have a set date.
   ;; Once that date has come, show the TODO.
-  (setq org-agenda-todo-ignore-deadlines 'future
-        org-agenda-todo-ignore-scheduled 'future
-        org-agenda-tags-todo-honor-ignore-options t)
+  (setopt org-agenda-tags-todo-honor-ignore-options t
+          org-agenda-todo-ignore-scheduled 'future
+          org-agenda-todo-ignore-deadlines 'all)
+
 
 
   ;; Setting up the agenda views
-  (setq org-agenda-custom-commands
-        '(("n"       ; Key
-           "Agenda"  ; Description
-           ((agenda ""
-                    ((org-agenda-remove-tags t)))
-            (tags-todo "+new"
-                       ((org-agenda-overriding-header "Inbox")
-                        (org-agenda-prefix-format '((tags . " %i ")))
-                        (org-agenda-remove-tags t)))
-            (todo "NEXT"
-                  ((org-agenda-overriding-header "\nNext Actions")
-                   (org-agenda-block-separator nil)
-                   (org-agenda-remove-tags t)
-                   (org-agenda-skip-function
-                    ;; Skip the heading if it has any of the tags
-                    '(my/org-agenda-skip-tags '("new" "habit")))))
-            (todo "TODO"
-                  ((org-agenda-overriding-header "\nTODO Tasks")
-                   (org-agenda-block-separator nil)
-                   (org-agenda-remove-tags t)
-                   (org-agenda-skip-function
-                    ;; Skip the heading if it has any of the tags
-                    '(my/org-agenda-skip-tags '("new" "habit"))))))
-           ((org-agenda-files org-agenda-files-and-study)))
+  (setopt org-agenda-custom-commands
+          '(("n"       ; Key
+             "Agenda"  ; Description
+             ((agenda ""
+                      ((org-agenda-remove-tags t)))
+              (tags-todo "+new"
+                         ((org-agenda-overriding-header "Inbox")
+                          (org-agenda-prefix-format '((tags . " %i ")))
+                          (org-agenda-remove-tags t)))
+              (todo "NEXT"
+                    ((org-agenda-overriding-header "\nNext Actions")
+                     (org-agenda-block-separator nil)
+                     (org-agenda-remove-tags t)
+                     (org-agenda-skip-function
+                      ;; Skip the heading if it has any of the tags
+                      '(my/org-agenda-skip-tags '("new" "habit")))))
+              (todo "TODO"
+                    ((org-agenda-overriding-header "\nTODO Tasks")
+                     (org-agenda-block-separator nil)
+                     (org-agenda-remove-tags t)
+                     (org-agenda-skip-function
+                      ;; Skip the heading if it has any of the tags
+                      '(my/org-agenda-skip-tags '("new" "habit"))))))
+             ((org-agenda-files org-agenda-files-and-study)))
 
-          ;; Default - show all org files in ‘~/Documents’ recursively.
-          ("b"
-           "Agenda - All Org Files"
-           ((agenda "")
-            (alltodo ""))
-           ((org-agenda-files org-agenda-files-all)))))
+            ;; Default - show all org files in ‘~/Documents’ recursively.
+            ("b"
+             "Agenda - All Org Files"
+             ((agenda "")
+              (alltodo ""))
+             ((org-agenda-files org-agenda-files-all)))))
 
   ;; Refiling options
-  (setq org-outline-path-complete-in-steps nil
-        org-refile-use-outline-path 'file
-        org-refile-targets '((nil :maxlevel . 2)
-                             (org-agenda-files :maxlevel . 2)
-                             (org-agenda-files-all :maxlevel . 1)))
+  (setopt org-outline-path-complete-in-steps nil
+          org-refile-use-outline-path 'file
+          org-refile-targets '((nil :maxlevel . 2)
+                               (org-agenda-files :maxlevel . 2)
+                               (org-agenda-files-all :maxlevel . 1)))
 
+  ;; -- ORG CAPTURE CONFIGURATION --
   ;; Capture time entered and exited ‘NEXT’ as well as any notes for when
   ;; changing the state to ‘DONE’
-  (setq org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)" "CANCELLED(c@)")
-		org-capture-templates `(("i"               ; keys
-                                 "Inbox"           ; description
-                                 entry             ; type
-                                 (file+headline "inbox.org" "todo")  ; target
-								 ,(s-join "\n"     ; template
-                                          '("** TODO %?" ;; %(org-set-tags \"new\")"
-	                                        ":PROPERTIES:"
-											":ENTERED: %U"
-											":FILE: [[%f]]"
-                                            ":LINK: %a"
-											":END:"))
-                                 :empty-lines 1) ; properties
+  (setopt org-todo-keywords '("TODO(t)" "NEXT(n!/!)" "|" "DONE(d@)" "CANCELLED(c@)"))
 
-								("n"
-                                 "Notes"
-                                 entry
-                                 (file+headline "inbox.org" "notes")
-								 ,(s-join "\n" '("** %? %^G"
-												 ":PROPERTIES:"
-												 ":ENTERED: %U"
-												 ":FILE: [[%f]]"
-                                                 ":LINK: %a"
-												 ":END:"))
-                                 :empty-lines 1)
-                                ("c"
-                                 "Calendar"
-                                 entry
-                                 (file+headline "inbox.org" "todo")
-                                        ;,(concat "* %?\n"
-                                        ;         "SCHEDULED: <%<%Y-%m-%d %a %^{Scheduled Time: }>>")
-                                 ,(s-join "\n"
-                                          '("* TODO %?"
-                                            "SCHEDULED: <%(org-read-date t)>"
-                                            ":PROPERTIES:"
-											":ENTERED: %U"
-											":FILE: [[%f]]"
-                                            ":LINK: %a"
-											":END:"))
-                                 :time-prompt t)
-                                ("w"
-                                 "Web site"
-                                 entry
-                                 (file+headline "inbox.org" "notes")
-                                 ,(s-join "\n"
-                                          '("* LINK %?"
-                                            ":PROPERTIES:"
-											":ENTERED: %U"
-                                            ":LINK: %a"
-											":END:"
-                                            ""
-                                            "%:initial")))))
+  ;; Various templates for different uses. if there is a special usage, it will
+  ;; be noted above each template.
+  (setopt org-capture-templates `(;; Standard input to inbox
+                                  ("i"               ; keys
+                                   "Inbox"           ; description
+                                   entry             ; type
+                                   (file+headline "inbox.org" "todo")  ; target
+						           ,(s-join "\n"     ; template
+                                            '("** TODO %?" ;; %(org-set-tags \"new\")"
+	                                          ":PROPERTIES:"
+									          ":ENTERED: %U"
+									          ":FILE: [[%f]]"
+                                              ":LINK: %a"
+									          ":END:"))
+                                   :empty-lines 1) ; properties
 
+                                  ;; Notes for on the fleeting thoughts
+						          ("n"
+                                   "Notes"
+                                   entry
+                                   (file+headline "inbox.org" "notes")
+						           ,(s-join "\n" '("** %? %^G"
+								                   ":PROPERTIES:"
+								                   ":ENTERED: %U"
+								                   ":FILE: [[%f]]"
+                                                   ":LINK: %a"
+								                   ":END:"))
+                                   :empty-lines 1)
+
+                                  ;; This is for Org-protocol, it allows for
+                                  ;; taking the links and highlighted text and
+                                  ;; putting it into my inbox notes
+                                  ("w"
+                                   "Web site"
+                                   entry
+                                   (file+headline "inbox.org" "notes")
+                                   ,(s-join "\n"
+                                            '("* LINK %?"
+                                              ":PROPERTIES:"
+			                                  ":ENTERED: %U"
+                                              ":LINK: %a"
+			                                  ":END:"
+                                              ""
+                                              "%:initial")))))
+  ;;; -- ORG REFERENCING ---
+  (setopt org-cite-global-bibliography (list (expand-file-name "ref/references.bib" org-directory)))
+
+
+  ;;; -- ORG UI AND DISPLAY CONFIGURATION --
   ;; Set up org buffer views:
   (add-to-list 'display-buffer-alist
                ;; If the buffer is one of the following; (case insensitive)

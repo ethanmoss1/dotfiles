@@ -18,25 +18,19 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+;; Commentary:
+
+;; https://github.com/stsquad/emacs_chrome
+
 ;;; Code:
 
 
 (use-package edit-server
   :commands edit-server-start
-  :init
-  (if elpaca-after-init-time
-      (edit-server-start)
-    (add-hook 'elpaca-after-init-hook
-              #'(lambda() (edit-server-start))))
+  :hook (elpaca-after-init . edit-server-start)
   :config
-  (setq edit-server-new-frame-alist
-        '((name . "Edit with Emacs FRAME")
-          (top . 200)
-          (left . 200)
-          (width . 80)
-          (height . 25)
-          (minibuffer . t)
-          (menu-bar-lines . t))))
+  (setopt edit-server-new-frame nil
+          edit-server-default-major-mode #'markdown-mode))
 
 ;;; edit-server.el ends here
 ;; Local Variables:

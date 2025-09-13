@@ -1,4 +1,5 @@
-;;; org-contacts.el --- Manage contactc in Org-mode  -*- lexical-binding: t; -*-
+
+;;; org-contacts.el --- Manage contacts in Org-mode  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025  Ethan Moss
 
@@ -20,31 +21,44 @@
 
 ;;; Code:
 
-(defun my/get-capture-filename ()
-  "Get the Contacts name and create a file with that name"
-  (let* ((name (read-string "Full Name: "))
-         (capitalized-name (mapcar #'capitalize (split-string name)))
-         (hyphenated-string (mapconcat 'identity capitalized-name "_"))
-         (time-string (format-time-string "%Y%m%d%H%M%S-"))
-         (file-name (concat time-string hyphenated-string ".org")))
-    (expand-file-name file-name org-contacts-directory)))
+;; (defun my/get-capture-filename ()
+;;   "Get the Contacts name and create a file with that name"
+;;   (let* ((name (read-string "Full Name: "))
+;;          (capitalized-name (mapcar #'capitalize (split-string name)))
+;;          (hyphenated-string (mapconcat 'identity capitalized-name "_"))
+;;          (time-string (format-time-string "%Y%m%d%H%M%S-"))
+;;          (file-name (concat time-string hyphenated-string ".org")))
+;;     (expand-file-name file-name org-contacts-directory)))
 
 (use-package org-contacts
   :after org
+  ;; Because of the UK Online Safety act, I have to use a mirror...
+  :ensure ( :host github
+            :repo "emacsmirror/org-contacts"
+            :files (:defaults "*.el"))
   :config
-  (setq org-contacts-directory (concat org-directory "contacts/"))
-  (setq org-contacts-files (directory-files org-contacts-directory t "\\.org$")))
-
-  ;; (setq org-roam-capture-templates
-  ;;       '(("d" "default" plain "%?" :target
-  ;;          (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-  ;;                     "#+title: ${title}\n")
-  ;;          :unnarrowed t)
-  ;;
-  ;;         ("c" "contact" plain "%?" :target
-  ;;          (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-  ;;                     "* ${title}\n:PROPERTIES:\n:NUMBER: %^{Phone number: }\n:EMAIL: %^{Email: }\n:NOTE: %^{NOTE}\n:END:")
-  ;;          :unnarrowed t))))
+  ;; (setq org-contacts-directory (concat org-directory "contacts/"))
+  ;; (setopt org-contacts-directory (concat org-directory "roam"))
+  ;; (setopt org-contacts-files (directory-files org-contacts-directory t "\\.org$")))
+  (setopt org-contacts-files (list (concat org-roam-directory
+                                           "20250903120720-contacts.org")))
+  (add-to-list 'org-capture-templates `("c"
+                                        "Contacts"
+                                        entry
+                                        (file ,(nth 0 org-contacts-files))
+                                        ,(s-join "\n" '("* %(org-contacts-template-name)"
+                                                        ":PROPERTIES:"
+                                                        ":EMAIL: %(org-contacts-template-email)"
+                                                        ":PHONE:"
+                                                        ":ALIAS:"
+                                                        ":NICKNAME:"
+                                                        ":IGNORE:"
+                                                        ":ICON:"
+                                                        ":NOTE:"
+                                                        ":ADDRESS:"
+                                                        ":BIRTHDAY:"
+                                                        ":END:"))
+                                        :empty-lines 1)))
 
 ;;; org-contacts.el ends here
 ;; Local Variables:

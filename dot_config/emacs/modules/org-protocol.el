@@ -22,15 +22,11 @@
 
 (use-package emacs
   :ensure nil
-  :after org
+  :after (org)
+  :hook (elpaca-after-init . server-start)
   :config
-  ;; for scrim
-  ;; (setopt server-use-tcp t)
-
-  ;; Start server and require org protocol
-  (if (not (string= my-hostname "linux"))
-      (server-start))
-  (require 'org-protocol))
+  (require 'org-protocol)
+  (setopt org-protocol-default-template-key "w"))
 
 ;;; org-protocol.el ends here
 ;; Local Variables:

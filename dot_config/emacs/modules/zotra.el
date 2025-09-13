@@ -24,51 +24,62 @@
 ;; needed. The first is to install the zotra-server
 
 ;; Translation server and wrapper;
-;; https://github.com/mpedramfar/zotra-server This requires nodejs
-;; NOTE: Dont forget submodules! ’--recures-submodules’
+;; https://github.com/mpedramfar/zotra-server
+;; This requires nodejs
+;; NOTE: Dont forget submodules! ’--recursive-submodules’
 
 ;; Once installed run npm install, and npm start to check it works.
 ;; edit the zotra-local-server-directory variable to the location of the
 
+;; Ive also created a nix flake now, this is on my own github;
+;; https://github.com/ethanmoss1/zotra-server
 ;;; Code:
-(defun zotra-download-attachment-for-current-entry ()
-  "Automatically download attachment after adding a bibtex entry.
-
-When the point is at a bibtex entry, the following function downloads the
-attachment for it and adds the filename to a bibtex field named ’File'."
-  (interactive)
-  (save-excursion
-    (bibtex-beginning-of-entry)
-    (let* ((entry (bibtex-parse-entry t))
-           (key (cdr (assoc "=key=" entry)))
-           (url (cdr (assoc "url" entry)))
-           (filename (concat key ".pdf"))
-           (filename (when entry
-                       (zotra-download-attachment
-                        url nil filename))))
-      (when filename
-        (bibtex-make-field (list "File" nil filename) t)))))
-
-(defun zotra-add-entry-and-download-attachment (&optional url)
-  "Download any PDF or attached files to storage when adding a reference"
-  (interactive)
-  (let ((zotra-after-get-bibtex-entry-hook
-         (append zotra-after-get-bibtex-entry-hook
-                 '(zotra-download-attachment-for-current-entry))))
-    (zotra-add-entry url)))
 
 (use-package zotra
-  ;;  :defer nil
+  :ensure ( :host github
+            :repo "ethanmoss1/zotra"
+            :files (defaults "*.el"))
+  :preface
+  (defun zotra-download-attachment-for-current-entry ()
+    "Automatically download attachment after adding a bibtex entry.
+When the point is at a bibtex entry, the following function downloads the
+attachment for it and adds the filename to a bibtex field named ’File'."
+    (interactive)
+    (save-excursion
+      (bibtex-beginning-of-entry)
+      (let* ((entry (bibtex-parse-entry t))
+             (key (cdr (assoc "=key=" entry)))
+             (url (cdr (assoc "url" entry)))
+             (filename (concat key ".pdf"))
+             (filename (when entry
+                         (zotra-download-attachment
+                          url nil filename))))
+        (when filename
+          (bibtex-make-field (list "File" nil filename) t)))))
+
+  (defun zotra-add-entry-and-download-attachment (&optional url)
+    "Download any PDF or attached files to storage when adding a reference"
+    (interactive)
+    (let ((zotra-after-get-bibtex-entry-hook
+           (append zotra-after-get-bibtex-entry-hook
+                   '(zotra-download-attachment-for-current-entry))))
+      (zotra-add-entry url)))
+
   :config
-  ;; setup local translation server
-  (when (string-equal my-hostname "mac")
-    (setq zotra-local-server-directory "/Users/ethan/Documents/src/zotra-server")
-    (setq zotra-backend 'zotra-server))
+  ;; Setup local translation server
+  (pcase my-hostname
+    ("mac" (setopt zotra-local-server-directory "/Users/ethan/Documents/src/zotra-server"
+                   zotra-backend 'zotra-server))
+    ("linux" (setopt zotra-backend 'zotra-server
+                     zotra-local-server-directory "nodir"
+                     zotra-local-server-cmd "zotra"))
+    (_ (message "Unknown host. Failed setting up zotra.")))
 
-  (setq zotra-download-attachment-default-directory (concat org-directory
-                                                            "ref/attachments"))
-  (setq zotra-default-bibliography (concat org-directory "ref/references.bib")))
-
+  ;; Other Settings
+  (setopt zotra-download-attachment-default-directory (concat org-directory
+                                                              "ref/attachments"))
+  (setopt zotra-default-bibliography (concat org-directory "ref/references.bib"))
+  (setopt zotra-use-curl 't))
 
 ;;; zotra.el ends here
 ;; Local Variables:
