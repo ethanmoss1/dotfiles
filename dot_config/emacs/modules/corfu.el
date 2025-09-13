@@ -22,25 +22,6 @@
 
 ;;; Code :
 (use-package corfu
-  :config
-  (require 'corfu-popupinfo)
-
-  (setq corfu-popupinfo-delay '(1.25 . 0.5)
-        corfu-min-width 20)
-  (corfu-popupinfo-mode)
-
-  ;; (require 'org-TBLFM-regexp)
-  (setq corfu-cycle t                ;; Enable cycling for `corfu-next/previous'
-        corfu-auto t                 ;; Enable auto completion
-        corfu-separator ?\s          ;; Orderless field separator
-        corfu-quit-at-boundary nil   ;; Never quit at completion boundary
-        corfu-quit-no-match t
-        corfu-preview-current nil    ;; Disable current candidate preview
-        corfu-preselect 'prompt      ;; Preselect the prompt
-        corfu-on-exact-match nil     ;; Configure handling of exact matches
-        corfu-scroll-margin 5)       ;; Use scroll margin
-
-
   ;; Enable Corfu only for certain modes.
   ;; :hook ((prog-mode . corfu-mode)
   ;;        (shell-mode . corfu-mode)
@@ -49,12 +30,28 @@
   ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
   ;; be used globally (M-/).  See also the customization variable
   ;; `global-corfu-modes' to exclude certain modes.
-  :init
-  (global-corfu-mode))
+  :hook (elpaca-after-init . global-corfu-mode)
+  :config
+  (require 'corfu-popupinfo)
+
+  (setopt corfu-popupinfo-delay '(0.5 . 0.5)
+          corfu-min-width 20)
+  (corfu-popupinfo-mode)
+
+  ;; (require 'org-TBLFM-regexp)
+  (setopt corfu-cycle t                ;; Enable cycling for `corfu-next/previous'
+          corfu-auto t                 ;; Enable auto completion
+          corfu-separator ?\s          ;; Orderless field separator
+          corfu-quit-at-boundary nil   ;; Never quit at completion boundary
+          corfu-quit-no-match t
+          corfu-preview-current nil    ;; Disable current candidate preview
+          corfu-preselect 'prompt      ;; Preselect the prompt
+          corfu-on-exact-match nil     ;; Configure handling of exact matches
+          corfu-scroll-margin 2))      ;; Use scroll margin
 
 ;; Additional package to make it work on terminal.
 (use-package corfu-terminal
-  :after corfu
+  :after (corfu)
   :init (corfu-terminal-mode))
 
 ;; A few more useful configurations...
@@ -62,16 +59,16 @@
   :ensure nil
   :init
   ;; TAB cycle if there are only few candidates
-  (setq completion-cycle-threshold 3)
+  (setopt completion-cycle-threshold nil)
 
   ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
   ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
-  (setq read-extended-command-predicate
-        #'command-completion-default-include-p)
+  (setopt read-extended-command-predicate
+          #'command-completion-default-include-p)
 
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
-  (setq tab-always-indent 'complete))
+  (setopt tab-always-indent 'complete))
 
 
 ;;; corfu.el ends here ----------------------------------------------------
