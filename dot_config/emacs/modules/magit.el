@@ -20,16 +20,6 @@
 
 ;;; Code :
 
-;; -- Functions
-;; Replaces the original function, only running Magit if it is bound.
-(defun project-vc-dir ()
-  "Run Magit or VC-Dir in the current project's root."
-  (interactive)
-  (if (fboundp #'magit)
-      (magit-status (project-root (project-current t)))
-    (vc-dir (project-root (project-current t)))))
-
-
 ;; -- Configuration
 ;; Brand new package, requires its own recipe
 (use-package cond-let
@@ -60,7 +50,15 @@
   ;;                (window-height . 0.33)
   ;;                (window-parameters
   ;;                 (no-delete-other-windows . t))))
-  (setopt magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (setopt magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+
+  :init
+  (defun project-vc-dir ()
+    "Run Magit or VC-Dir in the current project's root."
+    (interactive)
+    (if (fboundp #'magit)
+        (magit-status (project-root (project-current t)))
+      (vc-dir (project-root (project-current t))))))
 
 ;;; magit.el ends here
 ;; Local Variables:
