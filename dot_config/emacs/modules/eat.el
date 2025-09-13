@@ -33,9 +33,7 @@
 
   ;; Eat settings
   (setq eat-kill-buffer-on-exit t
-        eat-term-name "xterm"  ;; easier than trying to hack eat-term to work
-        eat-tramp-shells '(("docker" . "/bin/sh")))
-  ;; ("ssh" . "/bin/bash")))
+        eat-term-name "xterm")  ;; easier than trying to hack eat-term to work
 
   ;; One of the following;
   ;; For `eat-eshell-mode'.
