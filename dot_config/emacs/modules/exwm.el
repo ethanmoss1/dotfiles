@@ -24,6 +24,25 @@
 
 ;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
 
+(defun my/laptop--pre-shutdown ()
+  "Perform pre-shutdown/reboot procedures ensuring no/minimal loss of data."
+  (bookmark-save)
+  (save-some-buffers))
+
+(defun my/laptop-shutdown ()
+  "Shutdown the Laptop, saving and closing the necessary programs first."
+  (interactive)
+  (when (y-or-n-p "Shutdown Laptop?")
+    (my/laptop--pre-shutdown)
+    (shell-command "shutdown now")))
+
+(defun my/laptop-reboot ()
+  "Reboot the Laptop, saving and closing the necessary programs first."
+  (interactive)
+  (when (y-or-n-p "Reboot Laptop?")
+    (my/laptop--pre-shutdown)
+    (shell-command "reboot")))
+
 (defun exwm-rename-buffer-class-name ()
   "Rename the EXWM buffers with the X11 Class name"
   (if (and (string-equal exwm-class-name "firefox") exwm-title)
@@ -101,11 +120,9 @@
 		  ([C-x C-s] . [?\C-s])
 
 		  ;; exit
-		  ([?\C-g] . [escape])))
-  )
+		  ([?\C-g] . [escape]))))
 
-(if (string= my-hostname "linux")
-    (elpaca-wait))
+(if (string-equal my-hostname "laptop") (elpaca-wait))
 
 ;;; exwm.el ends here -----------------------------------------------------
 ;; Local Variables:
