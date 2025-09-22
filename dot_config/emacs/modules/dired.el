@@ -47,7 +47,7 @@
               ("." . dired-omit-mode))
   :config
   (require 'dired-x)
-  (setq dired-listing-switches "-lAGvh --group-directories-first"
+  (setq dired-listing-switches "-lAvh --group-directories-first"
 		dired-auto-revert-buffer 'dired-directory-changed-p
 		dired-clean-confirm-killing-deleted-buffers t
 		dired-clean-up-buffers-too t
