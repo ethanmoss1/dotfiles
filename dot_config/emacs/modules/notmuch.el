@@ -21,47 +21,43 @@
 ;;; Code :
 
 ;; This adds the store link functionality to notmuch allowing me to use
-;; `org-store-link’ to store a link to the message that works in the search mode
+;; `org-link-store’ to store a link to the message that works in the search mode
 ;; as well as the show mode. With this, i can use `org-capture’ and i am able to
 ;; create a reference to the email, meaning if i create a TODO, i can have it
 ;; automatically add the link for following later.
 (use-package emacs
   :ensure nil
-  :after org
+  :after (org notmuch)
   :config
+  (org-link-set-parameters "notmuch"
+			               :follow 'org-notmuch-open
+			               :store 'org-notmuch-store-link)
+
   (defun org-notmuch-open (id)
-    "The RFC that we want to view"
+    "Visit the notmuch message or thread with id ID."
     (notmuch-show id))
 
   (defun org-notmuch-store-link ()
     "Store a link to a notmuch mail message."
-    ;; Depending on the major mode, we get the ID for the link in different ways
-    (pcase major-mode
-      (notmuch-show-mode
+    (cl-case major-mode
+      ('notmuch-show-mode
        ;; Store link to the current message
        (let* ((id (notmuch-show-get-message-id))
 	          (link (concat "notmuch:" id))
-	          (description (format "Mail: %s"
-                                   (notmuch-show-get-subject))))
+	          (description (format "Mail: %s" (notmuch-show-get-subject))))
          (org-store-link-props
 	      :type "notmuch"
 	      :link link
 	      :description description)))
-
-      (notmuch-search-mode
+      ('notmuch-search-mode
        ;; Store link to the thread on the current line
        (let* ((id (notmuch-search-find-thread-id))
 	          (link (concat "notmuch:" id))
-	          (description (format "Mail: %s"
-                                   (notmuch-search-find-subject))))
+	          (description (format "Mail: %s" (notmuch-search-find-subject))))
          (org-store-link-props
 	      :type "notmuch"
 	      :link link
-	      :description description)))))
-
-  (org-link-set-parameters "notmuch"
-                           :follow #'org-notmuch-open
-                           :store #'org-notmuch-store-link))
+	      :description description))))))
 
 ;; (defun my/notmuch-edit-config ()
 ;;   "Edit the taggin config for notmuch"
