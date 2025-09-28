@@ -38,6 +38,7 @@
    ;; "webjump"
    "replace"
    "winner"
+   "ediff"
 
    ;; -- Compulsory Modules --
    "vertico"
