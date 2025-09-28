@@ -127,18 +127,10 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
 
 (use-package emacs
   :ensure nil
-  :bind (;; ("RET" . 'newline-and-indent)
-         ("C-x k" . 'kill-current-buffer)   ; Kill buffer without asking which one
-         ;; ("C-x k" . 'kill-buffer-and-window)
+  :bind (("C-x k" . 'kill-current-buffer)   ; Kill buffer without asking which one
 		 ("C-x C-b" . 'ibuffer)
          ("C-x 2" . 'split-window-below-and-focus)
-         ("C-x 3" . 'split-window-right-and-focus)
-         ;; ("<home>" . 'my/move-beginning-of-line)
-         ;; ("M-o" . 'other-window)
-         ;; ("C-a" . 'my/move-beginning-of-line)
-         ("C-c a" . #'my/setup-dashboard-tabs)
-         ;; ("C-c i" . #'my/indent-whole-buffer)
-         ("M-RET" . #'my/follow-at-point)))
+         ("C-x 3" . 'split-window-right-and-focus)))
 
 ;;; keybindings.el ends here
 ;; Local Variables:
