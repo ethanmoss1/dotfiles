@@ -18,16 +18,14 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-;; Sudo or ssh access
-
-;; same as above
-
 ;;; Code:
-(setq tramp-allow-unsafe-temporary-files t
-	  tramp-backup-directory-alist `(("." . ,(expand-file-name
-											  "backup"
-											  user-emacs-directory))))
+
+(setopt tramp-allow-unsafe-temporary-files t
+	    tramp-backup-directory-alist `((".+" . ,(expand-file-name
+											    "backup"
+											    user-emacs-directory)))
+        tramp-copy-size-limit 'nil ;; Use out of band copy
+        )
 
 ;;; tramp.el ends here
 ;; Local Variables:
