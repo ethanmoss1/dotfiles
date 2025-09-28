@@ -47,20 +47,20 @@
               ("." . dired-omit-mode))
   :config
   (require 'dired-x)
-  (setq dired-listing-switches "-lAvh --group-directories-first"
-		dired-auto-revert-buffer 'dired-directory-changed-p
-		dired-clean-confirm-killing-deleted-buffers t
-		dired-clean-up-buffers-too t
-		dired-create-destination-dirs 'always
-		dired-free-space 'separate
-		dired-mouse-drag-files 'move
-        dired-recursive-copies 'always
-        dired-recursive-deletes 'top
-        dired-kill-when-opening-new-dired-buffer nil
-        dired-dwim-target t
+  (setopt dired-listing-switches "-lAvh --group-directories-first"
+	      dired-auto-revert-buffer 'dired-directory-changed-p
+	      dired-clean-confirm-killing-deleted-buffers t
+	      dired-clean-up-buffers-too t
+	      dired-create-destination-dirs 'always
+	      dired-free-space 'separate
+	      dired-mouse-drag-files 'move
+          dired-recursive-copies 'always
+          dired-recursive-deletes 'top
+          dired-kill-when-opening-new-dired-buffer nil
+          dired-dwim-target t
 
-        ;; hide .dot files when in dired-omit-mode
-        dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+          ;; hide .dot files when in dired-omit-mode
+          dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 
   ;; -- Functions --
   (defun dired-do-delete-skip-trash (&optional arg)
