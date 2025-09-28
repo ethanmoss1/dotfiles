@@ -24,9 +24,6 @@
   (interactive)
   (consult-grep org-roam-directory))
 
-(defalias 'org-element--property 'org-element-property
-  "Fix org-roam issues")
-
 (use-package org-roam
   :after (org)
   :defer t
