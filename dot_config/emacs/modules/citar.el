@@ -24,7 +24,8 @@
   :bind (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
   :hook (org-mode . citar-capf-setup)
   :config
-  (setopt citar-bibliography (list (expand-file-name "ref/references.bib" org-directory)))
+  (setopt citar-bibliography (list (expand-file-name "ref/references.bib" org-directory))
+          citar-library-paths (list (expand-file-name "ref/attachments" org-directory)))
 
   ;; This are changes from the org-cite package to use citar
   (setopt org-cite-insert-processor 'citar
