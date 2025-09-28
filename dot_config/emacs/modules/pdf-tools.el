@@ -23,7 +23,7 @@
   :if (display-graphic-p)
   :hook (elpaca-after-init . pdf-tools-install)
   :config
-  (setq pdf-view-display-size 'fit-page))
+  (setopt pdf-view-display-size 'fit-page))
 
 ;;; pdf-tools.el ends here
 ;; Local Variables:
