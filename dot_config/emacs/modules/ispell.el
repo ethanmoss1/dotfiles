@@ -26,7 +26,8 @@
   :ensure nil
   :config
   (setopt ispell-dictionary "en_GB"
-          ispell-alternate-dictionary "en_US"
+          ispell-alternate-dictionary "en_GB"
+          ispell-local-dictionary 'nil
           ;; This is done automatically.
 	      ;; ispell-program-name (executable-find "hunspell")
           ))
