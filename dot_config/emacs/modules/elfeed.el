@@ -23,13 +23,6 @@
 
 ;; Allow capturing of elfeed entry in org capture
 ;; https://yiming.dev/blog/2016/01/28/add-org-store-link-entry-for-elfeed/
-(defun my/org-elfeed-entry-store-link ()
-  (when elfeed-show-entry
-    (let* ((link (elfeed-entry-link elfeed-show-entry))
-           (title (elfeed-entry-title elfeed-show-entry)))
-      (org-store-link-props
-       :link link
-       :description title))))
 
 (use-package elfeed
   :ensure ( :package "elfeed"
@@ -47,17 +40,11 @@
   (setopt elfeed-search-filter "+unread")
 
   (setq elfeed-feeds
-        '(;; Module M269 news - broken?
-		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304299" uni news)
-		  ;; M269 computing and IT news
-		  ;; ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304300" uni news)
-		  ;; Module TM257 news
+        '(("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304299" uni news)
 		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=299153" uni news)
-          ;; Module TM256 news
           ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=311531" uni news)
 		  ;; /dev/null
 		  ("yummymelon.com/devnull/feeds/all.atom.xml" emacs blog)
-		  ;; XKCD
 		  ("https://xkcd.com/rss.xml" humour cartoon)
 		  ;; Emacs release news
 		  ;; ("https://emacs.org/rss/emacs.xml" emacs news release)
@@ -78,11 +65,7 @@
           ("https://www.tomscott.com/updates.xml" blog news)
           ("https://joshblais.com/index.xml" blog emacs)
           ("duncanbritt.com/feed.xml" blog emacs)
-          ("https://tsawyer87.github.io//index.xml" nix blog)
-          ))
-
-  (add-hook 'org-store-link-functions
-            'my/org-elfeed-entry-store-link))
+          ("https://tsawyer87.github.io//index.xml" nix blog))))
 
 ;; (use-package elfeed-goodies
 ;;   :after elfeed
