@@ -23,12 +23,11 @@
 (use-package nerd-icons)
 
 (use-package nerd-icons-completion
-  :after (marginalia)
-  :config
-  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
+  :after (nerd-icons marginalia)
+  :hook (elpaca-after-init . nerd-icons-completion-marginalia-setup))
 
 (use-package nerd-icons-corfu
-  :after (corfu nerd-icons)
+  :after (nerd-icons corfu)
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
