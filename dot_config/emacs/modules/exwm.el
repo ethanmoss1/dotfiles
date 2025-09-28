@@ -51,15 +51,6 @@
 		(exwm-workspace-rename-buffer new-buffer-name))
 	(exwm-workspace-rename-buffer exwm-class-name)))
 
-;; (defun exwm-launch-terminal ()
-;;   "Launch EAT if installed otherwise launch eshell"
-;;   (interactive)
-;;   ;; check if eat is installed
-;;   ;; otherwise use eshell
-;;   (if (fboundp 'eat)
-;;       (eat)
-;;     (eshell)))
-
 (defun exwm-setup-local-simulation-keys ()
   ""
   (when (and exwm-class-name
@@ -82,7 +73,17 @@
           ("s-<tab>" . #'app-launcher-run-app)
 
           ;; EXWM functions
-		  ("s-R" . exwm-reset))
+		  ("s-r" . exwm-reset)
+          ("s-1" . (lambda () (interactive) (exwm-workspace-switch-create 0)))
+          ("s-2" . (lambda () (interactive) (exwm-workspace-switch-create 1)))
+          ("s-3" . (lambda () (interactive) (exwm-workspace-switch-create 2)))
+          ("s-4" . (lambda () (interactive) (exwm-workspace-switch-create 3)))
+          ("s-5" . (lambda () (interactive) (exwm-workspace-switch-create 4)))
+          ("s-6" . (lambda () (interactive) (exwm-workspace-switch-create 5)))
+          ("s-7" . (lambda () (interactive) (exwm-workspace-switch-create 6)))
+          ("s-8" . (lambda () (interactive) (exwm-workspace-switch-create 7)))
+          ("s-9" . (lambda () (interactive) (exwm-workspace-switch-create 8))))
+
   :config
   ;; Setup the keymap to allow for keybindings in EXWM and non-EXMW buffers
   ;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
@@ -90,37 +91,39 @@
   (desktop-environment-mode t)
 
   ;; Dont ask to replace, if I have another WM open its probably for a reason
-  (setq exwm-replace 'nil)
+  (setopt exwm-replace 'nil)
 
   ;; Mimic behaviour of emacs bindings in x sessions
-  (setq exwm-input-simulation-keys
-        '(;; movement
-		  ([?\C-b] . [left])
-		  ([?\M-b] . [C-left])
-		  ([?\C-f] . [right])
-		  ([?\M-f] . [C-right])
-		  ([?\C-p] . [up])
-		  ([?\C-n] . [down])
-		  ([?\C-a] . [home])
-		  ([?\C-e] . [end])
-		  ([?\M-v] . [prior])
-		  ([?\C-v] . [next])
-		  ([?\C-d] . [delete])
-		  ([?\C-k] . [S-end C-x])
+  (setopt exwm-input-simulation-keys
+          '(;; movement
+		    ([?\C-b] . [left])
+		    ([?\M-b] . [C-left])
+		    ([?\C-f] . [right])
+		    ([?\M-f] . [C-right])
+		    ([?\C-p] . [up])
+		    ([?\C-n] . [down])
+		    ([?\C-a] . [home])
+            ([?\C-e] . [end])
+            ([?\C-\S-a] . [S-home]) ; Select
+            ([?\C-\S-e] . [S-end]) ; Select
+		    ([?\M-v] . [prior])
+		    ([?\C-v] . [next])
+		    ([?\C-d] . [delete])
+		    ([?\C-k] . [S-end C-x])
 
-		  ;; cut/paste.
-		  ([?\C-w] . [?\C-x])
-		  ([?\M-w] . [?\C-c])
-		  ([?\C-y] . [?\C-v])
+		    ;; cut/paste.
+		    ([?\C-w] . [?\C-x])
+		    ([?\M-w] . [?\C-c])
+		    ([?\C-y] . [?\C-v])
 
-		  ;; search
-		  ([?\C-s] . [?\C-f])
+		    ;; search
+		    ([?\C-s] . [?\C-f])
 
-		  ;; save
-		  ([C-x C-s] . [?\C-s])
+		    ;; save
+		    ([C-x C-s] . [C-s])
 
-		  ;; exit
-		  ([?\C-g] . [escape]))))
+		    ;; exit
+		    ([?\C-g] . [escape]))) )
 
 (if (string-equal my-hostname "laptop") (elpaca-wait))
 
