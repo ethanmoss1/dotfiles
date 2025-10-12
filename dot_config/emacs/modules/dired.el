@@ -40,11 +40,14 @@
   :defer t
   :hook (;; (dired-mode . dired-hide-details-mode)
          (dired-mode . dired-omit-mode))
-  :bind (:map dired-mode-map ;; Variable is void when evaluated for first time
-			  ("<left>"  . dired-up-directory)
-			  ("<right>" . dired-find-file)
-              ;; omit dotfiles
-              ("." . dired-omit-mode))
+  :bind ( :map dired-mode-map ;; Variable is void when evaluated for first time
+          ("D" . nil)
+          ("D d" . 'dired-do-delete)
+          ("D D" . 'dired-do-delete-skip-trash)
+		  ("<left>"  . dired-up-directory)
+		  ("<right>" . dired-find-file)
+          ;; omit dotfiles
+          ("." . dired-omit-mode))
   :config
   (require 'dired-x)
   (setopt dired-listing-switches "-lAvh --group-directories-first"
