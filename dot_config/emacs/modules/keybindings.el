@@ -127,10 +127,13 @@ https://www.reddit.com/r/emacs/comments/1i1sv9u/comment/m7o54ko/"
 
 (use-package emacs
   :ensure nil
-  :bind (("C-x k" . 'kill-current-buffer)   ; Kill buffer without asking which one
-		 ("C-x C-b" . 'ibuffer)
-         ("C-x 2" . 'split-window-below-and-focus)
-         ("C-x 3" . 'split-window-right-and-focus)))
+  :bind ( :map ctl-x-map
+          ("k" . 'kill-current-buffer)   ; Kill buffer without asking which one
+		  ("C-b" . 'ibuffer)
+          ("2" . 'split-window-below-and-focus)
+          ("3" . 'split-window-right-and-focus)
+          ("TAB" . #'my/indent-whole-buffer) ; replaces `indent-rigidly’.
+          ))
 
 ;;; keybindings.el ends here
 ;; Local Variables:
