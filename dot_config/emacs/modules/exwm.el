@@ -18,12 +18,9 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary :
-
 ;;; Code :
 
-;; https://github.com/emacs-exwm/exwm/issues/40#issuecomment-2127601569
-
+;; -- Functions;
 (defun my/laptop--pre-shutdown ()
   "Perform pre-shutdown/reboot procedures ensuring no/minimal loss of data."
   (bookmark-save)
@@ -45,24 +42,19 @@
 
 (defun exwm-rename-buffer-class-name ()
   "Rename the EXWM buffers with the X11 Class name"
-  (if (and (string-equal exwm-class-name "firefox") exwm-title)
+  (if (and (string-equal exwm-class-name "firefox")
+           exwm-title)
 	  (let* ((page-title (car (split-string exwm-title "\\ +[-—]\\ +")))
 			 (new-buffer-name (concat "*" exwm-class-name " - " page-title "*")))
-		(exwm-workspace-rename-buffer new-buffer-name))
-	(exwm-workspace-rename-buffer exwm-class-name)))
+	    (exwm-workspace-rename-buffer new-buffer-name))
+    (exwm-workspace-rename-buffer exwm-class-name)))
 
-(defun exwm-setup-local-simulation-keys ()
-  ""
-  (when (and exwm-class-name
-             ;; TODO: List of classes instead of just firefox
-             (string= exwm-class-name "Firefox"))
-    (exwm-input-set-local-simulation-keys exwm-input-simulation-keys)))
-
+;; -- EXWM Configuration
 (use-package exwm
-  :ensure nil  ;; supplied by nixos
   :if (string-equal my-hostname "laptop")
+  :ensure nil  ;; supplied by NixOS
   :hook ((exwm-update-title . exwm-rename-buffer-class-name)
-         (exwm-manage-finish . exwm-setup-local-simulation-keys)
+         ;; (exwm-manage-finish . exwm-setup-local-simulation-keys)
          (elpaca-after-init . exwm-wm-mode))
   :bind ( :map desktop-environment-mode-map
 		  ;; Move around the buffers and X apps
@@ -70,10 +62,12 @@
 		  ("s-<right>" . windmove-right)
 		  ("s-<up>" . windmove-up)
 		  ("s-<down>" . windmove-down)
-          ("s-<tab>" . #'app-launcher-run-app)
+          ("s-<tab>" . app-launcher-run-app)
 
           ;; EXWM functions
 		  ("s-r" . exwm-reset)
+
+          ;; TODO: This is ugly...
           ("s-1" . (lambda () (interactive) (exwm-workspace-switch-create 0)))
           ("s-2" . (lambda () (interactive) (exwm-workspace-switch-create 1)))
           ("s-3" . (lambda () (interactive) (exwm-workspace-switch-create 2)))
@@ -91,39 +85,46 @@
   (desktop-environment-mode t)
 
   ;; Dont ask to replace, if I have another WM open its probably for a reason
-  (setopt exwm-replace 'nil)
+  (setopt exwm-replace 'nil
+          exwm-workspace-number 4)
 
-  ;; Mimic behaviour of emacs bindings in x sessions
-  (setopt exwm-input-simulation-keys
-          '(;; movement
-		    ([?\C-b] . [left])
-		    ([?\M-b] . [C-left])
-		    ([?\C-f] . [right])
-		    ([?\M-f] . [C-right])
-		    ([?\C-p] . [up])
-		    ([?\C-n] . [down])
-		    ([?\C-a] . [home])
-            ([?\C-e] . [end])
-            ([?\C-\S-a] . [S-home]) ; Select
-            ([?\C-\S-e] . [S-end]) ; Select
-		    ([?\M-v] . [prior])
-		    ([?\C-v] . [next])
-		    ([?\C-d] . [delete])
-		    ([?\C-k] . [S-end C-x])
+  (setopt exwm-manage-configurations
+          '(( (string-equal exwm-class-name "firefox")
+              workspace 1 ;; 2 in polybar
+              simulation-keys (;; movement
+                               ([?\C-b] . [left])
+                               ([?\M-b] . [C-left])
+                               ([?\C-f] . [right])
+                               ([?\M-f] . [C-right])
+                               ([?\C-p] . [up])
+                               ([?\C-n] . [down])
+                               ([?\C-a] . [home])
+                               ([?\C-e] . [end])
+                               ([?\M-v] . [prior])
+                               ([?\C-v] . [next])
+                               ([?\C-d] . [delete])
 
-		    ;; cut/paste.
-		    ([?\C-w] . [?\C-x])
-		    ([?\M-w] . [?\C-c])
-		    ([?\C-y] . [?\C-v])
+                               ;; Selection
+                               ([?\C-\S-a] . [S-home])
+                               ([?\C-\S-e] . [S-end])
+                               ([?\M-\S-b] . [C-S-left])
+                               ([?\M-\S-f] . [C-S-right])
 
-		    ;; search
-		    ([?\C-s] . [?\C-f])
+                               ;; cut/paste/delete
+                               ([?\C-w] . [?\C-x])
+                               ([?\M-w] . [?\C-c])
+                               ([?\C-y] . [?\C-v])
+                               ([?\C-k] . [S-end C-x])
 
-		    ;; save
-		    ([C-x C-s] . [C-s])
+                               ;; search
+                               ([?\C-s] . [?\C-f])
 
-		    ;; exit
-		    ([?\C-g] . [escape]))) )
+                               ;; save
+                               ([C-x C-s] . [C-s])
+
+                               ;; exit
+                               ([?\C-g] . [escape])
+                               ([?\C-q] . [?\C-w]))))))
 
 (if (string-equal my-hostname "laptop") (elpaca-wait))
 
