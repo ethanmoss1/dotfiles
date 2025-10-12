@@ -85,6 +85,7 @@
    "org"
    "org-contrib"
    "org-protocol"
+   "org-export-icalendar"
 
    "org-link-man"
    "org-link-rfc"
