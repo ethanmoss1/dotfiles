@@ -39,33 +39,31 @@
   (setopt elfeed-sort-order 'ascending)  ;; Oldest first.
   (setopt elfeed-search-filter "+unread")
 
-  (setq elfeed-feeds
-        '(("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304299" uni news)
-		  ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=299153" uni news)
-          ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=311531" uni news)
-		  ;; /dev/null
-		  ("yummymelon.com/devnull/feeds/all.atom.xml" emacs blog)
-		  ("https://xkcd.com/rss.xml" humour cartoon)
-		  ;; Emacs release news
-		  ;; ("https://emacs.org/rss/emacs.xml" emacs news release)
-		  ;; Google Alerts "Spinal Muscular Atrophy"
-		  ("https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100" news medical)
-		  ;; Google Alerts "Bridge RNA"
-		  ("https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637" news medical)
-          ;; Planet Emacs
-          ("https://planet.emacslife.com/atom.xml" emacs news)
-          ("https://themkat.net/feed/by_tag/emacs.xml" emacs news)
-          ("https://arialdomartini.github.io/feed.xml" emacs blog)
-          ("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml" cyber-security news)
-          ("https://daryl.wakatara.com/posts/index.xml" emacs blog)
-          ("https://www.jeffgeerling.com/blog.xml" blog linux dev)
-          ("https://medium.com/feed/mitre-attack" cyber-security news)
-          ("https://martinfowler.com/feed.atom" software blog)
-          ("https://frame.work/gb/en/blog.rss" blog hardware news)
-          ("https://www.tomscott.com/updates.xml" blog news)
-          ("https://joshblais.com/index.xml" blog emacs)
-          ("duncanbritt.com/feed.xml" blog emacs)
-          ("https://tsawyer87.github.io//index.xml" nix blog))))
+  (setopt elfeed-feeds
+          '(("https://learn2.open.ac.uk/blocks/news/feed.php?bi=304299" uni news)
+		    ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=299153" uni news)
+            ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=311531" uni news)
+            ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=321500" uni news)
+            ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=321501" uni news)
+            ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=321489" uni news)
+            ("https://learn2.open.ac.uk/blocks/news/feed.php?bi=321494" uni news)
+		    ("yummymelon.com/devnull/feeds/all.atom.xml" emacs blog)
+		    ("https://xkcd.com/rss.xml" humour cartoon)
+		    ("https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100" news medical)
+		    ("https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637" news medical)
+            ("https://planet.emacslife.com/atom.xml" emacs news)
+            ("https://themkat.net/feed/by_tag/emacs.xml" emacs news)
+            ("https://arialdomartini.github.io/feed.xml" emacs blog)
+            ("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml" cyber-security news)
+            ("https://daryl.wakatara.com/posts/index.xml" emacs blog)
+            ("https://www.jeffgeerling.com/blog.xml" blog linux dev)
+            ("https://medium.com/feed/mitre-attack" cyber-security news)
+            ("https://martinfowler.com/feed.atom" software blog)
+            ("https://frame.work/gb/en/blog.rss" blog hardware news)
+            ("https://www.tomscott.com/updates.xml" blog news)
+            ("https://joshblais.com/index.xml" blog emacs)
+            ("duncanbritt.com/feed.xml" blog emacs)
+            ("https://tsawyer87.github.io//index.xml" nix blog))))
 
 ;; (use-package elfeed-goodies
 ;;   :after elfeed
