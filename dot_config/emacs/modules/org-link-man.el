@@ -49,28 +49,29 @@ PATH should be a topic that can be thrown at the man command."
       (let* ((page (org-man-get-page-name))
              (link (concat "man:" page))
              (description (format "Man page for %s" page)))
-	(org-link-store-props
-	 :type "man"
-	 :link link
-	 :description description))))
+	    (org-link-store-props
+	     :type "man"
+	     :link link
+	     :description description))))
 
   (defun org-man-get-page-name ()
     "Extract the page name from the buffer name."
     ;; This works for both `Man-mode' and `woman-mode'.
     (if (string-match " \\(\\S-+\\)\\*" (buffer-name))
-	(match-string 1 (buffer-name))
+	    (match-string 1 (buffer-name))
       (error "Cannot create link to this man page")))
 
-  (defun org-man-export (link description format _)
+  (defun org-man-export (link description format)
     "Export a man page link from Org files."
     (let ((path (format "http://man.he.net/?topic=%s&section=all" link))
           (desc (or description link)))
+      (message "%s" format)
       (pcase format
-	(`html (format "<a target=\"_blank\" href=\"%s\">%s</a>" path desc))
-	(`latex (format "\\href{%s}{%s}" path desc))
-	(`texinfo (format "@uref{%s,%s}" path desc))
-	(`ascii (format "%s (%s)" desc path))
-	(_ path))))
+	    (`html (format "<a target=\"_blank\" href=\"%s\">%s</a>" path desc))
+	    (`latex (format "\\href{%s}{%s}" path desc))
+	    (`texinfo (format "@uref{%s,%s}" path desc))
+	    (`ascii (format "%s (%s)" desc path))
+	    (_ path))))
 
   (add-to-list 'display-buffer-alist
                ;; *Man test*

@@ -27,14 +27,15 @@
 (use-package org-roam
   :after (org)
   :defer t
-  :bind (("C-c r l" . org-roam-buffer-toggle)
-         ("C-c r f" . org-roam-node-find)
-         ("C-c r g" . org-roam-ui-open)
-         ("C-c r i" . org-roam-node-insert)
-         ("C-c r c" . org-roam-capture)
-         ("C-c r s" . org-roam-node-grep)
-         ("C-c r j" . org-roam-dailies-capture-today)
-         ("C-c r t" . org-roam-tag-add))
+  :bind (("C-c r l" . 'org-roam-buffer-toggle)
+         ("C-c r f" . 'org-roam-node-find)
+         ("C-c r g" . 'org-roam-ui-open)
+         ("C-c r i" . 'org-roam-node-insert)
+         ("C-c r c" . 'org-roam-capture)
+         ("C-c r s" . 'org-roam-node-grep)
+         ("C-c r j" . 'org-roam-dailies-capture-today)
+         ("C-c r t" . 'org-roam-tag-add)
+         ("C-c r a" . 'org-roam-alias-add))
 
   :config
   (setopt org-roam-verbose 'nil)
@@ -52,6 +53,11 @@
   ;; If using org-roam-protocol
   ;; (require 'org-roam-protocol)
   (org-roam-db-autosync-mode 1))
+
+(use-package consult-org-roam
+  :after (org-roam consult)
+  ;; :bind (("C-c r f" . 'consult-org-roam-file-find))
+  :config (consult-org-roam-mode t))
 
 ;;; orgroam.el ends here
 ;; Local Variables:

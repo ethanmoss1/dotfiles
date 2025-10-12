@@ -40,7 +40,7 @@
   (defun org-notmuch-store-link ()
     "Store a link to a notmuch mail message."
     (cl-case major-mode
-      ('notmuch-show-mode
+      ((notmuch-show-mode)
        ;; Store link to the current message
        (let* ((id (notmuch-show-get-message-id))
 	          (link (concat "notmuch:" id))
@@ -49,7 +49,7 @@
 	      :type "notmuch"
 	      :link link
 	      :description description)))
-      ('notmuch-search-mode
+      ((notmuch-search-mode)
        ;; Store link to the thread on the current line
        (let* ((id (notmuch-search-find-thread-id))
 	          (link (concat "notmuch:" id))

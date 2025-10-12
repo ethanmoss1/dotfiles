@@ -22,8 +22,8 @@
 
 (setopt tramp-allow-unsafe-temporary-files t
 	    tramp-backup-directory-alist `((".+" . ,(expand-file-name
-											    "backup"
-											    user-emacs-directory)))
+											     "backup"
+											     user-emacs-directory)))
         tramp-copy-size-limit 'nil ;; Use out of band copy
         )
 

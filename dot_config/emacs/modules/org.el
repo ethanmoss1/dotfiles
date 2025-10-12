@@ -32,8 +32,8 @@
   (interactive)
   (setopt org-agenda-files (directory-files org-directory t "\\.org$"))
   (setopt org-agenda-files-and-study
-        (append (directory-files org-directory t "\\.org$")
-                (directory-files-recursively "~/Documents/study" "\\.org$")))
+          (append (directory-files org-directory t "\\.org$")
+                  (directory-files-recursively "~/Documents/study" "\\.org$")))
   (setopt org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$")))
 
 (defun my/load-minor-modes-for-org ()
@@ -338,6 +338,8 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   (advice-add 'org-agenda-goto :after
               (lambda (&rest args)
                 (org-narrow-to-subtree))))
+
+
 
 ;;; org.el ends here
 ;; Local Variables:

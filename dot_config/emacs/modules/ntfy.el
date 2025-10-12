@@ -30,7 +30,7 @@
   (setopt ntfy-server "http://ntfy.hmsrv.uk"
 		  ntfy-topic "emacs"
 		  ntfy-header "Notification from emacs"
-		  ntfy-tags "purple_circle,loudspeaker")
+		  ntfy-tags '("purple_circle" "loudspeaker"))
 
   ;; For the compile function;
   (defun point-beginning-of-last-line ()
