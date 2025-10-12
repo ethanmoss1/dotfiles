@@ -22,7 +22,6 @@
 
 (use-package citar-org-roam
   :after (citar org-roam)
-  :hook (elpaca-after-init . citar-org-roam-mode)
   :config
   (setopt citar-org-roam-subdir "cite-notes")
   (add-to-list 'org-roam-capture-templates '("n" "literature note" plain "%?" :target
@@ -30,7 +29,8 @@
                                               "%(expand-file-name (or citar-org-roam-subdir \"\") org-roam-directory)/${citar-citekey}.org"
                                               "#+title: ${note-title} (${citar-date})\n\n")
                                              :unnarrowed t))
-  (setopt citar-org-roam-capture-template-key "n"))
+  (setopt citar-org-roam-capture-template-key "n")
+  (citar-org-roam-mode t))
 
 ;;; citar-org-roam.el ends here
 ;; Local Variables:
