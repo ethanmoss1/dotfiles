@@ -23,27 +23,13 @@
 (use-package eat
   :bind ("C-c t" . eat)
   :config
-  ;; Set shell for certain hosts
-  (pcase my-hostname
-    ("tablet" (setopt eat-shell "/data/data/com.termux/files/usr/bin/bash"))
-    ("linux"  (setopt eat-shell "/run/current-system/sw/bin/bash"))  ;; NixOS
-    (_        (setopt eat-shell (or explicit-shell-file-name
-                                    (getenv "ESHELL")
-                                    shell-file-name))))
-
   ;; Eat settings
-  (setq eat-kill-buffer-on-exit t
-        eat-term-name "xterm")  ;; easier than trying to hack eat-term to work
+  (setopt eat-kill-buffer-on-exit t)
 
   ;; One of the following;
   ;; For `eat-eshell-mode'.
   (add-hook 'eshell-load-hook #'eat-eshell-mode)
-  (eat-eshell-mode)
-
-  ;; For `eat-eshell-visual-command-mode'.
-  ;; (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
-  ;; (eat-eshell-visual-command-mode)
-  )
+  (eat-eshell-mode))
 
 ;; Set up the popup shell
 (add-to-list 'display-buffer-alist
