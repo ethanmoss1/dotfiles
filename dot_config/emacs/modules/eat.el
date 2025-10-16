@@ -24,7 +24,8 @@
   :bind ("C-c t" . eat)
   :config
   ;; Eat settings
-  (setopt eat-kill-buffer-on-exit t)
+  (setopt eat-kill-buffer-on-exit t
+          eat-term-name "xterm")
 
   ;; One of the following;
   ;; For `eat-eshell-mode'.
