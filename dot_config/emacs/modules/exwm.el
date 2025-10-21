@@ -103,6 +103,9 @@
                                ([?\M-v] . [prior])
                                ([?\C-v] . [next])
                                ([?\C-d] . [delete])
+                               ([?\M-<] . [C-home])  ; top?
+                               ([?\M->] . [C-end])  ; bottom?
+
 
                                ;; Selection
                                ([?\C-\S-a] . [S-home])
