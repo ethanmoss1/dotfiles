@@ -39,6 +39,7 @@
    "replace"
    "winner"
    "ediff"
+   "dictionary"
 
    ;; -- Compulsory Modules --
    "vertico"
