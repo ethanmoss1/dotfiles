@@ -81,7 +81,7 @@
    "modus-themes"
    "nerd-icons"
    "spacious-padding"  ;; adds padding, looks nice
-   "doom-modeline"
+   ;; "doom-modeline"
 
    ;; Org & Org related
    "org"
