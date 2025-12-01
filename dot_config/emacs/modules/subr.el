@@ -18,15 +18,11 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-;;
-
-;;
-
 ;;; Code:
 
-;; set all Yes/No to the easier Y/N
-(fset 'yes-or-no-p 'y-or-n-p)
+;; Set all Yes/No Questions in Emacs to the easier Y/N.
+;; (fset 'yes-or-no-p 'y-or-n-p)  ; Old version
+(setopt use-short-answers 't)
 
 ;;; subr.el ends here
 ;; Local Variables:
