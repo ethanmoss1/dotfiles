@@ -40,6 +40,7 @@
    "winner"
    "ediff"
    "dictionary"
+   "project"
 
    ;; -- Compulsory Modules --
    "vertico"
