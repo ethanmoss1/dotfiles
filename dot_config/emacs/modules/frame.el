@@ -47,8 +47,9 @@
 
 
   ;; Display line number
-  (setq-default display-line-numbers-width 3
-				display-line-numbers-width t)
+  (setopt display-line-numbers-widen t
+          display-line-numbers-width 4)
+  ;;      display-line-numbers-type 'relative)
 
 
   ;; mule
