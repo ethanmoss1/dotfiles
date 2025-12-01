@@ -22,6 +22,7 @@
 
 (use-package citar-org-roam
   :after (citar org-roam)
+  :bind (("C-c r r" . 'citar-open))
   :config
   (setopt citar-org-roam-subdir "cite-notes")
   (add-to-list 'org-roam-capture-templates '("n" "literature note" plain "%?" :target
