@@ -80,7 +80,7 @@
    ;; -- Themeing Modules --
    "modus-themes"
    "nerd-icons"
-   "spacious-padding"  ;; adds padding, looks nice
+   ;; "spacious-padding"  ;; adds padding, looks nice
    ;; "doom-modeline"
 
    ;; Org & Org related
