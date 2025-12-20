@@ -70,7 +70,7 @@ attachment for it and adds the filename to a bibtex field named ’File'."
   (pcase my-hostname
     ("mac" (setopt zotra-local-server-directory "/Users/ethan/Documents/src/zotra-server"
                    zotra-backend 'zotra-server))
-    ("linux" (setopt zotra-backend 'zotra-server
+    ("laptop" (setopt zotra-backend 'zotra-server
                      zotra-local-server-directory "nodir"
                      zotra-local-server-cmd "zotra"))
     (_ (message "Unknown host. Failed setting up zotra.")))
