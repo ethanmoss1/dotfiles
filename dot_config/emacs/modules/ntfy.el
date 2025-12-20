@@ -27,9 +27,10 @@
   :ensure ( :repo "/home/ethan/Documents/src/ntfy"
             :files (defaults "*.el"))
   :config
-  (setopt ntfy-server "http://ntfy.hmsrv.uk"
-		  ntfy-topic "emacs"
+  (setopt ntfy-server "https://ntfy.hmsrv.uk"
+		  ntfy-topic "macbook"
 		  ntfy-header "Notification from emacs"
+          ntfy-priority 3
 		  ntfy-tags '("purple_circle" "loudspeaker"))
 
   ;; For the compile function;
@@ -48,11 +49,10 @@
                                           (pos-eol 2)))
             (last-line (buffer-substring (point-beginning-of-last-line)
                                          (point-max))))
-        ;; (message "\n----------\nlast line: %s \nstr: %s" last-line str)
-        (ntfy-send-message-with-header-and-tags
-         "gear"
-         (format "Compilation %s" (replace-regexp-in-string "\n" "" str))
-         (format "%s\n%s" first-line last-line)))))
+
+        (ntfy--publish-message (format "%s\n%s" first-line last-line)
+                               (format "Compilation %s" (replace-regexp-in-string "\n" "" str))
+                               '("gear")))))
 
   (setopt compilation-finish-functions '(ntfy-compilation-finished)))
 
