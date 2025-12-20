@@ -172,7 +172,17 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   ;;;; -- Other Org settings
   ;; Scale latex to size based on the hostname
   (pcase my-hostname
-    ("laptop" (plist-put org-format-latex-options :scale 1.8))
+    ("laptop" (progn (setopt org-format-latex-options
+                             '( :foreground default
+                                :background "Transparent"
+                                :scale 1.8
+                                :html-foreground "Black"
+                                :html-background "Transparent"
+                                :html-scale 1.0
+                                :matchers '("begin" "$1" "$" "$$" "\\(" "\\[")))
+                     (setopt org-preview-latex-default-process 'dvisvgm
+                             org-latex-to-mathml-convert-command
+                             "latexmlmath %i --presentationmathml=%o")))
     ("mac" (progn (setopt org-format-latex-options
                           '( :foreground default
                              :background "Transparent"
@@ -207,7 +217,6 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
                                              (directory-files-recursively "~/Documents/study" "\\.org$"))
           org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$"))
 
-
   ;; Org-agenda settings
   (setopt org-agenda-show-future-repeats 'next
           org-agenda-include-diary nil
@@ -220,8 +229,6 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   (setopt org-agenda-tags-todo-honor-ignore-options t
           org-agenda-todo-ignore-scheduled 'future
           org-agenda-todo-ignore-deadlines 'all)
-
-
 
   ;; Setting up the agenda views
   (setopt org-agenda-custom-commands
@@ -270,50 +277,37 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
 
   ;; Various templates for different uses. if there is a special usage, it will
   ;; be noted above each template.
-  (setopt org-capture-templates `(;; Standard input to inbox
-                                  ("i"               ; keys
-                                   "Inbox"           ; description
-                                   entry             ; type
-                                   (file+headline "inbox.org" "todo")  ; target
-						           ,(s-join "\n"     ; template
-                                            '("** TODO %?" ;; %(org-set-tags \"new\")"
-	                                          ":PROPERTIES:"
-									          ":ENTERED: %U"
-									          ":FILE: [[%f]]"
-                                              ":LINK: %a"
-									          ":END:"))
-                                   :empty-lines 1) ; properties
+  (setopt org-capture-templates
+          `(;; Standard input to inbox
+            ("i" "Inbox" entry
+             (file+headline "inbox.org" "todo")  ; target
+			 ,(s-join "\n" '("** TODO %?" ":PROPERTIES:" ":ENTERED: %U"
+                             ":FILE: [[%f]]" ":LINK: %a" ":END:")))
 
-                                  ;; Notes for on the fleeting thoughts
-						          ("n"
-                                   "Notes"
-                                   entry
-                                   (file+headline "inbox.org" "notes")
-						           ,(s-join "\n" '("** %? %^G"
-								                   ":PROPERTIES:"
-								                   ":ENTERED: %U"
-								                   ":FILE: [[%f]]"
-                                                   ":LINK: %a"
-								                   ":END:"))
-                                   :empty-lines 1)
+            ;; Notes for on the fleeting thoughts
+            ("j" "Journal Entry" entry
+             (file+olp+datetree
+              ,(format-time-string "journal/%Y_journal.org" (current-time))
+              )
+             "* %?")
 
-                                  ;; This is for Org-protocol, it allows for
-                                  ;; taking the links and highlighted text and
-                                  ;; putting it into my inbox notes
-                                  ("w"
-                                   "Web site"
-                                   entry
-                                   (file+headline "inbox.org" "notes")
-                                   ,(s-join "\n"
-                                            '("* LINK %?"
-                                              ":PROPERTIES:"
-			                                  ":ENTERED: %U"
-                                              ":LINK: %a"
-			                                  ":END:"
-                                              ""
-                                              "%:initial")))))
+            ;; Notes for on the fleeting thoughts
+            ("n" "Notes" entry
+             (file+headline "inbox.org" "notes")
+             ,(s-join "\n" '("** %? %^G" ":PROPERTIES:" ":ENTERED: %U"
+                             ":FILE: [[%f]]" ":LINK: %a" ":END:")))
+
+            ;; This is for Org-protocol. It allows for taking the links and
+            ;; highlighted text and putting it into my inbox notes.
+            ("w" "Web site" entry
+             (file+headline "inbox.org" "notes")
+             ,(s-join "\n" '("* LINK %?" ":PROPERTIES:" ":ENTERED: %U"
+                             ":LINK: %a" ":END:" "" "%:initial")))))
+
   ;;; -- ORG REFERENCING ---
-  (setopt org-cite-global-bibliography (list (expand-file-name "ref/references.bib" org-directory)))
+  (setopt org-cite-global-bibliography (list (expand-file-name
+                                              "ref/references.bib"
+                                              org-directory)))
 
 
   ;;; -- ORG UI AND DISPLAY CONFIGURATION --
