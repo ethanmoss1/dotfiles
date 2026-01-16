@@ -27,7 +27,7 @@
   ("C-c d f" . 'chezmoi-find)
   ("C-c d s" . 'chezmoi-find-in-files)
   ("C-c d g" . 'chezmoi-magit-status)
-  ("C-c d e" . 'chezmoi-goto-emacs-folder)
+  ;; ("C-c d e" . 'chezmoi-goto-emacs-folder)
   ("C-c d c" . 'chezmoi-goto-chezmoi-folder)
   :config
   (defvar chezmoi-directory (shell-command-to-string "printf %s \"$(chezmoi source-path)\"")
@@ -45,14 +45,14 @@
     (magit-status-setup-buffer (cl-first (chezmoi--dispatch "source-path"))))
 
   (defun chezmoi-goto-emacs-folder ()
-	"Go to the emacs user directory"
-	(interactive)
-	(dired user-emacs-directory))
+    "Go to the emacs user directory"
+    (interactive)
+    (dired user-emacs-directory))
 
   (defun chezmoi-goto-chezmoi-folder ()
-	"Go to the chezmoi directory"
+    "Go to the chezmoi directory"
     (interactive)
-	(dired chezmoi-directory))
+    (dired chezmoi-directory))
 
   (defun chezmoi-find-in-files ()
     "Find the given REGEX in the chezmoi directory"
