@@ -54,9 +54,10 @@
                                (format "Compilation %s" (replace-regexp-in-string "\n" "" str))
                                '("gear")))))
 
-  (setopt compilation-finish-functions '(ntfy-compilation-finished)))
+  (setopt compilation-finish-functions '(ntfy-compilation-finished))
+  )
 
-;; Test with: (ntfy-send-message "This is a test!")
+;; Test with: (ntfy-message "This is a test!")
 
 ;;; ntfy.el ends here
 ;; Local Variables:
