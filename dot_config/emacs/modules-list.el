@@ -61,7 +61,6 @@
    "corfu"
    "cape"
 
-
    ;; Window manager and accompying modules
    ;; Will only load when ‘my-hostname’ is equal to laptop
    "desktop-environment"
@@ -69,10 +68,10 @@
    "exwm"
    "app-launcher"
    ;; "buffer-move"
-   "tab-bar"
-   "display-time"
+   ;; "tab-bar"
+   ;; "display-time"
    "pdf-tools"
-   "ednc"
+   ;; "ednc"
    "ultra-scroll"
 
    "wait"
@@ -82,6 +81,7 @@
    "nerd-icons"
    ;; "spacious-padding"  ;; adds padding, looks nice
    ;; "doom-modeline"
+   "modeline"
 
    ;; Org & Org related
    "org"
@@ -112,7 +112,7 @@
    ;; -- News and Email --
    "elfeed"
    "notmuch"
-   "microdata" ;; For acting on data in an email
+   ;; "microdata" ;; For acting on data in an email
    "ntfy"
 
    ;; -- Editing modules --
@@ -152,9 +152,10 @@
    ;; "gptel"
    ;; "mini-ontop"  ;; stops windows jiggling
    "el-easydraw" ;; edraw
+   ;; "detached"
 
    ;; -- Final modifications
    "linux"
-   "bluetooth"
+   ;; "bluetooth"
    "secrets"
    )) ;; -- End of Modules --
