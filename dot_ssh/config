@@ -18,6 +18,30 @@ Host syncthing
 	 User		root
 	 Hostname	192.168.0.64
 
+Host backup
+	 User		root
+	 Hostname	192.168.0.20
+
+Host jellyarr
+     User       ethan
+     Hostname   192.168.0.138
+
+Host caldav
+     User       root
+     Hostname   192.168.0.226
+
+Host ntfy
+     User       root
+     Hostname   192.168.0.190
+
+Host ddclient
+     User       root
+     Hostname   192.168.0.90
+
+Host proxmox
+     User       root
+     Hostname   192.168.0.11
+
 # Catchall if not defined above
 Host *
      User       ethan
