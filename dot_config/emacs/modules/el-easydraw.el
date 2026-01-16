@@ -35,14 +35,14 @@
   (edraw-org-setup-text-conversion) ;; For android
   (edraw-org-link-image-mode)
 
-  (add-to-list 'display-buffer-alist
-               `(,@edraw-property-editor-buffer-name
-                 (display-buffer-in-side-window)
-                 (side . bottom)
-                 (slot . -1) ;; -1 == L  0 == Mid 1 == R
-                 (window-height . 0.33) ;; take 2/3 on bottom left
-                 (window-parameters
-                  (no-delete-other-windows . nil))))
+  ;; (add-to-list 'display-buffer-alist
+  ;;              `(,@edraw-property-editor-buffer-name
+  ;;                (display-buffer-in-side-window)
+  ;;                (side . bottom)
+  ;;                (slot . -1) ;; -1 == L  0 == Mid 1 == R
+  ;;                (window-height . 0.33) ;; take 2/3 on bottom left
+  ;;                (window-parameters
+  ;;                 (no-delete-other-windows . nil))))
 
   ;; Customise the defaults
   :custom
