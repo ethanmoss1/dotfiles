@@ -167,7 +167,8 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   ;; Org Feel
   (setopt org-src-fontify-natively t
 	      org-src-tab-acts-natively t
-          org-edit-src-content-indentation 2)
+          org-edit-src-content-indentation 2
+          org-src-window-setup 'split-window-below)
 
   ;;;; -- Other Org settings
   ;; Scale latex to size based on the hostname
