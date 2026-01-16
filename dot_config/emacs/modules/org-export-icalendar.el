@@ -21,41 +21,42 @@
 ;;; Code:
 
 (eval-after-load 'org
-  (progn
-    ;; Timer for creating ICS files for my calendar.
-    (defvar my/org-generate-ics-files-date nil
-      "Stores the date string (\"YYYY-MM-DD\") when the daily task was last run.
+  (if (string-equal my-hostname "laptop")
+      (progn
+        ;; Timer for creating ICS files for my calendar.
+        (defvar my/org-generate-ics-files-date nil
+          "Stores the date string (\"YYYY-MM-DD\") when the daily task was last run.
   This variable ensures the task only runs once per day.")
 
-    (defun my/org-generate-ics-files (&optional files)
-      "Generate the ICS files for my CalDAV server, sending them over.
+        (defun my/org-generate-ics-files (&optional files)
+          "Generate the ICS files for my CalDAV server, sending them over.
 
   TODO: merge all the files into one ICS file so that i dont have to edit
    the files that need to be uploaded, synced and added to my calendar on my phone"
-      (interactive)
-      (let (;; stops warnings of ’Repeater-type restart not currently supported
-            ;; by iCalendar export’ by only setting to emegency in this let
-            ;; binding.
-            (warning-minimum-level :emergency)
-            (org-icalendar-combined-agenda-file "/ssh:caldav:/root/calendar/emacs-agenda.ics")
-            ;; Remove running of hooks to speed things up.
-            (org-mode-hook nil)
-            (org-agenda-files (or files org-agenda-files-and-study))
-            (org-icalendar-include-todo t))
-        (apply #'org-icalendar--combine-files (org-agenda-files t))))
+          (interactive)
+          (let (;; stops warnings of ’Repeater-type restart not currently supported
+                ;; by iCalendar export’ by only setting to emegency in this let
+                ;; binding.
+                (warning-minimum-level :emergency)
+                (org-icalendar-combined-agenda-file "/ssh:caldav:/root/calendar/emacs-agenda.ics")
+                ;; Remove running of hooks to speed things up.
+                (org-mode-hook nil)
+                (org-agenda-files (or files org-agenda-files-and-study))
+                (org-icalendar-include-todo t))
+            (apply #'org-icalendar--combine-files (org-agenda-files t))))
 
-    ;; (my/org-generate-ics-files)
-    (defun my/generate-ics-daily ()
-      "A gatekeeper function called by the idle timer.
+        ;; (my/org-generate-ics-files)
+        (defun my/generate-ics-daily ()
+          "A gatekeeper function called by the idle timer.
   It checks if `my-daily-task` has already run today. If not, it runs it."
-      (let ((today-string (format-time-string "%Y-%m-%d")))
-        (unless (string-equal my/org-generate-ics-files-date today-string)
-          (message "Generating ICS files...")
-          (my/org-generate-ics-files)
-          (setq my/org-generate-ics-files-date today-string)
-          (message "Generating ICS files...Done."))))
+          (let ((today-string (format-time-string "%Y-%m-%d")))
+            (unless (string-equal my/org-generate-ics-files-date today-string)
+              (message "Generating ICS files...")
+              (my/org-generate-ics-files)
+              (setq my/org-generate-ics-files-date today-string)
+              (message "Generating ICS files...Done."))))
 
-    (run-with-idle-timer (* 10 60) t #'my/generate-ics-daily)))
+        (run-with-idle-timer (* 10 60) t #'my/generate-ics-daily))))
 
 ;;; org-export-icalendar.el ends here
 ;; Local Variables:
