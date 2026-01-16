@@ -20,19 +20,28 @@
 
 ;;; Code:
 
-(use-package eldoc)
+(use-package eldoc
+  :ensure nil)
+
+(use-package eldoc-box
+  :after eglot
+  :config (eldoc-box-hover-at-point-mode))
 
 (use-package eglot
+  :ensure nil
   :after eldoc
-  :hook ((emacs-lisp-mode . eglot-ensure)
-         (java-mode       . eglot-ensure)
-         (python-mode     . eglot-ensure)
-         (nix-mode        . eglot-ensure))
-  :bind (:map eglot-mode-map
-              ("C-c e r" . eglot-rename)
-              ("C-c e h" . eldoc)
-              ("C-c e f" . eglot-format)
-              ("C-c e F" . eglot-format-buffer)))
+  :bind
+  ( :map eglot-mode-map
+    ("C-c e r" . eglot-rename)
+    ("C-c e h" . eldoc)
+    ("C-c e f" . eglot-format-buffer))
+  :config
+  ;; Thanks to the following post for helping setup
+  ;; https://andreyor.st/posts/2023-09-09-migrating-from-lsp-mode-to-eglot/
+  (setopt eglot-autoshutdown t
+          eglot-extend-to-xref nil
+          eglot-ignored-server-capabilities '(:inlayHintProvider
+                                              :documentHighlightProvider)))
 
 ;;; eglot.el ends here
 ;; Local Variables:

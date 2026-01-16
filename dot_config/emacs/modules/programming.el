@@ -24,9 +24,9 @@
 (defun programming-minor-modes ()
   "Enable minor modes for programming buffer"
   ;; (display-line-numbers-mode t)
-  (display-fill-column-indicator-mode t)
+  (display-fill-column-indicator-mode t) ;; See line for max columns
   (hl-line-mode t)
-  (column-number-mode t)
+  ;; (column-number-mode t)
   ;; currently using jinx
   ;; (if (fboundp 'jinx-mode)
   ;;     (flyspell-prog-mode))

@@ -1,8 +1,8 @@
-;;; tree-sitter.el --- Syntax highlighting           -*- lexical-binding: t; -*-
+;;; envrc.el --- buffer-local direnv integration for Emacs  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2025  Ethan Moss
+;; Copyright (C) 2025
 
-;; Author: Ethan Moss <ethan@Ethans-MacBook-Pro.local>
+;; Author:  <ethan@macbook-pro>
 ;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -20,28 +20,10 @@
 
 ;;; Code:
 
-(use-package tree-sitter
-  :config
-  (global-tree-sitter-mode)
+(use-package envrc
+  :hook (elpaca-after-init . envrc-global-mode))
 
-  (use-package tree-sitter-langs)
-  ;; (use-package ts-fold
-  ;;   ;; :straight
-  ;;   ;; (ts-fold :type git :host github :repo "emacs-tree-sitter/ts-fold")
-  ;;   :init
-  ;;   (use-package ts-fold-indicators
-  ;;     ;; :straight
-  ;;     ;; (ts-fold-indicators :type git :host github
-  ;;                         ;; :repo "emacs-tree-sitter/ts-fold")
-  ;;     ))
-
-  :hook
-  ((java-mode . tree-sitter-hl-mode)
-   ;; (emacs-lisp-mode . tree-sitter-hl-mode)
-   ))
-
-
-;;; tree-sitter.el ends here
+;;; envrc.el ends here
 ;; Local Variables:
 ;; eval: (if config-module-managed-dotfiles (add-hook 'after-save-hook 'chezmoi-write nil t))
 ;; End:

@@ -22,11 +22,15 @@
 
 (use-package lsp-mode
   :defer t
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
+  :init (setopt lsp-keymap-prefix "C-c l")
   :hook ((lsp-mode . lsp-enable-which-key-integration))
-  :commands (lsp lsp-deferred))
+  :commands (lsp lsp-deferred)
+  ;; :config
+  ;; (when (file-exists-p "/etc/NIXOS")
+  ;;   (setopt lsp-clangd-binary-path (concat "/etc/profiles/per-user/"
+  ;;                                          (user-login-name)
+  ;;                                          "/bin/clangd")))
+  )
 
 (use-package lsp-ui
   :after lsp-mode

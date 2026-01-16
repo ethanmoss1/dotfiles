@@ -22,7 +22,7 @@
 
 (use-package python
   :ensure nil
-  :hook (python-mode . lsp-deferred)
+  ;; :hook (python-mode . lsp-deferred) ;; If LSP mode is enabled
   :config
   (add-to-list 'display-buffer-alist
                '("^\\*Python\\*"

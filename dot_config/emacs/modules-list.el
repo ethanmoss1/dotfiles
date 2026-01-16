@@ -124,12 +124,18 @@
    "adaptive-wrap"
    "jinx"
    "aggressive-indent"
+   "markdown"
+
+   ;; -- Development packages --
+   ;; "direnv"
+   "envrc"
 
    ;; -- Programming languages --
-   "lsp-mode"
-   ;; "eglot"
+   ;; "lsp-mode"
+   "eglot"
    "nix"
    "python"
+   "c"
 
    ;; -- Version Control --
    "magit"

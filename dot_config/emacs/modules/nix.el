@@ -35,7 +35,7 @@
   (pcase my-hostname
     ("mac"   (compile "darwin-rebuild switch --flake /Users/ethan/.config/nix-darwin" t))
     ("laptop" (let ((default-directory "/sudo::"))
-               (compile "nixos-rebuild switch --flake /home/ethan/.config/nixos")))
+                (compile "nixos-rebuild switch --flake /home/ethan/.config/nixos")))
     (_       (message "No compile command for this host: %s" my-hostname))))
 
 (add-to-list 'display-buffer-alist
@@ -46,7 +46,8 @@
                 (no-delete-other-windows . t))))
 
 (use-package nix-mode
-  :hook (nix-mode . lsp-deferred) ;; So that envrc can load
+  ;; :hook (nix-mode . lsp-deferred) ;; So that envrc can load
+  :hook ((nix-mode . eglot-ensure))
   ;; :custom
   ;; (lsp-disabled-clients '((nix-mode . nix-nil))) ;; Disable nil so that nixd will be used as lsp-server
   :config
