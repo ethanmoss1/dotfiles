@@ -151,7 +151,7 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   (org-odt-preferred-output-format "docx")  ; Make ODT export as docx
 
   :config
-  ;;; -- GENERAL ORG SETUP --
+   ;;; -- GENERAL ORG SETUP --
   (org-babel-do-load-languages 'org-babel-load-languages
                                '((python . t)
                                  (emacs-lisp . t)
@@ -224,6 +224,10 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
           org-agenda-span 10
           org-agenda-start-on-weekday nil
           org-agenda-window-setup 'only-window)
+
+  ;; Agenda Habits
+  (add-to-list 'org-modules 'org-habit t)
+  (setopt org-habit-show-habits t)
 
   ;; Only show TODO’s that dont have a set date.
   ;; Once that date has come, show the TODO.
