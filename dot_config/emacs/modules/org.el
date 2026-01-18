@@ -271,9 +271,9 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
   ;; Refiling options
   (setopt org-outline-path-complete-in-steps nil
           org-refile-use-outline-path 'file
-          org-refile-targets '((nil :maxlevel . 2)
-                               (org-agenda-files :maxlevel . 2)
-                               (org-agenda-files-all :maxlevel . 1)))
+          org-refile-targets '((org-agenda-files :maxlevel . 2)
+                               ;; (org-agenda-files-all :maxlevel . 1)
+                               ))
 
   ;; -- ORG CAPTURE CONFIGURATION --
   ;; Capture time entered and exited ‘NEXT’ as well as any notes for when
