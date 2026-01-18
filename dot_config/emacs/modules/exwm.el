@@ -49,11 +49,26 @@
 	    (exwm-workspace-rename-buffer new-buffer-name))
     (exwm-workspace-rename-buffer exwm-class-name)))
 
+(defun exwm-workspace-swap-current (num)
+  "Swap the current selected workspace with NUM"
+  (let* ((to      (elt exwm-workspace--list num))
+         (from    exwm-workspace--current)
+         (posfrom (exwm-workspace--position from))
+         (posto   num)
+         (count (exwm-workspace--count)))
+    (if (or (< posfrom 0) (< posto 0)
+            (>= posfrom count) (>= posto count)
+            (= posfrom posto))
+        (user-error "Bad selection: from - %s, to - %s" (+ 1 posfrom) (+ 1 posto))
+      (exwm-workspace-swap from to)
+      (message "Swapped workspace %s to %s" (+ 1 posfrom) (+ 1 posto)))))
+
 ;; -- EXWM Configuration
 (use-package exwm
   :if (string-equal my-hostname "laptop")
   :ensure nil  ;; supplied by NixOS
   :hook ((exwm-update-title . exwm-rename-buffer-class-name)
+         (exwm-manage-finsh . exwm-layout-hide-mode-line)
          ;; (exwm-manage-finish . exwm-setup-local-simulation-keys)
          (elpaca-after-init . exwm-wm-mode))
   :bind ( :map desktop-environment-mode-map
@@ -76,7 +91,17 @@
           ("s-6" . (lambda () (interactive) (exwm-workspace-switch-create 5)))
           ("s-7" . (lambda () (interactive) (exwm-workspace-switch-create 6)))
           ("s-8" . (lambda () (interactive) (exwm-workspace-switch-create 7)))
-          ("s-9" . (lambda () (interactive) (exwm-workspace-switch-create 8))))
+          ("s-9" . (lambda () (interactive) (exwm-workspace-switch-create 8)))
+
+          ("C-s-1" . (lambda () (interactive) (exwm-workspace-swap-current 0)))
+          ("C-s-2" . (lambda () (interactive) (exwm-workspace-swap-current 1)))
+          ("C-s-3" . (lambda () (interactive) (exwm-workspace-swap-current 2)))
+          ("C-s-4" . (lambda () (interactive) (exwm-workspace-swap-current 3)))
+          ("C-s-5" . (lambda () (interactive) (exwm-workspace-swap-current 4)))
+          ("C-s-6" . (lambda () (interactive) (exwm-workspace-swap-current 5)))
+          ("C-s-7" . (lambda () (interactive) (exwm-workspace-swap-current 6)))
+          ("C-s-8" . (lambda () (interactive) (exwm-workspace-swap-current 7)))
+          ("C-s-9" . (lambda () (interactive) (exwm-workspace-swap-current 8))))
 
   :config
   ;; Setup the keymap to allow for keybindings in EXWM and non-EXMW buffers
