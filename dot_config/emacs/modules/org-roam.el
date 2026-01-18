@@ -27,13 +27,15 @@
 (use-package org-roam
   :after (org)
   :defer t
-  :bind (("C-c r l" . 'org-roam-buffer-toggle)
+  :bind (("C-c r d" . 'org-roam-dailies-map)
+
+         ("C-c r l" . 'org-roam-buffer-toggle)
          ("C-c r f" . 'org-roam-node-find)
          ("C-c r g" . 'org-roam-ui-open)
          ("C-c r i" . 'org-roam-node-insert)
          ("C-c r c" . 'org-roam-capture)
          ("C-c r s" . 'org-roam-node-grep)
-         ("C-c r j" . 'org-roam-dailies-capture-today)
+
          ("C-c r t" . 'org-roam-tag-add)
          ("C-c r a" . 'org-roam-alias-add))
 
@@ -49,6 +51,14 @@
           (list #'org-roam-backlinks-section
                 #'org-roam-reflinks-section
                 #'org-roam-unlinked-references-section))
+
+  ;; Set up dailies
+  (setopt org-roam-dailies-directory "daily/"
+          org-roam-dailies-capture-templates
+          '(("d" "default" entry "* %<%H:%M>\n%?" :target
+             (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
+
+
 
   ;; If using org-roam-protocol
   ;; (require 'org-roam-protocol)
