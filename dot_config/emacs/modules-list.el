@@ -67,6 +67,9 @@
    "xelb"
    "exwm"
    "app-launcher"
+   "alsamixer"
+   "playerctl"
+
    ;; "buffer-move"
    ;; "tab-bar"
    ;; "display-time"
