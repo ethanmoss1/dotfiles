@@ -23,14 +23,18 @@
 
 ;;; Code:
 (use-package ispell
+  :init
+  (let ((file (expand-file-name "cache/wordlist" user-emacs-directory)))
+    (unless (file-exists-p file)
+      (write-region "wordlist" nil file)))
+
   :ensure nil
   :config
-  (setopt ispell-dictionary "en_GB"
-          ispell-alternate-dictionary "en_GB"
-          ispell-local-dictionary 'nil
-          ;; This is done automatically.
-	      ;; ispell-program-name (executable-find "hunspell")
-          ))
+  (setopt ispell-program-name (executable-find "enchant-2")
+          ispell-dictionary "en_GB"
+          ;; ispell-alternate-dictionary (expand-file-name "cache/wordlist" user-emacs-directory)
+          ispell-alternate-dictionary 'nil
+          ispell-local-dictionary 'nil))
 
 ;;; ispell.el ends here
 ;; Local Variables:

@@ -36,7 +36,7 @@
 
   (setopt corfu-popupinfo-delay '(0.5 . 0.5)
           corfu-min-width 20)
-  (corfu-popupinfo-mode)
+  (corfu-popupinfo-mode t)
 
   ;; (require 'org-TBLFM-regexp)
   (setopt corfu-cycle t                ;; Enable cycling for `corfu-next/previous'

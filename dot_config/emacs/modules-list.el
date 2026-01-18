@@ -32,7 +32,7 @@
    "window"
    "tramp"
    ;; "gnus"
-   "ispell"
+   ;; "ispell"
    "minibuffer"
    "calendar"
    ;; "webjump"
