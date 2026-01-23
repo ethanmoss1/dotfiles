@@ -33,7 +33,8 @@
   (setopt org-agenda-files (directory-files org-directory t "\\.org$"))
   (setopt org-agenda-files-and-study
           (append (directory-files org-directory t "\\.org$")
-                  (directory-files-recursively "~/Documents/study" "\\.org$")))
+                  (directory-files-recursively "~/Documents/study" "\\.org$")
+                  (directory-files (concat org-directory "google/tasks") t "\\.org$")))
   (setopt org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$")))
 
 (defun my/load-minor-modes-for-org ()
@@ -215,7 +216,8 @@ Opposed to word boundaries, sexp's work with `subword-mode' enabled."
           org-default-notes-file (concat org-directory "notes.org")
           org-agenda-files (directory-files org-directory t "\\.org$")
           org-agenda-files-and-study (append (directory-files org-directory t "\\.org$")
-                                             (directory-files-recursively "~/Documents/study" "\\.org$"))
+                                             (directory-files-recursively "~/Documents/study" "\\.org$")
+                                             (directory-files (concat org-directory "google/tasks") t "\\.org$"))
           org-agenda-files-all (directory-files-recursively "~/Documents" "\\.org$"))
 
   ;; Org-agenda settings
