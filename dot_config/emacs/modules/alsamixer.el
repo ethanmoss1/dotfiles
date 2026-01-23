@@ -21,8 +21,8 @@
 ;;; Code:
 
 (use-package alsamixer
+  :if (string-equal my-hostname "laptop")
   :bind ( :map desktop-environment-mode-map
-          ;; Audio
           ("<XF86AudioRaiseVolume>" . 'alsamixer-up-volume)
           ("<XF86AudioLowerVolume>" . 'alsamixer-down-volume)
           ("<XF86AudioMute>" . 'alsamixer-toggle-mute)))

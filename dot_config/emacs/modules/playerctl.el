@@ -21,6 +21,7 @@
 ;;; Code:
 
 (use-package playerctl
+  :if (string-equal my-hostname "laptop")
   :bind ( :map desktop-environment-mode-map
           ("<XF86AudioNext>" . 'playerctl-next-song)
           ("<XF86AudioPrev>" . 'playerctl-previous-song)
