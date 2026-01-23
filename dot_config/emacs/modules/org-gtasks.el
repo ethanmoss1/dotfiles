@@ -31,8 +31,31 @@
 
 (use-package org-gtasks
   :after (deferred request-deferred)
+  ;; :hook (elpaca-after-init . 'my/org-gtasks/setup)
   :ensure ( :repo "https://git.sr.ht/~jmasson/org-gtasks"
-            :files (:defaults "*.el")))
+            :files (:defaults "*.el"))
+  :config
+  ;; Set up the account
+
+  (org-gtasks-register-account :name "my-account"
+                               :directory "/home/ethan/Documents/org/google/tasks/"
+                               :login "cywinskimoss@gmail.com"
+                               ;; TODO: Replace the following with auth source?
+                               :client-id (my/org-gtask/get-password "client-id")
+                               :client-secret (my/org-gtask/get-password "client-secret"))
+  :init
+  (defun my/org-gtasks/setup ()
+    "Pull the gtasks after emacs init"
+    (org-gtasks-pull (org-gtasks-find-account-by-name "my-account") 'ALL))
+
+  (defun my/org-gtask/get-password (user)
+    "Get the client id or password from the authsource"
+    (let* ((login (nth 0 (auth-source-search
+                          :host "gtask-client"
+                          :user user
+                          :require '(:secret) :secret)))
+           (password (auth-info-password login)))
+      password)))
 
 ;;; org-gtasks.el ends here
 ;; Local Variables:

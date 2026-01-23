@@ -50,6 +50,7 @@
    "embark"
 
    "chezmoi"
+   "helpful"
 
    ;; MacOS packages
    ;; "macos-config"
@@ -102,6 +103,7 @@
    "org-contacts"
    "org-fragtog"
    "org-appear"
+   "org-gtasks"
    ;; "org-noter"
    ;; "org-gtd"
    "olivetti"
@@ -147,7 +149,7 @@
 
    ;; -- Other modules --
    "edit-server"
-   "helpful"
+   "qutebrowser"
    "docker"
    "eat"
    "systemd"
