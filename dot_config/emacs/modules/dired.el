@@ -61,6 +61,7 @@
           dired-recursive-deletes 'top
           dired-kill-when-opening-new-dired-buffer nil
           dired-dwim-target t
+          dired-vc-rename-file t
 
           ;; hide .dot files when in dired-omit-mode
           dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
