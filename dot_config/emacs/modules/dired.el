@@ -38,8 +38,10 @@
 (use-package dired
   :ensure nil
   :defer t
-  :hook (;; (dired-mode . dired-hide-details-mode)
-         (dired-mode . dired-omit-mode))
+  :hook ((dired-mode . (lambda ()
+                         (dired-omit-mode)
+                         (dired-hide-details-mode)
+                         )))
   :bind ( :map dired-mode-map ;; Variable is void when evaluated for first time
           ("D" . nil)
           ("D d" . 'dired-do-delete)
