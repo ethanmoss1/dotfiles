@@ -70,6 +70,7 @@
    "app-launcher"
    "alsamixer"
    "playerctl"
+   "activities"
 
    ;; "buffer-move"
    ;; "tab-bar"

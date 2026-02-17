@@ -24,16 +24,17 @@
   :init
   ;; Prevent `edebug' default bindings from interfering.
   (setq edebug-inhibit-emacs-lisp-mode-bindings t)
+  (unbind-key (kbd "C-x f"))  ; Removes `set-fill-column’ from key map
   :bind
-  (("C-x C-a C-n" . activities-new)
-   ("C-x C-a C-d" . activities-define)
-   ("C-x C-a C-a" . activities-resume)
-   ("C-x C-a C-s" . activities-suspend)
-   ("C-x C-a C-k" . activities-kill)
-   ("C-x C-a RET" . activities-switch)
-   ("C-x C-a b" . activities-switch-buffer)
-   ("C-x C-a g" . activities-revert)
-   ("C-x C-a l" . activities-list))
+  (("C-x f n"   . activities-new)
+   ("C-x f d"   . activities-define)
+   ("C-x f a"   . activities-resume)
+   ("C-x f s"   . activities-suspend)
+   ("C-x f k"   . activities-kill)
+   ("C-x f RET" . activities-switch)
+   ("C-x f b"   . activities-switch-buffer)
+   ("C-x f g"   . activities-revert)
+   ("C-x f l"   . activities-list))
   :config
   (activities-mode))
 
