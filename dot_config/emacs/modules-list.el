@@ -78,6 +78,7 @@
    "pdf-tools"
    ;; "ednc"
    "ultra-scroll"
+   "emacs-async"
 
    "wait"
 
