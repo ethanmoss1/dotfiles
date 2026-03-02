@@ -22,7 +22,7 @@
 
 (use-package async
   :config
-  (setopt dired-async-)
+  ;; (setopt dired-async-)
   (dired-async-mode 1)
   (dired-async--modeline-mode 1))
 
