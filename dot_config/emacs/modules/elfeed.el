@@ -51,7 +51,7 @@
 		    ("https://xkcd.com/rss.xml" humour cartoon)
 		    ("https://www.google.com/alerts/feeds/13595612812189678051/7036549150154760100" news medical)
 		    ("https://www.google.com/alerts/feeds/13595612812189678051/7859550417961526637" news medical)
-            ("https://planet.emacslife.com/atom.xml" emacs news)
+            ("https://planet.emacslife.com/atom.xml" emacs aggregator)
             ("https://themkat.net/feed/by_tag/emacs.xml" emacs news)
             ("https://arialdomartini.github.io/feed.xml" emacs blog)
             ("https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml" cyber-security news)
@@ -63,7 +63,8 @@
             ("https://www.tomscott.com/updates.xml" blog news)
             ("https://joshblais.com/index.xml" blog emacs)
             ("duncanbritt.com/feed.xml" blog emacs)
-            ("https://tsawyer87.github.io//index.xml" nix blog))))
+            ("https://tsawyer87.github.io//index.xml" nix blog)
+            ("https://thecloudlet.github.io/atom.xml" emacs blog))))
 
 ;; (use-package elfeed-goodies
 ;;   :after elfeed
