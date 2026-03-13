@@ -27,6 +27,13 @@
   (setopt citar-bibliography (list (expand-file-name "ref/references.bib" org-directory))
           citar-library-paths (list (expand-file-name "ref/attachments" org-directory)))
 
+  ;; Set generated reference to correct style
+  (setopt citar-format-reference-function 'citar-citeproc-format-reference
+          citar-citeproc-csl-styles-dir (expand-file-name "ref/csl" org-directory)
+          ;; Set a default style;
+          ;; citar-citeproc-csl-style "harvard-cite-them-right-no-et-al.csl"
+          )
+
   ;; This are changes from the org-cite package to use citar
   (setopt org-cite-insert-processor 'citar
           org-cite-follow-processor 'citar
